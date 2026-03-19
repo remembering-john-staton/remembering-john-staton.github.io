@@ -1,0 +1,38 @@
+[
+  {
+    "id": "magical-girls",
+    "title": "Magical Girls",
+    "color": "#7c1f26",
+    "image": "img/pieces/piece-001.jpg",
+    "stories": 5,
+    "pieces": 14,
+    "description": "Transformation sequences, dress uniforms, and specialized weapons. Staton's magical girls are earnest without being naive — they want things, they fight for them, and the aesthetics are always exactly right."
+  },
+  {
+    "id": "demons-and-angels",
+    "title": "Demons & Angels",
+    "color": "#3a5068",
+    "image": "img/pieces/piece-002.jpg",
+    "stories": 6,
+    "pieces": 22,
+    "description": "The Evil Diva universe runs on this tension. Horns and halos coexist in the same high school hallway. The joke is that nobody finds it remarkable. The depth is that everyone finds it personal."
+  },
+  {
+    "id": "school-life",
+    "title": "School Life",
+    "color": "#4a4230",
+    "image": "img/pieces/piece-003.jpg",
+    "stories": 4,
+    "pieces": 9,
+    "description": "Demonic high schools, absent-minded principals, and students perpetually late to the bell. Staton's school settings play the absurdity completely straight, which is exactly why they work."
+  },
+  {
+    "id": "comics-and-covers",
+    "title": "Comics & Covers",
+    "color": "#2d4a35",
+    "image": "img/pieces/piece-001.jpg",
+    "stories": 3,
+    "pieces": 11,
+    "description": "Work produced for or inspired by Angry Viking Press's Evil Diva series. Cover designs, proposed art, and the pieces that exist at the intersection of comics craft and personal vision."
+  }
+]

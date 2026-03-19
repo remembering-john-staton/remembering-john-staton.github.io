@@ -1,0 +1,50 @@
+[
+  {
+    "id": "diva",
+    "name": "Diva",
+    "role": "Protagonist",
+    "pieces": 18,
+    "image": "img/pieces/piece-001.jpg",
+    "description": "A demon girl with a very specific dream: to be an angel. The heart of the Evil Diva series. Her devil horns and forked tail are at odds with her aspirations, and that tension is everything."
+  },
+  {
+    "id": "navy-girl",
+    "name": "Navy Girl",
+    "role": "Protagonist",
+    "pieces": 12,
+    "image": "img/pieces/piece-002.jpg",
+    "description": "Mayflower Shipman — Fighting Magical Girl and decorated naval officer. Trades her dress whites for demonstration colours on armed forces day. Accompanied by SKYHAWC, her Specialized Kinetic Yield High Altitude Weapon Carrier."
+  },
+  {
+    "id": "loki",
+    "name": "Loki",
+    "role": "Supporting",
+    "pieces": 7,
+    "image": "img/pieces/piece-003.jpg",
+    "description": "Guidance counsellor at the demonic high school. Steeple-fingered, perpetually plotting. Has only one real complaint about the devil-horned student body: they are always late to the bell."
+  },
+  {
+    "id": "virgil",
+    "name": "Virgil",
+    "role": "Supporting",
+    "pieces": 5,
+    "image": "img/pieces/piece-001.jpg",
+    "description": "The principal. Shares Loki's exasperation with tardiness. Presides over a school where the supernatural is administrative, not extraordinary."
+  },
+  {
+    "id": "blue-demon",
+    "name": "Blue Demon",
+    "role": "Recurring",
+    "pieces": 6,
+    "image": "img/pieces/piece-002.jpg",
+    "description": "A corrective — the previous version was judged to use far too much pink. Whether the overcorrection landed is a matter of record."
+  },
+  {
+    "id": "skyhawc",
+    "name": "SKYHAWC",
+    "role": "Companion",
+    "pieces": 4,
+    "image": "img/pieces/piece-003.jpg",
+    "description": "Navy Girl's aerial companion. The acronym stands for Specialized Kinetic Yield High Altitude Weapon Carrier. The second K remains an open problem."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "piece-001",
+    "title": "The Wanderer at Dusk",
+    "image": "img/pieces/piece-001.jpg",
+    "year": "2019",
+    "themes": ["fate", "identity"],
+    "characters": ["elara-voss"],
+    "description": "One of Staton's most atmospheric early pieces. The figure stands at the edge of the Ashfeld Reaches, caught between two worlds.",
+    "statonNotes": "I painted this during the writing of the Forest Arc. Elara didn't know where she was going yet. Neither did I."
+  },
+  {
+    "id": "piece-002",
+    "title": "The Silent Court Convenes",
+    "image": "img/pieces/piece-002.jpg",
+    "year": "2020",
+    "themes": ["war", "fate"],
+    "characters": ["the-silent-court", "kael-dorne"],
+    "description": "A rare full ensemble piece showing all seven members of the Silent Court at their founding assembly.",
+    "statonNotes": "Getting all seven into one frame without it feeling crowded took about three restarts. Kael is the one not looking at the table."
+  },
+  {
+    "id": "piece-003",
+    "title": "Sable in the Rain",
+    "image": "img/pieces/piece-003.jpg",
+    "year": "2021",
+    "themes": ["love", "identity"],
+    "characters": ["sable-wren"],
+    "description": "A quieter piece. Sable alone on the bridge after the events of Volume 4. No weapons. No armor.",
+    "statonNotes": "This one hurt to make."
+  }
+]
