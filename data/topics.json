@@ -1,38 +1,74 @@
 [
   {
-    "id": "magical-girls",
-    "title": "Magical Girls",
+    "id": "dmv",
+    "title": "DMV",
     "color": "#7c1f26",
-    "image": "img/pieces/piece-001.jpg",
+    "image": "img/pieces/dmv-001.jpg",
+    "stories": 12,
+    "pieces": 40,
+    "description": "John's flagship original IP. AJ is a combat-trained meter maid operating in a cyberpunk dystopia where a 6x3 metre rectangle of road surface is the most valuable real estate imaginable. Recurring characters, multiple art styles, comic strips. The centrepiece of the archive."
+  },
+  {
+    "id": "streamers",
+    "title": "The Streamers",
+    "color": "#1a3a5c",
+    "image": "img/pieces/streamers-001.jpg",
+    "stories": 8,
+    "pieces": 22,
+    "description": "An original IP: magical girls each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Coast Guard Girl. Includes a dedicated Inktober 2018 series. Distinct enough from everything else to stand completely alone."
+  },
+  {
+    "id": "star-trek",
+    "title": "Star Trek",
+    "color": "#1c2a4a",
+    "image": "img/pieces/trek-001.jpg",
+    "stories": 31,
+    "pieces": 31,
+    "description": "The full Inktober 2016 run — chibi and super-deformed Trek ships, Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. Too large and too considered to tuck under a generic fan art label."
+  },
+  {
+    "id": "evil-diva",
+    "title": "Evil Diva",
+    "color": "#3d1a4a",
+    "image": "img/pieces/diva-001.jpg",
     "stories": 5,
     "pieces": 14,
-    "description": "Transformation sequences, dress uniforms, and specialized weapons. Staton's magical girls are earnest without being naive — they want things, they fight for them, and the aesthetics are always exactly right."
+    "description": "Fan art for the Angry Viking Press indie comic about a demon girl who wants to be an angel. Diva, Loki, Virgil — a recurring cast in a demonic high school where the supernatural is purely administrative."
   },
   {
-    "id": "demons-and-angels",
-    "title": "Demons & Angels",
-    "color": "#3a5068",
-    "image": "img/pieces/piece-002.jpg",
-    "stories": 6,
-    "pieces": 22,
-    "description": "The Evil Diva universe runs on this tension. Horns and halos coexist in the same high school hallway. The joke is that nobody finds it remarkable. The depth is that everyone finds it personal."
-  },
-  {
-    "id": "school-life",
-    "title": "School Life",
-    "color": "#4a4230",
-    "image": "img/pieces/piece-003.jpg",
+    "id": "princeless",
+    "title": "Princeless",
+    "color": "#2d4a35",
+    "image": "img/pieces/princeless-001.jpg",
     "stories": 4,
     "pieces": 9,
-    "description": "Demonic high schools, absent-minded principals, and students perpetually late to the bell. Staton's school settings play the absurdity completely straight, which is exactly why they work."
+    "description": "Fan work for Jeremy Whitley's series. Adrienne, Sparky the dragon, Bedelia. Consistent enough across multiple pieces to earn its own corner of the archive."
   },
   {
-    "id": "comics-and-covers",
-    "title": "Comics & Covers",
-    "color": "#2d4a35",
-    "image": "img/pieces/piece-001.jpg",
+    "id": "anime",
+    "title": "Anime Fan Art",
+    "color": "#4a3820",
+    "image": "img/pieces/anime-001.jpg",
+    "stories": 6,
+    "pieces": 18,
+    "description": "El Hazard, Gundam Girls, Bubblegum Crisis, Robotech, Dirty Pair, Cowboy Bebop, Silent Möbius. Classic catalogue, obvious affection. One bucket that earns its place."
+  },
+  {
+    "id": "chiroines",
+    "title": "Chiroines",
+    "color": "#1a3a3a",
+    "image": "img/pieces/chiroines-001.jpg",
+    "stories": 7,
+    "pieces": 20,
+    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. Sits between fan art and original concept. The format is his own; the subjects are borrowed with obvious love."
+  },
+  {
+    "id": "empowered-misc",
+    "title": "Empowered & Miscellaneous",
+    "color": "#3a3a1a",
+    "image": "img/pieces/misc-001.jpg",
     "stories": 3,
     "pieces": 11,
-    "description": "Work produced for or inspired by Angry Viking Press's Evil Diva series. Cover designs, proposed art, and the pieces that exist at the intersection of comics craft and personal vision."
+    "description": "Guest work on Adam Warren's Empowered: Animal Style, convention sketches, and one-offs that don't belong anywhere else but belong here."
   }
 ]
