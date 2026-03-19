@@ -1,50 +1,83 @@
 [
   {
-    "id": "diva",
-    "name": "Diva",
+    "id": "america-jones",
+    "name": "America Jones",
     "role": "Protagonist",
-    "pieces": 18,
-    "image": "img/pieces/piece-001.jpg",
-    "description": "A demon girl with a very specific dream: to be an angel. The heart of the Evil Diva series. Her devil horns and forked tail are at odds with her aspirations, and that tension is everything."
+    "topic": "DMV",
+    "pieces": 32,
+    "image": "img/pieces/dmv-enter-the-heroine.jpg",
+    "description": "AJ. The toughest Parking Enforcement Officer in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is worth killing for. Armed with a Palomino 61M Assault PTD and the patience of no one."
   },
   {
     "id": "navy-girl",
     "name": "Navy Girl",
     "role": "Protagonist",
+    "topic": "The Streamers",
+    "pieces": 14,
+    "image": "img/pieces/navy-girl-aerial-demonstration-variant.png",
+    "description": "Mayflower Shipman. Fighting Magical Girl and decorated naval officer. Accompanied by SKYHAWC — her Specialized Kinetic Yield High Altitude Weapon Carrier. The acronym still has a second K problem."
+  },
+  {
+    "id": "air-force-girl",
+    "name": "Air Force Girl",
+    "role": "Protagonist",
+    "topic": "The Streamers",
+    "pieces": 10,
+    "image": "img/pieces/inktober-stardate-1810-01.png",
+    "description": "Captain Ariel McFly. Once destroyed a hardened underground installation by carrying Army Girl to near-earth orbit and executing an improvised dive bombing run. The Streamers' most aeronautically committed member."
+  },
+  {
+    "id": "army-girl",
+    "name": "Army Girl",
+    "role": "Protagonist",
+    "topic": "The Streamers",
+    "pieces": 8,
+    "image": "img/pieces/anti-tank-girl.jpg",
+    "description": "Anti-armor specialist. Can punch an opposing tank with sufficient force to detonate its magazine and pop the turret off like a cork. Demonstrated against T.H.R.E.A.T.'s Werewolf Brigade at the Battle of Thar."
+  },
+  {
+    "id": "diva",
+    "name": "Diva",
+    "role": "Protagonist",
+    "topic": "Evil Diva",
     "pieces": 12,
-    "image": "img/pieces/piece-002.jpg",
-    "description": "Mayflower Shipman — Fighting Magical Girl and decorated naval officer. Trades her dress whites for demonstration colours on armed forces day. Accompanied by SKYHAWC, her Specialized Kinetic Yield High Altitude Weapon Carrier."
+    "image": "img/pieces/evil-diva.png",
+    "description": "Diva Beelze. A demon girl with one very specific aspiration: to be an angel. The titular character of Angry Viking Press's Evil Diva. Her whole arc takes place in a demonic high school where the supernatural is entirely routine."
   },
   {
     "id": "loki",
     "name": "Loki",
     "role": "Supporting",
-    "pieces": 7,
-    "image": "img/pieces/piece-003.jpg",
-    "description": "Guidance counsellor at the demonic high school. Steeple-fingered, perpetually plotting. Has only one real complaint about the devil-horned student body: they are always late to the bell."
+    "topic": "Evil Diva",
+    "pieces": 5,
+    "image": "img/pieces/faculty.png",
+    "description": "Guidance counsellor. Steeple-fingered, perpetually scheming. His only real professional complaint about the student body is their habitual tardiness to the bell."
   },
   {
     "id": "virgil",
     "name": "Virgil",
     "role": "Supporting",
-    "pieces": 5,
-    "image": "img/pieces/piece-001.jpg",
-    "description": "The principal. Shares Loki's exasperation with tardiness. Presides over a school where the supernatural is administrative, not extraordinary."
-  },
-  {
-    "id": "blue-demon",
-    "name": "Blue Demon",
-    "role": "Recurring",
-    "pieces": 6,
-    "image": "img/pieces/piece-002.jpg",
-    "description": "A corrective — the previous version was judged to use far too much pink. Whether the overcorrection landed is a matter of record."
-  },
-  {
-    "id": "skyhawc",
-    "name": "SKYHAWC",
-    "role": "Companion",
+    "topic": "Evil Diva",
     "pieces": 4,
-    "image": "img/pieces/piece-003.jpg",
-    "description": "Navy Girl's aerial companion. The acronym stands for Specialized Kinetic Yield High Altitude Weapon Carrier. The second K remains an open problem."
+    "image": "img/pieces/faculty.png",
+    "description": "The principal. Presides over a school where demonic heritage is an administrative detail, not a disciplinary issue. Shares Loki's exasperation about punctuality."
+  },
+  {
+    "id": "adrienne",
+    "name": "Adrienne Ashe",
+    "role": "Protagonist",
+    "topic": "Princeless",
+    "pieces": 7,
+    "image": "img/pieces/pirate-princeless.jpg",
+    "description": "The star, as John put it. Gets colored in first. Jeremy Whitley's Princeless heroine, drawn with obvious affection in multiple pieces including a Big Planet Comics exclusive variant cover for Princeless: The Pirate Princess #1."
+  },
+  {
+    "id": "aj-drew",
+    "name": "Drew",
+    "role": "Supporting",
+    "topic": "DMV",
+    "pieces": 6,
+    "image": "img/pieces/dmv-the-rescue.jpg",
+    "description": "AJ's significantly less heroic partner. Quick to point out that they are heading toward the source of trouble rather than away from it. A useful counterweight."
   }
 ]
