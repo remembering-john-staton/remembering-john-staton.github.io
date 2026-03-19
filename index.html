@@ -516,95 +516,7 @@
   </div>
 
   <div class="themes-track" id="themesTrack">
-
-    <!-- Card 1 -->
-    <div class="theme-card" data-topic="war"
-         data-title="War &amp; Conflict"
-         data-pieces="12" data-stories="6"
-         data-color="#7c1f26"
-         data-img="https://cdn.myanimelist.net/images/anime/1286/99889.jpg"
-         data-desc="One of John Staton's most visceral recurring themes. War and Conflict permeates the world-building — from the opening arc's siege of the Ashfeld Reaches to the quiet devastation of its aftermath. Staton never glorifies battle; instead he renders it through loss, exhaustion, and the moral weight carried by survivors. The imagery is unflinching and deeply human.">
-      <div class="theme-card-color" style="background: #7c1f26;"></div>
-      <div class="theme-card-inner">
-        <div class="theme-card-title">War &amp;<br>Conflict</div>
-        <div>
-          <div class="theme-card-thumb">
-            <img src="https://cdn.myanimelist.net/images/anime/1286/99889.jpg" alt="War & Conflict" />
-          </div>
-          <div class="theme-card-meta">
-            <span class="theme-card-type">Topic</span>
-            <span class="theme-card-stats">6 stories<br>12 entries</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="theme-card" data-topic="love"
-         data-title="Love &amp; Loss"
-         data-pieces="9" data-stories="8"
-         data-color="#3a5068"
-         data-img="https://cdn.myanimelist.net/images/anime/1171/109222.jpg"
-         data-desc="Perhaps Staton's most quietly devastating thread. Love and Loss runs beneath almost every major relationship in the series — not as melodrama, but as a slow accumulation of small moments. A glance held too long. A letter never sent. The tenderness in this topic is what separates Staton's work from its contemporaries.">
-      <div class="theme-card-color" style="background: #3a5068;"></div>
-      <div class="theme-card-inner">
-        <div class="theme-card-title">Love &amp;<br>Loss</div>
-        <div>
-          <div class="theme-card-thumb">
-            <img src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg" alt="Love & Loss" />
-          </div>
-          <div class="theme-card-meta">
-            <span class="theme-card-type">Topic</span>
-            <span class="theme-card-stats">8 stories<br>9 entries</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="theme-card" data-topic="fate"
-         data-title="Fate &amp; Destiny"
-         data-pieces="7" data-stories="5"
-         data-color="#4a4230"
-         data-img="https://cdn.myanimelist.net/images/anime/1015/138006.jpg"
-         data-desc="The question of whether any character in Staton's world truly chooses their path runs as a constant undercurrent. Fate and Destiny is not a simple predetermination story — it is a philosophical argument staged across generations, bloodlines, and broken prophecies. Characters rail against their roles even as they fulfill them.">
-      <div class="theme-card-color" style="background: #4a4230;"></div>
-      <div class="theme-card-inner">
-        <div class="theme-card-title">Fate &amp;<br>Destiny</div>
-        <div>
-          <div class="theme-card-thumb">
-            <img src="https://cdn.myanimelist.net/images/anime/1015/138006.jpg" alt="Fate & Destiny" />
-          </div>
-          <div class="theme-card-meta">
-            <span class="theme-card-type">Topic</span>
-            <span class="theme-card-stats">5 stories<br>7 entries</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="theme-card" data-topic="identity"
-         data-title="Identity &amp; Self"
-         data-pieces="11" data-stories="4"
-         data-color="#2d4a35"
-         data-img="https://cdn.myanimelist.net/images/anime/1887/117644.jpg"
-         data-desc="Who are you when everything you were told about yourself turns out to be a construction? Identity and Self is the most inward-facing of Staton's recurring topics. It surfaces most powerfully in the Archivist storyline and in Elara's fractured sense of self across the middle volumes — a meditation on masks, memory, and becoming.">
-      <div class="theme-card-color" style="background: #2d4a35;"></div>
-      <div class="theme-card-inner">
-        <div class="theme-card-title">Identity &amp;<br>Self</div>
-        <div>
-          <div class="theme-card-thumb">
-            <img src="https://cdn.myanimelist.net/images/anime/1887/117644.jpg" alt="Identity & Self" />
-          </div>
-          <div class="theme-card-meta">
-            <span class="theme-card-type">Topic</span>
-            <span class="theme-card-stats">4 stories<br>11 entries</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- populated by loadTopics() below -->
   </div>
 
   <!-- EXPAND PANEL — injected below the card track -->
@@ -787,44 +699,31 @@
   const panelClose = document.getElementById('topicPanelClose');
   let activeCard   = null;
 
-  document.querySelectorAll('.theme-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const isSame = card === activeCard;
-
-      // Reset all cards
-      document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
-
-      if (isSame) {
-        // Close
-        panel.classList.remove('open');
-        activeCard = null;
-        return;
-      }
-
-      // Populate panel
-      panelImg.src          = card.dataset.img;
-      panelImg.alt          = card.dataset.title;
-      panelTitle.innerHTML  = card.dataset.title;
-      panelDesc.textContent = card.dataset.desc;
-      panelCounts.textContent = `${card.dataset.stories} stories · ${card.dataset.pieces} pieces`;
-
-      // Tint the panel bg to match card color
-      panel.style.background = card.dataset.color
-        ? card.dataset.color + 'cc'
-        : '#1a0d0e';
-      panel.querySelector('.topic-panel-inner').style.background =
-        `linear-gradient(to right, ${card.dataset.color}55 0%, #0e0608 55%)`;
-
-      card.classList.add('active');
-      activeCard = card;
-
-      // Open panel and scroll it into view
-      panel.classList.add('open');
-      setTimeout(() => {
-        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
+  function attachTopicCardListeners() {
+    document.querySelectorAll('.theme-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isSame = card === activeCard;
+        document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
+        if (isSame) {
+          panel.classList.remove('open');
+          activeCard = null;
+          return;
+        }
+        panelImg.src          = card.dataset.img;
+        panelImg.alt          = card.dataset.title;
+        panelTitle.innerHTML  = card.dataset.title;
+        panelDesc.textContent = card.dataset.desc;
+        panelCounts.textContent = `${card.dataset.stories} series · ${card.dataset.pieces} pieces`;
+        panel.style.background = card.dataset.color ? card.dataset.color + 'cc' : '#1a0d0e';
+        panel.querySelector('.topic-panel-inner').style.background =
+          `linear-gradient(to right, ${card.dataset.color}55 0%, #0e0608 55%)`;
+        card.classList.add('active');
+        activeCard = card;
+        panel.classList.add('open');
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+      });
     });
-  });
+  }
 
   panelClose.addEventListener('click', () => {
     panel.classList.remove('open');
@@ -1529,6 +1428,47 @@
 </aside>
 
 <script>
+  // ─── TOPICS LOADER ───
+  async function loadTopics() {
+    const track = document.getElementById('themesTrack');
+    if (!track) return;
+    try {
+      const res = await fetch('data/topics.json');
+      const topics = await res.json();
+      track.innerHTML = topics.map((t, i) => `
+        <div class="theme-card" data-topic="${t.id}"
+             data-title="${t.title}"
+             data-pieces="${t.pieces}" data-stories="${t.stories}"
+             data-color="${t.color}"
+             data-img="${t.image}"
+             data-desc="${t.description.replace(/"/g, '&quot;')}"
+             style="transition-delay: ${i * 0.1}s">
+          <div class="theme-card-color" style="background: ${t.color};"></div>
+          <div class="theme-card-inner">
+            <div class="theme-card-title">${t.title}</div>
+            <div>
+              <div class="theme-card-thumb">
+                <img src="${t.image}" alt="${t.title}" loading="lazy" />
+              </div>
+              <div class="theme-card-meta">
+                <span class="theme-card-type">Topic</span>
+                <span class="theme-card-stats">${t.stories} series<br>${t.pieces} pieces</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      // re-attach card click listeners after render
+      attachTopicCardListeners();
+      // update count
+      const countEl = document.querySelector('.themes-count');
+      if (countEl) countEl.textContent = '(' + topics.length + ')';
+    } catch(e) {
+      console.error('Could not load topics.json', e);
+    }
+  }
+  loadTopics();
+
   // ─── QUOTE SECTION ───
   const quoteObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
