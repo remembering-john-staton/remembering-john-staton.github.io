@@ -4,71 +4,107 @@
     "title": "DMV",
     "color": "#7c1f26",
     "image": "img/pieces/dmv-enter-the-heroine.jpg",
-    "stories": 12,
+    "category": "Original IP",
     "pieces": 40,
-    "description": "John's flagship original IP. AJ is a combat-trained meter maid operating in a cyberpunk dystopia where a 6x3 metre rectangle of road surface is the most valuable real estate imaginable. Recurring characters, multiple art styles, comic strips. The centrepiece of the archive."
+    "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city."
   },
   {
     "id": "streamers",
     "title": "The Streamers",
     "color": "#1a3a5c",
     "image": "img/pieces/navy-girl-aerial-demonstration-variant.png",
-    "stories": 8,
+    "category": "Original IP",
     "pieces": 22,
-    "description": "An original IP: magical girls each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Coast Guard Girl. Includes a dedicated Inktober 2018 series. Distinct enough from everything else to stand completely alone."
+    "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run."
   },
   {
-    "id": "star-trek",
-    "title": "Star Trek",
-    "color": "#1c2a4a",
-    "image": "img/pieces/inktober-stardate-1610-02.png",
-    "stories": 31,
-    "pieces": 31,
-    "description": "The full Inktober 2016 run — chibi and super-deformed Trek ships, Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. Too large and too considered to tuck under a generic fan art label."
+    "id": "neboox",
+    "title": "N.E. Boox",
+    "color": "#2a3a20",
+    "image": "img/pieces/most-dangerouse-book-store.jpg",
+    "category": "Original IP",
+    "pieces": 8,
+    "description": "The Most Dangerous Bookstore. Molly Mouse runs the place. Cassandra is the cat-girl. The store is defended by Bookwyrms and robotic dalmatians. An original IP that never got enough time but always had a great name."
+  },
+  {
+    "id": "space-girls",
+    "title": "Space Girls / GELFs",
+    "color": "#1a2a4a",
+    "image": "img/pieces/space-girls.jpg",
+    "category": "Original IP",
+    "pieces": 6,
+    "description": "Sabrina and the Genetically Engineered Life Forms, piloting Giant Space Robots. Early concept work that shows where John's head was when he was building worlds from scratch."
+  },
+  {
+    "id": "high-school-romance",
+    "title": "The High School Romance",
+    "color": "#3a2040",
+    "image": "img/pieces/evil-prom-queen.jpg",
+    "category": "Original IP",
+    "pieces": 9,
+    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude — part rom-com, part mecha, entirely John."
   },
   {
     "id": "evil-diva",
     "title": "Evil Diva",
     "color": "#3d1a4a",
     "image": "img/pieces/evil-diva.png",
-    "stories": 5,
+    "category": "Fan Art — Comics",
     "pieces": 14,
-    "description": "Fan art for the Angry Viking Press indie comic about a demon girl who wants to be an angel. Diva, Loki, Virgil — a recurring cast in a demonic high school where the supernatural is purely administrative."
+    "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative."
   },
   {
     "id": "princeless",
     "title": "Princeless",
     "color": "#2d4a35",
     "image": "img/pieces/pirate-princeless.jpg",
-    "stories": 4,
+    "category": "Fan Art — Comics",
     "pieces": 9,
-    "description": "Fan work for Jeremy Whitley's series. Adrienne, Sparky the dragon, Bedelia. Consistent enough across multiple pieces to earn its own corner of the archive."
+    "description": "Fan work for Jeremy Whitley's series. Adrienne Ashe, Sparky the dragon, Bedelia, Xingtao. Includes a Big Planet Comics exclusive variant cover for Princeless: The Pirate Princess #1, shipping January 2015."
+  },
+  {
+    "id": "gold-digger",
+    "title": "Gold Digger",
+    "color": "#4a3010",
+    "image": "img/pieces/diggers-sisters.jpg",
+    "category": "Fan Art — Comics",
+    "pieces": 7,
+    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen — John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte."
+  },
+  {
+    "id": "chibi-heroines",
+    "title": "Chibi Heroines",
+    "color": "#1a3a3a",
+    "image": "img/pieces/chiroines-01.jpg",
+    "category": "Fan Art — Comics",
+    "pieces": 20,
+    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept."
   },
   {
     "id": "anime",
     "title": "Anime Fan Art",
     "color": "#4a3820",
     "image": "img/pieces/bubblegum-girls.jpg",
-    "stories": 6,
+    "category": "Fan Art — Anime",
     "pieces": 18,
-    "description": "El Hazard, Gundam Girls, Bubblegum Crisis, Robotech, Dirty Pair, Cowboy Bebop, Silent Möbius. Classic catalogue, obvious affection. One bucket that earns its place."
+    "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place."
   },
   {
-    "id": "chiroines",
-    "title": "Chiroines",
-    "color": "#1a3a3a",
-    "image": "img/pieces/chiroines-01.jpg",
-    "stories": 7,
-    "pieces": 20,
-    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. Sits between fan art and original concept. The format is his own; the subjects are borrowed with obvious love."
+    "id": "star-trek",
+    "title": "Star Trek",
+    "color": "#1c2a4a",
+    "image": "img/pieces/inktober-stardate-1610-02.png",
+    "category": "Fan Art — Sci-Fi",
+    "pieces": 31,
+    "description": "The full Inktober 2016 run — 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct."
   },
   {
-    "id": "empowered-misc",
-    "title": "Empowered & Misc.",
+    "id": "published",
+    "title": "Published Work",
     "color": "#3a3a1a",
     "image": "img/pieces/animal-style-designs-01-paladindrome.jpg",
-    "stories": 3,
+    "category": "Professional Credits",
     "pieces": 11,
-    "description": "Guest work on Adam Warren's Empowered: Animal Style, convention sketches, and one-offs that don't belong anywhere else but belong here."
+    "description": "Guest artist on Empowered Special #4: Animal Style (Adam Warren). Contributor to Hammer of the Gods (Mike Avon Oeming). Variant cover work and convention commissions. The professional side of the archive."
   }
 ]
