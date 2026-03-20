@@ -342,36 +342,55 @@
   }
   .themes-divider.visible { transform: scaleX(1); }
 
-  /* Cards scroll row */
+  /* Cards grid — two rows */
   .themes-track {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto;
     gap: 0;
     padding: 0 48px;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
-  .themes-track::-webkit-scrollbar { display: none; }
 
   /* Individual card */
   .theme-card {
-    flex: 0 0 260px;
-    min-height: 380px;
+    min-height: 320px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     opacity: 0;
-    transform: translateX(60px);
+    transform: translateY(40px);
     transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     border-right: 1px solid rgba(240,232,218,0.08);
+    border-bottom: 1px solid rgba(240,232,218,0.08);
   }
-  .theme-card:last-child { border-right: none; }
-  .theme-card.visible { opacity: 1; transform: translateX(0); }
+  .theme-card:nth-child(6n) { border-right: none; }
+  .theme-card:nth-last-child(-n+6) { border-bottom: none; }
+  .theme-card.visible { opacity: 1; transform: translateY(0); }
 
   /* Stagger delays */
-  .theme-card:nth-child(1) { transition-delay: 0.05s; }
-  .theme-card:nth-child(2) { transition-delay: 0.15s; }
-  .theme-card:nth-child(3) { transition-delay: 0.25s; }
-  .theme-card:nth-child(4) { transition-delay: 0.35s; }
+  .theme-card:nth-child(1)  { transition-delay: 0.03s; }
+  .theme-card:nth-child(2)  { transition-delay: 0.07s; }
+  .theme-card:nth-child(3)  { transition-delay: 0.11s; }
+  .theme-card:nth-child(4)  { transition-delay: 0.15s; }
+  .theme-card:nth-child(5)  { transition-delay: 0.19s; }
+  .theme-card:nth-child(6)  { transition-delay: 0.23s; }
+  .theme-card:nth-child(7)  { transition-delay: 0.27s; }
+  .theme-card:nth-child(8)  { transition-delay: 0.31s; }
+  .theme-card:nth-child(9)  { transition-delay: 0.35s; }
+  .theme-card:nth-child(10) { transition-delay: 0.39s; }
+  .theme-card:nth-child(11) { transition-delay: 0.43s; }
+  .theme-card:nth-child(12) { transition-delay: 0.47s; }
+
+  @media (max-width: 900px) {
+    .themes-track { grid-template-columns: repeat(3, 1fr); padding: 0 24px; }
+    .theme-card:nth-child(6n) { border-right: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-child(3n) { border-right: none; }
+  }
+  @media (max-width: 540px) {
+    .themes-track { grid-template-columns: repeat(2, 1fr); padding: 0 16px; }
+    .theme-card:nth-child(3n) { border-right: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-child(2n) { border-right: none; }
+  }
 
   .theme-card-bg {
     position: absolute;
@@ -959,7 +978,7 @@
 <style>
   .quote-section {
     background: #f0e8da;
-    padding: 140px 48px 160px;
+    padding: 120px 48px 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -976,23 +995,23 @@
     font-family: 'Playfair Display', serif;
     font-size: 220px;
     line-height: 1;
-    color: rgba(42,26,27,0.06);
+    color: rgba(42,26,27,0.05);
     pointer-events: none;
     user-select: none;
   }
 
   .quote-inner {
-    max-width: 820px;
-    text-align: center;
+    max-width: 920px;
+    width: 100%;
   }
 
   .quote-line {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5.5vw, 72px);
+    font-size: clamp(28px, 4vw, 52px);
     font-weight: 400;
     font-style: italic;
-    line-height: 1.12;
+    line-height: 1.15;
     color: #1a0e0f;
     opacity: 0;
     transform: translateY(36px);
@@ -1006,32 +1025,73 @@
   .quote-rule {
     width: 0;
     height: 1px;
-    background: rgba(42,26,27,0.25);
-    margin: 36px auto;
+    background: rgba(42,26,27,0.2);
+    margin: 40px 0;
     transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
   }
-  .quote-rule.visible { width: 80px; }
+  .quote-rule.visible { width: 60px; }
 
   .quote-attr {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(42,26,27,0.45);
+    color: rgba(42,26,27,0.4);
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.6s ease 0.55s, transform 0.6s ease 0.55s;
+    margin-bottom: 56px;
   }
   .quote-attr.visible { opacity: 1; transform: translateY(0); }
+
+  .quote-bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
+  }
+  .quote-bio.visible { opacity: 1; transform: translateY(0); }
+
+  .quote-bio p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.85;
+    color: rgba(26,14,15,0.65);
+  }
+
+  .quote-bio-tag {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(42,26,27,0.3);
+    border-bottom: 1px solid rgba(42,26,27,0.15);
+    padding-bottom: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .quote-bio { grid-template-columns: 1fr; gap: 24px; }
+    .quote-section { padding: 80px 28px 100px; }
+  }
 </style>
 
 <section class="quote-section" id="quoteSection">
   <div class="quote-inner">
-    <span class="quote-line">Imagination is the one toy</span>
-    <span class="quote-line">that never runs out</span>
-    <span class="quote-line">of batteries.</span>
+    <span class="quote-line">When my friends ask me what character</span>
+    <span class="quote-line">I'd most like to draw a comic of,</span>
+    <span class="quote-line">I usually lie.</span>
     <div class="quote-rule" id="quoteRule"></div>
-    <div class="quote-attr" id="quoteAttr">— John Staton</div>
+    <div class="quote-attr" id="quoteAttr">— John Staton, in his own words</div>
+
+    <div class="quote-bio" id="quoteBio">
+      <p>John Staton was a Maryland-based artist, cartoonist, and relentless worldbuilder. He published on DeviantArt across two decades, building a gallery that is part sketchbook, part creative journal, part parallel universe. His real answer to the question above was Skippy Von Richthofen, a Gold Digger character he loved with a specificity that tells you everything about the kind of fan he was.</p>
+      <p>His original creations — DMV, The Streamers, N.E. Boox, The High School Romance — share a sensibility: action-figure absurdism grounded in genuine craft. AJ, his combat-trained meter maid, was developed for years toward a full comic he planned to have ready for Otakon. The Streamers gave him military hardware, magical girl transformation sequences, and an acronym villain organisation. He did guest work for Adam Warren and Jeremy Whitley, contributed to Angry Viking Press, and drew 31 Star Trek ships in 31 October days because that is the kind of person he was.
+        <span class="quote-bio-tag">Fan Archive · Est. 2025</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1594,9 +1654,12 @@
       setTimeout(() => {
         entry.target.querySelector('#quoteAttr')?.classList.add('visible');
       }, 500);
+      setTimeout(() => {
+        entry.target.querySelector('#quoteBio')?.classList.add('visible');
+      }, 700);
       quoteObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
   const qs = document.getElementById('quoteSection');
   if (qs) quoteObserver.observe(qs);
 
