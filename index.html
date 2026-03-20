@@ -21,6 +21,18 @@
 
   html { scroll-behavior: smooth; }
 
+  /* Section stacking — each section slides over the previous */
+  .hero {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .themes-section  { position: relative; z-index: 2; }
+  .chars-section   { position: relative; z-index: 3; }
+  .quote-section   { position: relative; z-index: 4; }
+  .about-section   { position: relative; z-index: 5; }
+  .site-footer     { position: relative; z-index: 6; }
+
   body {
     background: var(--crimson-dark);
     color: var(--cream);
@@ -120,8 +132,8 @@
     color: var(--cream-dim);
     margin-bottom: 18px;
     opacity: 0;
-    transform: translateX(60px);
-    animation: slideFromRight 0.7s ease 1.0s forwards;
+    transform: translateX(40px);
+    animation: labelSnap 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
   }
 
   .hero-title {
@@ -132,9 +144,18 @@
     letter-spacing: -0.02em;
     color: var(--cream);
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(80px);
-    animation: slideFromRight 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
+    transform: translateX(160px);
+    animation: titleSlam 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  @keyframes labelSnap {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes titleSlam {
+    from { transform: translateX(160px); }
+    to   { transform: translateX(0); }
   }
 
   @keyframes slideFromRight {
@@ -160,9 +181,8 @@
     aspect-ratio: 3/4;
     overflow: hidden;
     border-radius: 2px;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s forwards;
+    clip-path: inset(0 100% 0 0);
+    animation: clipReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
     margin-bottom: 36px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.45);
   }
@@ -175,8 +195,13 @@
   }
   .hero-right-image-wrap:hover img { transform: scale(1.04); }
 
+  @keyframes clipReveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+  }
+
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(50px); }
+    from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
@@ -190,7 +215,7 @@
     align-self: center;
     opacity: 0;
     transform: translateY(30px);
-    animation: slideUp 0.85s ease 1.9s forwards;
+    animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
   }
 
   /* Decorative vertical text */
@@ -870,56 +895,63 @@
     padding: 0 48px;
   }
 
+  /* Row itself — no opacity trick, just hover state */
   .char-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 0;
     border-bottom: 1px solid rgba(42,26,27,0.1);
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                background 0.25s ease;
+    transition: background 0.2s ease;
     padding: 0 4px;
+    position: relative;
   }
   .char-row:first-child { border-top: 1px solid rgba(42,26,27,0.1); }
-  .char-row.visible { opacity: 1; transform: translateY(0); }
   .char-row:hover { background: rgba(42,26,27,0.04); }
   .char-row:hover .char-name { letter-spacing: 0.01em; }
   .char-row:hover .char-arrow { opacity: 1; transform: translateX(0); }
 
-  /* Left border accent on hover */
+  /* Crimson left accent on hover */
   .char-row::before {
     content: '';
-    display: block;
-    width: 3px;
-    height: 100%;
-    background: var(--crimson);
     position: absolute;
-    left: 48px;
-    opacity: 0;
-    transition: opacity 0.2s;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--crimson);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .char-row:hover::before { transform: scaleY(1); }
+
+  /* Overflow clip — name slides up from below the border */
+  .char-name-wrap {
+    flex: 1;
+    overflow: hidden;
+    padding: 16px 0 12px;
   }
 
   .char-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4.5vw, 58px);
+    font-size: clamp(26px, 4vw, 54px);
     font-weight: 700;
     text-transform: uppercase;
     color: #1a0e0f;
     letter-spacing: -0.01em;
     line-height: 1;
-    padding: 18px 0 14px;
-    flex: 1;
-    transition: letter-spacing 0.3s ease;
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                letter-spacing 0.3s ease;
   }
+  .char-row.visible .char-name { transform: translateY(0); }
 
   .char-meta {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 2px;
-    padding-bottom: 4px;
     flex-shrink: 0;
   }
 
@@ -939,15 +971,14 @@
   }
 
   .char-arrow {
-    font-size: 22px;
+    font-size: 20px;
     color: var(--crimson);
     opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateX(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
     margin-left: 20px;
     line-height: 1;
-    padding-bottom: 8px;
-    align-self: flex-end;
+    align-self: center;
   }
 </style>
 
@@ -1589,11 +1620,11 @@
       track.innerHTML = topics.map((t, i) => `
         <div class="theme-card" data-topic="${t.id}"
              data-title="${t.title}"
-             data-pieces="${t.pieces}" data-stories="${t.stories}"
+             data-pieces="${t.pieces}" data-stories="${t.pieces}"
              data-color="${t.color}"
              data-img="${t.image}"
              data-desc="${t.description.replace(/"/g, '&quot;')}"
-             style="transition-delay: ${i * 0.1}s">
+             style="transition-delay: ${i * 0.05}s">
           <div class="theme-card-color" style="background: ${t.color};"></div>
           <div class="theme-card-inner">
             <div class="theme-card-title">${t.title}</div>
@@ -1602,8 +1633,8 @@
                 <img src="${t.image}" alt="${t.title}" loading="lazy" />
               </div>
               <div class="theme-card-meta">
-                <span class="theme-card-type">Topic</span>
-                <span class="theme-card-stats">${t.stories} series<br>${t.pieces} pieces</span>
+                <span class="theme-card-type">${t.category || 'Topic'}</span>
+                <span class="theme-card-stats">${t.pieces} pieces</span>
               </div>
             </div>
           </div>
@@ -1629,7 +1660,9 @@
       const chars = await res.json();
       list.innerHTML = chars.map(c => `
         <div class="char-row">
-          <div class="char-name">${c.name}</div>
+          <div class="char-name-wrap">
+            <span class="char-name">${c.name}</span>
+          </div>
           <div class="char-meta">
             <span class="char-role">${c.role}</span>
             <span class="char-count">${c.pieces} pieces</span>
