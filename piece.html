@@ -174,6 +174,15 @@
   .piece-description strong { color: var(--cream); font-weight: 600; }
   .piece-description em { font-style: italic; color: rgba(240,232,218,0.65); }
 
+
+  /* Footnotes */
+  .piece-description sup { font-size: 11px; vertical-align: super; color: rgba(240,232,218,0.5); }
+  .piece-footnotes {
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(240,232,218,0.08);
+    font-size: 13px; line-height: 1.65; color: rgba(240,232,218,0.45);
+    font-style: italic;
+  }
   /* Tags */
   .piece-tags {
     display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px;
@@ -184,41 +193,63 @@
     padding: 4px 10px; border-radius: 2px;
   }
 
-  /* Relevant Comments */
+  /* Comment archive */
   .piece-comments-inline { margin-bottom: 28px; }
   .piece-comments-label {
     font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
-    color: rgba(240,232,218,0.2); margin-bottom: 12px;
-    padding-bottom: 8px; border-bottom: 1px solid rgba(240,232,218,0.06);
+    color: rgba(240,232,218,0.2); margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(240,232,218,0.07);
   }
-  .comment-inline {
-    display: grid; grid-template-columns: 8px 1fr;
-    gap: 0 10px; padding: 8px 0;
+  .comment-thread-item { margin-bottom: 0; }
+  .comment-row {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 0 10px;
+    padding: 8px 0 7px;
     border-bottom: 1px solid rgba(240,232,218,0.04);
+    position: relative;
   }
-  .comment-inline:last-of-type { border-bottom: none; }
-  .comment-inline-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: rgba(240,232,218,0.1); margin-top: 7px;
+  .comment-row:last-child { border-bottom: none; }
+  /* Depth indent */
+  .comment-row[data-depth="1"] { padding-left: 20px; background: rgba(0,0,0,0.08); }
+  .comment-row[data-depth="2"] { padding-left: 36px; background: rgba(0,0,0,0.12); }
+  .comment-thread-line {
+    position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 1px; background: rgba(124,31,38,0.25);
+    display: none;
   }
-  .comment-inline-dot.is-artist { background: var(--crimson); }
-  .comment-inline-user {
+  .comment-row[data-depth="1"] .comment-thread-line,
+  .comment-row[data-depth="2"] .comment-thread-line { display: block; }
+  .comment-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(240,232,218,0.12); margin-top: 6px; flex-shrink: 0;
+  }
+  .comment-dot.is-artist { background: var(--crimson); }
+  .comment-meta-row {
+    display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px; flex-wrap: wrap;
+  }
+  .comment-username {
     font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(240,232,218,0.25); margin-bottom: 2px;
+    color: rgba(240,232,218,0.3);
   }
-  .comment-inline-user.is-artist { color: rgba(240,232,218,0.48); }
-  .comment-inline-text {
-    font-size: 14px; line-height: 1.6; color: rgba(240,232,218,0.45);
+  .comment-username.is-artist { color: rgba(240,232,218,0.55); font-weight: 600; }
+  .comment-artist-star { color: var(--crimson); font-size: 8px; }
+  .comment-date-small {
+    font-size: 9px; color: rgba(240,232,218,0.15); letter-spacing: 0.05em;
   }
-  .comment-inline.is-artist .comment-inline-text {
-    color: rgba(240,232,218,0.65); font-style: italic;
+  .comment-body-text {
+    font-size: 14px; line-height: 1.62; color: rgba(240,232,218,0.45);
+  }
+  .comment-row.is-artist .comment-body-text {
+    color: rgba(240,232,218,0.68); font-style: italic;
   }
   .comments-show-more {
-    margin-top: 8px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,232,218,0.2); cursor: pointer; border: none; background: none; padding: 0;
-    transition: color 0.2s; display: block;
+    margin-top: 10px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.22); cursor: pointer;
+    border: none; background: none; padding: 0; display: block;
+    transition: color 0.2s;
   }
-  .comments-show-more:hover { color: rgba(240,232,218,0.5); }
+  .comments-show-more:hover { color: rgba(240,232,218,0.55); }
 
   /* DA link */
   .piece-da-link {
@@ -395,25 +426,31 @@ function renderPiece(piece, allPieces) {
         ${piece.tags.map(t => `<span class="piece-tag">${escHtml(t)}</span>`).join('')}
        </div>` : '';
 
-  // Inline comments
+  // Threaded comment archive
   function buildComments(comments) {
     if (!comments || !comments.length) return '';
-    const PREVIEW = 6;
-    const rows = comments.map((c, i) => `
-      <div class="comment-inline${c.is_artist ? ' is-artist' : ''}"
-           ${i >= PREVIEW ? 'data-extra="1" style="display:none"' : ''}>
-        <div class="comment-inline-dot${c.is_artist ? ' is-artist' : ''}"></div>
+    const PREVIEW = 8;
+    const rows = comments.map((c, i) => {
+      const depth = c.depth || 0;
+      const hidden = i >= PREVIEW ? 'data-extra="1" style="display:none"' : '';
+      return `<div class="comment-row${c.is_artist ? ' is-artist' : ''}" data-depth="${depth}" ${hidden}>
+        <div class="comment-thread-line"></div>
+        <div class="comment-dot${c.is_artist ? ' is-artist' : ''}"></div>
         <div>
-          <div class="comment-inline-user${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' ★' : ''}</div>
-          <div class="comment-inline-text">${escHtml(c.text)}</div>
+          <div class="comment-meta-row">
+            <span class="comment-username${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' <span class="comment-artist-star">★</span>' : ''}</span>
+            <span class="comment-date-small">${escHtml(c.date)}</span>
+          </div>
+          <div class="comment-body-text">${escHtml(c.text)}</div>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
     const more = comments.length > PREVIEW
       ? `<button class="comments-show-more" onclick="
-          this.closest('.piece-comments-inline').querySelectorAll('[data-extra]').forEach(e=>e.style.display='');
+          this.closest('.piece-comments-inline').querySelectorAll('[data-extra]').forEach(e=>e.style.display='grid');
           this.remove()">+ ${comments.length - PREVIEW} more</button>` : '';
     return `<div class="piece-comments-inline reveal">
-      <div class="piece-comments-label">Relevant Comments (${comments.length})</div>
+      <div class="piece-comments-label">Comments (${comments.length})</div>
       ${rows}${more}
     </div>`;
   }

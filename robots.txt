@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://remembering-john-staton.github.io/sitemap.xml
