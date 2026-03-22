@@ -209,6 +209,74 @@
   }
   .hero-right-image-wrap:hover img { transform: scale(1.04); }
 
+  /* Carousel overlay */
+  #heroCarousel { position: relative; }
+
+  .hero-carousel-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(10,4,5,0.82) 0%, rgba(10,4,5,0.3) 55%, transparent 100%);
+    padding: 20px 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #heroCarousel:hover .hero-carousel-overlay,
+  #heroCarousel.overlay-active .hero-carousel-overlay { opacity: 1; }
+
+  .hero-carousel-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(240,232,218,0.82);
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .hero-carousel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.45);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hero-carousel-nav {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .hero-carousel-btn {
+    background: rgba(240,232,218,0.12);
+    border: 1px solid rgba(240,232,218,0.2);
+    color: var(--cream);
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .hero-carousel-btn:hover { background: rgba(240,232,218,0.25); }
+
   @keyframes clipReveal {
     from { clip-path: inset(0 100% 0 0); }
     to   { clip-path: inset(0 0% 0 0); }
@@ -536,8 +604,18 @@
   <div class="panel-divider"></div>
 
   <div class="hero-right">
-    <div class="hero-right-image-wrap">
-      <img src="img/pieces/princess-nine-commission.jpg" alt="Artwork" />
+    <div class="hero-right-image-wrap" id="heroCarousel">
+      <img id="heroCarouselImg" src="img/pieces/princess-nine-commission.jpg" alt="Artwork" />
+      <div class="hero-carousel-overlay">
+        <p class="hero-carousel-desc" id="heroCarouselDesc"></p>
+        <div class="hero-carousel-footer">
+          <div class="hero-carousel-title" id="heroCarouselTitle"></div>
+          <div class="hero-carousel-nav">
+            <button class="hero-carousel-btn" id="heroPrev" aria-label="Previous">&#8592;</button>
+            <button class="hero-carousel-btn" id="heroNext" aria-label="Next">&#8594;</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <p class="hero-desc">
@@ -1407,6 +1485,78 @@
 </aside>
 
 <script>
+  // ─── HERO CAROUSEL ───
+  const carouselSlides = [
+    {
+      img: 'img/pieces/princess-nine-commission.jpg',
+      title: 'Princess Nine Commission',
+      desc: 'Artwork from an old drawing of Izumi and Ryo, from the anime Princess Nine. I hope this anime gets a reboot. It was great music, and a compelling story, but the animation got cheaper with every episode. This is one series that deserves modern production values.'
+    },
+    {
+      img: 'img/pieces/navy-girl-aerial-demonstration-variant.png',
+      title: 'Navy Girl Aerial Demonstration Variant',
+      desc: 'Fighting Magical Girl, Mayflower Shipman, aka Navy Girl has swapped her traditional dress whites for the colors she wears for armed forces day demonstrations. She is accompanied by her Specialized Kinetic Yield, High Altitude Weapon Carrier, or SKYHAWC. (If anyone can find out how to swap a second "K" in there, I\'m open to suggestion.)'
+    },
+    {
+      img: 'img/pieces/evil-diva.png',
+      title: 'Evil Diva',
+      desc: 'Here is a proposed cover for a long dead series from the independent studio Angry Viking Press. The comic was Evil Diva, and was about a demon girl who wanted to be an angel. The whole thing took place in a demonic high school, I believe that steeple fingers dude was the principal.'
+    },
+    {
+      img: 'img/pieces/anti-tank-girl.jpg',
+      title: 'Anti Tank Girl',
+      desc: 'Army Girl demonstrates her capabilities as an anti-armor asset, against T.H.R.E.A.T.\'s fabled Werewolf Brigade during the Battle of Thar. (Transformative Hegemony to Rule the Earth for All Time.)'
+    },
+    {
+      img: 'img/pieces/pirate-princeless.jpg',
+      title: 'Pirate Princeless',
+      desc: 'A variant cover for the first issue of the third volume of Princeless: The Pirate Princess — an exclusive for Big Planet Comics. Featured here are Adrienne Ashe, the sword wielding woman warrior, and Sparky, her trusty dragon companion.'
+    },
+    {
+      img: 'img/pieces/dmv-enter-the-heroine.jpg',
+      title: 'DMV: Enter the Heroine',
+      desc: 'Enter AJ, fully grown and at the height of her powers. The two former combatants cower obsequiously, confronted by the threat of debt. (I imagine her "Dragonball Z" eyepiece should win me a few more props for bein\' all "retro".)'
+    }
+  ];
+
+  // Start on random slide
+  let carouselIdx = Math.floor(Math.random() * carouselSlides.length);
+  const carouselImg   = document.getElementById('heroCarouselImg');
+  const carouselDesc  = document.getElementById('heroCarouselDesc');
+  const carouselTitle = document.getElementById('heroCarouselTitle');
+  const carouselEl    = document.getElementById('heroCarousel');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
+
+  function setCarouselSlide(idx) {
+    const s = carouselSlides[idx];
+    carouselImg.style.opacity = '0';
+    setTimeout(() => {
+      carouselImg.src = s.img;
+      carouselImg.alt = s.title;
+      carouselImg.style.opacity = '1';
+    }, 200);
+    carouselDesc.textContent  = s.desc;
+    carouselTitle.textContent = s.title;
+  }
+
+  carouselImg.style.transition = 'opacity 0.2s ease';
+  setCarouselSlide(carouselIdx);
+
+  // Show overlay on mobile (touch) persistently
+  if ('ontouchstart' in window) carouselEl.classList.add('overlay-active');
+
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    carouselIdx = (carouselIdx - 1 + carouselSlides.length) % carouselSlides.length;
+    setCarouselSlide(carouselIdx);
+  });
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    carouselIdx = (carouselIdx + 1) % carouselSlides.length;
+    setCarouselSlide(carouselIdx);
+  });
+
   // ─── HERO PARALLAX ───
   const parallaxImg = document.getElementById('heroParallaxImg');
   if (parallaxImg) {
