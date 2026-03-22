@@ -5,7 +5,7 @@
     "role": "Protagonist",
     "topic": "DMV",
     "pieces": 32,
-    "image": "img/pieces/dmv-enter-the-heroine.jpg",
+    "image": "img/pieces/dmv-enter-the-heroine-JohnStaton.jpg",
     "description": "AJ. The toughest Parking Enforcement Officer in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is worth killing for. Armed with a Palomino 61M Assault PTD and the patience of no one."
   },
   {
@@ -14,8 +14,8 @@
     "role": "Protagonist",
     "topic": "The Streamers",
     "pieces": 14,
-    "image": "img/pieces/navy-girl-aerial-demonstration-variant.png",
-    "description": "Mayflower Shipman. Fighting Magical Girl and decorated naval officer. Accompanied by SKYHAWC — her Specialized Kinetic Yield High Altitude Weapon Carrier. The acronym still has a second K problem."
+    "image": "img/pieces/navy-girl-aerial-demonstration-variant-JohnStaton.png",
+    "description": "Mayflower Shipman. Fighting Magical Girl and decorated naval officer. Accompanied by SKYHAWC \u2014 her Specialized Kinetic Yield High Altitude Weapon Carrier. The acronym still has a second K problem."
   },
   {
     "id": "air-force-girl",
@@ -23,7 +23,7 @@
     "role": "Protagonist",
     "topic": "The Streamers",
     "pieces": 10,
-    "image": "img/pieces/inktober-stardate-1810-01.png",
+    "image": "img/pieces/inktober-stardate-1810-01-JohnStaton.png",
     "description": "Captain Ariel McFly. Once destroyed a hardened underground installation by carrying Army Girl to near-earth orbit and executing an improvised dive bombing run. The Streamers' most aeronautically committed member."
   },
   {
@@ -32,7 +32,7 @@
     "role": "Protagonist",
     "topic": "The Streamers",
     "pieces": 8,
-    "image": "img/pieces/anti-tank-girl.jpg",
+    "image": "img/pieces/anti-tank-girl-JohnStaton.jpg",
     "description": "Anti-armor specialist. Can punch an opposing tank with sufficient force to detonate its magazine and pop the turret off like a cork. Demonstrated against T.H.R.E.A.T.'s Werewolf Brigade at the Battle of Thar."
   },
   {
@@ -41,7 +41,7 @@
     "role": "Protagonist",
     "topic": "Evil Diva",
     "pieces": 12,
-    "image": "img/pieces/evil-diva.png",
+    "image": "img/pieces/evil-diva-JohnStaton.png",
     "description": "Diva Beelze. A demon girl with one very specific aspiration: to be an angel. The titular character of Angry Viking Press's Evil Diva. Her whole arc takes place in a demonic high school where the supernatural is entirely routine."
   },
   {
@@ -50,7 +50,7 @@
     "role": "Supporting",
     "topic": "Evil Diva",
     "pieces": 5,
-    "image": "img/pieces/faculty.png",
+    "image": "img/pieces/faculty-JohnStaton.png",
     "description": "Guidance counsellor. Steeple-fingered, perpetually scheming. His only real professional complaint about the student body is their habitual tardiness to the bell."
   },
   {
@@ -59,7 +59,7 @@
     "role": "Supporting",
     "topic": "Evil Diva",
     "pieces": 4,
-    "image": "img/pieces/faculty.png",
+    "image": "img/pieces/faculty-JohnStaton.png",
     "description": "The principal. Presides over a school where demonic heritage is an administrative detail, not a disciplinary issue. Shares Loki's exasperation about punctuality."
   },
   {
@@ -68,7 +68,7 @@
     "role": "Protagonist",
     "topic": "Princeless",
     "pieces": 7,
-    "image": "img/pieces/pirate-princeless.jpg",
+    "image": "img/pieces/pirate-princeless-JohnStaton.jpg",
     "description": "The star, as John put it. Gets colored in first. Jeremy Whitley's Princeless heroine, drawn with obvious affection in multiple pieces including a Big Planet Comics exclusive variant cover for Princeless: The Pirate Princess #1."
   },
   {
@@ -77,7 +77,7 @@
     "role": "Supporting",
     "topic": "DMV",
     "pieces": 6,
-    "image": "img/pieces/dmv-the-rescue.jpg",
+    "image": "img/pieces/dmv-the-rescue-JohnStaton.jpg",
     "description": "AJ's significantly less heroic partner. Quick to point out that they are heading toward the source of trouble rather than away from it. A useful counterweight."
   }
 ]
