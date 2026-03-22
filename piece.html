@@ -377,6 +377,55 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 
+
+  /* Version strip */
+  .piece-versions-strip {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(6,1,2,0.92);
+    border-top: 1px solid rgba(240,232,218,0.08);
+    display: flex; align-items: center;
+    padding: 10px 16px; gap: 10px;
+    z-index: 10;
+  }
+  .piece-version-thumb {
+    width: 42px; height: 54px; flex-shrink: 0;
+    border: 1px solid rgba(240,232,218,0.1);
+    overflow: hidden; cursor: pointer;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .piece-version-thumb:hover { border-color: rgba(240,232,218,0.35); }
+  .piece-version-thumb.active { border-color: rgba(240,232,218,0.6); }
+  .piece-version-thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .piece-version-meta { flex: 1; min-width: 0; }
+  .piece-version-label {
+    font-family: 'Lora', serif;
+    font-size: 13px; color: rgba(240,232,218,0.75);
+    margin-bottom: 2px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .piece-version-credit {
+    font-family: 'Lora', serif;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3);
+  }
+  .piece-version-nav {
+    display: flex; gap: 4px; flex-shrink: 0;
+  }
+  .piece-version-nav-btn {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(240,232,218,0.06);
+    border: 1px solid rgba(240,232,218,0.12);
+    color: rgba(240,232,218,0.4); font-size: 12px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s; font-family: sans-serif;
+  }
+  .piece-version-nav-btn:hover {
+    background: rgba(240,232,218,0.12); color: rgba(240,232,218,0.8);
+  }
+
   /* RELATED */
   .piece-related {
     background: #0a0304; padding: 64px 52px;
@@ -591,6 +640,43 @@ function switchVersion(id, thumbEl) {
   }
 }
 
+
+  // ─── VERSIONS STRIP ───
+  function buildVersionsStrip(piece, allPieces) {
+    if (!piece.versions || piece.versions.length < 2) return '';
+    const rows = piece.versions.map((v, i) => {
+      const vp = allPieces.find(p => p.id === v.id);
+      if (!vp) return '';
+      const isCurrent = v.id === piece.id;
+      const credit = v.credit ? `<div class="piece-version-credit">${escHtml(v.credit)}</div>` : '';
+      return `<div class="piece-version-thumb${isCurrent ? ' active' : ''}"
+                   onclick="navigateTo('${v.id}')"
+                   title="${escHtml(v.label)}">
+        <img src="${vp.image}" alt="${escHtml(v.label)}" loading="lazy" />
+      </div>`;
+    }).join('');
+
+    const current = piece.versions.find(v => v.id === piece.id);
+    const credit = current && current.credit
+      ? `<div class="piece-version-credit">${escHtml(current.credit)}</div>` : '';
+    const currentIdx = piece.versions.findIndex(v => v.id === piece.id);
+    const total = piece.versions.length;
+
+    return `<div class="piece-versions-strip">
+      ${rows}
+      <div class="piece-version-meta">
+        <div class="piece-version-label">${escHtml(current ? current.label : '')}</div>
+        ${credit}
+      </div>
+      <div class="piece-version-nav">
+        <button class="piece-version-nav-btn" title="Previous version"
+          onclick="navigateTo('${piece.versions[(currentIdx - 1 + total) % total].id}')">&#8592;</button>
+        <button class="piece-version-nav-btn" title="Next version"
+          onclick="navigateTo('${piece.versions[(currentIdx + 1) % total].id}')">&#8594;</button>
+      </div>
+    </div>`;
+  }
+
 function renderPiece(piece, allPieces) {
   const related = allPieces
     .filter(p => p.id !== piece.id && p.image)
@@ -649,7 +735,7 @@ function renderPiece(piece, allPieces) {
           <button class="piece-image-btn" id="zoomBtn" title="View fullscreen">&#x2922;</button>
           <a class="piece-image-btn" id="downloadBtn" title="Download" download>&#x2913;</a>
         </div>
-        ${buildVersionsStrip(piece)}
+        ${buildVersionsStrip(piece, allPieces)}
       </div>
       <div class="piece-info-panel">
         <div class="piece-label"><span>The John Staton Museum</span></div>

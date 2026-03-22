@@ -2076,6 +2076,18 @@
         "image": "img/pieces/pirate-princeless-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "495485526",
+        "label": "Standard",
+        "credit": null
+      },
+      {
+        "id": "498165347",
+        "label": "Big Planet Variant",
+        "credit": "Big Planet Comics Exclusive"
+      }
     ]
   },
   {
@@ -2338,6 +2350,18 @@
         "image": "img/pieces/from-out-of-the-sun-JohnStaton.jpg",
         "credit": "Big Planet Comics variant"
       }
+    ],
+    "versions": [
+      {
+        "id": "495485526",
+        "label": "Standard",
+        "credit": null
+      },
+      {
+        "id": "498165347",
+        "label": "Big Planet Variant",
+        "credit": "Big Planet Comics Exclusive"
+      }
     ]
   },
   {
@@ -2532,6 +2556,18 @@
         "image": "img/pieces/devil-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "492480638",
+        "label": "Flat Colors",
+        "credit": null
+      },
+      {
+        "id": "493639098",
+        "label": "Inks",
+        "credit": null
+      }
     ]
   },
   {
@@ -2642,6 +2678,18 @@
         "image": "img/pieces/devil-inks-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "492480638",
+        "label": "Flat Colors",
+        "credit": null
+      },
+      {
+        "id": "493639098",
+        "label": "Inks",
+        "credit": null
+      }
     ]
   },
   {
@@ -2745,6 +2793,18 @@
         "image": "img/pieces/snow-devil-close-up-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "491135679",
+        "label": "Close-Up Pencils",
+        "credit": null
+      },
+      {
+        "id": "491634497",
+        "label": "Panel Sketch",
+        "credit": null
+      }
     ]
   },
   {
@@ -2832,6 +2892,18 @@
         "title": "Snow Devil Sketch",
         "image": "img/pieces/snow-devil-sketch-JohnStaton.jpg",
         "credit": ""
+      }
+    ],
+    "versions": [
+      {
+        "id": "491135679",
+        "label": "Close-Up Pencils",
+        "credit": null
+      },
+      {
+        "id": "491634497",
+        "label": "Panel Sketch",
+        "credit": null
       }
     ]
   },
@@ -3073,6 +3145,18 @@
         "image": "img/pieces/pin-emp-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "363401999",
+        "label": "Version 1",
+        "credit": null
+      },
+      {
+        "id": "369524929",
+        "label": "Version 2.0",
+        "credit": null
+      }
     ]
   },
   {
@@ -3304,6 +3388,18 @@
         "title": "Pin-Emp 2.0",
         "image": "img/pieces/pin-emp-2-0-JohnStaton.jpg",
         "credit": ""
+      }
+    ],
+    "versions": [
+      {
+        "id": "363401999",
+        "label": "Version 1",
+        "credit": null
+      },
+      {
+        "id": "369524929",
+        "label": "Version 2.0",
+        "credit": null
       }
     ]
   },
@@ -8896,6 +8992,18 @@
         "image": "img/pieces/dmv-a-la-flcl-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "102943065",
+        "label": "Colored",
+        "credit": null
+      },
+      {
+        "id": "115201099",
+        "label": "Black & White",
+        "credit": null
+      }
     ]
   },
   {
@@ -11118,6 +11226,18 @@
         "image": "img/pieces/american-streamers-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "109281786",
+        "label": "Pencils",
+        "credit": null
+      },
+      {
+        "id": "108853948",
+        "label": "Colored",
+        "credit": null
+      }
     ]
   },
   {
@@ -11821,6 +11941,18 @@
         "image": "img/pieces/american-streamers-pencils-01-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "109281786",
+        "label": "Pencils",
+        "credit": null
+      },
+      {
+        "id": "108853948",
+        "label": "Colored",
+        "credit": null
+      }
     ]
   },
   {
@@ -12089,6 +12221,18 @@
         "title": "Bubblegum Girls",
         "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
         "credit": ""
+      }
+    ],
+    "versions": [
+      {
+        "id": "103579570",
+        "label": "Final",
+        "credit": null
+      },
+      {
+        "id": "108540197",
+        "label": "Marker Sketch",
+        "credit": null
       }
     ]
   },
@@ -12514,6 +12658,18 @@
         "image": "img/pieces/uzi-cat-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "108400884",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "108400988",
+        "label": "Colored",
+        "credit": "Colors by Phil Moyer"
+      }
     ]
   },
   {
@@ -12533,6 +12689,18 @@
         "label": "Colored",
         "title": "Uzi Cat Colored",
         "image": "img/pieces/uzi-cat-colored-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
+      }
+    ],
+    "versions": [
+      {
+        "id": "108400884",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "108400988",
+        "label": "Colored",
         "credit": "Colors by Phil Moyer"
       }
     ]
@@ -13276,6 +13444,18 @@
         "image": "img/pieces/pool-girls-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "107485631",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "107485755",
+        "label": "Colored",
+        "credit": "Colors by Phil Moyer"
+      }
     ]
   },
   {
@@ -13295,6 +13475,18 @@
         "label": "Colored",
         "title": "Pool Girls Color",
         "image": "img/pieces/pool-girls-color-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
+      }
+    ],
+    "versions": [
+      {
+        "id": "107485631",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "107485755",
+        "label": "Colored",
         "credit": "Colors by Phil Moyer"
       }
     ]
@@ -13552,6 +13744,18 @@
         "image": "img/pieces/tachiku-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "107452905",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "107453014",
+        "label": "Colored",
+        "credit": "Colors by Phil Moyer"
+      }
     ]
   },
   {
@@ -13700,6 +13904,18 @@
         "label": "Colored",
         "title": "Tachiku Color",
         "image": "img/pieces/tachiku-color-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
+      }
+    ],
+    "versions": [
+      {
+        "id": "107452905",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "107453014",
+        "label": "Colored",
         "credit": "Colors by Phil Moyer"
       }
     ]
@@ -17394,6 +17610,18 @@
         "image": "img/pieces/school-girl-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "105033209",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "105033545",
+        "label": "Colored",
+        "credit": null
+      }
     ]
   },
   {
@@ -17467,6 +17695,18 @@
         "title": "School Girl Color",
         "image": "img/pieces/school-girl-color-JohnStaton.jpg",
         "credit": ""
+      }
+    ],
+    "versions": [
+      {
+        "id": "105033209",
+        "label": "Line Art",
+        "credit": null
+      },
+      {
+        "id": "105033545",
+        "label": "Colored",
+        "credit": null
       }
     ]
   },
@@ -23046,6 +23286,18 @@
         "image": "img/pieces/bubblegum-girls-marker-sketch-JohnStaton.jpg",
         "credit": ""
       }
+    ],
+    "versions": [
+      {
+        "id": "103579570",
+        "label": "Final",
+        "credit": null
+      },
+      {
+        "id": "108540197",
+        "label": "Marker Sketch",
+        "credit": null
+      }
     ]
   },
   {
@@ -23558,6 +23810,18 @@
         "title": "DMV a&#39; la FLCL Black n White",
         "image": "img/pieces/dmv-a-la-flcl-black-n-white-JohnStaton.jpg",
         "credit": ""
+      }
+    ],
+    "versions": [
+      {
+        "id": "102943065",
+        "label": "Colored",
+        "credit": null
+      },
+      {
+        "id": "115201099",
+        "label": "Black & White",
+        "credit": null
       }
     ]
   },
