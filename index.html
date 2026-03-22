@@ -638,7 +638,7 @@
     <div class="themes-header-left">
       <div class="themes-dash" id="themesDash"></div>
       <span class="themes-label" id="themesLabel">
-        Galleries <span class="themes-count">(8)</span>
+        Galleries <span class="themes-count">(14)</span>
       </span>
     </div>
     <a class="themes-see-all" id="themesSeeAll">See all</a>
@@ -873,12 +873,12 @@
     });
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.themes-section, .interstitial-quote, .quote-section, .site-footer')
+  document.querySelectorAll('.themes-section, .quote-section, .site-footer')
     .forEach(el => sectionRevealObserver.observe(el));
 
   // Fallback: any section that's already in viewport on load gets revealed
   function revealVisibleSections() {
-    document.querySelectorAll('.themes-section, .interstitial-quote, .quote-section, .site-footer')
+    document.querySelectorAll('.themes-section, .quote-section, .site-footer')
       .forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight + 100) {
@@ -1102,6 +1102,38 @@
 
 
 
+<section class="quote-section" id="about" data-merged>
+  <div class="quote-inner">
+    <span class="quote-line">Imagination is a toy</span>
+    <span class="quote-line">that never runs out</span>
+    <span class="quote-line">of batteries.</span>
+    <div class="quote-rule" id="quoteRule"></div>
+    <div class="quote-attr" id="quoteAttr">— John Staton, in his own words</div>
+
+    <div class="quote-bio" id="quoteBio">
+      <div class="quote-bio-left">
+        <p>John Staton was a Maryland-based artist, cartoonist, and relentless worldbuilder. He published on DeviantArt across two decades, building a gallery that is part sketchbook, part creative journal, and part parallel universe. His real answer to the question above was Skippy Von Richthofen — a Gold Digger character he loved with a specificity that tells you everything about the kind of fan he was.</p>
+        <p>His original creations — <a href="gallery.html?topic=dmv" class="bio-topic-link">DMV</a>, <a href="gallery.html?topic=streamers" class="bio-topic-link">The Streamers</a>, <a href="gallery.html?topic=neboox" class="bio-topic-link">N.E. Boox</a>, <a href="gallery.html?topic=high-school-romance" class="bio-topic-link">The High School Romance</a> — share a sensibility: action-figure absurdism grounded in genuine craft. AJ, his combat-trained meter maid, was developed for years toward a full comic he planned to have ready for Otakon. He did guest work for Adam Warren and Jeremy Whitley, contributed to Angry Viking Press, and drew 31 Star Trek ships in 31 October days because that is the kind of person he was.</p>
+        <p>Every piece in this archive includes the original comment threads from DeviantArt — including every reply John left. If you want to know what he was actually like, read those. He explained the structural parallels between Neon Genesis Evangelion and The Prisoner. He argued about Star Trek canon with strangers for years. He thanked everyone who stopped by, by name, every time.</p>
+      </div>
+      <div class="quote-bio-photos">
+        <div class="quote-photo quote-photo-main">
+          <img src="img/pieces/staton-JohnStaton.jpg" alt="John Staton" />
+        </div>
+        <div class="quote-photo-row">
+          <div class="quote-photo">
+            <img src="img/pieces/k4.staton-JohnStaton.jpg" alt="John Staton" />
+          </div>
+          <div class="quote-photo">
+            <img src="img/pieces/IMG_2183-JohnStaton.jpg" alt="John Staton" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ═══════════════════════════════════════════ -->
 <style>
   .site-footer {
@@ -1213,7 +1245,7 @@
       <div class="footer-divider-accent"></div>
       <div class="footer-brand-name">John Staton</div>
       <p class="footer-brand-desc">
-        A fan-curated archive dedicated to the art, characters, and enduring world of John Staton. Independent. Unofficial. Made with care.
+        An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.
       </p>
       <div class="footer-brand-tag">Fan Archive · Est. 2025</div>
     </div>

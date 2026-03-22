@@ -18,6 +18,15 @@
     "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city."
   },
   {
+    "id": "dukke-fox",
+    "title": "Daniel Dukke & Ferdinand Fox",
+    "category": "Original IP",
+    "color": "#1a2a3a",
+    "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
+    "pieces": 3,
+    "description": "John's first original creation. Daniel Dukke and Ferdinand Fox \u2014 and the Hench Bunnies who served them."
+  },
+  {
     "id": "streamers",
     "title": "The Streamers",
     "color": "#1a3a5c",
