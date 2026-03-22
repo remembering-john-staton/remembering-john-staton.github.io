@@ -335,6 +335,48 @@
   .piece-da-link:hover { color: var(--cream); border-color: rgba(240,232,218,0.3); }
   .piece-da-link::after { content: '↗'; font-size: 12px; font-family: sans-serif; }
 
+
+  /* Versions strip */
+  .piece-versions-strip {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(6,2,3,0.88);
+    border-top: 1px solid rgba(240,232,218,0.07);
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 16px;
+    z-index: 10;
+  }
+  .piece-version-thumb {
+    width: 44px; height: 58px;
+    border: 1px solid rgba(240,232,218,0.1);
+    cursor: pointer; overflow: hidden;
+    transition: border-color 0.2s; flex-shrink: 0;
+  }
+  .piece-version-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; filter: saturate(0.7) brightness(0.75);
+    transition: filter 0.2s;
+  }
+  .piece-version-thumb.active {
+    border-color: rgba(240,232,218,0.55);
+  }
+  .piece-version-thumb.active img,
+  .piece-version-thumb:hover img {
+    filter: saturate(1) brightness(1);
+  }
+  .piece-version-meta { flex: 1; min-width: 0; }
+  .piece-version-label {
+    font-family: 'Lora', serif;
+    font-size: 13px; color: rgba(240,232,218,0.75);
+    margin-bottom: 2px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .piece-version-credit {
+    font-family: 'Lora', serif;
+    font-size: 10px; color: rgba(240,232,218,0.3);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
   /* RELATED */
   .piece-related {
     background: #0a0304; padding: 64px 52px;
@@ -474,6 +516,7 @@ async function init() {
   }
 
   renderPiece(piece, pieces);
+  _allPieces = pieces;
 }
 
 function setMeta(name, content, isLink) {
@@ -484,6 +527,68 @@ function setMeta(name, content, isLink) {
   }
   let el = document.querySelector(`[property="${name}"], [name="${name}"]`);
   if (el) el.setAttribute('content', content);
+}
+
+function buildVersionsStrip(piece) {
+  if (!piece.related || !piece.related.length) return '';
+  // Current piece is always the first thumb (active), then related versions
+  const allVersions = [
+    { id: piece.id, label: piece.title, image: piece.image, credit: '', isCurrent: true },
+    ...piece.related.map(r => ({ ...r, isCurrent: false }))
+  ];
+  const thumbs = allVersions.map(v => `
+    <div class="piece-version-thumb${v.isCurrent ? ' active' : ''}"
+         onclick="switchVersion('${v.id}', this)"
+         title="${escHtml(v.label)}">
+      <img src="${v.image}" alt="${escHtml(v.label)}" loading="lazy" />
+    </div>`).join('');
+
+  const current = allVersions[0];
+  return `<div class="piece-versions-strip" id="versionsStrip">
+    ${thumbs}
+    <div class="piece-version-meta">
+      <div class="piece-version-label" id="versionLabel">${escHtml(current.label)}</div>
+      <div class="piece-version-credit" id="versionCredit"></div>
+    </div>
+  </div>`;
+}
+
+// Store all pieces for version switching
+let _allPieces = [];
+function switchVersion(id, thumbEl) {
+  const target = _allPieces.find(p => p.id === id);
+  if (!target) {
+    // Navigate to piece page
+    window.location.href = 'piece.html?id=' + id;
+    return;
+  }
+  // Update image
+  const img = document.getElementById('mainImg');
+  if (img) {
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = target.image;
+      img.alt = target.title;
+      img.style.opacity = '1';
+    }, 180);
+  }
+  // Update active thumb
+  document.querySelectorAll('.piece-version-thumb').forEach(t => t.classList.remove('active'));
+  if (thumbEl) thumbEl.classList.add('active');
+  // Update label + credit
+  const label = document.getElementById('versionLabel');
+  const credit = document.getElementById('versionCredit');
+  if (label) label.textContent = target.title;
+  // Find credit from the piece currently shown's related array
+  const currentPiece = _allPieces.find(p => p.id !== id && p.related && p.related.find(r => r.id === id));
+  const relEntry = currentPiece && currentPiece.related ? currentPiece.related.find(r => r.id === id) : null;
+  if (credit) credit.textContent = (relEntry && relEntry.credit) ? relEntry.credit : '';
+  // Update download button
+  const dlBtn = document.getElementById('downloadBtn');
+  if (dlBtn) {
+    dlBtn.href = target.image;
+    dlBtn.download = target.image.split('/').pop();
+  }
 }
 
 function renderPiece(piece, allPieces) {
@@ -544,6 +649,7 @@ function renderPiece(piece, allPieces) {
           <button class="piece-image-btn" id="zoomBtn" title="View fullscreen">&#x2922;</button>
           <a class="piece-image-btn" id="downloadBtn" title="Download" download>&#x2913;</a>
         </div>
+        ${buildVersionsStrip(piece)}
       </div>
       <div class="piece-info-panel">
         <div class="piece-label"><span>The John Staton Museum</span></div>

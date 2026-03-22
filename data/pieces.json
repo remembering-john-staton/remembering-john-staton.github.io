@@ -2067,6 +2067,15 @@
         "is_artist": true,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "495485526",
+        "label": "Cover",
+        "title": "Pirate Princeless",
+        "image": "img/pieces/pirate-princeless-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -2320,6 +2329,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "498165347",
+        "label": "Variant",
+        "title": "From Out of the Sun",
+        "image": "img/pieces/from-out-of-the-sun-JohnStaton.jpg",
+        "credit": "Big Planet Comics variant"
+      }
     ]
   },
   {
@@ -2505,6 +2523,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "492480638",
+        "label": "Flat",
+        "title": "Devil",
+        "image": "img/pieces/devil-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -2606,7 +2633,16 @@
       "evilbiohazard"
     ],
     "artist_notes": [],
-    "comments": []
+    "comments": [],
+    "related": [
+      {
+        "id": "493639098",
+        "label": "Inks",
+        "title": "Devil Inks",
+        "image": "img/pieces/devil-inks-JohnStaton.jpg",
+        "credit": ""
+      }
+    ]
   },
   {
     "id": "492291520",
@@ -2700,7 +2736,16 @@
       "evil"
     ],
     "artist_notes": [],
-    "comments": []
+    "comments": [],
+    "related": [
+      {
+        "id": "491135679",
+        "label": "Pencils",
+        "title": "Snow Devil Close-Up",
+        "image": "img/pieces/snow-devil-close-up-JohnStaton.jpg",
+        "credit": ""
+      }
+    ]
   },
   {
     "id": "491592591",
@@ -2778,6 +2823,15 @@
         "text_html": "That would kind of rock actually. <span class=\"em\">😂</span>",
         "is_artist": true,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "491634497",
+        "label": "Sketch",
+        "title": "Snow Devil Sketch",
+        "image": "img/pieces/snow-devil-sketch-JohnStaton.jpg",
+        "credit": ""
       }
     ]
   },
@@ -3010,6 +3064,15 @@
         "is_artist": true,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "363401999",
+        "label": "Sketch",
+        "title": "Pin-Emp",
+        "image": "img/pieces/pin-emp-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -3232,6 +3295,15 @@
         "text_html": "Thanks! <span class=\"em\">😊</span>",
         "is_artist": true,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "369524929",
+        "label": "Revised",
+        "title": "Pin-Emp 2.0",
+        "image": "img/pieces/pin-emp-2-0-JohnStaton.jpg",
+        "credit": ""
       }
     ]
   },
@@ -8815,6 +8887,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "102943065",
+        "label": "WIP",
+        "title": "DMV a&#39; la FLCL",
+        "image": "img/pieces/dmv-a-la-flcl-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -11028,6 +11109,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "108853948",
+        "label": "Color",
+        "title": "American Streamers",
+        "image": "img/pieces/american-streamers-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -11722,6 +11812,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "109281786",
+        "label": "Pencils",
+        "title": "American Streamers Pencils 01",
+        "image": "img/pieces/american-streamers-pencils-01-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -11981,6 +12080,15 @@
         "text_html": "<p>Daaaaaaaaaaaammnnn That is impressive.</p><p>There was a fellow up here(In Canada) who had vacume formed a Priss Suit and was giving lectures on how to do it at a small con (I believe it was Northern Anime Festival about 5 years ago) But it's always impressive to see when someone does a hardsuit cosplay well! Thanks for sharing!</p>",
         "is_artist": false,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "103579570",
+        "label": "Color",
+        "title": "Bubblegum Girls",
+        "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
+        "credit": ""
       }
     ]
   },
@@ -12397,6 +12505,15 @@
         "is_artist": true,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "108400884",
+        "label": "Lineart",
+        "title": "Uzi Cat",
+        "image": "img/pieces/uzi-cat-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -12409,7 +12526,16 @@
     "description": "Another old N.E. Boox pin-up featuring Cassandra sportin' a big ol' uzi. 😜I think I'v changed the ear designs on her and Molly slightly since I drew this.",
     "tags": [],
     "artist_notes": [],
-    "comments": []
+    "comments": [],
+    "related": [
+      {
+        "id": "108400988",
+        "label": "Colored",
+        "title": "Uzi Cat Colored",
+        "image": "img/pieces/uzi-cat-colored-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
+      }
+    ]
   },
   {
     "id": "108389280",
@@ -13141,7 +13267,16 @@
     "description": "Colors by Phil Moyer. [link]",
     "tags": [],
     "artist_notes": [],
-    "comments": []
+    "comments": [],
+    "related": [
+      {
+        "id": "107485631",
+        "label": "Lineart",
+        "title": "Pool Girls",
+        "image": "img/pieces/pool-girls-JohnStaton.jpg",
+        "credit": ""
+      }
+    ]
   },
   {
     "id": "107485631",
@@ -13153,7 +13288,16 @@
     "description": "Another old commission I did for Phil Moyer. (I did a lot of drawings for my friend, all of which he is gladly making available to post. Many of them you will not see, as the intervening years have rendered them too shudder-worthy for me to admit to.)These are two OC's Ariel and Arisa (Sorry--Don'y who is which.🤷) enjoying a swimming pool that happens to be atop a skyscaper somewhere in the not-too-distant-cyberpunk-future.",
     "tags": [],
     "artist_notes": [],
-    "comments": []
+    "comments": [],
+    "related": [
+      {
+        "id": "107485755",
+        "label": "Colored",
+        "title": "Pool Girls Color",
+        "image": "img/pieces/pool-girls-color-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
+      }
+    ]
   },
   {
     "id": "107479918",
@@ -13399,6 +13543,15 @@
         "is_artist": true,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "107452905",
+        "label": "Pencils",
+        "title": "Tachiku?",
+        "image": "img/pieces/tachiku-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -13539,6 +13692,15 @@
         "text_html": "<span class=\"em\">😊</span>",
         "is_artist": true,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "107453014",
+        "label": "Colored",
+        "title": "Tachiku Color",
+        "image": "img/pieces/tachiku-color-JohnStaton.jpg",
+        "credit": "Colors by Phil Moyer"
       }
     ]
   },
@@ -17223,6 +17385,15 @@
         "is_artist": false,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "105033209",
+        "label": "B&W",
+        "title": "School Girl",
+        "image": "img/pieces/school-girl-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -17287,6 +17458,15 @@
         "text_html": "May have to check that out. Research. I'm afraid my <em>own</em> experience with high school love triangles is a tad on the <em>non-existent</em> side.<span class=\"em\">😅</span>",
         "is_artist": true,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "105033545",
+        "label": "Color",
+        "title": "School Girl Color",
+        "image": "img/pieces/school-girl-color-JohnStaton.jpg",
+        "credit": ""
       }
     ]
   },
@@ -22857,6 +23037,15 @@
         "is_artist": true,
         "depth": 1
       }
+    ],
+    "related": [
+      {
+        "id": "108540197",
+        "label": "Sketch",
+        "title": "Bubblegum Girls Marker Sketch",
+        "image": "img/pieces/bubblegum-girls-marker-sketch-JohnStaton.jpg",
+        "credit": ""
+      }
     ]
   },
   {
@@ -23360,6 +23549,15 @@
         "text_html": "Thanks. <span class=\"em\">😊</span>",
         "is_artist": true,
         "depth": 1
+      }
+    ],
+    "related": [
+      {
+        "id": "115201099",
+        "label": "B&W",
+        "title": "DMV a&#39; la FLCL Black n White",
+        "image": "img/pieces/dmv-a-la-flcl-black-n-white-JohnStaton.jpg",
+        "credit": ""
       }
     ]
   },
