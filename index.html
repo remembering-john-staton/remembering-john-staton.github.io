@@ -27,10 +27,28 @@
     top: 0;
     z-index: 1;
   }
-  .themes-section  { position: relative; z-index: 2; }
-  .quote-section   { position: relative; z-index: 4; }
-  .about-section   { position: relative; z-index: 5; }
-  .site-footer     { position: relative; z-index: 6; }
+  /* Section snap-up entrance — mirrors reference site's unit-level reveal */
+  .themes-section,
+  .quote-section,
+  .about-section,
+  .site-footer {
+    position: relative;
+    transform: translateY(70px);
+    opacity: 0;
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.5s ease;
+  }
+  .themes-section.section-visible,
+  .quote-section.section-visible,
+  .about-section.section-visible,
+  .site-footer.section-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .themes-section  { z-index: 2; }
+  .quote-section   { z-index: 4; }
+  .about-section   { z-index: 5; }
+  .site-footer     { z-index: 6; }
 
   body {
     background: var(--crimson-dark);
@@ -181,7 +199,7 @@
     overflow: hidden;
     border-radius: 2px;
     clip-path: inset(0 100% 0 0);
-    animation: clipReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    animation: clipReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
     margin-bottom: 36px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.45);
   }
@@ -199,11 +217,6 @@
     to   { clip-path: inset(0 0% 0 0); }
   }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
   .hero-desc {
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
@@ -212,9 +225,22 @@
     color: var(--text-body);
     max-width: 340px;
     align-self: center;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+    overflow: hidden;
+  }
+  /* Wrap text in a clip div via HTML — desc text slides up */
+  .hero-desc-inner {
+    transform: translateY(100%);
+    animation: snapUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+  }
+
+  @keyframes snapUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* Decorative vertical text */
@@ -416,6 +442,11 @@
     padding: 24px 22px 22px;
   }
 
+  /* Card title — clip wrapper so title slides up from below card edge */
+  .theme-card-title-wrap {
+    overflow: hidden;
+    z-index: 1;
+  }
   .theme-card-title {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
@@ -424,8 +455,11 @@
     color: var(--cream);
     text-transform: uppercase;
     max-width: 180px;
-    z-index: 1;
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   }
+  .theme-card.visible .theme-card-title { transform: translateY(0); }
 
   .theme-card-thumb {
     width: 100%;
@@ -434,7 +468,10 @@
     border-radius: 1px;
     z-index: 1;
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
   }
+  .theme-card.visible .theme-card-thumb { clip-path: inset(0% 0 0 0); }
   .theme-card-thumb img {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -507,8 +544,7 @@
     </div>
 
     <p class="hero-desc">
-      A fan-curated celebration of John Staton's world — his art, stories, and enduring legacy.
-      Four chapters explore his craft, creative vision, and the community he inspired.
+      <span class="hero-desc-inner">A fan-curated celebration of John Staton's world — his art, stories, and enduring legacy.</span>
     </p>
   </div>
 
@@ -690,8 +726,20 @@
 </style>
 
 <script>
-  // IntersectionObserver for scroll-triggered animations
-  const observer = new IntersectionObserver((entries) => {
+  // ─── SECTION SNAP-UP ENTRANCES ───
+  const sectionRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('section-visible');
+      sectionRevealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll('.themes-section, .quote-section, .about-section, .site-footer')
+    .forEach(el => sectionRevealObserver.observe(el));
+
+  // ─── TOPICS CARD REVEAL (on section entrance) ───
+  const topicsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const section = entry.target;
@@ -700,15 +748,14 @@
       section.querySelector('#themesSeeAll')?.classList.add('visible');
       section.querySelector('#themesDivider')?.classList.add('visible');
       section.querySelectorAll('.theme-card').forEach((card, i) => {
-        setTimeout(() => card.classList.add('visible'), 200 + i * 110);
+        setTimeout(() => card.classList.add('visible'), 120 + i * 55);
       });
-      observer.unobserve(section);
+      topicsObserver.unobserve(section);
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.08 });
 
-  observer.observe(document.getElementById('themes'));
-
-  // ─── TOPIC CARD EXPAND ───
+  const themesEl = document.getElementById('themes');
+  if (themesEl) topicsObserver.observe(themesEl);
   const panel      = document.getElementById('topicPanel');
   const panelImg   = document.getElementById('topicPanelImg');
   const panelTitle = document.getElementById('topicPanelTitle');
@@ -748,30 +795,6 @@
     document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
     activeCard = null;
   });
-
-  // Characters section observer
-  const charObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const section = entry.target;
-
-      // Header
-      section.querySelector('.chars-dash')?.classList.add('visible');
-      section.querySelector('.chars-label')?.classList.add('visible');
-      section.querySelector('.chars-see-all')?.classList.add('visible');
-      section.querySelector('.chars-divider')?.classList.add('visible');
-
-      // Each character row slides up with stagger
-      section.querySelectorAll('.char-row').forEach((row, i) => {
-        setTimeout(() => row.classList.add('visible'), 100 + i * 90);
-      });
-
-      charObserver.unobserve(section);
-    });
-  }, { threshold: 0.08 });
-
-  const charSection = document.getElementById('characters');
-  if (charSection) charObserver.observe(charSection);
 </script>
 
 
@@ -1437,7 +1460,7 @@
              style="transition-delay: ${i * 0.05}s">
           <div class="theme-card-color" style="background: ${t.color};"></div>
           <div class="theme-card-inner">
-            <div class="theme-card-title">${t.title}</div>
+            <div class="theme-card-title-wrap"><div class="theme-card-title">${t.title}</div></div>
             <div>
               <div class="theme-card-thumb">
                 <img src="${t.image}" alt="${t.title}" loading="lazy" />
