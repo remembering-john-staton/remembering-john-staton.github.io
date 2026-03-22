@@ -19,16 +19,15 @@ A fan archive dedicated to the art, characters, and worlds of John Staton (1970s
 ## Using this work
 
 John passed away in January 2026. His material is believed to be orphan works with no active rights holder.
+**There is no license on this archive.** Go nuts. 
 
-**There is no license on this archive.** Use the work. Continue the characters. Make something.
-
-If you fork or build on this, no credit required, no restrictions. The repo is public for exactly that reason.
+If you fork or build on this, that's great. The repo is public for exactly that reason. :) 
 
 ---
 
 ## Tech
 
-Static site on GitHub Pages. No framework, no build step. Plain HTML/CSS/JS.
+This is just a static site with Plain HTML/CSS/JS.
 
 - `index.html` — homepage with hero, gallery grid, about section
 - `piece.html` — individual piece page (loads from `data/pieces.json` via `?id=`)
@@ -39,11 +38,10 @@ Static site on GitHub Pages. No framework, no build step. Plain HTML/CSS/JS.
 - `data/topics.json` — gallery/topic definitions
 - `img/pieces/` — 216 images, all named `slug-JohnStaton.jpg/png`
 
-The pieces.json was generated from a DeviantArt archive HTML export. The extraction script is not included in this repo but can be reconstructed from the format.
-
+The pieces.json was generated from a DeviantArt archive HTML export. The extraction script is not included in this repo but if people want it I'll link it. 
 ---
 
 ## Contributing
 
-Pull requests welcome — corrections, missing pieces, better descriptions, additional context about characters or projects. Open an issue or just PR.
+Pull requests welcome; corrections, missing pieces, better descriptions, additional context about characters or projects. There's also a contact section. 
 
