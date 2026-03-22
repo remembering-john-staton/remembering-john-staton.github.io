@@ -205,20 +205,19 @@
   }
 
   .piece-description {
-    font-size: 17px;
-    line-height: 1.85;
-    color: rgba(240,232,218,0.7);
-    margin-bottom: 28px;
+    font-size: 20px;
+    line-height: 1.8;
+    color: rgba(240,232,218,0.75);
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.75s forwards;
   }
 
-  /* Tags */
   .piece-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.85s forwards;
   }
@@ -226,36 +225,71 @@
     font-size: 9px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(240,232,218,0.4);
-    border: 1px solid rgba(240,232,218,0.12);
-    padding: 5px 12px;
+    color: rgba(240,232,218,0.35);
+    border: 1px solid rgba(240,232,218,0.1);
+    padding: 4px 10px;
     border-radius: 2px;
   }
 
-  /* Artist notes */
-  .piece-notes {
+  /* Relevant Comments */
+  .piece-comments-inline {
     margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.95s forwards;
   }
-  .piece-notes-label {
+  .piece-comments-inline-label {
     font-size: 8px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(240,232,218,0.25);
-    margin-bottom: 12px;
+    color: rgba(240,232,218,0.22);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(240,232,218,0.06);
   }
-  .piece-note {
+  .comment-inline {
+    display: grid;
+    grid-template-columns: 8px 1fr;
+    gap: 0 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(240,232,218,0.04);
+  }
+  .comment-inline:last-child { border-bottom: none; }
+  .comment-inline-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(240,232,218,0.12);
+    margin-top: 6px;
+  }
+  .comment-inline-dot.is-artist { background: var(--crimson); }
+  .comment-inline-user {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.28);
+    margin-bottom: 2px;
+  }
+  .comment-inline-user.is-artist { color: rgba(240,232,218,0.5); }
+  .comment-inline-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 15px;
-    font-style: italic;
-    line-height: 1.75;
-    color: rgba(240,232,218,0.55);
-    padding: 16px 20px;
-    border-left: 2px solid var(--crimson);
-    background: rgba(124,31,38,0.12);
-    margin-bottom: 10px;
+    line-height: 1.6;
+    color: rgba(240,232,218,0.48);
   }
+  .comment-inline.is-artist .comment-inline-text {
+    color: rgba(240,232,218,0.68);
+    font-style: italic;
+  }
+  .comments-show-more {
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.22);
+    cursor: pointer;
+    border: none; background: none; padding: 0;
+    transition: color 0.2s;
+  }
+  .comments-show-more:hover { color: rgba(240,232,218,0.5); }
 
   /* DA link */
   .piece-da-link {
@@ -278,86 +312,7 @@
   .piece-da-link:hover { color: var(--cream); border-color: rgba(240,232,218,0.3); }
   .piece-da-link::after { content: '↗'; font-size: 13px; font-family: sans-serif; }
 
-  /* ─── COMMENTS ─── */
-  .piece-comments {
-    background: #0a0304;
-    padding: 80px 56px;
-    border-top: 1px solid rgba(240,232,218,0.06);
-  }
-  .piece-comments-label {
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.2);
-    margin-bottom: 40px;
-  }
-  .comment-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0 20px;
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid rgba(240,232,218,0.05);
-  }
-  .comment-item:last-child { border-bottom: none; margin-bottom: 0; }
-  .comment-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(124,31,38,0.3);
-    border: 1px solid rgba(240,232,218,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: rgba(240,232,218,0.4);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .comment-avatar.is-artist {
-    background: rgba(124,31,38,0.5);
-    border-color: var(--crimson);
-    color: var(--cream-dim);
-  }
-  .comment-meta {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-  .comment-user {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    color: rgba(240,232,218,0.6);
-  }
-  .comment-user.is-artist {
-    color: var(--cream);
-  }
-  .comment-artist-badge {
-    font-size: 8px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    border: 1px solid var(--crimson);
-    padding: 1px 6px;
-    border-radius: 2px;
-  }
-  .comment-date {
-    font-size: 11px;
-    color: rgba(240,232,218,0.2);
-    letter-spacing: 0.05em;
-  }
-  .comment-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    line-height: 1.75;
-    color: rgba(240,232,218,0.55);
-  }
-  .comment-item.is-artist .comment-text {
-    color: rgba(240,232,218,0.75);
-  }
+
 
   /* ─── RELATED ─── */
   .piece-related {
@@ -541,39 +496,34 @@ function renderPiece(piece, allPieces) {
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
-  const notesHtml = piece.artist_notes && piece.artist_notes.length
-    ? `<div class="piece-notes">
-        <div class="piece-notes-label">Artist's Notes</div>
-        ${piece.artist_notes.slice(0,2).map(n =>
-          `<div class="piece-note">${escHtml(n)}</div>`
-        ).join('')}
-       </div>`
-    : '';
-
   const tagsHtml = piece.tags && piece.tags.length
     ? `<div class="piece-tags">${piece.tags.map(t =>
         `<span class="piece-tag">${escHtml(t)}</span>`
       ).join('')}</div>`
     : '';
 
-  const commentsHtml = piece.comments && piece.comments.length
-    ? `<section class="piece-comments">
-        <div class="piece-comments-label">${piece.comments.length} Comment${piece.comments.length !== 1 ? 's' : ''}</div>
-        ${piece.comments.map(c => `
-          <div class="comment-item${c.is_artist ? ' is-artist' : ''}">
-            <div class="comment-avatar${c.is_artist ? ' is-artist' : ''}">${escHtml((c.user || '?')[0].toUpperCase())}</div>
-            <div>
-              <div class="comment-meta">
-                <span class="comment-user${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}</span>
-                ${c.is_artist ? '<span class="comment-artist-badge">Artist</span>' : ''}
-                <span class="comment-date">${escHtml(c.date)}</span>
-              </div>
-              <div class="comment-text">${escHtml(c.text)}</div>
-            </div>
-          </div>
-        `).join('')}
-       </section>`
-    : '';
+  // Inline comments — show all, with show-more if > 6
+  function buildInlineComments(comments) {
+    if (!comments || !comments.length) return '';
+    const PREVIEW = 6;
+    const rows = comments.map((c, i) => `
+      <div class="comment-inline${c.is_artist ? ' is-artist' : ''}" ${i >= PREVIEW ? 'data-extra="1" style="display:none"' : ''}>
+        <div class="comment-inline-dot${c.is_artist ? ' is-artist' : ''}"></div>
+        <div>
+          <div class="comment-inline-user${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' ★' : ''}</div>
+          <div class="comment-inline-text">${escHtml(c.text)}</div>
+        </div>
+      </div>`).join('');
+    const more = comments.length > PREVIEW
+      ? `<button class="comments-show-more" onclick="this.previousElementSibling && this.closest('.piece-comments-inline').querySelectorAll('[data-extra]').forEach(e=>e.style.display=''); this.remove()">+ ${comments.length - PREVIEW} more comments</button>`
+      : '';
+    return `<div class="piece-comments-inline">
+      <div class="piece-comments-inline-label">Relevant Comments (${comments.length})</div>
+      ${rows}
+      ${more}
+    </div>`;
+  }
+  const commentsInlineHtml = buildInlineComments(piece.comments);
 
   const relatedHtml = related.length
     ? `<section class="piece-related">
@@ -617,8 +567,8 @@ function renderPiece(piece, allPieces) {
         ${piece.description ? `
           <p class="piece-description">${escHtml(piece.description)}</p>` : ''}
 
-        ${notesHtml}
         ${tagsHtml}
+        ${commentsInlineHtml}
 
         ${piece.da_url ? `
           <a class="piece-da-link" href="${piece.da_url}" target="_blank" rel="noopener">
@@ -628,7 +578,6 @@ function renderPiece(piece, allPieces) {
     </main>
 
     ${relatedHtml}
-    ${commentsHtml}
   `;
 
   // Image load reveal
