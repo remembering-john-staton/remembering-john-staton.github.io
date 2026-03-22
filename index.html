@@ -27,27 +27,24 @@
     top: 0;
     z-index: 1;
   }
-  /* Section snap-up entrance — mirrors reference site's unit-level reveal */
+  /* Section snap-up entrance */
   .themes-section,
   .quote-section,
-  .about-section,
   .site-footer {
     position: relative;
-    transform: translateY(70px);
+    transform: translateY(60px);
     opacity: 0;
-    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.5s ease;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.55s ease;
   }
   .themes-section.section-visible,
   .quote-section.section-visible,
-  .about-section.section-visible,
   .site-footer.section-visible {
     transform: translateY(0);
     opacity: 1;
   }
   .themes-section  { z-index: 2; }
   .quote-section   { z-index: 4; }
-  .about-section   { z-index: 5; }
   .site-footer     { z-index: 6; }
 
   body {
@@ -733,10 +730,24 @@
       entry.target.classList.add('section-visible');
       sectionRevealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.06 });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.themes-section, .quote-section, .about-section, .site-footer')
+  document.querySelectorAll('.themes-section, .quote-section, .site-footer')
     .forEach(el => sectionRevealObserver.observe(el));
+
+  // Fallback: any section that's already in viewport on load gets revealed
+  function revealVisibleSections() {
+    document.querySelectorAll('.themes-section, .quote-section, .site-footer')
+      .forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 100) {
+          el.classList.add('section-visible');
+        }
+      });
+  }
+  // Run on load and on scroll
+  setTimeout(revealVisibleSections, 100);
+  window.addEventListener('scroll', revealVisibleSections, { passive: true });
 
   // ─── TOPICS CARD REVEAL (on section entrance) ───
   const topicsObserver = new IntersectionObserver((entries) => {
@@ -876,7 +887,8 @@
   .quote-bio {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 64px;
+    align-items: start;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.8s ease 0.7s, transform 0.8s ease 0.7s;
@@ -888,26 +900,73 @@
     font-size: 17px;
     line-height: 1.85;
     color: rgba(26,14,15,0.65);
+    margin-bottom: 20px;
+  }
+  .quote-bio p:last-of-type { margin-bottom: 0; }
+
+  /* Stats row inside left column */
+  .about-stats-inline {
+    display: flex;
+    gap: 36px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(42,26,27,0.1);
+    flex-wrap: wrap;
+  }
+  .about-stat-inline-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a0e0f;
+    line-height: 1;
+  }
+  .about-stat-inline-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(42,26,27,0.35);
+    margin-top: 6px;
   }
 
+  /* Photo column */
+  .quote-bio-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .quote-photo {
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .quote-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    filter: sepia(10%) contrast(1.04);
+    transition: filter 0.4s ease;
+  }
+  .quote-photo:hover img { filter: sepia(0%) contrast(1.0); }
+  .quote-photo-main img { height: 320px; }
+  .quote-photo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .quote-photo-row .quote-photo img { height: 160px; }
+
   .quote-bio-tag {
-    display: inline-block;
-    margin-top: 28px;
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(42,26,27,0.3);
-    border-bottom: 1px solid rgba(42,26,27,0.15);
-    padding-bottom: 4px;
+    display: none;
   }
 
   @media (max-width: 700px) {
-    .quote-bio { grid-template-columns: 1fr; gap: 24px; }
+    .quote-bio { grid-template-columns: 1fr; gap: 40px; }
     .quote-section { padding: 80px 28px 100px; }
   }
 </style>
 
-<section class="quote-section" id="quoteSection">
+<section class="quote-section" id="about" data-merged>
   <div class="quote-inner">
     <span class="quote-line">When my friends ask me what character</span>
     <span class="quote-line">I'd most like to draw a comic of,</span>
@@ -916,144 +975,13 @@
     <div class="quote-attr" id="quoteAttr">— John Staton, in his own words</div>
 
     <div class="quote-bio" id="quoteBio">
-      <p>John Staton was a Maryland-based artist, cartoonist, and relentless worldbuilder. He published on DeviantArt across two decades, building a gallery that is part sketchbook, part creative journal, part parallel universe. His real answer to the question above was Skippy Von Richthofen, a Gold Digger character he loved with a specificity that tells you everything about the kind of fan he was.</p>
-      <p>His original creations — DMV, The Streamers, N.E. Boox, The High School Romance — share a sensibility: action-figure absurdism grounded in genuine craft. AJ, his combat-trained meter maid, was developed for years toward a full comic he planned to have ready for Otakon. The Streamers gave him military hardware, magical girl transformation sequences, and an acronym villain organisation. He did guest work for Adam Warren and Jeremy Whitley, contributed to Angry Viking Press, and drew 31 Star Trek ships in 31 October days because that is the kind of person he was.
-        <span class="quote-bio-tag">Fan Archive · Est. 2025</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- ABOUT JOHN                                  -->
-<!-- ═══════════════════════════════════════════ -->
-<style>
-  .about-section {
-    background: var(--crimson-dark);
-    padding: 120px 48px;
-    border-top: 1px solid rgba(240,232,218,0.06);
-  }
-
-  .about-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .about-photos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-  }
-
-  .about-photo {
-    overflow: hidden;
-    border-radius: 2px;
-  }
-  .about-photo:first-child {
-    grid-column: 1 / 3;
-  }
-  .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-    filter: sepia(15%) contrast(1.05);
-    transition: filter 0.4s ease;
-  }
-  .about-photo:first-child img { height: 340px; }
-  .about-photo:not(:first-child) img { height: 180px; }
-  .about-photo:hover img { filter: sepia(0%) contrast(1.0); }
-
-  .about-text {
-    padding-top: 8px;
-  }
-
-  .about-label {
-    font-size: 9px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.25);
-    margin-bottom: 24px;
-  }
-
-  .about-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 4vw, 56px);
-    font-weight: 900;
-    color: var(--cream);
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    margin-bottom: 32px;
-  }
-
-  .about-bio p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    line-height: 1.8;
-    color: rgba(240,232,218,0.65);
-    margin-bottom: 20px;
-  }
-  .about-bio p:last-child { margin-bottom: 0; }
-
-  .about-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(240,232,218,0.08);
-    flex-wrap: wrap;
-  }
-
-  .about-stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--cream);
-    line-height: 1;
-  }
-
-  .about-stat-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.3);
-    margin-top: 6px;
-  }
-
-  @media (max-width: 760px) {
-    .about-inner { grid-template-columns: 1fr; gap: 48px; }
-    .about-section { padding: 80px 24px; }
-  }
-</style>
-
-<section class="about-section" id="about">
-  <div class="about-inner">
-    <div class="about-photos">
-      <div class="about-photo">
-        <img src="img/pieces/staton.jpg" alt="John Staton" loading="lazy" />
-      </div>
-      <div class="about-photo">
-        <img src="img/pieces/k4.staton.jpg" alt="John Staton" loading="lazy" />
-      </div>
-      <div class="about-photo">
-        <img src="img/pieces/IMG_2183.jpg" alt="John Staton" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="about-text">
-      <div class="about-label">The Artist</div>
-      <div class="about-name">John<br>Staton</div>
-      <div class="about-bio">
-        <p>John Staton was a Maryland-based artist, cartoonist, and worldbuilder whose work spanned independent comics, fan art, and original IP across more than two decades. His DeviantArt gallery — archived here in full — documents a creative life that was restlessly inventive, deeply funny, and fuelled by an encyclopaedic love of anime, classic Trek, and action animation.</p>
-        <p>His flagship creation, DMV, imagined a cyberpunk dystopia in which a 6x3 metre rectangle of road surface had become the most contested real estate on earth. Its heroine, America Jones — combat-trained meter maid — is one of the most distinctive original characters in indie comics. John worked the concept through comic strips, pin-ups, and worldbuilding notes across many years, aiming to have a full comic ready for Otakon.</p>
-        <p>Alongside DMV he developed The Streamers, an ensemble of military-branch magical girls each representing a branch of the U.S. armed forces. He contributed guest art to Angry Viking Press's Evil Diva and Adam Warren's Empowered Special #4: Animal Style, and produced an exclusive variant cover for Jeremy Whitley's Princeless: The Pirate Princess #1 for Big Planet Comics.</p>
+      <div class="quote-bio-left">
+        <p>John Staton was a Maryland-based artist, cartoonist, and relentless worldbuilder. He published on DeviantArt across two decades, building a gallery that is part sketchbook, part creative journal, and part parallel universe. His real answer to the question above was Skippy Von Richthofen — a Gold Digger character he loved with a specificity that tells you everything about the kind of fan he was.</p>
+        <p>His original creations — DMV, The Streamers, N.E. Boox, The High School Romance — share a sensibility: action-figure absurdism grounded in genuine craft. AJ, his combat-trained meter maid, was developed for years toward a full comic he planned to have ready for Otakon. He did guest work for Adam Warren and Jeremy Whitley, contributed to Angry Viking Press, and drew 31 Star Trek ships in 31 October days because that is the kind of person he was.</p>
+        <div class="about-stats-inline">
+          <div class="about-stat-inline">
+            <div class="about-stat-inline-num">194</div>
+            <div class="about-stat-esenting a branch of the U.S. armed forces. He contributed guest art to Angry Viking Press's Evil Diva and Adam Warren's Empowered Special #4: Animal Style, and produced an exclusive variant cover for Jeremy Whitley's Princeless: The Pirate Princess #1 for Big Planet Comics.</p>
         <p>His Inktober 2016 run — 31 consecutive chibi Star Trek ships — remains one of the most committed fan art series in the gallery. His opinions on Enterprise were strongly held and entirely correct.</p>
       </div>
       <div class="about-stats">
@@ -1499,7 +1427,7 @@
       quoteObserver.unobserve(entry.target);
     });
   }, { threshold: 0.2 });
-  const qs = document.getElementById('quoteSection');
+  const qs = document.getElementById('about');
   if (qs) quoteObserver.observe(qs);
 
   // ─── HAMBURGER SIDEBAR ───
@@ -1539,7 +1467,7 @@
   });
 
   // ─── SIDEBAR ACTIVE STATE ───
-  const sectionIds = ['themes', 'quoteSection', 'about'];
+  const sectionIds = ['themes', 'about'];
   const sidebarLinks = sidebar.querySelectorAll('.sidebar-links a[data-section]');
 
   function updateActive() {
