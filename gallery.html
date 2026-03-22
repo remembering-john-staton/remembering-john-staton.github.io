@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galleries — The John Staton Museum</title>
+<meta name="description" content="Browse John Staton's work by gallery — DMV, The Streamers, N.E. Boox, Star Trek, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--crimson:#7c1f26;--crimson-dark:#5a161b;--cream:#f0e8da}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--crimson-dark);color:var(--cream);font-family:'Lora',serif;min-height:100vh}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.03;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:200px 200px}
+
+  nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:20px 48px;border-bottom:1px solid rgba(240,232,218,0.06)}
+  .nav-back{font-family:'Lora',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:rgba(240,232,218,0.45);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+  .nav-back::before{content:'←';font-family:sans-serif;font-size:14px}
+  .nav-back:hover{color:var(--cream)}
+  .nav-title{font-family:'Lora',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.3)}
+
+  .page-hero{position:relative;z-index:1;padding:72px 64px 48px;max-width:1200px;margin:0 auto}
+  .page-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:14px}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,68px);font-weight:900;
+    line-height:1;text-transform:uppercase;letter-spacing:-0.02em;color:var(--cream);margin-bottom:18px}
+  .page-intro{font-size:16px;line-height:1.7;color:rgba(240,232,218,0.45);max-width:520px}
+
+  /* ── FILTER BAR ── */
+  .filter-bar{
+    position:relative;z-index:1;
+    max-width:1200px;margin:0 auto;
+    padding:0 64px 36px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .filter-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-right:4px}
+  .filter-btn{
+    font-family:'Lora',serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(240,232,218,0.4);background:none;
+    border:1px solid rgba(240,232,218,0.12);padding:6px 14px;cursor:pointer;
+    transition:color 0.2s,border-color 0.2s,background 0.2s;
+  }
+  .filter-btn:hover{color:rgba(240,232,218,0.75);border-color:rgba(240,232,218,0.3)}
+  .filter-btn.active{color:var(--cream);border-color:rgba(240,232,218,0.5);background:rgba(240,232,218,0.06)}
+
+  /* ── GALLERY SECTIONS ── */
+  .galleries-wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 64px 80px}
+
+  .gallery-section{margin-bottom:72px}
+  .gallery-section.hidden{display:none}
+
+  .gallery-section-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin-bottom:20px;padding-bottom:14px;
+    border-bottom:1px solid rgba(240,232,218,0.07);
+  }
+  .gallery-section-title{
+    font-family:'Playfair Display',serif;
+    font-size:28px;font-weight:700;color:var(--cream);
+    text-transform:uppercase;letter-spacing:-0.01em;
+  }
+  .gallery-section-count{
+    font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+    color:rgba(240,232,218,0.25);
+  }
+  .gallery-section-desc{
+    font-size:14px;line-height:1.65;color:rgba(240,232,218,0.4);
+    margin-bottom:20px;max-width:640px;
+  }
+
+  /* ── PIECE GRID ── */
+  .piece-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:2px;
+  }
+  .piece-thumb{
+    position:relative;overflow:hidden;
+    aspect-ratio:1;cursor:pointer;
+    background:rgba(240,232,218,0.04);
+  }
+  .piece-thumb img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform 0.4s ease,filter 0.3s ease;
+    filter:saturate(0.85);
+  }
+  .piece-thumb:hover img{transform:scale(1.04);filter:saturate(1)}
+  .piece-thumb-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(6,1,2,0.85) 0%,transparent 55%);
+    opacity:0;transition:opacity 0.25s;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:12px;
+  }
+  .piece-thumb:hover .piece-thumb-overlay{opacity:1}
+  .piece-thumb-title{
+    font-family:'Lora',serif;font-size:12px;color:var(--cream);
+    line-height:1.3;margin-bottom:3px;
+  }
+  .piece-thumb-date{
+    font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(240,232,218,0.45);
+  }
+  .piece-thumb-wip{
+    position:absolute;top:8px;right:8px;
+    font-size:8px;letter-spacing:0.15em;text-transform:uppercase;
+    background:rgba(6,1,2,0.7);color:rgba(240,232,218,0.5);
+    padding:2px 6px;border:1px solid rgba(240,232,218,0.15);
+  }
+
+  /* ── SHOW MORE ── */
+  .show-more-wrap{margin-top:16px;text-align:center}
+  .show-more-btn{
+    font-family:'Lora',serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    color:rgba(240,232,218,0.35);background:none;
+    border:1px solid rgba(240,232,218,0.1);padding:10px 32px;cursor:pointer;
+    transition:color 0.2s,border-color 0.2s;
+  }
+  .show-more-btn:hover{color:rgba(240,232,218,0.7);border-color:rgba(240,232,218,0.3)}
+
+  /* ── WIP TOGGLE ── */
+  .wip-toggle-wrap{
+    position:relative;z-index:1;
+    max-width:1200px;margin:0 auto;
+    padding:0 64px 20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .wip-toggle{
+    display:flex;align-items:center;gap:8px;cursor:pointer;
+    font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(240,232,218,0.35);background:none;border:none;padding:0;
+    transition:color 0.2s;
+  }
+  .wip-toggle:hover{color:rgba(240,232,218,0.6)}
+  .wip-check{
+    width:14px;height:14px;border:1px solid rgba(240,232,218,0.25);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .wip-check.checked::after{content:'✓';font-size:10px;color:rgba(240,232,218,0.7)}
+
+  @media(max-width:768px){
+    nav,.page-hero,.filter-bar,.wip-toggle-wrap,.galleries-wrap{padding-left:24px;padding-right:24px}
+    .piece-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+    h1{font-size:clamp(32px,8vw,56px)}
+  }
+</style>
+
+<!-- FOOTER CSS -->
+<style>
+  .site-footer{background:#0e0608;color:rgba(240,232,218,0.5);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07)}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
+  .footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
+  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.38);max-width:280px}
+  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.2);border:1px solid rgba(240,232,218,0.1);padding:5px 12px}
+  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:20px}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.5);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+  .footer-links li a:hover{color:#f0e8da}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
+  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.2)}
+  .footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
+  @media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:32px}.site-footer{padding:48px 24px 32px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">Museum</a>
+  <div class="nav-title">The John Staton Museum</div>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">The Archive</div>
+  <h1>Galleries</h1>
+  <p class="page-intro">John's work organized by world and subject. Each gallery is a thread through the archive.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Show</span>
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All galleries</button>
+  <button class="filter-btn" data-filter="original" onclick="setFilter('original')">Original IP</button>
+  <button class="filter-btn" data-filter="fanart" onclick="setFilter('fanart')">Fan art</button>
+  <button class="filter-btn" data-filter="published" onclick="setFilter('published')">Published work</button>
+</div>
+
+<!-- WIP TOGGLE -->
+<div class="wip-toggle-wrap">
+  <button class="wip-toggle" id="wipToggle" onclick="toggleWip()">
+    <span class="wip-check" id="wipCheck"></span>
+    Hide WIPs &amp; sketches
+  </button>
+</div>
+
+<!-- GALLERY SECTIONS -->
+<div class="galleries-wrap" id="galleriesWrap">
+  <!-- populated by JS -->
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-divider-accent"></div>
+      <div class="footer-brand-name">John Staton</div>
+      <p class="footer-brand-desc">An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.</p>
+      <div class="footer-brand-tag">Fan Archive · Est. 2025</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Archive</div>
+      <ul class="footer-links">
+        <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Remembering John</div>
+      <ul class="footer-links">
+        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
+        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──
+const GALLERY_DEFS = [
+  { id:'dmv',              title:'DMV',                        cat:'original',  desc:'America Jones and the not-too-distant dystopian cyberpunk future of parking enforcement.' },
+  { id:'dukke-fox',        title:'Daniel Dukke &amp; Ferdinand Fox', cat:'original', desc:'His first original creation. The comic strip he drew for The Diamondback at UMD, and kept developing for years.' },
+  { id:'streamers',        title:'The Streamers',              cat:'original',  desc:'Five women representing branches of the U.S. armed forces. Navy Girl, Air Force Girl, Army Girl, Marine Girl, Coast Guard Girl.' },
+  { id:'neboox',           title:'N.E. Boox',                  cat:'original',  desc:'The most dangerous bookstore. Cassandra, Molly Mouse, Connie, and an UZI.' },
+  { id:'high-school-romance', title:'The High School Romance', cat:'original',  desc:'Lori, Ott0, Skippy Von Richthofen, Erin Scissorhands. Action-figure absurdism set in a demonic high school.' },
+  { id:'evil-diva',        title:'Evil Diva',                  cat:'original',  desc:'Diva Beelze and her disapproving mother. Guest art for Angry Viking Press.' },
+  { id:'space-girls',      title:'Space Girls / GELFs',        cat:'original',  desc:'Genetically Engineered Life Forms built to pilot combat space robots.' },
+  { id:'star-trek',        title:'Star Trek',                  cat:'fanart',    desc:'31 Star Trek ships in 31 consecutive October days, 2016. Annotated with the accumulated expertise of decades.' },
+  { id:'anime',            title:'Anime Fan Art',              cat:'fanart',    desc:'Bubblegum Crisis, Dirty Pair, El Hazard, Evangelion, Silent Mobius, Robotech, Princess Nine, and more.' },
+  { id:'gold-digger',      title:'Gold Digger',                cat:'fanart',    desc:'Fred Perry\'s Gold Digger — the Diggers sisters, Brianna, Swim War, and commissions for Phil Moyer.' },
+  { id:'chibi-heroines',   title:'Chibi Heroines',             cat:'fanart',    desc:'The Chiroines series. Chibified DC and Marvel heroines, done with the dedication of a completionist.' },
+  { id:'princeless',       title:'Princeless',                 cat:'published', desc:'Variant cover for Jeremy Whitley\'s Princeless: The Pirate Princess #1, Big Planet Comics exclusive.' },
+  { id:'published',        title:'Published Work',             cat:'published', desc:'Empowered Special #4: Animal Style. Hammer of the Gods. Hench Bunnies. The work that made it to print.' },
+];
+
+const WIP_SIGNALS = ['wip','pencil','sketch','progress','inks','line art','variant','alternate','rough','b&w','black n white','black and white'];
+
+let pieces = [];
+let topics = {};
+let hideWip = false;
+let currentFilter = 'all';
+
+async function init() {
+  const [pRes, tRes] = await Promise.all([
+    fetch('data/pieces.json'),
+    fetch('data/topics.json'),
+  ]);
+  pieces = await pRes.json();
+  const topicsArr = await tRes.json();
+  topicsArr.forEach(t => topics[t.id] = t);
+
+  // Check for ?gallery= param to auto-scroll
+  const params = new URLSearchParams(location.search);
+  const galleryParam = params.get('gallery') || params.get('topic');
+
+  renderAll();
+
+  if (galleryParam) {
+    const el = document.getElementById('gallery-' + galleryParam);
+    if (el) setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 200);
+  }
+}
+
+function isWip(piece) {
+  const t = (piece.title || '').toLowerCase();
+  const d = (piece.description || '').toLowerCase();
+  return WIP_SIGNALS.some(s => t.includes(s) || d.slice(0,100).includes(s));
+}
+
+function renderAll() {
+  const wrap = document.getElementById('galleriesWrap');
+  wrap.innerHTML = '';
+
+  GALLERY_DEFS.forEach(def => {
+    if (currentFilter !== 'all' && def.cat !== currentFilter) return;
+
+    const topicPieces = pieces.filter(p =>
+      Array.isArray(p.topics) ? p.topics.includes(def.id) : p.topic === def.id
+    );
+
+    const filtered = hideWip ? topicPieces.filter(p => !isWip(p)) : topicPieces;
+    if (!filtered.length) return;
+
+    const section = document.createElement('div');
+    section.className = 'gallery-section';
+    section.id = 'gallery-' + def.id;
+
+    const visibleCount = Math.min(filtered.length, 16);
+    const hasMore = filtered.length > 16;
+
+    section.innerHTML = `
+      <div class="gallery-section-head">
+        <div class="gallery-section-title">${def.title}</div>
+        <div class="gallery-section-count">${filtered.length} piece${filtered.length !== 1 ? 's' : ''}</div>
+      </div>
+      ${def.desc ? `<p class="gallery-section-desc">${def.desc}</p>` : ''}
+      <div class="piece-grid" id="grid-${def.id}">
+        ${renderThumbs(filtered.slice(0, visibleCount))}
+      </div>
+      ${hasMore ? `<div class="show-more-wrap"><button class="show-more-btn" onclick="showMore('${def.id}')">Show all ${filtered.length} pieces</button></div>` : ''}
+    `;
+    wrap.appendChild(section);
+  });
+}
+
+function renderThumbs(arr) {
+  return arr.map(p => {
+    const wip = isWip(p);
+    const year = p.date ? p.date.slice(-4) : '';
+    return `<div class="piece-thumb" onclick="location.href='piece.html?id=${p.id}'">
+      <img src="${p.image}" alt="${esc(p.title)}" loading="lazy" />
+      <div class="piece-thumb-overlay">
+        <div class="piece-thumb-title">${esc(p.title)}</div>
+        ${year ? `<div class="piece-thumb-date">${year}</div>` : ''}
+      </div>
+      ${wip ? '<div class="piece-thumb-wip">WIP</div>' : ''}
+    </div>`;
+  }).join('');
+}
+
+function showMore(id) {
+  const def = GALLERY_DEFS.find(d => d.id === id);
+  const topicPieces = pieces.filter(p =>
+    Array.isArray(p.topics) ? p.topics.includes(id) : p.topic === id
+  );
+  const filtered = hideWip ? topicPieces.filter(p => !isWip(p)) : topicPieces;
+  document.getElementById('grid-' + id).innerHTML = renderThumbs(filtered);
+  const btn = document.querySelector(`#gallery-${id} .show-more-btn`);
+  if (btn) btn.parentElement.remove();
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  renderAll();
+}
+
+function toggleWip() {
+  hideWip = !hideWip;
+  const check = document.getElementById('wipCheck');
+  check.classList.toggle('checked', hideWip);
+  renderAll();
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+init();
+</script>
+</body>
+</html>
