@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The John Staton Museum</title>
+<meta name="description" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The John Staton Museum">
+<link rel="canonical" href="">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -14,10 +21,8 @@
     --cream-dim: rgba(240,232,218,0.6);
     --text-body: #e8ddd0;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--crimson-dark);
     color: var(--cream);
@@ -25,8 +30,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* ─── GRAIN ─── */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: 200;
@@ -35,74 +38,56 @@
     background-size: 200px 200px;
   }
 
-  /* ─── NAV ─── */
+  /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
+    padding: 18px 40px;
   }
   .nav-back {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cream-dim); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
     transition: color 0.2s;
   }
+  .nav-back::before { content: '←'; font-size: 14px; font-family: sans-serif; }
   .nav-back:hover { color: var(--cream); }
-  .nav-back::before { content: '←'; font-size: 16px; font-family: sans-serif; }
-  .nav-spacer { width: 80px; }
 
   /* Breadcrumbs */
   .breadcrumbs {
-    position: fixed;
-    top: 58px; left: 0; right: 0;
-    z-index: 99;
+    position: fixed; top: 52px; left: 0; right: 0; z-index: 99;
     padding: 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 0;
+    display: flex; align-items: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.28);
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(240,232,218,0.22);
     pointer-events: none;
   }
   .breadcrumbs a {
-    color: rgba(240,232,218,0.38);
-    text-decoration: none;
-    pointer-events: all;
-    transition: color 0.2s;
+    color: rgba(240,232,218,0.32); text-decoration: none;
+    pointer-events: all; transition: color 0.2s;
   }
-  .breadcrumbs a:hover { color: rgba(240,232,218,0.75); }
-  .breadcrumb-sep {
-    margin: 0 10px;
-    opacity: 0.4;
-  }
+  .breadcrumbs a:hover { color: rgba(240,232,218,0.7); }
+  .breadcrumb-sep { margin: 0 8px; opacity: 0.35; }
   .breadcrumb-current {
-    color: rgba(240,232,218,0.55);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 340px;
+    color: rgba(240,232,218,0.5);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 320px;
   }
 
-  /* ─── HERO ─── */
+  /* HERO LAYOUT */
   .piece-hero {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 0;
   }
 
-  /* Left: full-bleed image */
+  /* LEFT: image */
   .piece-image-panel {
-    position: relative;
-    background: #0e0608;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: #0a0304;
     overflow: hidden;
   }
   .piece-image-panel img {
@@ -111,334 +96,215 @@
     object-position: center;
     display: block;
     opacity: 0;
-    transform: scale(1.04);
+    transform: scale(1.03);
     transition: opacity 0.9s ease, transform 1.2s cubic-bezier(0.16,1,0.3,1);
   }
-  .piece-image-panel img.loaded {
-    opacity: 1;
-    transform: scale(1);
-  }
+  .piece-image-panel img.loaded { opacity: 1; transform: scale(1); }
   .piece-image-zoom {
-    position: absolute;
-    bottom: 24px; right: 24px;
-    background: rgba(10,4,5,0.7);
-    border: 1px solid rgba(240,232,218,0.15);
-    color: var(--cream-dim);
-    font-size: 18px;
-    width: 40px; height: 40px;
-    border-radius: 50%;
+    position: absolute; bottom: 24px; right: 24px;
+    background: rgba(10,4,5,0.65); border: 1px solid rgba(240,232,218,0.15);
+    color: var(--cream-dim); font-size: 18px;
+    width: 40px; height: 40px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    z-index: 10;
+    cursor: pointer; transition: background 0.2s, color 0.2s; z-index: 10;
   }
   .piece-image-zoom:hover { background: rgba(10,4,5,0.9); color: var(--cream); }
 
-  /* Right: info panel */
+  /* RIGHT: scrollable info */
   .piece-info-panel {
-    display: flex;
-    flex-direction: column;
-    padding: 88px 56px 60px;
-    overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: 80px 52px 100px;
     background: var(--crimson-dark);
     border-left: 1px solid rgba(240,232,218,0.06);
+    min-height: 100vh;
   }
 
+  /* Scroll-reveal for each block */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
   .piece-label {
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.25);
-    margin-bottom: 20px;
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-bottom: 16px;
     overflow: hidden;
   }
   .piece-label span {
     display: block;
     transform: translateY(110%);
-    animation: snapUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+    animation: snapUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
   }
 
   .piece-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 3.5vw, 56px);
-    font-weight: 900;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    color: var(--cream);
-    overflow: hidden;
-    margin-bottom: 28px;
+    font-size: clamp(28px, 3.2vw, 52px);
+    font-weight: 900; line-height: 1.0;
+    letter-spacing: -0.02em; text-transform: uppercase;
+    color: var(--cream); overflow: hidden; margin-bottom: 24px;
   }
   .piece-title span {
     display: block;
     transform: translateX(80px);
-    animation: titleSlam 0.65s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
+    animation: titleSlam 0.65s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
   }
 
   .piece-divider {
-    width: 0;
-    height: 1px;
-    background: rgba(240,232,218,0.18);
-    margin-bottom: 28px;
-    animation: expandLine 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+    width: 0; height: 1px;
+    background: rgba(240,232,218,0.15); margin-bottom: 24px;
+    animation: expandLine 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
   }
 
-  .piece-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.6s forwards;
-  }
-  .piece-meta-item { display: flex; flex-direction: column; gap: 4px; }
-  .piece-meta-key {
-    font-size: 8px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.25);
-  }
-  .piece-meta-val {
-    font-size: 14px;
-    color: rgba(240,232,218,0.7);
-    letter-spacing: 0.03em;
+  /* Date — prominent */
+  .piece-date {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.32); margin-bottom: 28px;
   }
 
+  /* Description — formatted HTML */
   .piece-description {
-    font-size: 20px;
-    line-height: 1.8;
-    color: rgba(240,232,218,0.75);
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.75s forwards;
-  }
-
-  .piece-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    font-size: 19px; line-height: 1.82;
+    color: rgba(240,232,218,0.78);
     margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.85s forwards;
+  }
+  .piece-description p { margin-bottom: 1em; }
+  .piece-description p:last-child { margin-bottom: 0; }
+  .piece-description strong { color: var(--cream); font-weight: 600; }
+  .piece-description em { font-style: italic; color: rgba(240,232,218,0.65); }
+
+  /* Tags */
+  .piece-tags {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px;
   }
   .piece-tag {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.35);
-    border: 1px solid rgba(240,232,218,0.1);
-    padding: 4px 10px;
-    border-radius: 2px;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3); border: 1px solid rgba(240,232,218,0.1);
+    padding: 4px 10px; border-radius: 2px;
   }
 
   /* Relevant Comments */
-  .piece-comments-inline {
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.95s forwards;
-  }
-  .piece-comments-inline-label {
-    font-size: 8px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.22);
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(240,232,218,0.06);
+  .piece-comments-inline { margin-bottom: 28px; }
+  .piece-comments-label {
+    font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2); margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(240,232,218,0.06);
   }
   .comment-inline {
-    display: grid;
-    grid-template-columns: 8px 1fr;
-    gap: 0 12px;
-    padding: 9px 0;
+    display: grid; grid-template-columns: 8px 1fr;
+    gap: 0 10px; padding: 8px 0;
     border-bottom: 1px solid rgba(240,232,218,0.04);
   }
-  .comment-inline:last-child { border-bottom: none; }
+  .comment-inline:last-of-type { border-bottom: none; }
   .comment-inline-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: rgba(240,232,218,0.12);
-    margin-top: 6px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(240,232,218,0.1); margin-top: 7px;
   }
   .comment-inline-dot.is-artist { background: var(--crimson); }
   .comment-inline-user {
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.28);
-    margin-bottom: 2px;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-bottom: 2px;
   }
-  .comment-inline-user.is-artist { color: rgba(240,232,218,0.5); }
+  .comment-inline-user.is-artist { color: rgba(240,232,218,0.48); }
   .comment-inline-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    line-height: 1.6;
-    color: rgba(240,232,218,0.48);
+    font-size: 14px; line-height: 1.6; color: rgba(240,232,218,0.45);
   }
   .comment-inline.is-artist .comment-inline-text {
-    color: rgba(240,232,218,0.68);
-    font-style: italic;
+    color: rgba(240,232,218,0.65); font-style: italic;
   }
   .comments-show-more {
-    margin-top: 10px;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.22);
-    cursor: pointer;
-    border: none; background: none; padding: 0;
-    transition: color 0.2s;
+    margin-top: 8px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2); cursor: pointer; border: none; background: none; padding: 0;
+    transition: color 0.2s; display: block;
   }
   .comments-show-more:hover { color: rgba(240,232,218,0.5); }
 
   /* DA link */
   .piece-da-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.35);
-    text-decoration: none;
-    border: 1px solid rgba(240,232,218,0.1);
-    padding: 10px 18px;
-    margin-top: auto;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3); text-decoration: none;
+    border: 1px solid rgba(240,232,218,0.1); padding: 9px 16px;
+    margin-top: 8px; align-self: flex-start;
     transition: color 0.2s, border-color 0.2s;
-    align-self: flex-start;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 1.1s forwards;
   }
   .piece-da-link:hover { color: var(--cream); border-color: rgba(240,232,218,0.3); }
-  .piece-da-link::after { content: '↗'; font-size: 13px; font-family: sans-serif; }
+  .piece-da-link::after { content: '↗'; font-size: 12px; font-family: sans-serif; }
 
-
-
-  /* ─── RELATED ─── */
+  /* RELATED */
   .piece-related {
-    background: #0e0608;
-    padding: 80px 56px;
-    border-top: 1px solid rgba(240,232,218,0.06);
+    background: #0a0304; padding: 64px 52px;
+    border-top: 1px solid rgba(240,232,218,0.05);
   }
   .piece-related-label {
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.2);
-    margin-bottom: 32px;
+    font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(240,232,218,0.18); margin-bottom: 28px;
   }
-  .piece-related-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-  }
-  .piece-related-item {
-    aspect-ratio: 1;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-  }
+  .piece-related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+  .piece-related-item { aspect-ratio:1; overflow:hidden; cursor:pointer; position:relative; }
   .piece-related-item img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: saturate(0.7) brightness(0.8);
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter: saturate(0.65) brightness(0.75);
     transition: filter 0.4s ease, transform 0.5s ease;
   }
-  .piece-related-item:hover img {
-    filter: saturate(1) brightness(1);
-    transform: scale(1.05);
-  }
+  .piece-related-item:hover img { filter: saturate(1) brightness(1); transform: scale(1.05); }
   .piece-related-item-title {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 24px 14px 12px;
+    position:absolute; bottom:0; left:0; right:0;
+    padding: 20px 12px 10px;
     background: linear-gradient(to top, rgba(10,4,5,0.85) 0%, transparent 100%);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.7);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(240,232,218,0.65); opacity:0; transition: opacity 0.3s;
   }
-  .piece-related-item:hover .piece-related-item-title { opacity: 1; }
+  .piece-related-item:hover .piece-related-item-title { opacity:1; }
 
-  /* ─── LIGHTBOX ─── */
+  /* LIGHTBOX */
   .lightbox {
-    position: fixed; inset: 0; z-index: 500;
-    background: rgba(5,2,3,0.95);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s ease;
+    position:fixed; inset:0; z-index:500; background: rgba(5,2,3,0.95);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition: opacity 0.3s ease;
   }
-  .lightbox.open { opacity: 1; pointer-events: all; }
-  .lightbox img {
-    max-width: 90vw; max-height: 90vh;
-    object-fit: contain;
-    box-shadow: 0 40px 120px rgba(0,0,0,0.8);
-  }
+  .lightbox.open { opacity:1; pointer-events:all; }
+  .lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
   .lightbox-close {
-    position: absolute; top: 24px; right: 28px;
-    background: none; border: none;
-    color: rgba(240,232,218,0.5);
-    font-size: 28px; cursor: pointer;
+    position:absolute; top:24px; right:28px; background:none; border:none;
+    color: rgba(240,232,218,0.5); font-size:26px; cursor:pointer;
+    min-width:44px; min-height:44px;
+    display:flex; align-items:center; justify-content:center;
     transition: color 0.2s;
-    min-width: 44px; min-height: 44px;
-    display: flex; align-items: center; justify-content: center;
   }
   .lightbox-close:hover { color: var(--cream); }
 
-  /* ─── NOT FOUND ─── */
+  /* NOT FOUND */
   .piece-not-found {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 20px; padding: 40px;
-    text-align: center;
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    gap:20px; padding:40px; text-align:center;
   }
   .piece-not-found h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px; font-weight: 900;
-    text-transform: uppercase;
-    color: var(--cream);
-  }
-  .piece-not-found p {
-    font-size: 16px; color: var(--cream-dim);
+    font-family:'Playfair Display',serif; font-size:48px; font-weight:900;
+    text-transform:uppercase; color:var(--cream);
   }
   .piece-not-found a {
-    color: var(--cream-dim); font-size: 12px;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    text-decoration: none; border-bottom: 1px solid rgba(240,232,218,0.2);
-    padding-bottom: 2px;
+    color:var(--cream-dim); font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    text-decoration:none; border-bottom:1px solid rgba(240,232,218,0.2); padding-bottom:2px;
   }
 
-  /* ─── KEYFRAMES ─── */
-  @keyframes snapUp {
-    from { transform: translateY(110%); }
-    to   { transform: translateY(0); }
-  }
-  @keyframes titleSlam {
-    from { transform: translateX(80px); }
-    to   { transform: translateX(0); }
-  }
-  @keyframes expandLine {
-    from { width: 0; }
-    to   { width: 60px; }
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  /* KEYFRAMES */
+  @keyframes snapUp { from { transform:translateY(110%); } to { transform:translateY(0); } }
+  @keyframes titleSlam { from { transform:translateX(80px); } to { transform:translateX(0); } }
+  @keyframes expandLine { from { width:0; } to { width:52px; } }
 
-  /* ─── RESPONSIVE ─── */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
-    .piece-hero { grid-template-columns: 1fr; min-height: auto; }
-    .piece-image-panel { height: 60vw; min-height: 280px; }
-    .piece-image-panel img { object-fit: cover; }
-    .piece-info-panel { padding: 40px 28px 60px; }
-    .piece-related { padding: 60px 28px; }
-    .piece-related-grid { grid-template-columns: repeat(2, 1fr); }
-    nav { padding: 16px 24px; }
+    .piece-hero { grid-template-columns:1fr; }
+    .piece-image-panel { position:relative; height:65vw; min-height:240px; }
+    .piece-image-panel img { object-fit:cover; }
+    .piece-info-panel { padding:40px 24px 80px; }
+    .piece-related { padding:48px 24px; }
+    .piece-related-grid { grid-template-columns:repeat(2,1fr); }
+    nav { padding:16px 24px; }
+    .breadcrumbs { padding:0 24px; }
   }
 </style>
 </head>
@@ -446,12 +312,13 @@
 
 <nav>
   <a href="index.html" class="nav-back">Museum</a>
-  <div class="nav-spacer"></div>
 </nav>
 
 <div class="breadcrumbs" id="breadcrumbs">
   <a href="index.html">Museum</a>
   <span class="breadcrumb-sep">/</span>
+  <a href="#" id="breadcrumbTopic" style="display:none"></a>
+  <span class="breadcrumb-sep" id="breadcrumbTopicSep" style="display:none"></span>
   <span class="breadcrumb-current" id="breadcrumbTitle">—</span>
 </div>
 
@@ -463,51 +330,78 @@
 </div>
 
 <script>
-// ─── LOAD PIECE FROM ?id= ───
 async function init() {
-  const params = new URLSearchParams(window.location.search);
+  const params  = new URLSearchParams(window.location.search);
   const pieceId = params.get('id');
+  const topicId = params.get('topic');  // optional topic context
 
-  let pieces;
+  let pieces, topics;
   try {
-    const res = await fetch('data/pieces.json');
-    pieces = await res.json();
-  } catch(e) {
-    showNotFound('Could not load piece data.');
-    return;
-  }
+    [pieces, topics] = await Promise.all([
+      fetch('data/pieces.json').then(r => r.json()),
+      fetch('data/topics.json').then(r => r.json()).catch(() => [])
+    ]);
+  } catch(e) { showNotFound('Could not load data.'); return; }
 
   const piece = pieceId
     ? pieces.find(p => p.id === pieceId)
-    : pieces[Math.floor(Math.random() * pieces.length)]; // demo: random if no id
+    : pieces[Math.floor(Math.random() * pieces.length)];
 
-  if (!piece) { showNotFound(`No piece found with id "${pieceId}".`); return; }
+  if (!piece) { showNotFound(`No piece found.`); return; }
 
+  // SEO meta
   document.title = `${piece.title} — The John Staton Museum`;
-  const bc = document.getElementById('breadcrumbTitle');
-  if (bc) bc.textContent = piece.title;
+  setMeta('description', piece.description ? piece.description.slice(0, 155) : 'Art by John Staton');
+  setMeta('og:title', `${piece.title} — The John Staton Museum`);
+  setMeta('og:description', piece.description ? piece.description.slice(0, 155) : '');
+  setMeta('og:image', piece.image ? `https://remembering-john-staton.github.io/${piece.image}` : '');
+  setMeta('canonical', `https://remembering-john-staton.github.io/piece.html?id=${piece.id}`, true);
+
+  // Breadcrumb
+  document.getElementById('breadcrumbTitle').textContent = piece.title;
+  if (topicId && topics.length) {
+    const topic = topics.find(t => t.id === topicId);
+    if (topic) {
+      const el = document.getElementById('breadcrumbTopic');
+      el.textContent = topic.title;
+      el.href = `#themes`;
+      el.style.display = '';
+      document.getElementById('breadcrumbTopicSep').style.display = '';
+    }
+  }
+
   renderPiece(piece, pieces);
 }
 
+function setMeta(name, content, isLink) {
+  if (isLink) {
+    let el = document.querySelector('link[rel="canonical"]');
+    if (el) el.href = content;
+    return;
+  }
+  let el = document.querySelector(`[property="${name}"], [name="${name}"]`);
+  if (el) el.setAttribute('content', content);
+}
+
 function renderPiece(piece, allPieces) {
-  // Pick 4 related pieces (same tags or random)
   const related = allPieces
     .filter(p => p.id !== piece.id && p.image)
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
+  // Tags
   const tagsHtml = piece.tags && piece.tags.length
-    ? `<div class="piece-tags">${piece.tags.map(t =>
-        `<span class="piece-tag">${escHtml(t)}</span>`
-      ).join('')}</div>`
-    : '';
+    ? `<div class="piece-tags reveal">
+        ${piece.tags.map(t => `<span class="piece-tag">${escHtml(t)}</span>`).join('')}
+       </div>` : '';
 
-  // Inline comments — show all, with show-more if > 6
-  function buildInlineComments(comments) {
+  // Inline comments
+  function buildComments(comments) {
     if (!comments || !comments.length) return '';
     const PREVIEW = 6;
     const rows = comments.map((c, i) => `
-      <div class="comment-inline${c.is_artist ? ' is-artist' : ''}" ${i >= PREVIEW ? 'data-extra="1" style="display:none"' : ''}>
+      <div class="comment-inline${c.is_artist ? ' is-artist' : ''}"
+           ${i >= PREVIEW ? 'data-extra="1" style="display:none"' : ''}>
         <div class="comment-inline-dot${c.is_artist ? ' is-artist' : ''}"></div>
         <div>
           <div class="comment-inline-user${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' ★' : ''}</div>
@@ -515,16 +409,16 @@ function renderPiece(piece, allPieces) {
         </div>
       </div>`).join('');
     const more = comments.length > PREVIEW
-      ? `<button class="comments-show-more" onclick="this.previousElementSibling && this.closest('.piece-comments-inline').querySelectorAll('[data-extra]').forEach(e=>e.style.display=''); this.remove()">+ ${comments.length - PREVIEW} more comments</button>`
-      : '';
-    return `<div class="piece-comments-inline">
-      <div class="piece-comments-inline-label">Relevant Comments (${comments.length})</div>
-      ${rows}
-      ${more}
+      ? `<button class="comments-show-more" onclick="
+          this.closest('.piece-comments-inline').querySelectorAll('[data-extra]').forEach(e=>e.style.display='');
+          this.remove()">+ ${comments.length - PREVIEW} more</button>` : '';
+    return `<div class="piece-comments-inline reveal">
+      <div class="piece-comments-label">Relevant Comments (${comments.length})</div>
+      ${rows}${more}
     </div>`;
   }
-  const commentsInlineHtml = buildInlineComments(piece.comments);
 
+  // Related
   const relatedHtml = related.length
     ? `<section class="piece-related">
         <div class="piece-related-label">More from the archive</div>
@@ -533,97 +427,82 @@ function renderPiece(piece, allPieces) {
             <div class="piece-related-item" onclick="navigateTo('${r.id}')">
               <img src="${r.image}" alt="${escHtml(r.title)}" loading="lazy" />
               <div class="piece-related-item-title">${escHtml(r.title)}</div>
-            </div>
-          `).join('')}
+            </div>`).join('')}
         </div>
-      </section>`
-    : '';
+      </section>` : '';
 
   document.getElementById('pieceContent').innerHTML = `
     <main class="piece-hero">
       <div class="piece-image-panel">
         <img id="mainImg" src="${piece.image}" alt="${escHtml(piece.title)}" />
-        <button class="piece-image-zoom" id="zoomBtn" title="View full size">&#x2922;</button>
+        <button class="piece-image-zoom" id="zoomBtn">&#x2922;</button>
       </div>
-
       <div class="piece-info-panel">
-        <div class="piece-label"><span>Original Work</span></div>
+        <div class="piece-label"><span>The John Staton Museum</span></div>
         <h1 class="piece-title"><span>${escHtml(piece.title)}</span></h1>
         <div class="piece-divider"></div>
-
-        <div class="piece-meta">
-          ${piece.date ? `
-            <div class="piece-meta-item">
-              <span class="piece-meta-key">Posted</span>
-              <span class="piece-meta-val">${escHtml(piece.date)}</span>
-            </div>` : ''}
-          ${piece.tags && piece.tags.length ? `
-            <div class="piece-meta-item">
-              <span class="piece-meta-key">Tags</span>
-              <span class="piece-meta-val">${piece.tags.join(', ')}</span>
-            </div>` : ''}
-        </div>
-
-        ${piece.description ? `
-          <p class="piece-description">${escHtml(piece.description)}</p>` : ''}
-
+        ${piece.date ? `<div class="piece-date reveal">${escHtml(piece.date)}</div>` : ''}
+        ${piece.description_html
+            ? `<div class="piece-description reveal">${piece.description_html}</div>`
+            : piece.description
+            ? `<div class="piece-description reveal">${escHtml(piece.description)}</div>`
+            : ''}
         ${tagsHtml}
-        ${commentsInlineHtml}
-
-        ${piece.da_url ? `
-          <a class="piece-da-link" href="${piece.da_url}" target="_blank" rel="noopener">
-            View on DeviantArt
-          </a>` : ''}
+        ${buildComments(piece.comments)}
+        ${piece.da_url
+          ? `<a class="piece-da-link reveal" href="${piece.da_url}" target="_blank" rel="noopener">View on DeviantArt</a>`
+          : ''}
       </div>
     </main>
-
     ${relatedHtml}
   `;
 
-  // Image load reveal
+  // Image load
   const img = document.getElementById('mainImg');
-  if (img.complete) {
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load', () => img.classList.add('loaded'));
-  }
+  if (img.complete) img.classList.add('loaded');
+  else img.addEventListener('load', () => img.classList.add('loaded'));
 
-  // Zoom / lightbox
-  const lightbox = document.getElementById('lightbox');
+  // Scroll reveal on right panel items
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.06}s`;
+    revealObserver.observe(el);
+  });
+
+  // Lightbox
+  const lightbox   = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   document.getElementById('zoomBtn').addEventListener('click', () => {
     lightboxImg.src = piece.image;
-    lightboxImg.alt = piece.title;
     lightbox.classList.add('open');
   });
-  document.getElementById('lightboxClose').addEventListener('click', () => {
-    lightbox.classList.remove('open');
-  });
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('open');
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') lightbox.classList.remove('open');
-  });
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
 }
 
-function navigateTo(id) {
-  window.location.href = `piece.html?id=${id}`;
-}
+function navigateTo(id) { window.location.href = `piece.html?id=${id}`; }
 
 function showNotFound(msg) {
   document.getElementById('pieceContent').innerHTML = `
     <div class="piece-not-found">
       <h1>Not Found</h1>
-      <p>${msg}</p>
+      <p style="color:var(--cream-dim)">${msg}</p>
       <a href="index.html">← Back to the Museum</a>
-    </div>
-  `;
+    </div>`;
 }
 
-function escHtml(str) {
-  if (!str) return '';
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function escHtml(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 init();
