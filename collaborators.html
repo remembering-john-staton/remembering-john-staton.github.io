@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>His Friends & Collaborators — The John Staton Museum</title>
+<meta name="description" content="The artists, colorists, writers and regulars who were part of John Staton's world on DeviantArt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #7c1f26;
+    --crimson-dark: #5a161b;
+    --cream: #f0e8da;
+    --cream-dim: rgba(240,232,218,0.6);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--crimson-dark);
+    color: var(--cream);
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  nav {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid rgba(240,232,218,0.06);
+  }
+  .nav-back {
+    font-family: 'Lora', serif;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,232,218,0.45); text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+  }
+  .nav-back::before { content: '←'; font-family: sans-serif; font-size: 14px; }
+  .nav-back:hover { color: var(--cream); }
+  .nav-title {
+    font-family: 'Lora', serif;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3);
+  }
+
+  .page-hero {
+    position: relative; z-index: 1;
+    padding: 80px 48px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .page-label {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 900; line-height: 1; text-transform: uppercase;
+    letter-spacing: -0.02em; color: var(--cream);
+    margin-bottom: 24px;
+  }
+  .page-divider {
+    width: 52px; height: 1px;
+    background: rgba(240,232,218,0.2); margin-bottom: 24px;
+  }
+  .page-intro {
+    font-size: 18px; line-height: 1.8;
+    color: rgba(240,232,218,0.65); max-width: 680px;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .collab-section {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+  .collab-section-label {
+    font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2);
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(240,232,218,0.07);
+    margin-bottom: 36px;
+  }
+
+  /* ── PERSON CARDS ── */
+  .collab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(240,232,218,0.06);
+    margin-bottom: 1px;
+  }
+  .collab-card {
+    background: var(--crimson-dark);
+    padding: 28px 28px 24px;
+    transition: background 0.2s;
+  }
+  .collab-card:hover { background: rgba(124,31,38,0.35); }
+
+  .collab-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .collab-handle {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3); margin-bottom: 14px;
+  }
+  .collab-role {
+    display: inline-block;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.5);
+    border: 1px solid rgba(240,232,218,0.15);
+    padding: 3px 9px; margin-bottom: 14px;
+  }
+  .collab-desc {
+    font-size: 15px; line-height: 1.72;
+    color: rgba(240,232,218,0.58);
+  }
+  .collab-da-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3); text-decoration: none;
+    border-bottom: 1px solid rgba(240,232,218,0.12);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .collab-da-link:hover { color: rgba(240,232,218,0.7); border-color: rgba(240,232,218,0.4); }
+
+  /* ── REGULARS — compact list ── */
+  .regulars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+    background: rgba(240,232,218,0.06);
+  }
+  .regular-item {
+    background: var(--crimson-dark);
+    padding: 18px 22px;
+    border: none;
+    transition: background 0.2s;
+  }
+  .regular-item:hover { background: rgba(124,31,38,0.25); }
+  .regular-name {
+    font-family: 'Lora', serif;
+    font-size: 14px; color: rgba(240,232,218,0.75);
+    margin-bottom: 4px;
+  }
+  .regular-count {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(240,232,218,0.28);
+  }
+
+  .collab-note {
+    font-size: 13px; line-height: 1.7;
+    color: rgba(240,232,218,0.3);
+    font-style: italic;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(240,232,218,0.06);
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    padding: 28px 48px;
+    border-top: 1px solid rgba(240,232,218,0.06);
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2); text-align: center;
+  }
+  footer a { color: rgba(240,232,218,0.35); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: rgba(240,232,218,0.7); }
+
+  @media (max-width: 768px) {
+    nav, .page-hero, .collab-section { padding-left: 24px; padding-right: 24px; }
+    .collab-grid, .regulars-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">Museum</a>
+  <div class="nav-title">The John Staton Museum</div>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label">The Archive</div>
+  <h1>His Friends &amp;<br>Collaborators</h1>
+  <div class="page-divider"></div>
+  <p class="page-intro">
+    The people who showed up for John's work — the artists he worked alongside, the colorists who brought pieces to life, and the regulars who were there across years of comment threads. Assembled from the archive itself.
+  </p>
+</div>
+
+<!-- ─── WORKING ARTISTS ─── -->
+<section class="collab-section">
+  <div class="collab-section-label">Artists &amp; Working Collaborators</div>
+  <div class="collab-grid">
+
+    <div class="collab-card">
+      <div class="collab-name">Adam Warren</div>
+      <div class="collab-handle">@AdamWarren99</div>
+      <div class="collab-role">Published Collaborator</div>
+      <p class="collab-desc">John contributed to Adam Warren's <em>Empowered Special #4: Animal Style</em> — the five Animal Style Designs pieces in this archive were produced for that book. Warren is one of the artists John cited most often as a direct influence, particularly for the Dirty Pair / Lovely Angels work.</p>
+      <a href="https://www.deviantart.com/adamwarren99" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Jeremy Whitley</div>
+      <div class="collab-handle">@Princeless</div>
+      <div class="collab-role">Published Collaborator</div>
+      <p class="collab-desc">John produced the exclusive variant cover for <em>Princeless: The Pirate Princess #1</em> for Big Planet Comics, shipping January 2015. He drew Adrienne Ashe with evident enthusiasm — "she is the star after all, the supporting cast has to wait their turn."</p>
+      <a href="https://www.deviantart.com/princeless" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Fred Perry</div>
+      <div class="collab-handle">@FredGDPerry</div>
+      <div class="collab-role">Fan Art Subject / Correspondent</div>
+      <p class="collab-desc">John drew Gold Digger fan art extensively — the Diggers sisters, Swim War, pool commissions — and corresponded with Perry in comments. Perry is also the creator of Tiffany and Charlotte, who John drew in a three-part sketch series.</p>
+      <a href="https://www.deviantart.com/fredgdperry" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Phil Moyer</div>
+      <div class="collab-handle">@PhilMoyer</div>
+      <div class="collab-role">Colorist / Friend</div>
+      <p class="collab-desc">John's longtime friend and frequent colorist. Phil colored Uzi Cat, Tachiku, Pool Girls, and others — John described it as a mutual gift exchange. "Normally, as he is also a Photoshop aficionado, Phil likes to color other artists' work." Phil made available several older commissions for John to post.</p>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Angry Viking Press</div>
+      <div class="collab-handle">@angry-viking-press</div>
+      <div class="collab-role">Publisher</div>
+      <p class="collab-desc">The indie studio behind <em>Evil Diva</em>, the comic about a demon girl who wanted to be an angel. John contributed guest art and drew the Snow Devil pencils as part of a project for them. He clearly had a warm spot for the series — he used their account as a stamp emoji.</p>
+      <a href="https://www.deviantart.com/angry-viking-press" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">ShoNuff44</div>
+      <div class="collab-handle">@shonuff44</div>
+      <div class="collab-role">Artist / Collaborator</div>
+      <p class="collab-desc">Named in 13 pieces as a collaborator or inspiration. John credited ShoNuff44 in the context of Weapon Designers and several joint creative discussions — someone whose work and opinion John valued and cited explicitly.</p>
+      <a href="https://www.deviantart.com/shonuff44" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Sykosan</div>
+      <div class="collab-handle">@sykosan</div>
+      <div class="collab-role">Artist / Regular</div>
+      <p class="collab-desc">Mentioned in 12 pieces — consistently part of John's circles on DeviantArt, someone he pointed people toward and who showed up across multiple comment threads with genuine engagement on the work.</p>
+      <a href="https://www.deviantart.com/sykosan" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+    <div class="collab-card">
+      <div class="collab-name">Bandeau</div>
+      <div class="collab-handle">@bandeau</div>
+      <div class="collab-role">Designer / Top Commenter</div>
+      <p class="collab-desc">The single most present person in John's archive — 185 comments across the gallery, plus named in 13 pieces as someone who directly influenced design decisions. John credited Bandeau with suggesting AJ's pants for the Maid and Machine piece: "the low rise shorts were suggested by @bandeau so I thought I'd try them for a spin."</p>
+      <a href="https://www.deviantart.com/bandeau" target="_blank" rel="noopener" class="collab-da-link">DeviantArt →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── THE REGULARS ─── -->
+<section class="collab-section">
+  <div class="collab-section-label">The Regulars — Loyal Commenters</div>
+  <div class="regulars-grid">
+
+    <div class="regular-item">
+      <div class="regular-name">zarsh009</div>
+      <div class="regular-count">144 comments · 27 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Night-Miner</div>
+      <div class="regular-count">143 comments · 14 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">TCPolecat7</div>
+      <div class="regular-count">129 comments · 17 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">HoshikoSoyokaze</div>
+      <div class="regular-count">121 comments · 8 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">InsolentWhelp</div>
+      <div class="regular-count">107 comments · 43 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">hwoarang1986</div>
+      <div class="regular-count">99 comments · 14 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Tzoli</div>
+      <div class="regular-count">97 comments · 7 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Mauser712</div>
+      <div class="regular-count">78 comments · 18 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">phantomdotexe</div>
+      <div class="regular-count">78 comments · 18 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Zeonista</div>
+      <div class="regular-count">61 comments · 14 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">PhantomReyne</div>
+      <div class="regular-count">59 comments · 2 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Boobella</div>
+      <div class="regular-count">57 comments</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">MetalFetish</div>
+      <div class="regular-count">56 comments</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">ScopeCreepStudio</div>
+      <div class="regular-count">56 comments · 1 piece</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">SuichiTanaka</div>
+      <div class="regular-count">53 comments</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">JasonCanty</div>
+      <div class="regular-count">44 comments · 9 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">majin88</div>
+      <div class="regular-count">47 comments</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Caraig</div>
+      <div class="regular-count">45 comments</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">ricardoredway</div>
+      <div class="regular-count">24 comments · 9 pieces</div>
+    </div>
+    <div class="regular-item">
+      <div class="regular-name">Gundamfanatic123</div>
+      <div class="regular-count">24 comments</div>
+    </div>
+
+  </div>
+
+  <p class="collab-note">
+    Comment counts drawn directly from the DeviantArt archive. InsolentWhelp was present across 43 separate pieces — more than any other commenter. ScopeCreepStudio left 56 comments on a single piece (Red Prowling Devil Girls) in what appears to have been an extended collaborative discussion about fighter jet references. These numbers only reflect what was captured in the archive export; the actual history was deeper.
+  </p>
+</section>
+
+<footer>
+  <a href="index.html">← Back to the Museum</a>
+</footer>
+
+</body>
+</html>
