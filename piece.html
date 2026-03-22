@@ -249,8 +249,50 @@
     font-size: 16px; line-height: 1.72;
     color: rgba(240,232,218,0.52);
   }
+  /* PLZ stamp emoji - larger to simulate the old stamp size */
+  .plz-em {
+    font-size: 1.35em;
+    font-style: normal;
+    vertical-align: -0.1em;
+    display: inline-block;
+  }
+  /* DA user @mention */
+  .da-mention {
+    font-size: 12px;
+    color: rgba(240,232,218,0.3);
+    letter-spacing: 0.04em;
+    font-style: normal;
+  }
+
+  /* John's replies - 4 visibility improvements */
+  /* 1. Left crimson border */
+  .comment-row.is-artist {
+    border-left: 2px solid rgba(124,31,38,0.6);
+    padding-left: 12px;
+    margin-left: -14px;
+  }
+  /* Already handled for depth=1 - don't double-indent */
+  .comment-row.is-artist[data-depth="1"] {
+    margin-left: -14px;
+    border-left-color: var(--crimson);
+  }
+  /* 2. Username full cream */
+  .comment-username.is-artist {
+    color: var(--cream);
+    font-weight: 600;
+  }
+  /* 3. Subtle background tint */
+  .comment-row.is-artist {
+    background: rgba(124,31,38,0.07);
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 8px;
+  }
+  /* 4. Slightly larger text */
   .comment-row.is-artist .comment-body-text {
-    color: rgba(240,232,218,0.78);
+    color: rgba(240,232,218,0.82);
+    font-size: 17px;
   }
   .comments-show-more {
     margin-top: 14px;
@@ -449,7 +491,7 @@ function renderPiece(piece, allPieces) {
           <span class="comment-username${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' <span class="comment-artist-star">★</span>' : ''}</span>
           <span class="comment-date-small">${escHtml(c.date)}</span>
         </div>
-        <div class="comment-body-text">${escHtml(c.text)}</div>
+        <div class="comment-body-text">${c.text}</div>
       </div>`;
     }).join('');
     const more = comments.length > PREVIEW
