@@ -748,25 +748,6 @@
   // Run on load and on scroll
   setTimeout(revealVisibleSections, 100);
   window.addEventListener('scroll', revealVisibleSections, { passive: true });
-
-  // ─── TOPICS CARD REVEAL (on section entrance) ───
-  const topicsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const section = entry.target;
-      section.querySelector('#themesDash')?.classList.add('visible');
-      section.querySelector('#themesLabel')?.classList.add('visible');
-      section.querySelector('#themesSeeAll')?.classList.add('visible');
-      section.querySelector('#themesDivider')?.classList.add('visible');
-      section.querySelectorAll('.theme-card').forEach((card, i) => {
-        setTimeout(() => card.classList.add('visible'), 120 + i * 55);
-      });
-      topicsObserver.unobserve(section);
-    });
-  }, { threshold: 0.08 });
-
-  const themesEl = document.getElementById('themes');
-  if (themesEl) topicsObserver.observe(themesEl);
   const panel      = document.getElementById('topicPanel');
   const panelImg   = document.getElementById('topicPanelImg');
   const panelTitle = document.getElementById('topicPanelTitle');
@@ -1122,7 +1103,7 @@
     <div class="footer-col">
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
-        <li><a href="#themes">Topics</a></li>
+        <li><a href="#themes">Galleries</a></li>
         <li><a href="#about">About John</a></li>
         <li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
       </ul>
@@ -1342,7 +1323,7 @@
     <div class="sidebar-section-label">Navigate</div>
     <ul class="sidebar-links">
       <li><a href="#" data-section="top">Home</a></li>
-      <li><a href="#themes" data-section="themes">Topics</a></li>
+      <li><a href="#themes" data-section="themes">Galleries</a></li>
       <li><a href="#about" data-section="about">About John</a></li>
     </ul>
 
@@ -1394,18 +1375,41 @@
                 <img src="${t.image}" alt="${t.title}" loading="lazy" />
               </div>
               <div class="theme-card-meta">
-                <span class="theme-card-type">${t.category || 'Topic'}</span>
+                <span class="theme-card-type">${t.category || 'Gallery'}</span>
                 <span class="theme-card-stats">${t.pieces} pieces</span>
               </div>
             </div>
           </div>
         </div>
       `).join('');
-      // re-attach card click listeners after render
+
       attachTopicCardListeners();
-      // update count
+
       const countEl = document.querySelector('.themes-count');
       if (countEl) countEl.textContent = '(' + topics.length + ')';
+
+      // Reveal cards — fire immediately if section already visible, else use observer
+      const section = document.getElementById('themes');
+      const revealCards = () => {
+        section.querySelector('#themesDash')?.classList.add('visible');
+        section.querySelector('#themesLabel')?.classList.add('visible');
+        section.querySelector('#themesSeeAll')?.classList.add('visible');
+        section.querySelector('#themesDivider')?.classList.add('visible');
+        section.querySelectorAll('.theme-card').forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), 80 + i * 45);
+        });
+      };
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          revealCards();
+        } else {
+          const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { revealCards(); cardObserver.disconnect(); } });
+          }, { threshold: 0 });
+          cardObserver.observe(section);
+        }
+      }
     } catch(e) {
       console.error('Could not load topics.json', e);
     }
