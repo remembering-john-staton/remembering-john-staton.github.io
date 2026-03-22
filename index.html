@@ -417,7 +417,7 @@
   }
   .themes-see-all.visible { opacity: 1; transform: translateX(0); }
   .themes-see-all:hover { color: var(--cream); }
-  .themes-see-all::after { content: '→'; font-size: 15px; }
+  .themes-see-all::after { content: ''; }
 
   /* Divider line that expands from center */
   .themes-divider-wrap {
@@ -436,7 +436,7 @@
   /* Cards grid — two rows */
   .themes-track {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto auto;
     gap: 0;
     padding: 0 48px;
@@ -444,7 +444,7 @@
 
   /* Individual card */
   .theme-card {
-    min-height: 320px;
+    min-height: 400px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -454,8 +454,8 @@
     border-right: 1px solid rgba(240,232,218,0.08);
     border-bottom: 1px solid rgba(240,232,218,0.08);
   }
-  .theme-card:nth-child(6n) { border-right: none; }
-  .theme-card:nth-last-child(-n+6) { border-bottom: none; }
+  .theme-card:nth-child(4n) { border-right: none; }
+  .theme-card:nth-last-child(-n+4) { border-bottom: none; }
   .theme-card.visible { opacity: 1; transform: translateY(0); }
 
   /* Stagger delays */
@@ -638,10 +638,10 @@
     <div class="themes-header-left">
       <div class="themes-dash" id="themesDash"></div>
       <span class="themes-label" id="themesLabel">
-        Topics <span class="themes-count">(8)</span>
+        Galleries <span class="themes-count">(8)</span>
       </span>
     </div>
-    <a class="themes-see-all" id="themesSeeAll">See all →</a>
+    <a class="themes-see-all" id="themesSeeAll">See all</a>
   </div>
 
   <div class="themes-divider-wrap">
@@ -737,7 +737,6 @@
       <span class="interstitial-quote-line">When my friends ask me</span>
       <span class="interstitial-quote-line">what character I'd most like</span>
       <span class="interstitial-quote-line">to draw a comic of,</span>
-      <span class="interstitial-quote-line">I usually lie.</span>
     </div>
     <div class="interstitial-quote-attr">— John Staton</div>
   </div>
@@ -1125,25 +1124,8 @@
         <p>John Staton was a Maryland-based artist, cartoonist, and relentless worldbuilder. He published on DeviantArt across two decades, building a gallery that is part sketchbook, part creative journal, and part parallel universe. His real answer to the question above was Skippy Von Richthofen — a Gold Digger character he loved with a specificity that tells you everything about the kind of fan he was.</p>
         <p>His original creations — <a href="gallery.html?topic=dmv" class="bio-topic-link">DMV</a>, <a href="gallery.html?topic=streamers" class="bio-topic-link">The Streamers</a>, <a href="gallery.html?topic=neboox" class="bio-topic-link">N.E. Boox</a>, <a href="gallery.html?topic=high-school-romance" class="bio-topic-link">The High School Romance</a> — share a sensibility: action-figure absurdism grounded in genuine craft. AJ, his combat-trained meter maid, was developed for years toward a full comic he planned to have ready for Otakon. He did guest work for Adam Warren and Jeremy Whitley, contributed to Angry Viking Press, and drew 31 Star Trek ships in 31 October days because that is the kind of person he was.</p>
         <p>Every piece in this archive includes the original comment threads from DeviantArt — including every reply John left. If you want to know what he was actually like, read those. He explained the structural parallels between Neon Genesis Evangelion and The Prisoner. He argued about Star Trek canon with strangers for years. He thanked everyone who stopped by, by name, every time.</p>
-        <div class="about-stats-inline">
-          <div class="about-stat-inline">
-            <div class="about-stat-inline-num">194</div>
-            <div class="about-stat-esenting a branch of the U.S. armed forces. He contributed guest art to Angry Viking Press's Evil Diva and Adam Warren's Empowered Special #4: Animal Style, and produced an exclusive variant cover for Jeremy Whitley's Princeless: The Pirate Princess #1 for Big Planet Comics.</p>
+        <div class="about-stat-esenting a branch of the U.S. armed forces. He contributed guest art to Angry Viking Press's Evil Diva and Adam Warren's Empowered Special #4: Animal Style, and produced an exclusive variant cover for Jeremy Whitley's Princeless: The Pirate Princess #1 for Big Planet Comics.</p>
         <p>His Inktober 2016 run — 31 consecutive chibi Star Trek ships — remains one of the most committed fan art series in the gallery. His opinions on Enterprise were strongly held and entirely correct.</p>
-      </div>
-      <div class="about-stats">
-        <div>
-          <div class="about-stat-num">194</div>
-          <div class="about-stat-label">Archived Works</div>
-        </div>
-        <div>
-          <div class="about-stat-num">20+</div>
-          <div class="about-stat-label">Years Active</div>
-        </div>
-        <div>
-          <div class="about-stat-num">8</div>
-          <div class="about-stat-label">Series &amp; Topics</div>
-        </div>
       </div>
     </div>
   </div>
@@ -1288,6 +1270,14 @@
       <div class="footer-col-title">Archive</div>
       <ul class="footer-links">
         <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Remembering John</div>
+      <ul class="footer-links">
+        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
+        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
       </ul>
     </div>
   </div>
