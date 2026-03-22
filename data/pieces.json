@@ -12605,12 +12605,12 @@
   },
   {
     "id": "108400988",
-    "title": "Uzi Cat Colored",
+    "title": "Uzi Cat",
     "date": "January 4, 2009 at 12:47 PM",
     "image": "img/pieces/uzi-cat-colored-JohnStaton.jpg",
     "da_url": "https://www.deviantart.com/johnstaton/art/Uzi-Cat-Colored-108400988",
-    "description_html": "<p>Colors by <strong> Phil Moyer.</strong> [link] <span class=\"em\">😉</span></p>",
-    "description": "Colors by  Phil Moyer. [link] 😉",
+    "description_html": "<p>Another old <strong>N.E. Boox</strong> pin-up featuring <strong>Cassandra</strong> sportin' a big ol' uzi. <span class=\"em\">😜</span></p><p>I think I'v changed the ear designs on her and <strong>Molly</strong> slightly since I drew this.</p>",
+    "description": "Another old N.E. Boox pin-up featuring Cassandra sportin' a big ol' uzi. 😜I think I'v changed the ear designs on her and Molly slightly since I drew this.",
     "tags": [],
     "artist_notes": [
       "Yes, but not in the way you might think.The cat works for the mouse. 😉 [link]",
@@ -12661,20 +12661,20 @@
     ],
     "versions": [
       {
-        "id": "108400884",
-        "label": "Line Art",
-        "credit": null
-      },
-      {
         "id": "108400988",
         "label": "Colored",
         "credit": "Colors by Phil Moyer"
+      },
+      {
+        "id": "108400884",
+        "label": "Line Art",
+        "credit": null
       }
     ]
   },
   {
     "id": "108400884",
-    "title": "Uzi Cat",
+    "title": "Uzi Cat (Line Art)",
     "date": "January 4, 2009 at 12:46 PM",
     "image": "img/pieces/uzi-cat-JohnStaton.jpg",
     "da_url": "https://www.deviantart.com/johnstaton/art/Uzi-Cat-108400884",
@@ -12694,14 +12694,14 @@
     ],
     "versions": [
       {
-        "id": "108400884",
-        "label": "Line Art",
-        "credit": null
-      },
-      {
         "id": "108400988",
         "label": "Colored",
         "credit": "Colors by Phil Moyer"
+      },
+      {
+        "id": "108400884",
+        "label": "Line Art",
+        "credit": null
       }
     ]
   },
