@@ -54,14 +54,42 @@
   }
   .nav-back:hover { color: var(--cream); }
   .nav-back::before { content: '←'; font-size: 16px; font-family: sans-serif; }
-  .nav-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cream-dim);
-  }
   .nav-spacer { width: 80px; }
+
+  /* Breadcrumbs */
+  .breadcrumbs {
+    position: fixed;
+    top: 58px; left: 0; right: 0;
+    z-index: 99;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.28);
+    pointer-events: none;
+  }
+  .breadcrumbs a {
+    color: rgba(240,232,218,0.38);
+    text-decoration: none;
+    pointer-events: all;
+    transition: color 0.2s;
+  }
+  .breadcrumbs a:hover { color: rgba(240,232,218,0.75); }
+  .breadcrumb-sep {
+    margin: 0 10px;
+    opacity: 0.4;
+  }
+  .breadcrumb-current {
+    color: rgba(240,232,218,0.55);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 340px;
+  }
 
   /* ─── HERO ─── */
   .piece-hero {
@@ -110,7 +138,7 @@
   .piece-info-panel {
     display: flex;
     flex-direction: column;
-    padding: 100px 56px 60px;
+    padding: 88px 56px 60px;
     overflow-y: auto;
     background: var(--crimson-dark);
     border-left: 1px solid rgba(240,232,218,0.06);
@@ -382,9 +410,14 @@
 
 <nav>
   <a href="index.html" class="nav-back">Museum</a>
-  <div class="nav-title">The John Staton Museum</div>
   <div class="nav-spacer"></div>
 </nav>
+
+<div class="breadcrumbs" id="breadcrumbs">
+  <a href="index.html">Museum</a>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-current" id="breadcrumbTitle">—</span>
+</div>
 
 <div id="pieceContent"></div>
 
@@ -415,6 +448,8 @@ async function init() {
   if (!piece) { showNotFound(`No piece found with id "${pieceId}".`); return; }
 
   document.title = `${piece.title} — The John Staton Museum`;
+  const bc = document.getElementById('breadcrumbTitle');
+  if (bc) bc.textContent = piece.title;
   renderPiece(piece, pieces);
 }
 
