@@ -548,8 +548,6 @@
   <div class="vert-text">Fan Archive · Est. 2025</div>
 
 </section>
-
-<!-- TOPICS SECTION -->
 <section class="themes-section" id="themes">
 
   <div class="themes-header">
@@ -590,6 +588,77 @@
   </div>
 
 </section>
+<!-- SECOND QUOTE -->
+<style>
+  .interstitial-quote {
+    background: var(--crimson-dark);
+    padding: 100px 48px;
+    position: relative;
+    z-index: 3;
+    transform: translateY(60px);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
+    border-top: 1px solid rgba(240,232,218,0.06);
+    overflow: hidden;
+  }
+  .interstitial-quote.section-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .interstitial-quote-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .interstitial-quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+  }
+  .interstitial-quote-line {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .interstitial-quote-line:nth-child(2) { transition-delay: 0.07s; }
+  .interstitial-quote-line:nth-child(3) { transition-delay: 0.14s; }
+  .interstitial-quote.section-visible .interstitial-quote-line {
+    transform: translateY(0);
+  }
+  .interstitial-quote-attr {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.3);
+    opacity: 0;
+    transition: opacity 0.6s ease 0.4s;
+  }
+  .interstitial-quote.section-visible .interstitial-quote-attr {
+    opacity: 1;
+  }
+  @media (max-width: 600px) {
+    .interstitial-quote { padding: 72px 28px; }
+  }
+</style>
+
+<section class="interstitial-quote" id="interstitialQuote">
+  <div class="interstitial-quote-inner">
+    <div class="interstitial-quote-text">
+      <span class="interstitial-quote-line">Imagination is a toy</span>
+      <span class="interstitial-quote-line">that never runs out</span>
+      <span class="interstitial-quote-line">of batteries.</span>
+    </div>
+    <div class="interstitial-quote-attr">— John Staton</div>
+  </div>
+</section>
+
+
 
 <style>
   /* ─── TOPIC EXPAND PANEL ─── */
@@ -732,12 +801,12 @@
     });
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.themes-section, .quote-section, .site-footer')
+  document.querySelectorAll('.themes-section, .interstitial-quote, .quote-section, .site-footer')
     .forEach(el => sectionRevealObserver.observe(el));
 
   // Fallback: any section that's already in viewport on load gets revealed
   function revealVisibleSections() {
-    document.querySelectorAll('.themes-section, .quote-section, .site-footer')
+    document.querySelectorAll('.themes-section, .interstitial-quote, .quote-section, .site-footer')
       .forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight + 100) {
