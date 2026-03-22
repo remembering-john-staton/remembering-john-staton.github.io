@@ -21,34 +21,43 @@
   .nav-back:hover{color:var(--cream)}
   .nav-title{font-family:'Lora',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.3)}
 
-  main{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:80px 48px 120px}
+  main{position:relative;z-index:1;max-width:740px;margin:0 auto;padding:80px 48px 120px}
 
-  .page-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:16px}
   h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:900;
-    line-height:1;text-transform:uppercase;letter-spacing:-0.02em;color:var(--cream);margin-bottom:20px}
-  .page-divider{width:52px;height:1px;background:rgba(240,232,218,0.2);margin-bottom:48px}
+    line-height:1;text-transform:uppercase;letter-spacing:-0.02em;color:var(--cream);margin-bottom:52px}
 
-  .about-section{margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid rgba(240,232,218,0.07)}
-  .about-section:last-child{border-bottom:none;margin-bottom:0}
-  .about-section-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;
-    color:rgba(240,232,218,0.22);margin-bottom:20px}
-  .about-body p{font-size:18px;line-height:1.85;color:rgba(240,232,218,0.72);margin-bottom:20px}
-  .about-body p:last-child{margin-bottom:0}
-  .about-body a{color:#e8c87a;text-decoration:none;border-bottom:1px solid rgba(232,200,122,0.3);
+  .about-section{margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
+  .about-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+  h2{
+    font-family:'Playfair Display',serif;
+    font-size:13px;font-weight:400;font-style:italic;
+    letter-spacing:0.12em;
+    color:rgba(240,232,218,0.35);
+    text-transform:none;
+    margin-bottom:24px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(240,232,218,0.07);
+  }
+
+  p{font-size:18px;line-height:1.85;color:rgba(240,232,218,0.72);margin-bottom:22px}
+  p:last-child{margin-bottom:0}
+  p em{font-style:italic}
+
+  a{color:#e8c87a;text-decoration:none;border-bottom:1px solid rgba(232,200,122,0.3);
     transition:color 0.2s,border-color 0.2s}
-  .about-body a:hover{color:#f5dfa0;border-bottom-color:rgba(245,223,160,0.7)}
+  a:hover{color:#f5dfa0;border-bottom-color:rgba(245,223,160,0.7)}
 
-  .epitaph-block{margin-top:28px;padding:28px 32px;
-    border-left:2px solid rgba(240,232,218,0.2);
-    background:rgba(240,232,218,0.03)}
-  .epitaph-block p{font-size:17px;line-height:1.85;color:rgba(240,232,218,0.65);
-    font-style:italic;margin-bottom:12px}
-  .epitaph-block p:last-child{margin-bottom:0}
-  .epitaph-block p strong{font-style:normal;color:rgba(240,232,218,0.85);font-weight:600}
+  .source-note{
+    font-size:13px;color:rgba(240,232,218,0.35);
+    font-style:italic;
+    margin-top:-14px;margin-bottom:22px;
+    line-height:1.6;
+  }
 
   footer{position:relative;z-index:1;padding:28px 48px;border-top:1px solid rgba(240,232,218,0.06);
     font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,232,218,0.2);text-align:center}
-  footer a{color:rgba(240,232,218,0.35);text-decoration:none;transition:color 0.2s}
+  footer a{color:rgba(240,232,218,0.35);text-decoration:none;border-bottom:none;transition:color 0.2s}
   footer a:hover{color:rgba(240,232,218,0.7)}
   @media(max-width:600px){nav,main{padding-left:24px;padding-right:24px}}
 </style>
@@ -61,43 +70,40 @@
 </nav>
 
 <main>
-  <div class="page-label">The Archive</div>
   <h1>About</h1>
-  <div class="page-divider"></div>
 
-  <!-- JOHN -->
   <div class="about-section">
-    <div class="about-section-label">John Staton</div>
-    <div class="about-body">
-      <p>John Staton was a Maryland artist, cartoonist, and relentless worldbuilder. He attended the University of Maryland, where he drew a comic strip for <em>The Diamondback</em>. He worked for years in the Maryland comics retail community — starting at Closet of Comics, which became Liberty Books &amp; Comics, then Big Planet Comics, then Third Eye Comics — a continuous thread across decades, ending at Third Eye's College Park location. He was also, for a long time, an assistant to <a href="https://www.markwheatley.com" target="_blank" rel="noopener">Mark Wheatley</a> at Insight Studios, where they spent "endless hours together hitting deadlines and catching naps on the floor."</p>
-      <p>His original creations — DMV, The Streamers, N.E. Boox, The High School Romance, Daniel Dukke &amp; Ferdinand Fox — share a sensibility: action-figure absurdism grounded in genuine craft. His combat-trained meter maid AJ was in development for years toward a comic he planned to debut at Otakon. Adam Warren wrote <em>Empowered Special #4: Animal Style</em> specifically for him, having "admired from afar" his mecha design skills — John delivered 24 color pages plus at least 40 design sheets. Warren called it "above and beyond the call of comics duty." He produced an exclusive variant cover for Jeremy Whitley's <em>Princeless: The Pirate Princess #1</em> for Big Planet Comics. He drew 31 Star Trek ships in 31 consecutive October days because that is who he was.</p>
-      <p>He produced some of the finest anime-influenced Western character art around — a rare space where action-manga aesthetics translated into characters and worlds entirely his own. The sensibility was Japanese, the subjects were American, and the result was something neither could have made alone.</p>
-      <p>Big Planet Comics remembered him as "an institution in Maryland." Mark Wheatley wrote: "He was brilliant, a talented comic artist, designer, and excellent colorist. He could have been a star in his own right." Third Eye Comics wrote: "The best thing about us opening our College Park location was getting to meet and work with John, who embodied the spirit of Third Eye from day one."</p>
-      <p>John Staton passed away in January 2026. He was a good friend. He is missed.</p>
-    </div>
+    <h2>John Staton</h2>
+
+    <p>John Staton was a Maryland artist, cartoonist, and relentless worldbuilder. He attended the University of Maryland, where he drew a comic strip for the college paper, <em>The Diamondback</em> — an early version of Daniel Dukke and Ferdinand Fox, his first original characters, which he would keep developing for years.</p>
+
+    <p>There were so many ideas. DMV, The Streamers, N.E. Boox, the FMP, Daniel Dukke &amp; Ferdinand Fox — they all share a sensibility: action-figure absurdism grounded in genuine craft. John could be a perfectionist. Everything was thought out, everything was detailed, with a depth that would give Masamune Shirow or Mike Pondsmith a run for their money. I think he would have appreciated that comparison.</p>
+
+    <p>In a professional capacity, John was a longtime assistant to <a href="https://www.markwheatley.com" target="_blank" rel="noopener">Mark Wheatley</a> at Insight Studios, where they spent <a href="https://www.facebook.com/WheatleyMarks/posts/pfbid0DrcsmL9MoPaxVMRZYbzYFfmpYZEaJCvNzXTYHrkV7shvmdbSzaCkoXo4FPUid9l" target="_blank" rel="noopener">"endless hours together hitting deadlines and catching naps on the floor."</a> Adam Warren wrote <em>Empowered Special #4: Animal Style</em> specifically for him, having admired his mecha skills from afar. John delivered 24 color pages plus at least 40 design sheets. Warren called it above and beyond the call of comics duty.</p>
+
+    <p>He produced some of the finest anime-influenced Western character art around — drawing in an era when there were few Westerners who could pull off that look at all, and nobody who could quite match him.</p>
+
+    <p>He worked for years in the Maryland comics retail community, a continuous thread across decades: starting at Closet of Comics, which became Liberty Books &amp; Comics, then <a href="https://www.facebook.com/bigplanetcomics/posts/pfbid02rkvCVzYLZEbHBw2hNQ4SSzf3Frv3jtJGsAVnpAXBY3B1bN4o8Uf6SkVPiv2h4LmHl" target="_blank" rel="noopener">Big Planet Comics</a>, then <a href="https://www.facebook.com/thirdeyecomics/posts/pfbid034ZSuMYroQzwSKRohcGsuN9XzzSnyT8cv36dAzbGUXEREpbo1qf3ThZkiAzG9m2JXl" target="_blank" rel="noopener">Third Eye Comics</a>. Big Planet called him an institution in Maryland. He is remembered fondly. Third Eye said that the best thing about opening their College Park location was getting to meet and work with him.</p>
+
+    <p>John Staton passed away in January 2026. He was a good friend. He is missed.</p>
   </div>
 
-  <!-- THIS SITE -->
   <div class="about-section">
-    <div class="about-section-label">This Site</div>
-    <div class="about-body">
-      <p>The John Staton Museum was built as an act of preservation and tribute, and as an open invitation for creative continuation of the worlds he left behind. It was inspired in part by <a href="https://charmer.studio" target="_blank" rel="noopener">Charmer Studio's proposal for the Pushkin Museum</a> — the idea that a digital archive can be more than a backup, that it can be a place worth visiting, that the work deserves presentation that matches its quality.</p>
-      <p>The archive covers all 194 pieces John posted publicly on DeviantArt, with the original comment threads preserved including every reply he left — which is where his voice comes through most clearly. Read those if you want to know who he was.</p>
-      <p>Every effort was made to represent his work accurately and with respect. If you have a correction, a memory, a piece of his work that belongs here, or just something to say — <a href="contact.html">the contact page is open</a>.</p>
-    </div>
+    <h2>Use of this work</h2>
+
+    <p>The characters and creative materials in this archive were created by John Staton, who passed away in January 2026. As far as I know, this material is classified as orphan works — no active rights holder has been identified.</p>
+
+    <p>There is no license on this archive. Use the work. Continue the characters. Make something. That seems like what he would have wanted.</p>
   </div>
 
-  <!-- LEGAL / ORPHAN WORKS -->
   <div class="about-section">
-    <div class="about-section-label">Use of This Work</div>
-    <div class="about-body">
-      <p>The characters and creative materials in this archive were created by John Staton, who passed away in January 2026. As far as is known, this material is classified as orphan works — no active rights holder has been identified.</p>
-      <p>This archive is published with no license restrictions. Use the work. Continue the characters. Make something. That seems like what he would have wanted.</p>
-      <div class="epitaph-block">
-        <p>He was a good friend. He made me laugh, he made me think, he argued with conviction about things that mattered to him — fighter jets, Star Trek, the exact reason the F-14 was the sexiest plane ever built. The characters he created deserved to live in the world.</p>
-        <p><strong><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">A celebration of his life →</a></strong></p>
-      </div>
-    </div>
+    <h2>This site</h2>
+
+    <p>The John Staton Museum was built as an act of preservation and tribute, and as an open invitation for creative continuation of the worlds he left behind. It was inspired in part by <a href="https://charmer.studio" target="_blank" rel="noopener">Charmer Studio's proposal for the Pushkin Museum</a> — the idea that a digital archive can be more than a backup. That the work deserves a place worth visiting.</p>
+
+    <p>The archive covers all 194 pieces John posted publicly on DeviantArt, with the original comment threads preserved — including every reply he left. That's where his voice comes through most clearly. Read those if you want to know who he was.</p>
+
+    <p>Every effort was made to represent his work accurately and with respect. If you have a correction, a memory, another piece of his work that belongs here, or just something to say — <a href="contact.html">the contact page is open</a>.</p>
   </div>
 
 </main>
