@@ -1,78 +1,49 @@
-# John Staton Fan Archive
+# The John Staton Museum
 
-A fan-curated archive dedicated to the art, characters, and world of John Staton.  
-Built as a static site — no backend, no build step, deploys directly to GitHub Pages.
+A fan archive dedicated to the art, characters, and worlds of John Staton (1970s–2026). Maryland-based artist, cartoonist, worldbuilder. DeviantArt presence spanning two decades.
 
----
-
-## 🗂 File Structure
-
-```
-john-staton-fanpage/
-│
-├── index.html          ← Main landing page (hero, topics, characters, quote, footer)
-├── gallery.html        ← All 200 art pieces (coming soon)
-├── piece.html          ← Individual piece template, loads via ?id=piece-001
-├── theme.html          ← Individual topic page, loads via ?id=war
-│
-├── data/
-│   ├── posts.json      ← Featured posts shown on the homepage
-│   ├── topics.json     ← All topics/themes
-│   ├── characters.json ← All characters
-│   └── pieces.json     ← All 200 art pieces (add yours here)
-│
-└── img/
-    └── pieces/         ← Drop your 200 images here
-        ├── piece-001.jpg
-        ├── piece-002.jpg
-        └── ...
-```
+**Live site:** https://remembering-john-staton.github.io
 
 ---
 
-## 🚀 Deploying to GitHub Pages
+## What's here
 
-1. Create a new GitHub repo (e.g. `john-staton`)
-2. Upload all files keeping the folder structure intact
-3. Go to **Settings → Pages**
-4. Set source to **Deploy from a branch → main → / (root)**
-5. Hit Save — your site will be live at `https://yourusername.github.io/john-staton/`
-
----
-
-## ✏️ Adding a New Art Piece
-
-Open `data/pieces.json` and add an entry:
-
-```json
-{
-  "id": "piece-004",
-  "title": "Your Title Here",
-  "image": "img/pieces/piece-004.jpg",
-  "year": "2022",
-  "themes": ["war", "fate"],
-  "characters": ["elara-voss"],
-  "description": "A description of the piece.",
-  "statonNotes": "John Staton's own commentary if available."
-}
-```
-
-Then drop the image into `img/pieces/` with the matching filename. That's it.
+- **194 pieces** from his DeviantArt gallery, with original descriptions and comment threads preserved
+- **Gallery sections** for each of his original IP projects (DMV, The Streamers, N.E. Boox, The High School Romance, Daniel Dukke & Ferdinand Fox) and fan art categories
+- **Individual piece pages** with his full artist descriptions, formatted text, emoji/emoticon preservation, and threaded comments
+- **Collaborators page** profiling the artists he worked with and the regulars who were part of his community
+- **Celebration of life:** https://rememberingjohn.info/
 
 ---
 
-## ✏️ Adding a New Character
+## Using this work
 
-Open `data/characters.json` and add an entry following the same pattern as existing characters.
+John passed away in January 2026. His material is believed to be orphan works with no active rights holder.
 
----
+**There is no license on this archive.** Use the work. Continue the characters. Make something.
 
-## 🎨 Customisation
-
-- **Colors** — all defined as CSS variables at the top of `index.html` under `:root`
-- **Fonts** — Playfair Display + Cormorant Garamond via Google Fonts
-- **Quote** — edit the `.quote-line` spans in `index.html`
+If you fork or build on this, no credit required, no restrictions. The repo is public for exactly that reason.
 
 ---
 
-*Fan archive. Unofficial. All rights belong to their respective owners.*
+## Tech
+
+Static site on GitHub Pages. No framework, no build step. Plain HTML/CSS/JS.
+
+- `index.html` — homepage with hero, gallery grid, about section
+- `piece.html` — individual piece page (loads from `data/pieces.json` via `?id=`)
+- `collaborators.html` — friends and collaborators page
+- `about.html` — about the site and the work
+- `contact.html` — contact form (Google Form embed slot)
+- `data/pieces.json` — all 194 pieces with descriptions, comments, versions, topics
+- `data/topics.json` — gallery/topic definitions
+- `img/pieces/` — 216 images, all named `slug-JohnStaton.jpg/png`
+
+The pieces.json was generated from a DeviantArt archive HTML export. The extraction script is not included in this repo but can be reconstructed from the format.
+
+---
+
+## Contributing
+
+Pull requests welcome — corrections, missing pieces, better descriptions, additional context about characters or projects. Open an issue or just PR.
+
