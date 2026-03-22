@@ -164,7 +164,7 @@
   /* Date — prominent */
   .piece-date {
     font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,232,218,0.32); margin-bottom: 28px;
+    color: rgba(240,232,218,0.5); margin-bottom: 28px;
   }
 
   /* Description — formatted HTML */
@@ -176,7 +176,7 @@
   .piece-description p { margin-bottom: 1em; }
   .piece-description p:last-child { margin-bottom: 0; }
   .piece-description strong { color: var(--cream); font-weight: 600; }
-  .piece-description em { font-style: italic; color: rgba(240,232,218,0.65); }
+  .piece-description em { font-style: italic; color: rgba(240,232,218,0.72); }
 
 
   /* Emoji upright inside em/strong */
@@ -184,11 +184,11 @@
   .plz-em { font-style: normal; font-weight: normal; }
 
   /* Footnotes */
-  .piece-description sup { font-size: 11px; vertical-align: super; color: rgba(240,232,218,0.5); }
+  .piece-description sup { font-size: 11px; vertical-align: super; color: rgba(240,232,218,0.6); }
   .piece-footnotes {
     margin-top: 16px; padding-top: 14px;
     border-top: 1px solid rgba(240,232,218,0.08);
-    font-size: 13px; line-height: 1.65; color: rgba(240,232,218,0.45);
+    font-size: 13px; line-height: 1.65; color: rgba(240,232,218,0.6);
     font-style: italic;
   }
   /* Tags */
@@ -197,16 +197,16 @@
   }
   .piece-tag {
     font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,232,218,0.3); border: 1px solid rgba(240,232,218,0.1);
+    color: rgba(240,232,218,0.55); border: 1px solid rgba(240,232,218,0.1);
     padding: 4px 10px; border-radius: 2px;
   }
 
   /* Comment archive */
   .piece-comments-inline { margin-bottom: 28px; }
   .piece-comments-label {
-    font-family: 'Lora', serif;
-    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(240,232,218,0.25); margin-bottom: 20px;
+    font-family: var(--font-sans, -apple-system, system-ui, sans-serif);
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3); margin-bottom: 20px;
     padding-bottom: 12px; border-bottom: 1px solid rgba(240,232,218,0.08);
   }
   .comment-row {
@@ -217,15 +217,15 @@
   .comment-row:last-child { border-bottom: none; }
   /* Reply indentation — left border thread line */
   .comment-row[data-depth="1"] {
-    padding-left: 18px;
-    border-left: 1px solid rgba(124,31,38,0.3);
-    margin-left: 10px;
+    padding-left: 16px;
+    border-left: 1px solid rgba(124,31,38,0.35);
+    margin-left: 12px;
     background: transparent;
   }
   .comment-row[data-depth="2"] {
-    padding-left: 18px;
-    border-left: 1px solid rgba(124,31,38,0.18);
-    margin-left: 26px;
+    padding-left: 16px;
+    border-left: 1px solid rgba(124,31,38,0.2);
+    margin-left: 32px;
     background: transparent;
   }
   .comment-thread-line { display: none; }
@@ -235,10 +235,10 @@
     margin-bottom: 5px; flex-wrap: wrap;
   }
   .comment-username {
-    font-family: 'Lora', serif;
-    font-size: 13px; font-weight: 400;
-    color: rgba(240,232,218,0.45);
-    letter-spacing: 0.04em;
+    font-family: var(--font-sans, -apple-system, system-ui, sans-serif);
+    font-size: 11px; font-weight: 500;
+    color: rgba(240,232,218,0.5);
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
   .comment-username.is-artist {
     color: var(--cream);
@@ -248,19 +248,19 @@
     color: var(--crimson); font-size: 10px; margin-left: 2px;
   }
   .comment-date-small {
-    font-family: 'Lora', serif;
-    font-size: 11px; color: rgba(240,232,218,0.18);
-    letter-spacing: 0.04em;
+    font-family: var(--font-sans, -apple-system, system-ui, sans-serif);
+    font-size: 10px; color: rgba(240,232,218,0.28);
+    letter-spacing: 0.02em;
   }
   .comment-body-text {
-    font-family: 'Lora', serif;
-    font-size: 16px; line-height: 1.72;
-    color: rgba(240,232,218,0.52);
+    font-family: var(--font-sans, -apple-system, system-ui, sans-serif);
+    font-size: 14px; line-height: 1.68;
+    color: rgba(240,232,218,0.65);
   }
   .comment-body-text p { margin-bottom: 0.7em; }
   .comment-body-text p:last-child { margin-bottom: 0; }
-  .comment-body-text strong { color: rgba(240,232,218,0.72); font-weight: 600; }
-  .comment-body-text em { font-style: italic; color: rgba(240,232,218,0.5); }
+  .comment-body-text strong { color: rgba(240,232,218,0.82); font-weight: 600; }
+  .comment-body-text em { font-style: italic; color: rgba(240,232,218,0.6); }
   /* PLZ stamp emoji - larger to simulate the old stamp size */
   .plz-em {
     font-size: 1.35em;
@@ -308,8 +308,8 @@
   }
   .comments-show-more {
     margin-top: 16px;
-    font-family: 'Lora', serif;
-    font-size: 13px; letter-spacing: 0.12em;
+    font-family: var(--font-sans, -apple-system, system-ui, sans-serif);
+    font-size: 12px; letter-spacing: 0.12em;
     color: rgba(240,232,218,0.55); cursor: pointer;
     border: 1px solid rgba(240,232,218,0.18);
     background: rgba(240,232,218,0.04);
@@ -327,7 +327,7 @@
   .piece-da-link {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,232,218,0.3); text-decoration: none;
+    color: rgba(240,232,218,0.5); text-decoration: none;
     border: 1px solid rgba(240,232,218,0.1); padding: 9px 16px;
     margin-top: 8px; align-self: flex-start;
     transition: color 0.2s, border-color 0.2s;
