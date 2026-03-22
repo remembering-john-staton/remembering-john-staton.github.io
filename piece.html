@@ -253,6 +253,10 @@
     font-size: 16px; line-height: 1.72;
     color: rgba(240,232,218,0.52);
   }
+  .comment-body-text p { margin-bottom: 0.7em; }
+  .comment-body-text p:last-child { margin-bottom: 0; }
+  .comment-body-text strong { color: rgba(240,232,218,0.72); font-weight: 600; }
+  .comment-body-text em { font-style: italic; color: rgba(240,232,218,0.5); }
   /* PLZ stamp emoji - larger to simulate the old stamp size */
   .plz-em {
     font-size: 1.35em;
@@ -502,7 +506,7 @@ function renderPiece(piece, allPieces) {
           <span class="comment-username${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' <span class="comment-artist-star">★</span>' : ''}</span>
           <span class="comment-date-small">${escHtml(c.date)}</span>
         </div>
-        <div class="comment-body-text">${c.text}</div>
+        <div class="comment-body-text">${c.text_html || c.text}</div>
       </div>`;
     }).join('');
     const more = comments.length > PREVIEW
