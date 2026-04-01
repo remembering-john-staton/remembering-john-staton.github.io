@@ -1,5 +1,50 @@
 [
   {
+    "id": "146335882",
+    "title": "The Original Dukke of Death",
+    "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
+    "date": "",
+    "topics": [
+      "dukke-fox"
+    ],
+    "tags": [
+      "daniel-dukke"
+    ],
+    "description": "",
+    "da_url": "https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882"
+  },
+  {
+    "id": "148244865",
+    "title": "Bunnies for Hire",
+    "image": "img/pieces/bunnies-for-hire-JohnStaton.jpg",
+    "date": "",
+    "topics": [
+      "dukke-fox"
+    ],
+    "tags": [
+      "hench-bunnies",
+      "villains",
+      "ferdinand-fox"
+    ],
+    "description": "Now that you've met Daniel Dukke and Ferdinand Fox, let me introduce you to two of their chief villains   The Hench-Bunnies. This halter-topped and miniskirted pair of miscreants expertly employ all matter of weapons to create mayhem and destruction, sometimes for pay, and sometimes for kicks. Skilled enough to survive multiple encounters with both the Dukke of Death and the Teenage Killing Machine, The Hench Bunnies present a unique threat due to the usually deadly Ferdinand's critical awkwardness around members of the fairer sex.",
+    "da_url": "https://www.deviantart.com/johnstaton/art/Bunnies-for-Hire-148244865"
+  },
+  {
+    "id": "106139416",
+    "title": "Hench Bunny",
+    "image": "img/pieces/hench-bunny-JohnStaton.jpg",
+    "date": "",
+    "topics": [
+      "dukke-fox"
+    ],
+    "tags": [
+      "hench-bunnies",
+      "villains"
+    ],
+    "description": "A character from a comic strip I drew waay back in my college days. I actually had a professor request a sketch of her at the end of a term. She didn't normally dress as a Playboy bunny, but for some reason the look works on her.",
+    "da_url": "https://www.deviantart.com/johnstaton/art/Hench-Bunny-106139416"
+  },
+  {
     "id": "ddff-cover",
     "title": "Daniel Dukke & Ferdinand Fox   Cover",
     "image": "img/DanielDukkeFerdinandFox/DDFFCover.png",
@@ -306,50 +351,5 @@
     "description": "",
     "type": "comic-page",
     "page_number": 17
-  },
-  {
-    "id": "146335882",
-    "title": "The Original Dukke of Death",
-    "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
-    "date": "",
-    "topics": [
-      "dukke-fox"
-    ],
-    "tags": [
-      "daniel-dukke"
-    ],
-    "description": "",
-    "da_url": "https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882"
-  },
-  {
-    "id": "148244865",
-    "title": "Bunnies for Hire",
-    "image": "img/pieces/bunnies-for-hire-JohnStaton.jpg",
-    "date": "",
-    "topics": [
-      "dukke-fox"
-    ],
-    "tags": [
-      "hench-bunnies",
-      "villains",
-      "ferdinand-fox"
-    ],
-    "description": "Now that you've met Daniel Dukke and Ferdinand Fox, let me introduce you to two of their chief villains   The Hench-Bunnies. This halter-topped and miniskirted pair of miscreants expertly employ all matter of weapons to create mayhem and destruction, sometimes for pay, and sometimes for kicks. Skilled enough to survive multiple encounters with both the Dukke of Death and the Teenage Killing Machine, The Hench Bunnies present a unique threat due to the usually deadly Ferdinand's critical awkwardness around members of the fairer sex.",
-    "da_url": "https://www.deviantart.com/johnstaton/art/Bunnies-for-Hire-148244865"
-  },
-  {
-    "id": "106139416",
-    "title": "Hench Bunny",
-    "image": "img/pieces/hench-bunny-JohnStaton.jpg",
-    "date": "",
-    "topics": [
-      "dukke-fox"
-    ],
-    "tags": [
-      "hench-bunnies",
-      "villains"
-    ],
-    "description": "A character from a comic strip I drew waay back in my college days. I actually had a professor request a sketch of her at the end of a term. She didn't normally dress as a Playboy bunny, but for some reason the look works on her.",
-    "da_url": "https://www.deviantart.com/johnstaton/art/Hench-Bunny-106139416"
   }
 ]
