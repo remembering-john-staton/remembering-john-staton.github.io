@@ -508,6 +508,7 @@ async function init() {
   }
 
   // DDFF special case: replace scroll cue with a proper "Read the comic" button
+  // and inject "In his own words" block into the description area
   if (topicId === 'dukke-fox') {
     const cue = document.getElementById('scrollCue');
     cue.innerHTML = `
@@ -528,6 +529,39 @@ async function init() {
         Or scroll down for individual pieces
       </div>
     `;
+
+    // Inject "In his own words" below the description
+    const descEl = document.getElementById('topicDesc');
+    const wordsBlock = document.createElement('div');
+    wordsBlock.style.cssText = `
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(240,232,218,0.08);
+    `;
+    wordsBlock.innerHTML = `
+      <div style="
+        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+        color: rgba(240,232,218,0.25); margin-bottom: 20px;
+      ">In his own words</div>
+      <div style="
+        font-size: 15px; line-height: 1.9;
+        color: rgba(240,232,218,0.58);
+        font-family: 'Lora', serif;
+      ">
+        Get ready for a trip down memory lane.<br><br>This positively <i>archeological</i> <b>Berol Prismacolor&trade;</b> marker illustration depicts my first ever original characters in all their glory.<br><br>Holding the <b>Desert Eagle</b>, sporting the double-breasted <b>Armani</b> suit, and posing in front of the red <b>Lamboghini Countach</b>, is none other than <b>Daniel Dukke</b> <i>( Pronounced &ldquo;<u>duck</u>&rdquo;. As you can no doubt guess, this character is the inspiration for my bizarre screen name. )</i><br><br><b>Daniel Dukke</b> is an independently wealthy, sophisticated jet-setter who travels the world finding evil where he can, and extinguishing its practitioners in the simultaneously coolest and grisliest ways possible.<br><br>I never decided whether or not he was a plain-clothes policeman, an undercover detective, a private investigator, a secret agent, or simply an overdressed vigilante, although at one point or another during his existence, he&rsquo;s exhibited signs of being all of the above.<br><br>In all honesty, I really didn&rsquo;t care about such particulars so long as the criminal body count was sufficiently high.<br><br>As I look at this picture now, the profound impact of the television program <b>Miami Vice&trade;</b> upon my impressionable young psyche, becomes <i>readily</i> apparent. As I recall, I even owned one of those ridiculous <b>Don Johnson</b> <i>&ldquo;Pastel Ice Cream Man&rdquo;</i> suits back when the show aired. <i>(I hope to God no one ever photographed me in that get up.)</i><br><br>Looming large behind <b>Mr. Dukke</b>, is his equally bad ass<sup><b>1</b></sup> side-kick, <b>Ferdinand Fox</b>, an aspiring crime-fighter who learned martial arts by watching the films of <b>L. Bruce Preslei<sup>2</sup></b> <i>set on fast forward!</i><br><br>Acquiring preternatural fighting skills in this manner, the newly minted <b>Teenage Killing Machine</b> sought out the world&rsquo;s foremost slayer of evil-doers, <b>Mr. Dukke</b>, to learn from him how to become a great adventurer.<br><br>When he thinks of it, <b>Daniel</b> <i>will occasionally</i> say something wise and <i>&ldquo;mentory&rdquo;</i> to <b>Ferdinand</b>, but for the most part, he just points gifted fighter at the inevitable, incoming cloud of blood-thirsty <b>Ninja Cats</b> and lets him go wild.<br><br>Foxes, as it turns out, make excellent human shields.<br><br>During my college days, I inflicted the adventures of these characters upon the hapless <b>University of Maryland</b> campus. I probably have a few copies of the collection I made still gathering dust in my attic.<br><br>Every now and again, I consider having <b>DD &amp; FF</b> take place in the same <i>&ldquo;nobody looks twice at a five-foot-two-inch mosuegirl&rdquo;</i> universe as <b>Most Dangerous Bookstore</b>, and having <b>Daniel</b> be a former associate/ex-boyfriend of <b>Cassandra Cat.</b> In this manner I could explain the bookstore cat&rsquo;s uncanny acumen with dispatching ninja-pirate-zombies.
+      </div>
+      <div style="
+        margin-top: 24px; padding-top: 20px;
+        border-top: 1px solid rgba(240,232,218,0.06);
+        font-size: 12px; line-height: 1.8;
+        color: rgba(240,232,218,0.3);
+        font-family: 'Lora', serif;
+      ">
+        <b style="color:rgba(240,232,218,0.4)">1.)</b> I made up these characters when I was eight, so it&rsquo;s quite a <i>rush</i> to be able to use the phrase <i>&ldquo;bad ass&rdquo;</i> without fear of reprisal.<br><br>
+        <b style="color:rgba(240,232,218,0.4)">2.) FYI, L. Bruce Preslei</b> was a recurring character in the strip. He was a rock star who acted in a host of mediocre kung-fu/musicals before disappearing mysteriously in <b>1975</b>. He is also <b>&copy; John Staton,</b> as are <b>Daniel Dukke</b>, and <b>Ferdinand Fox</b>.
+      </div>
+    `;
+    descEl.appendChild(wordsBlock);
   }
 
   // Piece count from topic data initially
