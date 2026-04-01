@@ -161,13 +161,13 @@
     animation: expandLine 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;
   }
 
-  /* Date — prominent */
+  /* Date  -  prominent */
   .piece-date {
     font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
     color: rgba(240,232,218,0.5); margin-bottom: 28px;
   }
 
-  /* Description — formatted HTML */
+  /* Description  -  formatted HTML */
   .piece-description {
     font-size: 19px; line-height: 1.82;
     color: rgba(240,232,218,0.78);
@@ -215,7 +215,7 @@
     position: relative;
   }
   .comment-row:last-child { border-bottom: none; }
-  /* Reply indentation — left border thread line */
+  /* Reply indentation  -  left border thread line */
   .comment-row[data-depth="1"] {
     padding-left: 16px;
     border-left: 1px solid rgba(124,31,38,0.35);
@@ -513,7 +513,7 @@
   <span class="breadcrumb-sep">/</span>
   <a href="#" id="breadcrumbTopic" style="display:none"></a>
   <span class="breadcrumb-sep" id="breadcrumbTopicSep" style="display:none"></span>
-  <span class="breadcrumb-current" id="breadcrumbTitle">—</span>
+  <span class="breadcrumb-current" id="breadcrumbTitle">, </span>
 </div>
 
 <div id="pieceContent"></div>
@@ -544,9 +544,9 @@ async function init() {
   if (!piece) { showNotFound(`No piece found.`); return; }
 
   // SEO meta
-  document.title = `${piece.title} — The John Staton Museum`;
+  document.title = `${piece.title}  --  The John Staton Museum`;
   setMeta('description', piece.description ? piece.description.slice(0, 155) : 'Art by John Staton');
-  setMeta('og:title', `${piece.title} — The John Staton Museum`);
+  setMeta('og:title', `${piece.title}  --  The John Staton Museum`);
   setMeta('og:description', piece.description ? piece.description.slice(0, 155) : '');
   setMeta('og:image', piece.image ? `https://remembering-john-staton.github.io/${piece.image}` : '');
   setMeta('canonical', `https://remembering-john-staton.github.io/piece.html?id=${piece.id}`, true);
