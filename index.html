@@ -525,7 +525,7 @@
     line-height: 1.1;
     color: var(--cream);
     text-transform: uppercase;
-    max-width: 180px;
+    max-width: 90%;
     display: block;
     transform: translateY(110%);
     transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1623,28 +1623,33 @@
       const countEl = document.querySelector('.themes-count');
       if (countEl) countEl.textContent = '(' + topics.length + ')';
 
-      // Reveal cards — fire immediately if section already visible, else use observer
+      // Reveal section header elements when section enters viewport
       const section = document.getElementById('themes');
-      const revealCards = () => {
-        section.querySelector('#themesDash')?.classList.add('visible');
-        section.querySelector('#themesLabel')?.classList.add('visible');
-        section.querySelector('#themesSeeAll')?.classList.add('visible');
-        section.querySelector('#themesDivider')?.classList.add('visible');
-        section.querySelectorAll('.theme-card').forEach((card, i) => {
-          setTimeout(() => card.classList.add('visible'), 80 + i * 45);
-        });
-      };
       if (section) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          revealCards();
-        } else {
-          const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { revealCards(); cardObserver.disconnect(); } });
-          }, { threshold: 0 });
-          cardObserver.observe(section);
-        }
+        const headerObserver = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            section.querySelector('#themesDash')?.classList.add('visible');
+            section.querySelector('#themesLabel')?.classList.add('visible');
+            section.querySelector('#themesSeeAll')?.classList.add('visible');
+            section.querySelector('#themesDivider')?.classList.add('visible');
+            headerObserver.disconnect();
+          });
+        }, { threshold: 0 });
+        headerObserver.observe(section);
       }
+
+      // Reveal each card individually as it scrolls into view for the first time
+      const cardRevealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('visible');
+          cardRevealObserver.unobserve(e.target);
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.theme-card').forEach(card => {
+        cardRevealObserver.observe(card);
+      });
     } catch(e) {
       console.error('Could not load topics.json', e);
     }
@@ -1771,3 +1776,4 @@
 
 </body>
 </html>
+
