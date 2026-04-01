@@ -696,12 +696,14 @@ function renderPiece(piece, allPieces) {
     const rows = comments.map((c, i) => {
       const depth = c.depth || 0;
       const hidden = i >= PREVIEW ? 'data-extra="1" style="display:none"' : '';
-      return `<div class="comment-row${c.is_artist ? ' is-artist' : ''}" data-depth="${depth}" ${hidden}>
+      const isJohn = c.is_john || c.is_artist || false;
+      const bodyText = c.body || c.text_html || c.text || '';
+      return `<div class="comment-row${isJohn ? ' is-artist' : ''}" data-depth="${depth}" ${hidden}>
         <div class="comment-meta-row">
-          <span class="comment-username${c.is_artist ? ' is-artist' : ''}">${escHtml(c.user)}${c.is_artist ? ' <span class="comment-artist-star">★</span>' : ''}</span>
-          <span class="comment-date-small">${escHtml(c.date)}</span>
+          <span class="comment-username${isJohn ? ' is-artist' : ''}">${escHtml(c.user)}${isJohn ? ' <span class="comment-artist-star">&#9733;</span>' : ''}</span>
+          ${c.date ? `<span class="comment-date-small">${escHtml(c.date)}</span>` : ''}
         </div>
-        <div class="comment-body-text">${c.text_html || c.text}</div>
+        <div class="comment-body-text">${bodyText}</div>
       </div>`;
     }).join('');
     const more = comments.length > PREVIEW
@@ -742,10 +744,8 @@ function renderPiece(piece, allPieces) {
         <h1 class="piece-title"><span>${escHtml(piece.title)}</span></h1>
         <div class="piece-divider"></div>
         ${piece.date ? `<div class="piece-date reveal">${escHtml(piece.date)}</div>` : ''}
-        ${piece.description_html
-            ? `<div class="piece-description reveal">${piece.description_html}</div>`
-            : piece.description
-            ? `<div class="piece-description reveal">${escHtml(piece.description)}</div>`
+        ${piece.description_html || piece.description
+            ? `<div class="piece-description reveal">${piece.description_html || piece.description}</div>`
             : ''}
         ${tagsHtml}
         ${buildComments(piece.comments)}
