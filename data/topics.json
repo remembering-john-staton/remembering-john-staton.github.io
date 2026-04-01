@@ -6,7 +6,8 @@
     "image": "img/pieces/dmv-enter-the-heroine-JohnStaton.jpg",
     "category": "Full Archive",
     "pieces": 216,
-    "description": "The complete archive. Every piece John posted, from the earliest DMV sketches to the final Inktober runs. 216 images, two decades of work, no filter."
+    "description": "The complete archive. Every piece John posted, from the earliest DMV sketches to the final Inktober runs. 216 images, two decades of work, no filter.",
+    "cta": "Browse the Full Archive"
   },
   {
     "id": "dmv",
@@ -15,7 +16,8 @@
     "image": "img/pieces/dmv-enter-the-heroine-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 40,
-    "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city."
+    "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city.",
+    "cta": "Enter the DMV Universe"
   },
   {
     "id": "dukke-fox",
@@ -24,7 +26,8 @@
     "color": "#1a2a3a",
     "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
     "pieces": 3,
-    "description": "John's first original creation. Daniel Dukke and Ferdinand Fox — and the Hench Bunnies who served them."
+    "description": "John's first original creation. Daniel Dukke and Ferdinand Fox — and the Hench Bunnies who served them.",
+    "cta": "Read the Original Stories"
   },
   {
     "id": "streamers",
@@ -33,7 +36,8 @@
     "image": "img/pieces/navy-girl-aerial-demonstration-variant-JohnStaton.png",
     "category": "Original IP",
     "pieces": 22,
-    "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run."
+    "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run.",
+    "cta": "Explore the Streamers Gallery"
   },
   {
     "id": "neboox",
@@ -42,7 +46,8 @@
     "image": "img/pieces/most-dangerouse-book-store-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 8,
-    "description": "The Most Dangerous Bookstore. Molly Mouse runs the place. Cassandra is the cat-girl. The store is defended by Bookwyrms and robotic dalmatians. An original IP that never got enough time but always had a great name."
+    "description": "The Most Dangerous Bookstore. Molly Mouse runs the place. Cassandra is the cat-girl. The store is defended by Bookwyrms and robotic dalmatians. An original IP that never got enough time but always had a great name.",
+    "cta": "Visit the Most Dangerous Bookstore"
   },
   {
     "id": "space-girls",
@@ -51,7 +56,8 @@
     "image": "img/pieces/space-girls-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 6,
-    "description": "Sabrina and the Genetically Engineered Life Forms, piloting Giant Space Robots. Early concept work that shows where John's head was when he was building worlds from scratch."
+    "description": "Sabrina and the Genetically Engineered Life Forms, piloting Giant Space Robots. Early concept work that shows where John's head was when he was building worlds from scratch.",
+    "cta": "Meet the GELFs"
   },
   {
     "id": "high-school-romance",
@@ -60,7 +66,8 @@
     "image": "img/pieces/evil-prom-queen-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 9,
-    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude — part rom-com, part mecha, entirely John."
+    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude — part rom-com, part mecha, entirely John.",
+    "cta": "Glimpse the Project That Never Was"
   },
   {
     "id": "evil-diva",
@@ -69,7 +76,8 @@
     "image": "img/pieces/evil-diva-JohnStaton.png",
     "category": "Fan Art — Comics",
     "pieces": 14,
-    "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative."
+    "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative.",
+    "cta": "Browse the Evil Diva Fan Art"
   },
   {
     "id": "gold-digger",
@@ -78,7 +86,8 @@
     "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
     "category": "Fan Art — Comics",
     "pieces": 7,
-    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen — John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte."
+    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen — John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte.",
+    "cta": "Browse the Gold Digger Collection"
   },
   {
     "id": "chibi-heroines",
@@ -87,7 +96,8 @@
     "image": "img/pieces/chiroines-01-JohnStaton.jpg",
     "category": "Fan Art — Comics",
     "pieces": 20,
-    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept."
+    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept.",
+    "cta": "Browse the Chibi Heroines"
   },
   {
     "id": "anime",
@@ -96,7 +106,8 @@
     "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
     "category": "Fan Art — Anime",
     "pieces": 18,
-    "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place."
+    "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place.",
+    "cta": "Browse the Anime Archive"
   },
   {
     "id": "star-trek",
@@ -105,7 +116,8 @@
     "image": "img/pieces/inktober-stardate-1610-02-JohnStaton.png",
     "category": "Fan Art — Sci-Fi",
     "pieces": 31,
-    "description": "The full Inktober 2016 run — 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct."
+    "description": "The full Inktober 2016 run — 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct.",
+    "cta": "Explore 31 Days of Trek"
   },
   {
     "id": "published",
@@ -114,6 +126,7 @@
     "image": "img/pieces/animal-style-designs-01-paladindrome-JohnStaton.jpg",
     "category": "Professional Credits",
     "pieces": 11,
-    "description": "Guest artist on Empowered Special #4: Animal Style (Adam Warren). Contributor to Hammer of the Gods (Mike Avon Oeming). Variant cover work and convention commissions. The professional side of the archive."
+    "description": "Guest artist on Empowered Special #4: Animal Style (Adam Warren). Contributor to Hammer of the Gods (Mike Avon Oeming). Variant cover work and convention commissions. The professional side of the archive.",
+    "cta": "See the Published Credits"
   }
 ]
