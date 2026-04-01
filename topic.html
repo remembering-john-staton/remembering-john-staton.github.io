@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — The John Staton Museum</title>
+<title>Gallery -- The John Staton Museum</title>
 <meta name="description" content="Gallery page">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -370,11 +370,11 @@
     <div class="topic-meta">
       <div class="topic-meta-item">
         <div class="topic-meta-label">Pieces</div>
-        <div class="topic-meta-value" id="metaPieces">—</div>
+        <div class="topic-meta-value" id="metaPieces">-</div>
       </div>
       <div class="topic-meta-item" id="metaYearsWrap" style="display:none">
         <div class="topic-meta-label">Years</div>
-        <div class="topic-meta-value" id="metaYears">—</div>
+        <div class="topic-meta-value" id="metaYears">-</div>
       </div>
     </div>
     <div class="topic-description" id="topicDesc"></div>
@@ -493,7 +493,7 @@ async function init() {
   }
 
   // Populate hero
-  document.title = `${topic.title} — The John Staton Museum`;
+  document.title = `${topic.title} -- The John Staton Museum`;
   document.getElementById('navTitle').textContent = topic.title;
   document.getElementById('heroImg').src = topic.image || '';
   document.getElementById('heroImg').alt = topic.title;
@@ -505,6 +505,29 @@ async function init() {
   document.getElementById('topicDesc').innerHTML = `<p>${(topic.description || '').replace(/\n/g,'</p><p>')}</p>`;
   if (topic.cta) {
     document.getElementById('scrollCueText').textContent = topic.cta + ' ↓';
+  }
+
+  // DDFF special case: replace scroll cue with a proper "Read the comic" button
+  if (topicId === 'dukke-fox') {
+    const cue = document.getElementById('scrollCue');
+    cue.innerHTML = `
+      <a href="ddff-reader.html" style="
+        display:inline-flex; align-items:center; gap:12px;
+        font-family:'Lora',serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+        color:rgba(240,232,218,0.8); text-decoration:none;
+        border:1px solid rgba(240,232,218,0.25); padding:12px 24px;
+        transition:color 0.2s, border-color 0.2s, background 0.2s;
+      "
+      onmouseover="this.style.color='#f0e8da';this.style.borderColor='rgba(240,232,218,0.6)';this.style.background='rgba(240,232,218,0.06)'"
+      onmouseout="this.style.color='rgba(240,232,218,0.8)';this.style.borderColor='rgba(240,232,218,0.25)';this.style.background=''"
+      >
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+        Read the Comic
+      </a>
+      <div style="margin-top:14px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,232,218,0.2)">
+        Or scroll down for individual pieces
+      </div>
+    `;
   }
 
   // Piece count from topic data initially
@@ -523,7 +546,7 @@ async function init() {
       );
     }
   } catch(e) {
-    // pieces.json doesn't exist yet — show empty state
+    // pieces.json doesn't exist yet -- show empty state
   }
 
   const grid = document.getElementById('pieceGrid');
