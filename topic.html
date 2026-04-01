@@ -513,19 +513,20 @@ async function init() {
     const cue = document.getElementById('scrollCue');
     cue.innerHTML = `
       <a href="ddff-reader.html" style="
-        display:inline-flex; align-items:center; gap:12px;
-        font-family:'Lora',serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
-        color:rgba(240,232,218,0.8); text-decoration:none;
-        border:1px solid rgba(240,232,218,0.25); padding:12px 24px;
-        transition:color 0.2s, border-color 0.2s, background 0.2s;
+        display:inline-flex; align-items:center; gap:16px;
+        font-family:'Lora',serif; font-size:14px; letter-spacing:0.18em; text-transform:uppercase;
+        color:#f0e8da; text-decoration:none;
+        border:1px solid rgba(240,232,218,0.55); padding:18px 36px;
+        background: rgba(240,232,218,0.07);
+        transition:background 0.2s, border-color 0.2s;
       "
-      onmouseover="this.style.color='#f0e8da';this.style.borderColor='rgba(240,232,218,0.6)';this.style.background='rgba(240,232,218,0.06)'"
-      onmouseout="this.style.color='rgba(240,232,218,0.8)';this.style.borderColor='rgba(240,232,218,0.25)';this.style.background=''"
+      onmouseover="this.style.background='rgba(240,232,218,0.14)';this.style.borderColor='rgba(240,232,218,0.85)'"
+      onmouseout="this.style.background='rgba(240,232,218,0.07)';this.style.borderColor='rgba(240,232,218,0.55)'"
       >
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
         Read the Comic
       </a>
-      <div style="margin-top:14px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,232,218,0.2)">
+      <div style="margin-top:16px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,232,218,0.25)">
         Or scroll down for individual pieces
       </div>
     `;
@@ -533,32 +534,29 @@ async function init() {
     // Inject "In his own words" below the description
     const descEl = document.getElementById('topicDesc');
     const wordsBlock = document.createElement('div');
-    wordsBlock.style.cssText = `
-      margin-top: 36px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(240,232,218,0.08);
-    `;
+    wordsBlock.style.cssText = 'margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(240,232,218,0.1);';
     wordsBlock.innerHTML = `
       <div style="
-        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-        color: rgba(240,232,218,0.25); margin-bottom: 20px;
+        font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+        color: rgba(240,232,218,0.35); margin-bottom: 22px;
       ">In his own words</div>
       <div style="
-        font-size: 15px; line-height: 1.9;
-        color: rgba(240,232,218,0.58);
-        font-family: 'Lora', serif;
+        font-size: 17px; line-height: 1.85;
+        color: rgba(240,232,218,0.82);
+        font-family: 'system-ui', -apple-system, sans-serif;
+        font-weight: 400;
       ">
-        Get ready for a trip down memory lane.<br><br>This positively <i>archeological</i> <b>Berol Prismacolor&trade;</b> marker illustration depicts my first ever original characters in all their glory.<br><br>Holding the <b>Desert Eagle</b>, sporting the double-breasted <b>Armani</b> suit, and posing in front of the red <b>Lamboghini Countach</b>, is none other than <b>Daniel Dukke</b> <i>( Pronounced &ldquo;<u>duck</u>&rdquo;. As you can no doubt guess, this character is the inspiration for my bizarre screen name. )</i><br><br><b>Daniel Dukke</b> is an independently wealthy, sophisticated jet-setter who travels the world finding evil where he can, and extinguishing its practitioners in the simultaneously coolest and grisliest ways possible.<br><br>I never decided whether or not he was a plain-clothes policeman, an undercover detective, a private investigator, a secret agent, or simply an overdressed vigilante, although at one point or another during his existence, he&rsquo;s exhibited signs of being all of the above.<br><br>In all honesty, I really didn&rsquo;t care about such particulars so long as the criminal body count was sufficiently high.<br><br>As I look at this picture now, the profound impact of the television program <b>Miami Vice&trade;</b> upon my impressionable young psyche, becomes <i>readily</i> apparent. As I recall, I even owned one of those ridiculous <b>Don Johnson</b> <i>&ldquo;Pastel Ice Cream Man&rdquo;</i> suits back when the show aired. <i>(I hope to God no one ever photographed me in that get up.)</i><br><br>Looming large behind <b>Mr. Dukke</b>, is his equally bad ass<sup><b>1</b></sup> side-kick, <b>Ferdinand Fox</b>, an aspiring crime-fighter who learned martial arts by watching the films of <b>L. Bruce Preslei<sup>2</sup></b> <i>set on fast forward!</i><br><br>Acquiring preternatural fighting skills in this manner, the newly minted <b>Teenage Killing Machine</b> sought out the world&rsquo;s foremost slayer of evil-doers, <b>Mr. Dukke</b>, to learn from him how to become a great adventurer.<br><br>When he thinks of it, <b>Daniel</b> <i>will occasionally</i> say something wise and <i>&ldquo;mentory&rdquo;</i> to <b>Ferdinand</b>, but for the most part, he just points gifted fighter at the inevitable, incoming cloud of blood-thirsty <b>Ninja Cats</b> and lets him go wild.<br><br>Foxes, as it turns out, make excellent human shields.<br><br>During my college days, I inflicted the adventures of these characters upon the hapless <b>University of Maryland</b> campus. I probably have a few copies of the collection I made still gathering dust in my attic.<br><br>Every now and again, I consider having <b>DD &amp; FF</b> take place in the same <i>&ldquo;nobody looks twice at a five-foot-two-inch mosuegirl&rdquo;</i> universe as <b>Most Dangerous Bookstore</b>, and having <b>Daniel</b> be a former associate/ex-boyfriend of <b>Cassandra Cat.</b> In this manner I could explain the bookstore cat&rsquo;s uncanny acumen with dispatching ninja-pirate-zombies.
+        Get ready for a trip down memory lane.<br><br>This positively <i>archeological</i> <b style="font-weight:600">Berol Prismacolor&trade;</b> marker illustration depicts my first ever original characters in all their glory.<br><br>Holding the <b style="font-weight:600">Desert Eagle</b>, sporting the double-breasted <b style="font-weight:600">Armani</b> suit, and posing in front of the red <b style="font-weight:600">Lamboghini Countach</b>, is none other than <b style="font-weight:600">Daniel Dukke</b> <i>( Pronounced &ldquo;<u>duck</u>&rdquo;. As you can no doubt guess, this character is the inspiration for my bizarre screen name. )</i><br><br><b style="font-weight:600">Daniel Dukke</b> is an independently wealthy, sophisticated jet-setter who travels the world finding evil where he can, and extinguishing its practitioners in the simultaneously coolest and grisliest ways possible.<br><br>I never decided whether or not he was a plain-clothes policeman, an undercover detective, a private investigator, a secret agent, or simply an overdressed vigilante, although at one point or another during his existence, he&rsquo;s exhibited signs of being all of the above.<br><br>In all honesty, I really didn&rsquo;t care about such particulars so long as the criminal body count was sufficiently high.<br><br>As I look at this picture now, the profound impact of the television program <b style="font-weight:600">Miami Vice&trade;</b> upon my impressionable young psyche, becomes <i>readily</i> apparent. As I recall, I even owned one of those ridiculous <b style="font-weight:600">Don Johnson</b> <i>&ldquo;Pastel Ice Cream Man&rdquo;</i> suits back when the show aired. <i>(I hope to God no one ever photographed me in that get up.)</i><br><br>Looming large behind <b style="font-weight:600">Mr. Dukke</b>, is his equally bad ass<sup style="font-size:11px"><b>1</b></sup> side-kick, <b style="font-weight:600">Ferdinand Fox</b>, an aspiring crime-fighter who learned martial arts by watching the films of <b style="font-weight:600">L. Bruce Preslei<sup style="font-size:11px">2</sup></b> <i>set on fast forward!</i><br><br>Acquiring preternatural fighting skills in this manner, the newly minted <b style="font-weight:600">Teenage Killing Machine</b> sought out the world&rsquo;s foremost slayer of evil-doers, <b style="font-weight:600">Mr. Dukke</b>, to learn from him how to become a great adventurer.<br><br>When he thinks of it, <b style="font-weight:600">Daniel</b> <i>will occasionally</i> say something wise and <i>&ldquo;mentory&rdquo;</i> to <b style="font-weight:600">Ferdinand</b>, but for the most part, he just points gifted fighter at the inevitable, incoming cloud of blood-thirsty <b style="font-weight:600">Ninja Cats</b> and lets him go wild.<br><br>Foxes, as it turns out, make excellent human shields.<br><br>During my college days, I inflicted the adventures of these characters upon the hapless <b style="font-weight:600">University of Maryland</b> campus. I probably have a few copies of the collection I made still gathering dust in my attic.<br><br>Every now and again, I consider having <b style="font-weight:600">DD &amp; FF</b> take place in the same <i>&ldquo;nobody looks twice at a five-foot-two-inch mosuegirl&rdquo;</i> universe as <b style="font-weight:600">Most Dangerous Bookstore</b>, and having <b style="font-weight:600">Daniel</b> be a former associate/ex-boyfriend of <b style="font-weight:600">Cassandra Cat.</b> In this manner I could explain the bookstore cat&rsquo;s uncanny acumen with dispatching ninja-pirate-zombies.
       </div>
       <div style="
-        margin-top: 24px; padding-top: 20px;
-        border-top: 1px solid rgba(240,232,218,0.06);
-        font-size: 12px; line-height: 1.8;
-        color: rgba(240,232,218,0.3);
-        font-family: 'Lora', serif;
+        margin-top: 28px; padding-top: 22px;
+        border-top: 1px solid rgba(240,232,218,0.07);
+        font-size: 13px; line-height: 1.75;
+        color: rgba(240,232,218,0.45);
+        font-family: 'system-ui', -apple-system, sans-serif;
       ">
-        <b style="color:rgba(240,232,218,0.4)">1.)</b> I made up these characters when I was eight, so it&rsquo;s quite a <i>rush</i> to be able to use the phrase <i>&ldquo;bad ass&rdquo;</i> without fear of reprisal.<br><br>
-        <b style="color:rgba(240,232,218,0.4)">2.) FYI, L. Bruce Preslei</b> was a recurring character in the strip. He was a rock star who acted in a host of mediocre kung-fu/musicals before disappearing mysteriously in <b>1975</b>. He is also <b>&copy; John Staton,</b> as are <b>Daniel Dukke</b>, and <b>Ferdinand Fox</b>.
+        <b style="color:rgba(240,232,218,0.6);font-weight:600">1.)</b> I made up these characters when I was eight, so it&rsquo;s quite a <i>rush</i> to be able to use the phrase <i>&ldquo;bad ass&rdquo;</i> without fear of reprisal.<br><br>
+        <b style="color:rgba(240,232,218,0.6);font-weight:600">2.) FYI, L. Bruce Preslei</b> was a recurring character in the strip. He was a rock star who acted in a host of mediocre kung-fu/musicals before disappearing mysteriously in <b style="font-weight:600">1975</b>. He is also <b style="font-weight:600">&copy; John Staton,</b> as are <b style="font-weight:600">Daniel Dukke</b>, and <b style="font-weight:600">Ferdinand Fox</b>.
       </div>
     `;
     descEl.appendChild(wordsBlock);
