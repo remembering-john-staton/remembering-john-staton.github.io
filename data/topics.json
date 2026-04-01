@@ -24,7 +24,7 @@
     "color": "#1a2a3a",
     "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
     "pieces": 3,
-    "description": "John's first original creation. Daniel Dukke and Ferdinand Fox \u2014 and the Hench Bunnies who served them."
+    "description": "John's first original creation. Daniel Dukke and Ferdinand Fox — and the Hench Bunnies who served them."
   },
   {
     "id": "streamers",
@@ -60,61 +60,52 @@
     "image": "img/pieces/evil-prom-queen-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 9,
-    "description": "Lori the evil prom queen. Ott\u00d8 the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude \u2014 part rom-com, part mecha, entirely John."
+    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude — part rom-com, part mecha, entirely John."
   },
   {
     "id": "evil-diva",
     "title": "Evil Diva",
     "color": "#3d1a4a",
     "image": "img/pieces/evil-diva-JohnStaton.png",
-    "category": "Fan Art \u2014 Comics",
+    "category": "Fan Art — Comics",
     "pieces": 14,
     "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative."
-  },
-  {
-    "id": "princeless",
-    "title": "Princeless",
-    "color": "#2d4a35",
-    "image": "img/pieces/pirate-princeless-JohnStaton.jpg",
-    "category": "Fan Art \u2014 Comics",
-    "pieces": 9,
-    "description": "Fan work for Jeremy Whitley's series. Adrienne Ashe, Sparky the dragon, Bedelia, Xingtao. Includes a Big Planet Comics exclusive variant cover for Princeless: The Pirate Princess #1, shipping January 2015."
   },
   {
     "id": "gold-digger",
     "title": "Gold Digger",
     "color": "#4a3010",
     "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
-    "category": "Fan Art \u2014 Comics",
+    "category": "Fan Art — Comics",
     "pieces": 7,
-    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen \u2014 John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte."
+    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen — John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte."
   },
   {
     "id": "chibi-heroines",
     "title": "Chibi Heroines",
     "color": "#1a3a3a",
     "image": "img/pieces/chiroines-01-JohnStaton.jpg",
-    "category": "Fan Art \u2014 Comics",
+    "category": "Fan Art — Comics",
     "pieces": 20,
-    "description": "John's ongoing chibi heroine series \u2014 Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept."
+    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept."
   },
   {
     "id": "anime",
     "title": "Anime Fan Art",
     "color": "#4a3820",
     "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
-    "category": "Fan Art \u2014 Anime",
+    "category": "Fan Art — Anime",
     "pieces": 18,
-    "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent M\u00f6bius, and others. Classic catalogue with deep affection. One bucket that earns its place."
+    "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place."
   },
   {
     "id": "star-trek",
     "title": "Star Trek",
     "color": "#1c2a4a",
     "image": "img/pieces/inktober-stardate-1610-02-JohnStaton.png",
-    "category": "Fan Art \u2014 Sci-Fi",
+    "category": "Fan Art — Sci-Fi",
     "pieces": 31,
-    "description": "The full Inktober 2016 run \u2014 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct."
+    "description": "The full Inktober 2016 run — 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct."
   },
   {
     "id": "published",
