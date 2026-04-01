@@ -451,7 +451,6 @@
 
   /* Individual card */
   .theme-card {
-    min-height: 400px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -512,18 +511,20 @@
   }
 
   .theme-card-inner {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 24px 22px 22px;
+    height: 100%;
+    padding: 24px 22px 0;
   }
 
   /* Card title — clip wrapper so title slides up from below card edge */
   .theme-card-title-wrap {
     overflow: hidden;
     z-index: 1;
+    flex-shrink: 0;
+    margin-bottom: 16px;
   }
   .theme-card-title {
     font-family: 'Playfair Display', serif;
@@ -564,7 +565,8 @@
     justify-content: space-between;
     align-items: flex-end;
     z-index: 1;
-    margin-top: 14px;
+    padding: 14px 0 20px;
+    flex-shrink: 0;
   }
   .theme-card-type {
     font-size: 9px;
