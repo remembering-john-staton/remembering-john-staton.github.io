@@ -26,7 +26,7 @@
     "color": "#1a2a3a",
     "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
     "pieces": 19,
-    "description": "John's first comic strip, drawn for The Diamondback at the University of Maryland in the early 90s. Daniel Dukke — the Dukke of Death — and Ferdinand Fox, the Teenage Killing Machine, are an anthropomorphic duck-and-fox crime duo of some kind. Their chief antagonists are the Hench Bunnies: a halter-topped, miniskirted pair of miscreants skilled enough to survive every encounter, partly because Ferdinand goes completely useless the moment a woman bats her eyes at him. Other characters include Scooter Turtle, a personal stand-in, and Jennifur, his girlfriend.\n\nIt's crude by John's later standards — edgy, irreverent, product of its decade. The strip makes throwaway references to Kmart, Montgomery Ward, JC Penney. You can already see where his eye for character design was heading. He just hadn't caught up with it yet.",
+    "description": "John's first comic strip, drawn for The Diamondback at the University of Maryland in the early 90s. Daniel Dukke, the Dukke of Death, and Ferdinand Fox, the Teenage Killing Machine, are an anthropomorphic duck-and-fox crime duo of some kind. Their chief antagonists are the Hench Bunnies: a halter-topped, miniskirted pair of miscreants skilled enough to survive every encounter, partly because Ferdinand goes completely useless the moment a woman bats her eyes at him. Other characters include Scooter Turtle, a personal stand-in, and Jennifur, his girlfriend.\n\nIt's crude by John's later standards, edgy, irreverent, product of its decade. The strip makes throwaway references to Kmart, Montgomery Ward, JC Penney. You can already see where his eye for character design was heading. He just hadn't caught up with it yet.",
     "cta": "Read the Original Stories"
   },
   {
@@ -66,7 +66,7 @@
     "image": "img/pieces/evil-prom-queen-JohnStaton.jpg",
     "category": "Original IP",
     "pieces": 9,
-    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude — part rom-com, part mecha, entirely John.",
+    "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude, part rom-com, part mecha, entirely John.",
     "cta": "Glimpse the Project That Never Was"
   },
   {
@@ -74,7 +74,7 @@
     "title": "Evil Diva",
     "color": "#3d1a4a",
     "image": "img/pieces/evil-diva-JohnStaton.png",
-    "category": "Fan Art — Comics",
+    "category": "Fan Art ,  Comics",
     "pieces": 14,
     "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative.",
     "cta": "Browse the Evil Diva Fan Art"
@@ -84,9 +84,9 @@
     "title": "Gold Digger",
     "color": "#4a3010",
     "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
-    "category": "Fan Art — Comics",
+    "category": "Fan Art ,  Comics",
     "pieces": 7,
-    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen — John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte.",
+    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen, John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte.",
     "cta": "Browse the Gold Digger Collection"
   },
   {
@@ -94,9 +94,9 @@
     "title": "Chibi Heroines",
     "color": "#1a3a3a",
     "image": "img/pieces/chiroines-01-JohnStaton.jpg",
-    "category": "Fan Art — Comics",
+    "category": "Fan Art ,  Comics",
     "pieces": 20,
-    "description": "John's ongoing chibi heroine series — Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept.",
+    "description": "John's ongoing chibi heroine series, Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept.",
     "cta": "Browse the Chibi Heroines"
   },
   {
@@ -104,7 +104,7 @@
     "title": "Anime Fan Art",
     "color": "#4a3820",
     "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
-    "category": "Fan Art — Anime",
+    "category": "Fan Art ,  Anime",
     "pieces": 18,
     "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place.",
     "cta": "Browse the Anime Archive"
@@ -114,9 +114,9 @@
     "title": "Star Trek",
     "color": "#1c2a4a",
     "image": "img/pieces/inktober-stardate-1610-02-JohnStaton.png",
-    "category": "Fan Art — Sci-Fi",
+    "category": "Fan Art ,  Sci-Fi",
     "pieces": 31,
-    "description": "The full Inktober 2016 run — 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct.",
+    "description": "The full Inktober 2016 run, 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct.",
     "cta": "Explore 31 Days of Trek"
   },
   {
