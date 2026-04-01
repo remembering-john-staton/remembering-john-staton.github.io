@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — The John Staton Museum</title>
+<meta name="description" content="Gallery page">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── CROSS-DOCUMENT VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 0.3s ease both fade-out; }
+  ::view-transition-new(root) { animation: 0.35s ease both fade-in; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in  { from { opacity: 0; } }
+
+  :root {
+    --crimson: #7c1f26;
+    --crimson-dark: #5a161b;
+    --cream: #f0e8da;
+    --ink: #0e0608;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(14,6,8,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,232,218,0.06);
+  }
+  .nav-back {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,232,218,0.4); text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    transition: color 0.2s;
+  }
+  .nav-back svg { width: 14px; height: 14px; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
+  .nav-back:hover { color: var(--cream); }
+  .nav-back:hover svg { opacity: 1; transform: translateX(-3px); }
+  .nav-title {
+    font-family: 'Lora', serif; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25);
+  }
+  .nav-count {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(240,232,218,0.2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── HERO SPLIT ── */
+  .hero {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding-top: 57px; /* nav height */
+  }
+
+  /* Left: sticky image panel */
+  .hero-left {
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow: hidden;
+  }
+  .hero-image-wrap {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .hero-image-wrap::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(14,6,8,0.15) 0%, transparent 60%),
+                linear-gradient(to right, transparent 70%, rgba(14,6,8,0.6) 100%),
+                linear-gradient(to bottom, rgba(14,6,8,0.3) 0%, transparent 30%);
+    z-index: 1;
+  }
+  .hero-image-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9);
+    transition: transform 12s ease;
+  }
+  .hero-image-wrap:hover img { transform: scale(1.04); }
+  .hero-color-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+  }
+  .hero-left-meta {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    z-index: 3;
+    padding: 40px 40px 36px;
+    background: linear-gradient(to top, rgba(14,6,8,0.85) 0%, transparent 100%);
+  }
+  .hero-left-category {
+    font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+    color: rgba(240,232,218,0.4); margin-bottom: 10px;
+  }
+  .hero-left-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900; line-height: 1.0; text-transform: uppercase;
+    letter-spacing: -0.02em; color: var(--cream);
+  }
+
+  /* Right: scrolling content */
+  .hero-right {
+    padding: 72px 64px 80px 56px;
+    display: flex; flex-direction: column;
+    border-left: 1px solid rgba(240,232,218,0.06);
+  }
+  .topic-label {
+    font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-bottom: 20px;
+  }
+  .topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 4.5vw, 72px);
+    font-weight: 900; line-height: 0.95;
+    text-transform: uppercase; letter-spacing: -0.025em;
+    color: var(--cream); margin-bottom: 32px;
+  }
+  .topic-divider {
+    width: 40px; height: 1px;
+    background: rgba(240,232,218,0.2);
+    margin-bottom: 32px;
+  }
+  .topic-meta {
+    display: flex; gap: 28px; margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .topic-meta-item {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .topic-meta-label {
+    font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25);
+  }
+  .topic-meta-value {
+    font-size: 22px; font-weight: 600;
+    color: rgba(240,232,218,0.75);
+    font-variant-numeric: tabular-nums;
+  }
+  .topic-description {
+    font-size: 17px; line-height: 1.82;
+    color: rgba(240,232,218,0.6);
+    flex: 1;
+    border-top: 1px solid rgba(240,232,218,0.07);
+    padding-top: 32px;
+  }
+  .topic-description p { margin-bottom: 1.1em; }
+  .topic-description p:last-child { margin-bottom: 0; }
+
+  /* Scroll cue */
+  .scroll-cue {
+    margin-top: 48px;
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0; animation: fadeIn 0.6s ease 0.8s forwards;
+  }
+  .scroll-cue-line {
+    width: 28px; height: 1px;
+    background: rgba(240,232,218,0.2);
+    position: relative; overflow: hidden;
+  }
+  .scroll-cue-line::after {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(240,232,218,0.7);
+    animation: scanLine 1.8s ease-in-out 1.2s infinite;
+  }
+  @keyframes scanLine {
+    0%   { left: -100%; }
+    50%  { left: 100%; }
+    100% { left: 100%; }
+  }
+  .scroll-cue-text {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25);
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* ── PIECES SECTION ── */
+  .pieces-section {
+    position: relative; z-index: 1;
+    padding: 0 0 120px;
+    border-top: 1px solid rgba(240,232,218,0.06);
+  }
+  .pieces-header {
+    padding: 56px 64px 40px;
+    display: flex; align-items: baseline;
+    gap: 20px; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(240,232,218,0.06);
+  }
+  .pieces-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(240,232,218,0.35);
+  }
+  .pieces-header-count {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(240,232,218,0.2);
+  }
+
+  /* Piece grid */
+  .piece-grid {
+    padding: 0 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 3px;
+    padding-top: 3px;
+  }
+
+  .piece-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: rgba(240,232,218,0.04);
+    cursor: pointer;
+    /* scroll reveal start state */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .piece-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .piece-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(0.82);
+    transition: transform 0.5s ease, filter 0.3s ease;
+  }
+  .piece-card:hover img { transform: scale(1.05); filter: saturate(1); }
+  .piece-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(6,1,2,0.88) 0%, transparent 55%);
+    opacity: 0; transition: opacity 0.25s;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 14px;
+  }
+  .piece-card:hover .piece-card-overlay { opacity: 1; }
+  .piece-card-title {
+    font-size: 13px; color: var(--cream);
+    line-height: 1.3; margin-bottom: 4px;
+  }
+  .piece-card-date {
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(240,232,218,0.45);
+  }
+  .piece-card-wip {
+    position: absolute; top: 9px; right: 9px;
+    font-size: 8px; letter-spacing: 0.15em; text-transform: uppercase;
+    background: rgba(6,1,2,0.75); color: rgba(240,232,218,0.5);
+    padding: 3px 7px; border: 1px solid rgba(240,232,218,0.15);
+  }
+
+  /* Skeleton loading state */
+  .piece-skeleton {
+    aspect-ratio: 1;
+    background: rgba(240,232,218,0.04);
+    position: relative; overflow: hidden;
+  }
+  .piece-skeleton::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(240,232,218,0.06) 50%, transparent 100%);
+    animation: shimmer 1.6s ease-in-out infinite;
+    transform: translateX(-100%);
+  }
+  @keyframes shimmer {
+    to { transform: translateX(100%); }
+  }
+
+  /* Empty state */
+  .pieces-empty {
+    padding: 80px 64px;
+    text-align: center;
+  }
+  .pieces-empty-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: rgba(240,232,218,0.2);
+    margin-bottom: 12px;
+  }
+  .pieces-empty-text {
+    font-size: 14px; color: rgba(240,232,218,0.15);
+  }
+
+  /* ── FOOTER CSS ── */
+  .site-footer{background:#0e0608;color:rgba(240,232,218,0.5);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07)}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
+  .footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
+  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.38);max-width:280px}
+  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.2);border:1px solid rgba(240,232,218,0.1);padding:5px 12px}
+  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:20px}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.5);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+  .footer-links li a:hover{color:#f0e8da}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
+  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.2)}
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left {
+      position: relative; top: auto;
+      height: 52vw; min-height: 260px; max-height: 420px;
+    }
+    .hero-right { padding: 44px 28px 48px; border-left: none; border-top: 1px solid rgba(240,232,218,0.07); }
+    .topic-title { font-size: clamp(36px, 9vw, 60px); }
+    .piece-grid { padding: 0 20px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .pieces-header { padding: 40px 20px 28px; }
+    nav { padding: 16px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    The John Staton Museum
+  </a>
+  <div class="nav-title" id="navTitle"></div>
+  <div class="nav-count" id="navCount"></div>
+</nav>
+
+<!-- HERO SPLIT -->
+<div class="hero" id="topicHero">
+  <div class="hero-left">
+    <div class="hero-image-wrap">
+      <img id="heroImg" src="" alt="">
+    </div>
+    <div class="hero-color-overlay" id="heroColorOverlay"></div>
+    <div class="hero-left-meta">
+      <div class="hero-left-category" id="heroCategory"></div>
+      <div class="hero-left-title" id="heroTitleLeft"></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="topic-label" id="topicLabel"></div>
+    <h1 class="topic-title" id="topicTitle">Loading&hellip;</h1>
+    <div class="topic-divider"></div>
+    <div class="topic-meta">
+      <div class="topic-meta-item">
+        <div class="topic-meta-label">Pieces</div>
+        <div class="topic-meta-value" id="metaPieces">—</div>
+      </div>
+      <div class="topic-meta-item" id="metaYearsWrap" style="display:none">
+        <div class="topic-meta-label">Years</div>
+        <div class="topic-meta-value" id="metaYears">—</div>
+      </div>
+    </div>
+    <div class="topic-description" id="topicDesc"></div>
+    <div class="scroll-cue">
+      <div class="scroll-cue-line"></div>
+      <div class="scroll-cue-text">Scroll to browse pieces</div>
+    </div>
+  </div>
+</div>
+
+<!-- PIECES SECTION -->
+<section class="pieces-section" id="piecesSection">
+  <div class="pieces-header">
+    <div class="pieces-header-title">Collection</div>
+    <div class="pieces-header-count" id="piecesCount"></div>
+  </div>
+  <div class="piece-grid" id="pieceGrid">
+    <!-- Skeleton while loading -->
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+    <div class="piece-skeleton"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">The John Staton Museum</div>
+      <div class="footer-brand-desc">An unofficial fan archive dedicated to the work and characters of John Staton, Maryland artist.</div>
+      <div class="footer-brand-tag">Fan Archive · Not for profit</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Galleries</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Archive</div>
+      <ul class="footer-links">
+        <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Remembering John</div>
+      <ul class="footer-links">
+        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
+        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542" target="_blank" rel="noopener">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
+  </div>
+</footer>
+
+<script>
+const WIP_SIGNALS = ['wip','pencil','sketch','progress','inks','line art','variant','alternate','rough','b&w','black n white','black and white'];
+
+function isWip(piece) {
+  const t = (piece.title || '').toLowerCase();
+  const d = (piece.description || '').toLowerCase();
+  return WIP_SIGNALS.some(s => t.includes(s) || d.slice(0,100).includes(s));
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function setupRevealObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (!e.isIntersecting) return;
+      // Slight stagger based on horizontal position in grid
+      const card = e.target;
+      const delay = (card.dataset.index % 4) * 55;
+      setTimeout(() => card.classList.add('revealed'), delay);
+      observer.unobserve(card);
+    });
+  }, { threshold: 0.08 });
+  return observer;
+}
+
+async function init() {
+  const params = new URLSearchParams(location.search);
+  const topicId = params.get('id');
+
+  if (!topicId) {
+    document.getElementById('topicTitle').textContent = 'Not found';
+    document.getElementById('pieceGrid').innerHTML = '';
+    return;
+  }
+
+  // Load topics
+  let topic = null;
+  try {
+    const tRes = await fetch('data/topics.json');
+    const topics = await tRes.json();
+    topic = topics.find(t => t.id === topicId);
+  } catch(e) { console.warn('Could not load topics.json'); }
+
+  if (!topic) {
+    document.getElementById('topicTitle').textContent = 'Gallery not found';
+    document.getElementById('pieceGrid').innerHTML = '';
+    return;
+  }
+
+  // Populate hero
+  document.title = `${topic.title} — The John Staton Museum`;
+  document.getElementById('navTitle').textContent = topic.title;
+  document.getElementById('heroImg').src = topic.image || '';
+  document.getElementById('heroImg').alt = topic.title;
+  document.getElementById('heroColorOverlay').style.background = topic.color || '#7c1f26';
+  document.getElementById('heroCategory').textContent = topic.category || '';
+  document.getElementById('heroTitleLeft').textContent = topic.title;
+  document.getElementById('topicLabel').textContent = (topic.category || '').toUpperCase();
+  document.getElementById('topicTitle').textContent = topic.title;
+  document.getElementById('topicDesc').innerHTML = `<p>${(topic.description || '').replace(/\n/g,'</p><p>')}</p>`;
+
+  // Piece count from topic data initially
+  if (topic.pieces) {
+    document.getElementById('metaPieces').textContent = topic.pieces;
+  }
+
+  // Load pieces
+  let pieces = [];
+  try {
+    const pRes = await fetch('data/pieces.json');
+    if (pRes.ok) {
+      const allPieces = await pRes.json();
+      pieces = allPieces.filter(p =>
+        Array.isArray(p.topics) ? p.topics.includes(topicId) : p.topic === topicId
+      );
+    }
+  } catch(e) {
+    // pieces.json doesn't exist yet — show empty state
+  }
+
+  const grid = document.getElementById('pieceGrid');
+  grid.innerHTML = '';
+
+  if (!pieces.length) {
+    // Show a tasteful "coming soon" state rather than a broken grid
+    grid.parentElement.querySelector('.pieces-header').style.display = 'none';
+    grid.innerHTML = `
+      <div class="pieces-empty" style="grid-column:1/-1">
+        <div class="pieces-empty-title">Pieces coming soon</div>
+        <div class="pieces-empty-text">Full catalogue being built. Check back shortly.</div>
+      </div>`;
+    document.getElementById('navCount').textContent = '';
+    return;
+  }
+
+  // Update counts and year range
+  document.getElementById('metaPieces').textContent = pieces.length;
+  document.getElementById('navCount').textContent = `${pieces.length} pieces`;
+  document.getElementById('piecesCount').textContent = `${pieces.length} piece${pieces.length !== 1 ? 's' : ''}`;
+
+  const years = pieces.map(p => p.date ? parseInt(p.date.slice(-4)) : null).filter(Boolean);
+  if (years.length) {
+    const minY = Math.min(...years), maxY = Math.max(...years);
+    document.getElementById('metaYears').textContent = minY === maxY ? minY : `${minY}–${maxY}`;
+    document.getElementById('metaYearsWrap').style.display = '';
+  }
+
+  const observer = setupRevealObserver();
+
+  pieces.forEach((p, i) => {
+    const wip = isWip(p);
+    const year = p.date ? p.date.slice(-4) : '';
+    const card = document.createElement('div');
+    card.className = 'piece-card';
+    card.dataset.index = i;
+    card.innerHTML = `
+      <img src="${esc(p.image || p.imageUrl || '')}" alt="${esc(p.title)}" loading="lazy">
+      <div class="piece-card-overlay">
+        <div class="piece-card-title">${esc(p.title)}</div>
+        ${year ? `<div class="piece-card-date">${year}</div>` : ''}
+      </div>
+      ${wip ? '<div class="piece-card-wip">WIP</div>' : ''}
+    `;
+    card.addEventListener('click', () => {
+      location.href = `piece.html?id=${p.id}`;
+    });
+    grid.appendChild(card);
+    observer.observe(card);
+  });
+}
+
+init();
+</script>
+</body>
+</html>
