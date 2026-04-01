@@ -13,6 +13,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
+  /* ── CROSS-DOCUMENT VIEW TRANSITIONS ── */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 0.3s ease both fade-out; }
+  ::view-transition-new(root) { animation: 0.35s ease both fade-in; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in  { from { opacity: 0; } }
+
   :root {
     --crimson: #7c1f26;
     --crimson-dark: #5a161b;
@@ -641,7 +648,7 @@
         Galleries <span class="themes-count">(14)</span>
       </span>
     </div>
-    <a class="themes-see-all" id="themesSeeAll">See all</a>
+    <a class="themes-see-all" id="themesSeeAll" href="gallery.html">Browse all pieces</a>
   </div>
 
   <div class="themes-divider-wrap">
@@ -900,25 +907,9 @@
   function attachTopicCardListeners() {
     document.querySelectorAll('.theme-card').forEach(card => {
       card.addEventListener('click', () => {
-        const isSame = card === activeCard;
-        document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active'));
-        if (isSame) {
-          panel.classList.remove('open');
-          activeCard = null;
-          return;
-        }
-        panelImg.src          = card.dataset.img;
-        panelImg.alt          = card.dataset.title;
-        panelTitle.innerHTML  = card.dataset.title;
-        panelDesc.textContent = card.dataset.desc;
-        panelCounts.textContent = `${card.dataset.stories} series · ${card.dataset.pieces} pieces`;
-        panel.style.background = card.dataset.color ? card.dataset.color + 'cc' : '#1a0d0e';
-        panel.querySelector('.topic-panel-inner').style.background =
-          `linear-gradient(to right, ${card.dataset.color}55 0%, #0e0608 55%)`;
-        card.classList.add('active');
-        activeCard = card;
-        panel.classList.add('open');
-        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+        const id = card.dataset.topic;
+        if (!id) return;
+        location.href = `topic.html?id=${id}`;
       });
     });
   }
