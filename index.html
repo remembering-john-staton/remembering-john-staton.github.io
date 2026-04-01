@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The John Staton Museum</title>
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<meta name="description" content="A fan-curated archive of John Staton's art, characters, and worlds — DMV, The Streamers, Evil Diva, Star Trek Inktober, and more.">
+<meta name="description" content="A fan-curated archive of John Staton's art, characters, and worlds ,  DMV, The Streamers, Evil Diva, Star Trek Inktober, and more.">
 <meta property="og:title" content="The John Staton Museum">
 <meta property="og:description" content="A fan-curated archive of John Staton's art, characters, and worlds.">
 <meta property="og:type" content="website">
@@ -34,7 +34,7 @@
 
   html { scroll-behavior: smooth; }
 
-  /* Section stacking — each section slides over the previous */
+  /* Section stacking  -  each section slides over the previous */
   .hero {
     position: sticky;
     top: 0;
@@ -305,7 +305,7 @@
     align-self: center;
     overflow: hidden;
   }
-  /* Wrap text in a clip div via HTML — desc text slides up */
+  /* Wrap text in a clip div via HTML  -  desc text slides up */
   .hero-desc-inner {
     transform: translateY(100%);
     animation: snapUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
@@ -440,7 +440,7 @@
   }
   .themes-divider.visible { transform: scaleX(1); }
 
-  /* Cards grid — two rows */
+  /* Cards grid  -  two rows */
   .themes-track {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -519,7 +519,7 @@
     padding: 24px 22px 0;
   }
 
-  /* Card title — clip wrapper so title slides up from below card edge */
+  /* Card title  -  clip wrapper so title slides up from below card edge */
   .theme-card-title-wrap {
     overflow: hidden;
     z-index: 1;
@@ -634,7 +634,7 @@
     </div>
 
     <p class="hero-desc">
-      <span class="hero-desc-inner">A fan-curated celebration of John Staton's world — his art, stories, and enduring legacy.</span>
+      <span class="hero-desc-inner">A fan-curated celebration of John Staton's world ,  his art, stories, and enduring legacy.</span>
     </p>
   </div>
 
@@ -661,7 +661,7 @@
     <!-- populated by loadTopics() below -->
   </div>
 
-  <!-- EXPAND PANEL — injected below the card track -->
+  <!-- EXPAND PANEL ,  injected below the card track -->
   <div class="topic-panel" id="topicPanel">
     <div class="topic-panel-inner">
       <div class="topic-panel-left">
@@ -1101,7 +1101,7 @@
     <span class="quote-line">that never runs out</span>
     <span class="quote-line">of batteries.</span>
     <div class="quote-rule" id="quoteRule"></div>
-    <div class="quote-attr" id="quoteAttr">— John Staton, in his own words</div>
+    <div class="quote-attr" id="quoteAttr">-- John Staton, in his own words</div>
 
     <div class="quote-bio" id="quoteBio">
       <div class="quote-bio-left">
@@ -1485,8 +1485,8 @@
 
     <div class="sidebar-section-label">Archive</div>
     <ul class="sidebar-links">
-      <li><a href="#" class="coming-soon">Gallery <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> — coming soon</span></a></li>
-      <li><a href="#" class="coming-soon">Timeline <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> — coming soon</span></a></li>
+      <li><a href="#" class="coming-soon">Gallery <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> ,  coming soon</span></a></li>
+      <li><a href="#" class="coming-soon">Timeline <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> ,  coming soon</span></a></li>
     </ul>
   </nav>
 
@@ -1519,7 +1519,7 @@
     {
       img: 'img/pieces/pirate-princeless-JohnStaton.jpg',
       title: 'Pirate Princeless',
-      desc: 'A variant cover for the first issue of the third volume of Princeless: The Pirate Princess — an exclusive for Big Planet Comics. Featured here are Adrienne Ashe, the sword wielding woman warrior, and Sparky, her trusty dragon companion.'
+      desc: 'A variant cover for the first issue of the third volume of Princeless: The Pirate Princess ,  an exclusive for Big Planet Comics. Featured here are Adrienne Ashe, the sword wielding woman warrior, and Sparky, her trusty dragon companion.'
     },
     {
       img: 'img/pieces/dmv-enter-the-heroine-JohnStaton.jpg',
@@ -1574,7 +1574,7 @@
       const scrollY = window.scrollY;
       const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
       if (scrollY > heroH * 1.5) return;
-      // move image up at 40% scroll speed — slow drift
+      // move image up at 40% scroll speed  --  slow drift
       parallaxImg.style.transform = `translateY(${scrollY * 0.4}px)`;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
