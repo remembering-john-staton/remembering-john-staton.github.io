@@ -468,7 +468,7 @@
     padding: 0 48px;
   }
 
-  /* Individual card -- portrait ratio */
+  /* Portrait card -- solid color bg, title top, image contained */
   .theme-card {
     position: relative;
     overflow: hidden;
@@ -477,14 +477,17 @@
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-    border-right: 1px solid rgba(240,232,218,0.08);
-    border-bottom: 1px solid rgba(240,232,218,0.08);
+    border-right: 1px solid rgba(240,232,218,0.1);
+    border-bottom: 1px solid rgba(240,232,218,0.1);
+    display: flex;
+    flex-direction: column;
   }
   .theme-card:nth-child(5n) { border-right: none; }
   .theme-card:nth-last-child(-n+5) { border-bottom: none; }
   .theme-card.visible { opacity: 1; transform: translateY(0); }
+  .theme-card:hover { filter: brightness(1.08); }
 
-  /* Stagger delays */
+  /* Stagger */
   .theme-card:nth-child(1)  { transition-delay: 0.03s; }
   .theme-card:nth-child(2)  { transition-delay: 0.07s; }
   .theme-card:nth-child(3)  { transition-delay: 0.11s; }
@@ -498,121 +501,123 @@
   .theme-card:nth-child(11) { transition-delay: 0.43s; }
   .theme-card:nth-child(12) { transition-delay: 0.47s; }
 
+  /* Title block -- top of card */
+  .theme-card-title-block {
+    padding: 18px 16px 12px;
+    flex-shrink: 0;
+  }
+  .theme-card-label {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.55);
+    margin-bottom: 8px;
+    display: block;
+    overflow: hidden;
+  }
+  .theme-card-label-inner {
+    display: block;
+    transform: translateY(120%);
+    transition: transform 0.55s cubic-bezier(0.16,1,0.3,1) 0.1s;
+  }
+  .theme-card.visible .theme-card-label-inner { transform: translateY(0); }
+
+  .theme-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(15px, 1.5vw, 20px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: rgba(240,232,218,0.96);
+    text-transform: uppercase;
+    display: block;
+    overflow: hidden;
+  }
+  .theme-card-title-inner {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.65s cubic-bezier(0.16,1,0.3,1) 0.15s;
+  }
+  .theme-card.visible .theme-card-title-inner { transform: translateY(0); }
+
+  /* Image area -- fills remaining space, image contained at bottom */
+  .theme-card-image-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    padding: 0 16px;
+  }
+  .theme-card-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom left;
+    display: block;
+    filter: saturate(0.88);
+    transform: scale(0.97);
+    transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s,
+                transform 0.6s ease,
+                filter 0.4s ease;
+  }
+  .theme-card.visible .theme-card-image-area img {
+    clip-path: inset(0% 0 0 0);
+    transform: scale(1);
+  }
+  .theme-card:hover .theme-card-image-area img {
+    filter: saturate(1);
+    transform: scale(1.02);
+  }
+
+  /* Meta footer */
+  .theme-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px 14px;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(240,232,218,0.1);
+    margin-top: 12px;
+  }
+  .theme-card-type {
+    font-size: 8px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.6);
+  }
+  .theme-card-stats {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: rgba(240,232,218,0.6);
+    text-align: right;
+  }
+
   @media (max-width: 1100px) {
     .themes-track { grid-template-columns: repeat(4, 1fr); padding: 0 32px; }
-    .theme-card:nth-child(5n) { border-right: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-child(5n) { border-right: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-child(4n) { border-right: none; }
-    .theme-card:nth-last-child(-n+5) { border-bottom: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-last-child(-n+5) { border-bottom: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-last-child(-n+4) { border-bottom: none; }
   }
   @media (max-width: 768px) {
     .themes-track { grid-template-columns: repeat(3, 1fr); padding: 0 16px; }
-    .theme-card:nth-child(4n) { border-right: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-child(4n) { border-right: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-child(3n) { border-right: none; }
-    .theme-card:nth-last-child(-n+4) { border-bottom: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-last-child(-n+4) { border-bottom: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-last-child(-n+3) { border-bottom: none; }
+    .theme-card-title { font-size: 13px; }
   }
   @media (max-width: 480px) {
     .themes-track { grid-template-columns: repeat(2, 1fr); padding: 0 12px; }
-    .theme-card:nth-child(3n) { border-right: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-child(3n) { border-right: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-child(2n) { border-right: none; }
-    .theme-card:nth-last-child(-n+3) { border-bottom: 1px solid rgba(240,232,218,0.08); }
+    .theme-card:nth-last-child(-n+3) { border-bottom: 1px solid rgba(240,232,218,0.1); }
     .theme-card:nth-last-child(-n+2) { border-bottom: none; }
-    .theme-card { aspect-ratio: 1/1.6; }
+    .theme-card { aspect-ratio: 1/1.7; }
+    .theme-card-title { font-size: 12px; }
   }
 
-  .theme-card-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    filter: saturate(0.7) brightness(0.55);
-    transition: transform 0.7s ease, filter 0.5s ease;
-  }
-  .theme-card:hover .theme-card-bg {
-    transform: scale(1.06);
-    filter: saturate(0.9) brightness(0.65);
-  }
-
-  /* Solid color top half (like in reference) */
-  .theme-card-color {
-    position: absolute;
-    inset: 0;
-    /* Each card has its own color set via inline style */
-    opacity: 0.82;
-  }
-
-  .theme-card-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 18px 16px 0;
-  }
-
-  /* Card title  -  clip wrapper so title slides up from below card edge */
-  .theme-card-title-wrap {
-    overflow: hidden;
-    z-index: 1;
-    flex-shrink: 0;
-    margin-bottom: 16px;
-  }
-  .theme-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--cream);
-    text-transform: uppercase;
-    max-width: 95%;
-    display: block;
-    transform: translateY(110%);
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .theme-card.visible .theme-card-title { transform: translateY(0); }
-
-  .theme-card-thumb {
-    width: 100%;
-    flex: 1;
-    overflow: hidden;
-    border-radius: 1px;
-    z-index: 1;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    clip-path: inset(100% 0 0 0);
-    transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-  }
-  .theme-card.visible .theme-card-thumb { clip-path: inset(0% 0 0 0); }
-  .theme-card-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-    filter: saturate(0.85);
-  }
-  .theme-card:hover .theme-card-thumb img { transform: scale(1.05); }
-
-  .theme-card-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    z-index: 1;
-    padding: 10px 0 14px;
-    flex-shrink: 0;
-  }
-  .theme-card-type {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(240,232,218,0.5);
-  }
-  .theme-card-stats {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: rgba(240,232,218,0.5);
-    text-align: right;
-    line-height: 1.6;
-  }
+  /* card hover handled above */
 
   /* Responsive */
   @media (max-width: 768px) {
@@ -1621,29 +1626,33 @@
     try {
       const res = await fetch('data/topics.json');
       const topics = await res.json();
-      track.innerHTML = topics.map((t, i) => `
+      track.innerHTML = topics
+        .filter(t => t.id !== 'everything' && t.pieces > 0)
+        .map((t, i) => {
+          const title = (t.title || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+          const desc  = (t.description || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+          const cat   = (t.category || 'Gallery').replace(/&/g, '&amp;');
+          return `
         <div class="theme-card" data-topic="${t.id}"
-             data-title="${t.title}"
-             data-pieces="${t.pieces}" data-stories="${t.pieces}"
-             data-color="${t.color}"
-             data-img="${t.image}"
-             data-desc="${t.description.replace(/"/g, '&quot;')}"
-             style="transition-delay: ${i * 0.05}s">
-          <div class="theme-card-color" style="background: ${t.color};"></div>
-          <div class="theme-card-inner">
-            <div class="theme-card-title-wrap"><div class="theme-card-title">${t.title}</div></div>
-            <div>
-              <div class="theme-card-thumb">
-                <img src="${t.image}" alt="${t.title}" loading="lazy" />
-              </div>
-              <div class="theme-card-meta">
-                <span class="theme-card-type">${t.category || 'Gallery'}</span>
-                <span class="theme-card-stats">${t.pieces} pieces</span>
-              </div>
-            </div>
+             data-title="${title}"
+             data-pieces="${t.pieces}"
+             data-color="${t.color || '#1a0d0e'}"
+             data-img="${t.image || ''}"
+             data-desc="${desc}"
+             style="background-color:${t.color || '#1a0d0e'}; transition-delay: ${i * 0.05}s">
+          <div class="theme-card-title-block">
+            <span class="theme-card-label"><span class="theme-card-label-inner">${cat}</span></span>
+            <span class="theme-card-title"><span class="theme-card-title-inner">${title}</span></span>
           </div>
-        </div>
-      `).join('');
+          <div class="theme-card-image-area">
+            <img src="${t.image || ''}" alt="${title}" loading="lazy" />
+          </div>
+          <div class="theme-card-meta">
+            <span class="theme-card-type">Collection</span>
+            <span class="theme-card-stats">${t.pieces} pieces</span>
+          </div>
+        </div>`;
+        }).join('');
 
       attachTopicCardListeners();
 
