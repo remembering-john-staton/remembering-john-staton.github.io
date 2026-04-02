@@ -311,6 +311,26 @@
     animation: snapUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
   }
 
+  .hero-gallery-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(240,232,218,0.5);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,232,218,0.2);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+    opacity: 0;
+    animation: snapUp 0.5s cubic-bezier(0.16,1,0.3,1) 1.3s forwards;
+  }
+  .hero-gallery-link:hover {
+    color: var(--cream);
+    border-color: rgba(240,232,218,0.5);
+  }
+
   @keyframes snapUp {
     from { transform: translateY(100%); }
     to   { transform: translateY(0); }
@@ -634,8 +654,9 @@
     </div>
 
     <p class="hero-desc">
-      <span class="hero-desc-inner">A fan-curated celebration of John Staton's world ,  his art, stories, and enduring legacy.</span>
+      <span class="hero-desc-inner">A fan-curated celebration of John Staton's world, his art, stories, and enduring legacy.</span>
     </p>
+    <a class="hero-gallery-link" href="gallery.html">Browse the Full Collection &rarr;</a>
   </div>
 
   <div class="vert-text">Fan Archive · Est. 2025</div>
