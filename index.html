@@ -112,7 +112,7 @@
     position: relative;
     width: 100%; min-height: 92vh;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
   }
 
@@ -1343,31 +1343,37 @@
     {
       img: 'img/pieces/princess-nine-commission-JohnStaton.jpg',
       title: 'Princess Nine Commission',
+      id: '466388225',
       desc: 'Artwork from an old drawing of Izumi and Ryo, from the anime Princess Nine. I hope this anime gets a reboot. It was great music, and a compelling story, but the animation got cheaper with every episode. This is one series that deserves modern production values.'
     },
     {
       img: 'img/pieces/navy-girl-aerial-demonstration-variant-JohnStaton.png',
       title: 'Navy Girl Aerial Demonstration Variant',
+      id: '830491240',
       desc: 'Fighting Magical Girl, Mayflower Shipman, aka Navy Girl has swapped her traditional dress whites for the colors she wears for armed forces day demonstrations. She is accompanied by her Specialized Kinetic Yield, High Altitude Weapon Carrier, or SKYHAWC. (If anyone can find out how to swap a second "K" in there, I\'m open to suggestion.)'
     },
     {
       img: 'img/pieces/evil-diva-JohnStaton.png',
       title: 'Evil Diva',
+      id: '469462622',
       desc: 'Here is a proposed cover for a long dead series from the independent studio Angry Viking Press. The comic was Evil Diva, and was about a demon girl who wanted to be an angel. The whole thing took place in a demonic high school, I believe that steeple fingers dude was the principal.'
     },
     {
       img: 'img/pieces/anti-tank-girl-JohnStaton.jpg',
       title: 'Anti Tank Girl',
+      id: '755886775',
       desc: 'Army Girl demonstrates her capabilities as an anti-armor asset, against T.H.R.E.A.T.\'s fabled Werewolf Brigade during the Battle of Thar. (Transformative Hegemony to Rule the Earth for All Time.)'
     },
     {
       img: 'img/pieces/pirate-princeless-JohnStaton.jpg',
       title: 'Pirate Princeless',
+      id: '495485526',
       desc: 'A variant cover for the first issue of the third volume of Princeless: The Pirate Princess ,  an exclusive for Big Planet Comics. Featured here are Adrienne Ashe, the sword wielding woman warrior, and Sparky, her trusty dragon companion.'
     },
     {
       img: 'img/pieces/dmv-enter-the-heroine-JohnStaton.jpg',
       title: 'DMV: Enter the Heroine',
+      id: '106141964',
       desc: 'Enter AJ, fully grown and at the height of her powers. The two former combatants cower obsequiously, confronted by the threat of debt. (I imagine her "Dragonball Z" eyepiece should win me a few more props for bein\' all "retro".)'
     }
   ];
@@ -1394,6 +1400,12 @@
   }
 
   carouselImg.style.transition = 'opacity 0.2s ease';
+  carouselEl.style.cursor = 'pointer';
+  carouselEl.addEventListener('click', (e) => {
+    if (e.target.closest('.hero-carousel-btn')) return;
+    const s = carouselSlides[carouselIdx];
+    if (s.id) window.location.href = 'piece.html?id=' + s.id;
+  });
   setCarouselSlide(carouselIdx);
 
   // Show overlay on mobile (touch) persistently
