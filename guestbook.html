@@ -26,6 +26,7 @@
     color:rgba(240,232,218,0.55);text-decoration:none;transition:color 0.2s;
     display:flex;align-items:center;gap:6px}
   .nav-links a:hover{color:rgba(240,232,218,0.95)}
+  .nav-links a.active{color:rgba(240,232,218,0.85)}
   .nav-links .material-symbols-rounded{font-size:20px;
     font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20}
   @media(max-width:720px){
@@ -148,10 +149,10 @@
 <nav>
   <div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
   <div class="nav-links">
-    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Gallery</a>
     <a href="about.html"><span class="material-symbols-rounded">info</span>About This Site</a>
-    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Full Gallery</a>
     <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
+    <a href="guestbook.html" class="active"><span class="material-symbols-rounded">menu_book</span>Guestbook</a>
   </div>
 </nav>
 
@@ -218,7 +219,7 @@
 // CONFIGURATION
 // ════════════════════════════════════════════
 // 1. Google Form URL (the form visitors fill out)
-const GOOGLE_FORM_URL = '';
+const GOOGLE_FORM_URL = 'https://forms.gle/x6ySSeC6CmtFkQDa9';
 // 2. Published Google Sheet CSV URL
 //    Sheet → File → Share → Publish to web → CSV → copy URL
 const GOOGLE_SHEET_CSV = '';
