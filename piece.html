@@ -39,40 +39,25 @@
   }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 40px;
+
+
+  /* Inline breadcrumb in info panel */
+  .piece-breadcrumb {
+    display: flex; align-items: center; flex-wrap: wrap;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25);
+    margin-bottom: 28px;
+    gap: 4px;
   }
-  .nav-back {
-    font-family: 'Lora', serif;
-    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--cream-dim); text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
+  .piece-breadcrumb a {
+    color: rgba(240,232,218,0.4); text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-back::before { content: '←'; font-size: 14px; font-family: sans-serif; }
-  .nav-back:hover { color: var(--cream); }
-
-  /* Breadcrumbs */
-  .breadcrumbs {
-    position: fixed; top: 52px; left: 0; right: 0; z-index: 99;
-    padding: 0 40px;
-    display: flex; align-items: center;
-    font-family: 'Lora', serif;
-    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: rgba(240,232,218,0.22);
-    pointer-events: none;
-  }
-  .breadcrumbs a {
-    color: rgba(240,232,218,0.32); text-decoration: none;
-    pointer-events: all; transition: color 0.2s;
-  }
-  .breadcrumbs a:hover { color: rgba(240,232,218,0.7); }
-  .breadcrumb-sep { margin: 0 8px; opacity: 0.35; }
-  .breadcrumb-current {
-    color: rgba(240,232,218,0.5);
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 320px;
+  .piece-breadcrumb a:hover { color: var(--cream); }
+  .piece-breadcrumb-sep { margin: 0 6px; opacity: 0.3; }
+  .piece-breadcrumb-current {
+    color: rgba(240,232,218,0.6);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 280px;
   }
 
   /* HERO LAYOUT */
@@ -117,7 +102,7 @@
   /* RIGHT: scrollable info */
   .piece-info-panel {
     display: flex; flex-direction: column;
-    padding: 80px 52px 100px;
+    padding: 48px 52px 100px;
     background: var(--crimson-dark);
     border-left: 1px solid rgba(240,232,218,0.06);
     min-height: 100vh;
@@ -497,24 +482,12 @@
     .piece-info-panel { padding:40px 24px 80px; }
     .piece-related { padding:48px 24px; }
     .piece-related-grid { grid-template-columns:repeat(2,1fr); }
-    nav { padding:16px 24px; }
-    .breadcrumbs { padding:0 24px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-back">Museum</a>
-</nav>
 
-<div class="breadcrumbs" id="breadcrumbs">
-  <a href="index.html">Museum</a>
-  <span class="breadcrumb-sep">/</span>
-  <a href="#" id="breadcrumbTopic" style="display:none"></a>
-  <span class="breadcrumb-sep" id="breadcrumbTopicSep" style="display:none"></span>
-  <span class="breadcrumb-current" id="breadcrumbTitle">, </span>
-</div>
 
 <div id="pieceContent"></div>
 
@@ -551,21 +524,11 @@ async function init() {
   setMeta('og:image', piece.image ? `https://remembering-john-staton.github.io/${piece.image}` : '');
   setMeta('canonical', `https://remembering-john-staton.github.io/piece.html?id=${piece.id}`, true);
 
-  // Breadcrumb
-  document.getElementById('breadcrumbTitle').textContent = piece.title;
+  // Build breadcrumb data for renderPiece to use
   const pieceTopicId = topicId || (Array.isArray(piece.topics) ? piece.topics[0] : piece.topic);
-  if (pieceTopicId && topics.length) {
-    const topic = topics.find(t => t.id === pieceTopicId);
-    if (topic) {
-      const el = document.getElementById('breadcrumbTopic');
-      el.textContent = topic.title + ' Collection';
-      el.href = `topic.html?id=${topic.id}`;
-      el.style.display = '';
-      document.getElementById('breadcrumbTopicSep').style.display = '';
-    }
-  }
+  const breadcrumbTopic = pieceTopicId && topics.length ? topics.find(t => t.id === pieceTopicId) : null;
 
-  renderPiece(piece, pieces, topics);
+  renderPiece(piece, pieces, topics, breadcrumbTopic);
   _allPieces = pieces;
 }
 
@@ -678,7 +641,7 @@ function switchVersion(id, thumbEl) {
     </div>`;
   }
 
-function renderPiece(piece, allPieces, allTopics) {
+function renderPiece(piece, allPieces, allTopics, breadcrumbTopic) {
   // Find pieces from the same collection(s)
   const pieceTopics = Array.isArray(piece.topics) ? piece.topics : (piece.topic ? [piece.topic] : []);
   const sameCollection = allPieces
@@ -754,6 +717,15 @@ function renderPiece(piece, allPieces, allTopics) {
         ${buildVersionsStrip(piece, allPieces)}
       </div>
       <div class="piece-info-panel">
+        <div class="piece-breadcrumb">
+          <a href="index.html">The John Staton Museum</a>
+          ${breadcrumbTopic ? `
+            <span class="piece-breadcrumb-sep">/</span>
+            <a href="topic.html?id=${breadcrumbTopic.id}">${escHtml(breadcrumbTopic.title)} Collection</a>
+          ` : ''}
+          <span class="piece-breadcrumb-sep">/</span>
+          <span class="piece-breadcrumb-current">${escHtml(piece.title)}</span>
+        </div>
         <div class="piece-label"><span>The John Staton Museum</span></div>
         <h1 class="piece-title"><span>${escHtml(piece.title)}</span></h1>
         <div class="piece-divider"></div>
