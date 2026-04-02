@@ -553,18 +553,19 @@ async function init() {
 
   // Breadcrumb
   document.getElementById('breadcrumbTitle').textContent = piece.title;
-  if (topicId && topics.length) {
-    const topic = topics.find(t => t.id === topicId);
+  const pieceTopicId = topicId || (Array.isArray(piece.topics) ? piece.topics[0] : piece.topic);
+  if (pieceTopicId && topics.length) {
+    const topic = topics.find(t => t.id === pieceTopicId);
     if (topic) {
       const el = document.getElementById('breadcrumbTopic');
-      el.textContent = topic.title;
-      el.href = `#themes`;
+      el.textContent = topic.title + ' Collection';
+      el.href = `topic.html?id=${topic.id}`;
       el.style.display = '';
       document.getElementById('breadcrumbTopicSep').style.display = '';
     }
   }
 
-  renderPiece(piece, pieces);
+  renderPiece(piece, pieces, topics);
   _allPieces = pieces;
 }
 
@@ -677,11 +678,24 @@ function switchVersion(id, thumbEl) {
     </div>`;
   }
 
-function renderPiece(piece, allPieces) {
-  const related = allPieces
-    .filter(p => p.id !== piece.id && p.image)
+function renderPiece(piece, allPieces, allTopics) {
+  // Find pieces from the same collection(s)
+  const pieceTopics = Array.isArray(piece.topics) ? piece.topics : (piece.topic ? [piece.topic] : []);
+  const sameCollection = allPieces
+    .filter(p => {
+      if (p.id === piece.id || !p.image) return false;
+      const pts = Array.isArray(p.topics) ? p.topics : (p.topic ? [p.topic] : []);
+      return pieceTopics.some(t => pts.includes(t));
+    })
     .sort(() => Math.random() - 0.5)
-    .slice(0, 4);
+    .slice(0, 8);
+
+  // Collection label for the related section
+  const firstTopic = pieceTopics[0];
+  const topicObj = allTopics && firstTopic ? allTopics.find(t => t.id === firstTopic) : null;
+  const collectionLabel = topicObj
+    ? `More from the ${topicObj.title} Collection`
+    : 'More from the archive';
 
   // Tags
   const tagsHtml = piece.tags && piece.tags.length
@@ -717,11 +731,11 @@ function renderPiece(piece, allPieces) {
   }
 
   // Related
-  const relatedHtml = related.length
+  const relatedHtml = sameCollection.length
     ? `<section class="piece-related">
-        <div class="piece-related-label">More from the archive</div>
+        <div class="piece-related-label">${collectionLabel}</div>
         <div class="piece-related-grid">
-          ${related.map(r => `
+          ${sameCollection.map(r => `
             <div class="piece-related-item" onclick="navigateTo('${r.id}')">
               <img src="${r.image}" alt="${escHtml(r.title)}" loading="lazy" />
               <div class="piece-related-item-title">${escHtml(r.title)}</div>
