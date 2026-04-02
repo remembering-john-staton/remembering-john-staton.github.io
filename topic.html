@@ -37,33 +37,17 @@
   }
 
   /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 48px;
-    background: rgba(14,6,8,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(240,232,218,0.06);
-  }
-  .nav-back {
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,232,218,0.4); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(240,232,218,0.35); text-decoration: none;
+    margin-bottom: 28px;
     transition: color 0.2s;
   }
-  .nav-back svg { width: 14px; height: 14px; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
-  .nav-back:hover { color: var(--cream); }
-  .nav-back:hover svg { opacity: 1; transform: translateX(-3px); }
-  .nav-title {
-    font-family: 'Lora', serif; font-size: 11px;
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: rgba(240,232,218,0.25);
-  }
-  .nav-count {
-    font-size: 11px; letter-spacing: 0.1em;
-    color: rgba(240,232,218,0.2);
-    font-variant-numeric: tabular-nums;
-  }
+  .back-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
+  .back-link:hover { color: rgba(240,232,218,0.7); }
+  .back-link:hover svg { transform: translateX(-3px); }
 
   /* ── HERO SPLIT ── */
   .hero {
@@ -71,14 +55,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
-    padding-top: 57px; /* nav height */
+
   }
 
   /* Left: sticky image panel */
   .hero-left {
     position: sticky;
-    top: 57px;
-    height: calc(100vh - 57px);
+    top: 0;
+    height: 100vh;
     overflow: hidden;
   }
   .hero-image-wrap {
@@ -371,7 +355,6 @@
     .piece-grid { padding: 0 16px; columns: 2; }
     .sort-bar { padding: 16px 16px 0; }
     .pieces-header { padding: 40px 16px 20px; }
-    nav { padding: 16px 24px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (min-width: 901px) and (max-width: 1200px) {
@@ -381,14 +364,6 @@
 </head>
 <body>
 
-<nav>
-  <a class="nav-back" href="index.html">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
-    The John Staton Museum
-  </a>
-  <div class="nav-title" id="navTitle"></div>
-  <div class="nav-count" id="navCount"></div>
-</nav>
 
 <!-- HERO SPLIT -->
 <div class="hero" id="topicHero">
@@ -403,6 +378,10 @@
     </div>
   </div>
   <div class="hero-right">
+    <a class="back-link" href="index.html">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+      The John Staton Museum
+    </a>
     <div class="topic-label" id="topicLabel"></div>
     <h1 class="topic-title" id="topicTitle">Loading&hellip;</h1>
     <div class="topic-divider"></div>
@@ -543,7 +522,6 @@ async function init() {
 
   // Populate hero
   document.title = `${topic.title} -- The John Staton Museum`;
-  document.getElementById('navTitle').textContent = topic.title;
   document.getElementById('heroImg').src = topic.image || '';
   document.getElementById('heroImg').alt = topic.title;
   document.getElementById('heroColorOverlay').style.background = topic.color || '#7c1f26';
@@ -646,7 +624,6 @@ async function init() {
 
   // Update counts and year range
   document.getElementById('metaPieces').textContent = pieces.length;
-  document.getElementById('navCount').textContent = `${pieces.length} pieces`;
   document.getElementById('piecesCount').textContent = `${pieces.length} piece${pieces.length !== 1 ? 's' : ''}`;
 
   const years = pieces.map(p => p.date ? parseInt(p.date.slice(-4)) : null).filter(Boolean);
