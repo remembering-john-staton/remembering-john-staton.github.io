@@ -70,9 +70,12 @@
 
   /* ─── NAV ─── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 40px;
+    padding: 18px 40px;
+    background: rgba(10,3,4,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(240,232,218,0.06);
   }
   .nav-title {
     font-family: 'Lora', serif;
@@ -84,7 +87,7 @@
   }
   .nav-links a {
     font-family: 'Lora', serif;
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
     color: rgba(240,232,218,0.5); text-decoration: none;
     transition: color 0.2s;
   }
@@ -293,11 +296,11 @@
 
   .hero-desc {
     font-family: 'Lora', serif;
-    font-size: 15px;
+    font-size: 17px;
     font-style: normal;
     line-height: 1.75;
     color: var(--text-body);
-    max-width: 340px;
+    max-width: 380px;
     align-self: center;
     overflow: hidden;
   }
@@ -503,7 +506,7 @@
     flex-shrink: 0;
   }
   .theme-card-label {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(240,232,218,0.55);
@@ -576,13 +579,13 @@
     margin-top: 12px;
   }
   .theme-card-type {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: rgba(240,232,218,0.6);
   }
   .theme-card-stats {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.1em;
     color: rgba(240,232,218,0.6);
     text-align: right;
@@ -1291,31 +1294,6 @@
         <li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
       </ul>
     </div>
-
-    <div class="footer-col">
-      <div class="footer-col-title">Coming Soon</div>
-      <ul class="footer-links">
-        <li><span style="opacity:0.35;font-size:14px">Collection</span></li>
-        <li><span style="opacity:0.35;font-size:14px">Timeline</span></li>
-        <li><span style="opacity:0.35;font-size:14px">Character Index</span></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <div class="footer-col-title">Archive</div>
-      <ul class="footer-links">
-        <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <div class="footer-col-title">Remembering John</div>
-      <ul class="footer-links">
-        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
-        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
-      </ul>
-    </div>
-  </div>
 
   <div class="footer-bottom">
     <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
