@@ -5302,8 +5302,7 @@
     "da_url": "https://www.deviantart.com/johnstaton/art/Connie-and-Kwewsah-135099822",
     "topics": [
       "chibis",
-      "star-trek",
-      "western-fanart"
+      "star-trek"
     ],
     "tags": [
       "chibi"
@@ -5778,9 +5777,9 @@
     "da_url": "https://www.deviantart.com/johnstaton/art/Peake-Performance-115230276",
     "topics": [
       "star-trek",
-      "anime",
       "chibis",
-      "western-fanart"
+      "western-fanart",
+      "published"
     ],
     "tags": [
       "aircraft",
@@ -7382,7 +7381,8 @@
     "date": "",
     "da_url": "https://www.deviantart.com/johnstaton/art/Cho-Mama-109674355",
     "topics": [
-      "anime"
+      "anime",
+      "western-fanart"
     ],
     "tags": [
       "bubblegum-crisis",
@@ -9223,6 +9223,7 @@
     "date": "",
     "da_url": "https://www.deviantart.com/johnstaton/art/Galactica-the-Anime-107479918",
     "topics": [
+      "western-fanart",
       "anime"
     ],
     "tags": [
@@ -11633,7 +11634,8 @@
     "date": "",
     "da_url": "https://www.deviantart.com/johnstaton/art/Yes-That-s-a-Real-Gun-105078393",
     "topics": [
-      "anime"
+      "western-fanart",
+      "published"
     ],
     "tags": [
       "pinup",
