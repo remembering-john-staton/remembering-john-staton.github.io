@@ -462,48 +462,24 @@
   /* Two-section layout */
   .themes-section-group {
     border-bottom: 1px solid rgba(240,232,218,0.06);
+    padding-bottom: 8px;
   }
   .themes-section-group:last-child { border-bottom: none; }
 
   .themes-section-label {
-    padding: 36px 48px 0;
-    display: flex; align-items: baseline; gap: 16px;
+    padding: 40px 48px 18px;
+    display: flex; align-items: center; gap: 20px;
   }
   .themes-section-name {
     font-family: 'Playfair Display', serif;
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 0.3em; text-transform: uppercase;
-    color: rgba(240,232,218,0.3);
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,232,218,0.85);
+    flex-shrink: 0;
   }
   .themes-section-line {
     flex: 1; height: 1px;
-    background: rgba(240,232,218,0.07);
-  }
-
-  /* Cards grid */
-  .themes-track {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0;
-    padding: 0 48px;
-  }
-
-  /* Section labels above each row */
-  .themes-section-header {
-    padding: 40px 48px 20px;
-    display: flex; align-items: baseline; gap: 20px;
-    border-top: 1px solid rgba(240,232,218,0.07);
-  }
-  .themes-section-header:first-child { border-top: none; padding-top: 8px; }
-  .themes-section-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 13px; font-weight: 700;
-    letter-spacing: 0.28em; text-transform: uppercase;
-    color: rgba(240,232,218,0.9);
-  }
-  .themes-section-count {
-    font-size: 10px; letter-spacing: 0.15em;
-    color: rgba(240,232,218,0.3);
+    background: rgba(240,232,218,0.1);
   }
 
   /* Portrait card -- solid color bg, title top, image contained */
