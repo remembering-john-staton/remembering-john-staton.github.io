@@ -6,6 +6,7 @@
 <title>His Friends & Collaborators  --  The John Staton Museum</title>
 <meta name="description" content="The artists, colorists, writers and regulars who were part of John Staton's world on DeviantArt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{--crimson:#7c1f26;--crimson-dark:#5a161b;--cream:#f0e8da}
@@ -14,13 +15,6 @@
   body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.03;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size:200px 200px}
-  nav{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;
-    padding:20px 48px;border-bottom:1px solid rgba(240,232,218,0.06)}
-  .nav-back{font-family:'Lora',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
-    color:rgba(240,232,218,0.45);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-  .nav-back::before{content:'←';font-family:sans-serif;font-size:14px}
-  .nav-back:hover{color:var(--cream)}
-  .nav-title{font-family:'Lora',serif;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.3)}
   .page-hero{position:relative;z-index:1;padding:80px 64px 56px;max-width:1200px;margin:0 auto}
   .page-label{font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:16px}
   h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,68px);font-weight:900;line-height:1;
@@ -74,7 +68,7 @@
   .collab-note{font-size:13px;line-height:1.7;color:rgba(240,232,218,0.28);
     font-style:italic;margin-top:28px;padding-top:20px;border-top:1px solid rgba(240,232,218,0.05)}
   footer{position:relative;z-index:1;padding:28px 48px;border-top:1px solid rgba(240,232,218,0.06);
-    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,232,218,0.2);text-align:center}
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,232,218,0.2);}
   footer a{color:rgba(240,232,218,0.35);text-decoration:none;transition:color 0.2s}
   footer a:hover{color:rgba(240,232,218,0.7)}
 
@@ -127,29 +121,55 @@
     .collab-link{grid-column:2;margin-top:8px}
     .collab-avatar{width:48px;height:48px}
     .rt-bar-cell{display:none}}
+
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 40px;background:rgba(10,3,4,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(240,232,218,0.06)}
+  .nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;color:rgba(240,232,218,0.85)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:'Lora',serif;font-size:14px;letter-spacing:0.08em;
+    color:rgba(240,232,218,0.55);text-decoration:none;transition:color 0.2s;
+    display:flex;align-items:center;gap:6px}
+  .nav-links a:hover{color:rgba(240,232,218,0.95)}
+  .nav-links a.active{color:rgba(240,232,218,0.85)}
+  .nav-links .material-symbols-rounded{font-size:20px;
+    font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20}
+  @media(max-width:720px){
+    nav{padding:12px 20px}
+    .nav-title{font-size:13px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:0;gap:0}
+    .nav-links .material-symbols-rounded{font-size:22px}
+  }
+
 </style>
 
 <style>
-  .site-footer{background:#0e0608;color:rgba(240,232,218,0.5);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07)}
+  .site-footer{background:#0e0608;color:rgba(240,232,218,0.6);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07);text-align:left}
   .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
   .footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
-  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.38);max-width:280px}
-  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.2);border:1px solid rgba(240,232,218,0.1);padding:5px 12px}
-  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.25);margin-bottom:20px}
+  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.5);max-width:320px}
+  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.32);border:1px solid rgba(240,232,218,0.15);padding:5px 12px}
+  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.38);margin-bottom:20px}
   .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
-  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.5);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.6);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
   .footer-links li a:hover{color:#f0e8da}
   .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
-  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.2)}
+  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.32)}
   .footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
-  @media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:32px}.site-footer{padding:48px 24px 32px}}
+  @media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:32px}.site-footer{padding:48px 24px 32px}}}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-back">Museum</a>
-  <div class="nav-title">The John Staton Museum</div>
-  <div style="width:80px"></div>
+  <div class="nav-title"><a href="index.html" style="color:inherit;text-decoration:none">The John Staton Museum</a></div>
+  <div class="nav-links">
+    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="about.html"><span class="material-symbols-rounded">info</span>About This Site</a>
+    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Full Gallery</a>
+    <a href="collaborators.html" class="active"><span class="material-symbols-rounded">group</span>Collaborators</a>
+  </div>
 </nav>
 <div class="page-hero">
   <div class="page-label">The Archive</div>
