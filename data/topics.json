@@ -60,16 +60,6 @@
     "cta": "Meet the GELFs"
   },
   {
-    "id": "anime-city",
-    "title": "Anime City",
-    "category": "Original IP",
-    "color": "#2a1a3a",
-    "image": "img/pieces/anime-city-JohnStaton.jpg",
-    "pieces": 8,
-    "description": "An original world John kept returning to across several convention pieces: a future city dense with Japanese signage and anime aesthetics. The Girl from Anime City showed up in a T-shirt design, a Halloween piece, a train platform. Autumn Walk, Planet Girl, and Just a Walk in the Park are in the same visual register, same unnamed world.",
-    "cta": "Explore the Anime City"
-  },
-  {
     "id": "high-school-romance",
     "title": "The High School Romance",
     "color": "#3a2040",
@@ -88,16 +78,6 @@
     "pieces": 12,
     "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative.",
     "cta": "Browse the Evil Diva Fan Art"
-  },
-  {
-    "id": "gold-digger",
-    "title": "Gold Digger",
-    "color": "#4a3010",
-    "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
-    "category": "Fan Art ,  Comics",
-    "pieces": 8,
-    "description": "Fred Perry's Gold Digger. Skippy Von Richthofen, John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte.",
-    "cta": "Browse the Gold Digger Collection"
   },
   {
     "id": "chibis",
