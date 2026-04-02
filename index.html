@@ -459,12 +459,51 @@
   }
   .themes-divider.visible { transform: scaleX(1); }
 
+  /* Two-section layout */
+  .themes-section-group {
+    border-bottom: 1px solid rgba(240,232,218,0.06);
+  }
+  .themes-section-group:last-child { border-bottom: none; }
+
+  .themes-section-label {
+    padding: 36px 48px 0;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .themes-section-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.3);
+  }
+  .themes-section-line {
+    flex: 1; height: 1px;
+    background: rgba(240,232,218,0.07);
+  }
+
   /* Cards grid */
   .themes-track {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 0;
     padding: 0 48px;
+  }
+
+  /* Section labels above each row */
+  .themes-section-header {
+    padding: 40px 48px 20px;
+    display: flex; align-items: baseline; gap: 20px;
+    border-top: 1px solid rgba(240,232,218,0.07);
+  }
+  .themes-section-header:first-child { border-top: none; padding-top: 8px; }
+  .themes-section-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(240,232,218,0.9);
+  }
+  .themes-section-count {
+    font-size: 10px; letter-spacing: 0.15em;
+    color: rgba(240,232,218,0.3);
   }
 
   /* Portrait card -- solid color bg, title top, image contained */
@@ -684,9 +723,7 @@
   <div class="themes-header">
     <div class="themes-header-left">
       <div class="themes-dash" id="themesDash"></div>
-      <span class="themes-label" id="themesLabel">
-        Galleries <span class="themes-count">(14)</span>
-      </span>
+      <span class="themes-label" id="themesLabel">Collections</span>
     </div>
     <a class="themes-see-all" id="themesSeeAll" href="gallery.html">Browse all pieces</a>
   </div>
@@ -695,8 +732,8 @@
     <div class="themes-divider" id="themesDivider"></div>
   </div>
 
-  <div class="themes-track" id="themesTrack">
-    <!-- populated by loadTopics() below -->
+  <div id="themesContainer">
+    <!-- Two sections populated by loadTopics() -->
   </div>
 
   <!-- EXPAND PANEL ,  injected below the card track -->
@@ -1390,18 +1427,25 @@
 
   // ─── TOPICS LOADER ───
   async function loadTopics() {
-    const track = document.getElementById('themesTrack');
-    if (!track) return;
+    const container = document.getElementById('themesContainer');
+    if (!container) return;
     try {
       const res = await fetch('data/topics.json');
       const topics = await res.json();
-      track.innerHTML = topics
+
+      const filtered = topics
         .filter(t => t.id !== 'everything' && t.pieces > 0)
-        .map((t, i) => {
-          const title = (t.title || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-          const desc  = (t.description || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
-          const cat   = (t.category || 'Gallery').replace(/&/g, '&amp;');
-          return `
+        .sort((a, b) => (a.section - b.section) || (a.order - b.order));
+
+      const sections = [
+        { num: 1, name: 'Original Work' },
+        { num: 2, name: 'What He Loved' },
+      ];
+
+      function cardHTML(t, i) {
+        const title = (t.title || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        const desc  = (t.description || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+        return `
         <div class="theme-card" data-topic="${t.id}"
              data-title="${title}"
              data-pieces="${t.pieces}"
@@ -1410,7 +1454,6 @@
              data-desc="${desc}"
              style="background-color:${t.color || '#1a0d0e'}; transition-delay: ${i * 0.05}s">
           <div class="theme-card-title-block">
-            <span class="theme-card-label"><span class="theme-card-label-inner">${cat}</span></span>
             <span class="theme-card-title"><span class="theme-card-title-inner">${title}</span></span>
           </div>
           <div class="theme-card-image-area">
@@ -1421,12 +1464,23 @@
             <span class="theme-card-stats">${t.pieces} pieces</span>
           </div>
         </div>`;
-        }).join('');
+      }
+
+      let cardIdx = 0;
+      container.innerHTML = sections.map(sec => {
+        const secTopics = filtered.filter(t => t.section === sec.num);
+        const cards = secTopics.map(t => cardHTML(t, cardIdx++)).join('');
+        return `
+        <div class="themes-section-group">
+          <div class="themes-section-label">
+            <span class="themes-section-name">${sec.name}</span>
+            <span class="themes-section-line"></span>
+          </div>
+          <div class="themes-track">${cards}</div>
+        </div>`;
+      }).join('');
 
       attachTopicCardListeners();
-
-      const countEl = document.querySelector('.themes-count');
-      if (countEl) countEl.textContent = '(' + topics.length + ')';
 
       // Reveal section header elements when section enters viewport
       const section = document.getElementById('themes');
