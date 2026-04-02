@@ -113,14 +113,12 @@
   }
 
   /* ── SHOW MORE ── */
-  .show-more-wrap{margin-top:16px;text-align:center}
   .show-more-btn{
     font-family:'Lora',serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
     color:rgba(240,232,218,0.35);background:none;
     border:1px solid rgba(240,232,218,0.1);padding:10px 32px;cursor:pointer;
     transition:color 0.2s,border-color 0.2s;
   }
-  .show-more-btn:hover{color:rgba(240,232,218,0.7);border-color:rgba(240,232,218,0.3)}
 
   /* ── WIP TOGGLE ── */
   .wip-toggle-wrap{
@@ -305,8 +303,8 @@ function renderAll() {
     section.className = 'gallery-section';
     section.id = 'gallery-' + def.id;
 
-    const visibleCount = Math.min(filtered.length, 16);
-    const hasMore = filtered.length > 16;
+    const visibleCount = filtered.length;
+    const hasMore = false;
 
     section.innerHTML = `
       <div class="gallery-section-head">
@@ -317,7 +315,6 @@ function renderAll() {
       <div class="piece-grid" id="grid-${def.id}">
         ${renderThumbs(filtered.slice(0, visibleCount))}
       </div>
-      ${hasMore ? `<div class="show-more-wrap"><button class="show-more-btn" onclick="showMore('${def.id}')">Show all ${filtered.length} pieces</button></div>` : ''}
     `;
     wrap.appendChild(section);
   });
@@ -338,16 +335,6 @@ function renderThumbs(arr) {
   }).join('');
 }
 
-function showMore(id) {
-  const def = GALLERY_DEFS.find(d => d.id === id);
-  const topicPieces = pieces.filter(p =>
-    Array.isArray(p.topics) ? p.topics.includes(id) : p.topic === id
-  );
-  const filtered = hideWip ? topicPieces.filter(p => !isWip(p)) : topicPieces;
-  document.getElementById('grid-' + id).innerHTML = renderThumbs(filtered);
-  const btn = document.querySelector(`#gallery-${id} .show-more-btn`);
-  if (btn) btn.parentElement.remove();
-}
 
 function setFilter(f) {
   currentFilter = f;
