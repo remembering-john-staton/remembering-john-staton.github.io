@@ -49,39 +49,83 @@
   }
 
   /* SIGN BUTTON */
-  .gb-form-wrap{
-    margin-bottom:56px;
-    background:rgba(240,232,218,0.04);
-    border:1px solid rgba(240,232,218,0.06);
-    padding:32px;
-    border-radius:2px;
+  /* Invite card */
+  .gb-invite{
+    position:relative;
+    background:rgba(240,232,218,0.03);
+    border:1px solid rgba(240,232,218,0.08);
+    padding:48px 44px;
+    margin-bottom:64px;
+    overflow:hidden;
+    transition:border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
   }
-  .gb-form-wrap iframe{
-    display:block;
-    margin:0 auto;
+  .gb-invite:hover{
+    border-color:rgba(240,232,218,0.15);
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    transform:translateY(-2px);
   }
-  .gb-sign-btn{
+
+  .gb-invite-pen{
+    font-size:36px;
+    margin-bottom:20px;
+    display:inline-block;
+    transition:transform 0.3s ease;
+  }
+  .gb-invite:hover .gb-invite-pen{
+    transform:rotate(-8deg) scale(1.1);
+  }
+
+  .gb-invite-heading{
+    font-family:'Playfair Display',serif;
+    font-size:28px;font-weight:700;
+    color:rgba(240,232,218,0.9);
+    margin-bottom:14px;
+    opacity:0;transform:translateY(16px);
+    animation:gbFade 0.5s ease 0.2s forwards;
+  }
+  .gb-invite-body{
+    font-size:16px;line-height:1.8;
+    color:rgba(240,232,218,0.5);
+    margin-bottom:28px;
+    max-width:440px;
+    opacity:0;transform:translateY(12px);
+    animation:gbFade 0.5s ease 0.35s forwards;
+  }
+  .gb-invite-btn{
     display:inline-flex;align-items:center;gap:10px;
     font-family:'Lora',serif;
-    font-size:15px;
-    letter-spacing:0.06em;
+    font-size:16px;
+    letter-spacing:0.04em;
     color:var(--cream);
     background:var(--crimson);
-    border:none;
-    padding:14px 32px;
-    cursor:pointer;
+    padding:16px 36px;
     text-decoration:none;
-    transition:background 0.2s,transform 0.15s;
+    border:none;cursor:pointer;
+    opacity:0;transform:translateY(10px);
+    animation:gbFade 0.5s ease 0.5s forwards;
+    transition:background 0.2s, box-shadow 0.3s, transform 0.15s;
   }
-  .gb-sign-btn:hover{
+  .gb-invite-btn:hover{
     background:#9a2830;
+    box-shadow:0 8px 28px rgba(124,31,38,0.45);
     transform:translateY(-1px);
   }
-  .gb-sign-btn .material-symbols-rounded{
+  .gb-invite-btn .material-symbols-rounded{
     font-size:20px;
     font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20;
   }
-  .gb-sign-wrap{margin-bottom:64px}
+  .gb-invite-time{
+    margin-top:16px;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(240,232,218,0.22);
+    opacity:0;
+    animation:gbFade 0.4s ease 0.65s forwards;
+  }
+  @keyframes gbFade{
+    to{opacity:1;transform:translateY(0)}
+  }
 
   /* DIVIDER */
   .gb-rule{
@@ -170,13 +214,15 @@
   <h1>Guestbook</h1>
   <p class="gb-intro">Leave a note. A memory of John, a favorite piece, how you found this place, or just your name.</p>
 
-  <div class="gb-form-wrap">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLScIucIDN9NQZhNuImxrw-858yFtyuNSQFusAJdnYqeFHwxdCQ/viewform?embedded=true"
-      width="100%" height="620" frameborder="0" marginheight="0" marginwidth="0"
-      style="border:none;background:transparent;max-width:640px;">
-      Loading the form...
-    </iframe>
+  <div class="gb-invite">
+    <div class="gb-invite-pen">&#9998;</div>
+    <div class="gb-invite-heading">Sign the guestbook</div>
+    <div class="gb-invite-body">Your name and a message. That's the whole thing. Takes about thirty seconds.</div>
+    <a class="gb-invite-btn" href="https://forms.gle/x6ySSeC6CmtFkQDa9" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">edit_note</span>
+      Leave your mark
+    </a>
+    <div class="gb-invite-time">Opens a short form in a new tab</div>
   </div>
 
   <div class="gb-rule"></div>
