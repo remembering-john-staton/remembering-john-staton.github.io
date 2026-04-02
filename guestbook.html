@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guestbook  ·  The John Staton Museum</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=VT323&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--crimson:#7c1f26;--crimson-dark:#5a161b;--cream:#f0e8da;--green:#39ff14;--amber:#ffb000;--terminal:#0a1a0a}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:#111;color:var(--cream);font-family:'Lora',serif;min-height:100vh}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 40px;background:rgba(10,3,4,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(240,232,218,0.06)}
+  .nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;color:rgba(240,232,218,0.85)}
+  .nav-title a{color:inherit;text-decoration:none}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:'Lora',serif;font-size:14px;letter-spacing:0.08em;
+    color:rgba(240,232,218,0.55);text-decoration:none;transition:color 0.2s;
+    display:flex;align-items:center;gap:6px}
+  .nav-links a:hover{color:rgba(240,232,218,0.95)}
+  .nav-links .material-symbols-rounded{font-size:20px;
+    font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20}
+  @media(max-width:720px){
+    nav{padding:12px 20px}
+    .nav-title{font-size:13px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:0;gap:0}
+    .nav-links .material-symbols-rounded{font-size:22px}
+  }
+
+  /* ── PAGE HEADER ── */
+  .gb-header{
+    padding:80px 48px 40px;
+    max-width:860px;
+    margin:0 auto;
+  }
+  .gb-header h1{
+    font-family:'VT323',monospace;
+    font-size:clamp(36px,7vw,64px);
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    line-height:1;
+    margin-bottom:16px;
+    text-shadow:0 0 20px rgba(57,255,20,0.3),0 0 60px rgba(57,255,20,0.1);
+  }
+  .gb-subtitle{
+    font-family:'Space Mono',monospace;
+    font-size:13px;
+    color:rgba(240,232,218,0.4);
+    letter-spacing:0.04em;
+    line-height:1.7;
+  }
+  .gb-subtitle .blink{animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ── VISITOR COUNTER ── */
+  .visitor-counter{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-top:24px;
+    font-family:'VT323',monospace;
+    font-size:18px;
+    color:var(--amber);
+  }
+  .counter-box{
+    display:inline-flex;
+    background:#000;
+    border:2px inset #444;
+    padding:4px 2px;
+  }
+  .counter-digit{
+    background:#1a0a00;
+    color:var(--amber);
+    font-family:'VT323',monospace;
+    font-size:22px;
+    padding:2px 6px;
+    border:1px solid #333;
+    min-width:22px;
+    text-align:center;
+    text-shadow:0 0 8px rgba(255,176,0,0.5);
+  }
+
+  /* ── SIGN BUTTON ── */
+  .gb-sign-wrap{
+    padding:0 48px 48px;
+    max-width:860px;
+    margin:0 auto;
+  }
+  .gb-sign-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'VT323',monospace;
+    font-size:22px;
+    color:#111;
+    background:var(--green);
+    border:none;
+    padding:12px 28px;
+    cursor:pointer;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    transition:background 0.2s,box-shadow 0.2s;
+    box-shadow:0 0 12px rgba(57,255,20,0.3);
+  }
+  .gb-sign-btn:hover{
+    background:#5fff42;
+    box-shadow:0 0 24px rgba(57,255,20,0.5);
+  }
+  .gb-sign-btn .material-symbols-rounded{
+    font-size:22px;
+    font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 20;
+  }
+
+  /* ── DIVIDER ── */
+  .gb-divider{
+    max-width:860px;margin:0 auto;padding:0 48px;
+  }
+  .gb-divider-line{
+    border:none;
+    border-top:1px dashed rgba(57,255,20,0.2);
+    margin-bottom:48px;
+  }
+
+  /* ── ENTRIES ── */
+  .gb-entries{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 48px 80px;
+  }
+  .gb-entries-label{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(57,255,20,0.35);
+    margin-bottom:24px;
+  }
+
+  .gb-entry{
+    background:rgba(10,26,10,0.5);
+    border:1px dashed rgba(57,255,20,0.15);
+    padding:24px;
+    margin-bottom:16px;
+    position:relative;
+    transition:border-color 0.3s;
+  }
+  .gb-entry:hover{
+    border-color:rgba(57,255,20,0.35);
+  }
+  .gb-entry-header{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+  }
+  .gb-entry-name{
+    font-family:'VT323',monospace;
+    font-size:22px;
+    color:var(--green);
+    text-shadow:0 0 10px rgba(57,255,20,0.2);
+  }
+  .gb-entry-num{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    color:rgba(57,255,20,0.25);
+    letter-spacing:0.1em;
+  }
+  .gb-entry-message{
+    font-family:'Lora',serif;
+    font-size:15px;
+    line-height:1.8;
+    color:rgba(240,232,218,0.7);
+    margin-bottom:10px;
+  }
+  .gb-entry-meta{
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    color:rgba(240,232,218,0.25);
+    letter-spacing:0.05em;
+  }
+  .gb-entry-found{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    color:rgba(57,255,20,0.25);
+    margin-top:8px;
+    font-style:italic;
+  }
+
+  /* ── LOADING ── */
+  .gb-loading{
+    font-family:'VT323',monospace;
+    font-size:18px;
+    color:var(--green);
+    opacity:0.5;
+    padding:40px 0;
+  }
+  .gb-loading::after{
+    content:'';
+    animation:dots 1.5s steps(4,end) infinite;
+  }
+  @keyframes dots{
+    0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}
+  }
+
+  .gb-empty{
+    font-family:'Space Mono',monospace;
+    font-size:14px;
+    color:rgba(240,232,218,0.3);
+    padding:40px 0;
+  }
+
+  /* ── SCANLINE OVERLAY ── */
+  .gb-entries::before{
+    content:'';
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    pointer-events:none;
+    z-index:50;
+    background:repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    opacity:0.4;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer{background:#0e0608;color:rgba(240,232,218,0.6);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07);text-align:left}
+  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
+  .footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
+  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.5);max-width:320px}
+  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.32);border:1px solid rgba(240,232,218,0.15);padding:5px 12px}
+  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.38);margin-bottom:20px}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.6);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+  .footer-links li a:hover{color:#f0e8da}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
+  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.32)}
+  .footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
+  @media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:32px}.site-footer{padding:48px 24px 32px}}
+
+  @media(max-width:600px){
+    .gb-header,.gb-sign-wrap,.gb-entries,.gb-divider{padding-left:20px;padding-right:20px}
+    .gb-entry-header{flex-direction:column;gap:4px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
+  <div class="nav-links">
+    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="about.html"><span class="material-symbols-rounded">info</span>About This Site</a>
+    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Full Gallery</a>
+    <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
+  </div>
+</nav>
+
+<div class="gb-header">
+  <h1>Guestbook</h1>
+  <div class="gb-subtitle">
+    You found it. Welcome to the guestbook.<br>
+    Say hi, leave a memory, tell us your favorite piece, or just sign your name.<span class="blink">_</span>
+  </div>
+  <div class="visitor-counter">
+    <span>Visitors:</span>
+    <div class="counter-box">
+      <span class="counter-digit" id="d5">0</span>
+      <span class="counter-digit" id="d4">0</span>
+      <span class="counter-digit" id="d3">0</span>
+      <span class="counter-digit" id="d2">0</span>
+      <span class="counter-digit" id="d1">0</span>
+      <span class="counter-digit" id="d0">0</span>
+    </div>
+  </div>
+</div>
+
+<div class="gb-sign-wrap">
+  <!-- CONFIGURE: Replace this href with your Google Form URL -->
+  <a class="gb-sign-btn" id="signBtn" href="#" target="_blank" rel="noopener">
+    <span class="material-symbols-rounded">edit_note</span>
+    Sign the Guestbook
+  </a>
+</div>
+
+<div class="gb-divider"><hr class="gb-divider-line"></div>
+
+<div class="gb-entries">
+  <div class="gb-entries-label">Recent Entries</div>
+  <div id="guestbookEntries">
+    <div class="gb-loading">Loading entries</div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-divider-accent"></div>
+      <div class="footer-brand-name">John Staton</div>
+      <p class="footer-brand-desc">An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.</p>
+      <div class="footer-brand-tag">Fan Archive · Est. 2025</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Collections</a></li>
+        <li><a href="about.html">About This Site</a></li>
+        <li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="guestbook.html">Guestbook</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Archive</div>
+      <ul class="footer-links">
+        <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
+        <li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Remembering John</div>
+      <ul class="footer-links">
+        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
+        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════
+// CONFIGURATION — fill these in when ready
+// ════════════════════════════════════════════
+
+// 1. Your Google Form URL (the one people fill out)
+const GOOGLE_FORM_URL = '';
+
+// 2. Your published Google Sheet CSV URL
+//    To get this: open the Sheet → File → Share → Publish to web → CSV → copy the URL
+//    It looks like: https://docs.google.com/spreadsheets/d/e/XXXX/pub?output=csv
+const GOOGLE_SHEET_CSV = '';
+
+// ════════════════════════════════════════════
+
+// Wire up the sign button
+const signBtn = document.getElementById('signBtn');
+if (GOOGLE_FORM_URL) {
+  signBtn.href = GOOGLE_FORM_URL;
+} else {
+  signBtn.style.opacity = '0.4';
+  signBtn.style.cursor = 'default';
+  signBtn.title = 'Guestbook form coming soon';
+  signBtn.addEventListener('click', e => e.preventDefault());
+}
+
+// Parse CSV (handles quoted fields with commas/newlines)
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"' && text[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (c === '"') {
+        inQuotes = false;
+      } else {
+        field += c;
+      }
+    } else {
+      if (c === '"') {
+        inQuotes = true;
+      } else if (c === ',') {
+        row.push(field.trim());
+        field = '';
+      } else if (c === '\n') {
+        row.push(field.trim());
+        if (row.some(f => f)) rows.push(row);
+        row = [];
+        field = '';
+      } else if (c !== '\r') {
+        field += c;
+      }
+    }
+  }
+  if (field || row.length) {
+    row.push(field.trim());
+    if (row.some(f => f)) rows.push(row);
+  }
+  return rows;
+}
+
+function formatDate(dateStr) {
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  } catch {
+    return dateStr;
+  }
+}
+
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function renderEntries(entries) {
+  const container = document.getElementById('guestbookEntries');
+
+  if (!entries.length) {
+    container.innerHTML = '<div class="gb-empty">No entries yet. Be the first to sign.</div>';
+    return;
+  }
+
+  // Update visitor counter
+  const count = entries.length;
+  const padded = String(count).padStart(6, '0');
+  for (let i = 0; i < 6; i++) {
+    const el = document.getElementById('d' + (5 - i));
+    if (el) el.textContent = padded[i];
+  }
+
+  // Render newest first
+  container.innerHTML = entries.reverse().map((entry, idx) => {
+    const num = entries.length - idx;
+    const numStr = String(num).padStart(3, '0');
+    return `
+      <div class="gb-entry">
+        <div class="gb-entry-header">
+          <span class="gb-entry-name">${escapeHTML(entry.name)}</span>
+          <span class="gb-entry-num">#${numStr}</span>
+        </div>
+        <div class="gb-entry-message">${escapeHTML(entry.message)}</div>
+        ${entry.found ? `<div class="gb-entry-found">"${escapeHTML(entry.found)}"</div>` : ''}
+        <div class="gb-entry-meta">${entry.date ? formatDate(entry.date) : ''}</div>
+      </div>`;
+  }).join('');
+}
+
+async function loadGuestbook() {
+  if (!GOOGLE_SHEET_CSV) {
+    // No sheet configured yet; show placeholder entries
+    renderEntries([
+      { name: 'The Museum', message: 'The guestbook is open. Leave a note if you were here.', date: '2026-04-02', found: '' }
+    ]);
+    return;
+  }
+
+  try {
+    const resp = await fetch(GOOGLE_SHEET_CSV);
+    if (!resp.ok) throw new Error('Sheet fetch failed');
+    const text = await resp.text();
+    const rows = parseCSV(text);
+
+    // First row is headers (Timestamp, Name, Message, How did you find this site?)
+    // Skip it
+    const entries = rows.slice(1).map(row => ({
+      date: row[0] || '',
+      name: row[1] || 'Anonymous',
+      message: row[2] || '',
+      found: row[3] || ''
+    })).filter(e => e.message);
+
+    renderEntries(entries);
+  } catch (err) {
+    console.error('Guestbook load error:', err);
+    document.getElementById('guestbookEntries').innerHTML =
+      '<div class="gb-empty">Could not load entries. Try refreshing.</div>';
+  }
+}
+
+loadGuestbook();
+</script>
+</body>
+</html>
