@@ -15,7 +15,7 @@
     "color": "#7c1f26",
     "image": "img/pieces/dmv-enter-the-heroine-JohnStaton.jpg",
     "category": "Original IP",
-    "pieces": 38,
+    "pieces": 34,
     "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city.",
     "cta": "Enter the DMV Universe"
   },
@@ -35,7 +35,7 @@
     "color": "#1a3a5c",
     "image": "img/pieces/navy-girl-aerial-demonstration-variant-JohnStaton.png",
     "category": "Original IP",
-    "pieces": 13,
+    "pieces": 12,
     "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run.",
     "cta": "Explore the Streamers Gallery"
   },
@@ -65,7 +65,7 @@
     "color": "#3a2040",
     "image": "img/pieces/evil-prom-queen-JohnStaton.jpg",
     "category": "Original IP",
-    "pieces": 30,
+    "pieces": 21,
     "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude, part rom-com, part mecha, entirely John.",
     "cta": "Glimpse the Project That Never Was"
   },
@@ -75,7 +75,7 @@
     "color": "#3d1a4a",
     "image": "img/pieces/evil-diva-JohnStaton.png",
     "category": "Fan Art ,  Comics",
-    "pieces": 10,
+    "pieces": 14,
     "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative.",
     "cta": "Browse the Evil Diva Fan Art"
   },
@@ -85,7 +85,7 @@
     "color": "#4a3010",
     "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
     "category": "Fan Art ,  Comics",
-    "pieces": 9,
+    "pieces": 8,
     "description": "Fred Perry's Gold Digger. Skippy Von Richthofen, John's honest answer to the question of which character he'd most want to draw a comic of. Also Brianna (the perfect woman, apparently), Gina, and Tiffany and Charlotte.",
     "cta": "Browse the Gold Digger Collection"
   },
@@ -95,9 +95,19 @@
     "color": "#1a3a3a",
     "image": "img/pieces/chiroines-01-JohnStaton.jpg",
     "category": "Fan Art ,  Comics",
-    "pieces": 15,
+    "pieces": 13,
     "description": "John's ongoing chibi heroine series, Batgirl, Storm, Starbuck, Harley Quinn, Baroness, Mikasa. The format is his own; the subjects are borrowed with obvious love. Sits between fan art and original concept.",
     "cta": "Browse the Chibi Heroines"
+  },
+  {
+    "id": "chibis",
+    "title": "Chibis",
+    "category": "Fan Art -- Comics",
+    "color": "#1a3a3a",
+    "image": "img/pieces/chiroines-01-JohnStaton.jpg",
+    "pieces": 29,
+    "description": "Super-deformed and chibi art across every franchise John touched. The Chiroines series of chibified heroines, the full 31-ship Star Trek Inktober 2016 run drawn in chibi style, and a handful of one-offs. The format was his own; the subjects are borrowed with obvious love.",
+    "cta": "Browse the Chibis Collection"
   },
   {
     "id": "anime",
@@ -105,7 +115,7 @@
     "color": "#4a3820",
     "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
     "category": "Fan Art ,  Anime",
-    "pieces": 105,
+    "pieces": 94,
     "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place.",
     "cta": "Browse the Anime Archive"
   },
