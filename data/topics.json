@@ -22,7 +22,7 @@
     "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city.",
     "cta": "Enter the DMV Universe",
     "featured": true,
-    "order": 1,
+    "order": 0,
     "section": 1
   },
   {
@@ -35,7 +35,7 @@
     "description": "John's first comic strip, drawn for The Diamondback at the University of Maryland in the early 90s. Daniel Dukke, the Dukke of Death, is an independently wealthy jet-setter in a double-breasted Armani suit who travels the world extinguishing evil in the simultaneously coolest and grisliest ways possible. John never quite settled on whether he was a detective, a secret agent, or just an overdressed vigilante. In all honesty, he didn't care so long as the criminal body count was high enough.\n\nHis partner Ferdinand Fox, the Teenage Killing Machine, learned martial arts by watching the films of L. Bruce Preslei set on fast forward. Preslei was a recurring character in the strip: a rock star who acted in mediocre kung-fu musicals before disappearing mysteriously in 1975. Ferdinand is deadly in a fight and completely useless the moment a woman bats her eyes at him, which is most of the time.\n\nTheir chief antagonists are the Hench Bunnies: a halter-topped, miniskirted pair of miscreants skilled enough to survive every encounter with both men. Other characters include Scooter Turtle, a personal stand-in, and Jennifur, his girlfriend. At one point there was a Game Show strip where Scooter had to name the color of the bunny's eyes. It's a black and white comic.\n\nIt's crude by John's later standards. Edgy, irreverent, product of its decade. The strip makes throwaway references to Kmart, Montgomery Ward, JC Penney. You can already see where his eye for character design was heading. He just hadn't caught up with it yet. People who went to UMD at the time remember it.",
     "cta": "Read the Original Stories",
     "featured": true,
-    "order": 2,
+    "order": 1,
     "section": 1
   },
   {
@@ -48,7 +48,7 @@
     "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run.",
     "cta": "Explore the Streamers Gallery",
     "featured": true,
-    "order": 3,
+    "order": 2,
     "section": 1
   },
   {
@@ -61,7 +61,7 @@
     "description": "The Most Dangerous Bookstore. Molly Mouse runs the place. Cassandra is the cat-girl. The store is defended by Bookwyrms and robotic dalmatians. An original IP that never got enough time but always had a great name.",
     "cta": "Visit the Most Dangerous Bookstore",
     "featured": true,
-    "order": 4,
+    "order": 3,
     "section": 1
   },
   {
@@ -74,7 +74,7 @@
     "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude, part rom-com, part mecha, entirely John.",
     "cta": "Glimpse the Project That Never Was",
     "featured": true,
-    "order": 5,
+    "order": 4,
     "section": 1
   },
   {
@@ -87,7 +87,7 @@
     "description": "One-off characters, private jokes, things drawn for friends. Work he did for himself and nobody else. Street Sweeper Antoinette, who has no story, just a flying car and a sniper rifle and a mission statement that goes nowhere. An original bat character named Barnaby, drawn as a commission nobody can quite place. The whole Anime City series -- a recurring unnamed girl in an unnamed city full of robots and signs he couldn't read. The Terrapins coloring book he designed for a friend. Space Girls and their GELF pilots, built around a premise he never fully explained. These pieces share nothing except that they weren't made for any existing IP or any paying client. They were made because something looked worth drawing.",
     "cta": "Browse Sketchbook Worlds",
     "featured": false,
-    "order": 6,
+    "order": 5,
     "section": 1
   },
   {
@@ -100,7 +100,7 @@
     "description": "Evil Diva was a webcomic created by Peter Menotti and written by Joe Cashman, about Diva Beelze: a young demon who attends a school where angels and demons coexist, and whose only real problem is an uncontrollable compulsion to do good. Angry Viking Press published it in print starting around 2013. John contributed proposed cover designs and a series of character studies, most of them focused on Mrs. Endira Maria Beelze -- Diva's mother, a disapproving devil-lawyer who became one of his most rendered characters. The comic described its guidance counselor as Loki and its principal as Virgil, and John clearly enjoyed both of them.",
     "cta": "Browse the Evil Diva Fan Art",
     "featured": true,
-    "order": 7,
+    "order": 0,
     "section": 2
   },
   {
@@ -113,7 +113,7 @@
     "description": "Super-deformed and chibi art across every franchise John touched. The Chiroines series of chibified heroines, the full 31-ship Star Trek Inktober 2016 run drawn in chibi style, and a handful of one-offs. The format was his own; the subjects are borrowed with obvious love.",
     "cta": "Browse the Chibis Collection",
     "featured": false,
-    "order": 8,
+    "order": 1,
     "section": 2
   },
   {
@@ -126,7 +126,7 @@
     "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place.",
     "cta": "Browse the Anime Archive",
     "featured": false,
-    "order": 9,
+    "order": 2,
     "section": 2
   },
   {
@@ -139,7 +139,7 @@
     "description": "The full Inktober 2016 run, 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct.",
     "cta": "Explore 31 Days of Trek",
     "featured": true,
-    "order": 10,
+    "order": 3,
     "section": 2
   },
   {
@@ -152,7 +152,7 @@
     "description": "Fan art of Western comics, animation, and film. Gold Digger, Battlestar Galactica, Star Trek, DC and Marvel heroes via the Chiroines series, Kill Bill, Buck Rogers. John drew across the full spectrum of pop culture. The dividing line here is Japanese anime on one side, everything else on the other.",
     "cta": "Browse the Western Fan Art Collection",
     "featured": false,
-    "order": 11,
+    "order": 4,
     "section": 2
   },
   {
@@ -165,7 +165,7 @@
     "description": "Guest artist on Empowered Special #4: Animal Style (Adam Warren). Contributor to Hammer of the Gods (Mike Avon Oeming). Variant cover work and convention commissions. The professional side of the archive.",
     "cta": "See the Published Credits",
     "featured": true,
-    "order": 12,
-    "section": 1
+    "order": 5,
+    "section": 2
   }
 ]
