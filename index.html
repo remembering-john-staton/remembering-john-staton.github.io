@@ -1295,11 +1295,11 @@
   .sidebar-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10,4,5,0.7);
+    background: rgba(6,1,2,0.88);
     z-index: 300;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.25s ease;
   }
   .sidebar-overlay.open { opacity: 1; pointer-events: all; }
 
@@ -1463,7 +1463,6 @@
 <!-- Overlay -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- Sidebar drawer -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-head">
     <div class="sidebar-logo">John Staton</div>
@@ -1471,22 +1470,21 @@
   </div>
 
   <div class="sidebar-search">
-    <input type="text" id="sidebarSearch" placeholder="Search topics, characters..." autocomplete="off" />
+    <input type="text" id="sidebarSearch" placeholder="Search collections..." autocomplete="off" />
     <div class="sidebar-search-results" id="searchResults"></div>
   </div>
 
   <nav class="sidebar-nav">
     <div class="sidebar-section-label">Navigate</div>
     <ul class="sidebar-links">
-      <li><a href="#" data-section="top">Home</a></li>
-      <li><a href="#themes" data-section="themes">Collections</a></li>
-      <li><a href="#about" data-section="about">About John</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Collections</a></li>
+      <li><a href="about.html">About John</a></li>
     </ul>
 
-    <div class="sidebar-section-label">Archive</div>
-    <ul class="sidebar-links">
-      <li><a href="#" class="coming-soon">Gallery <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> ,  coming soon</span></a></li>
-      <li><a href="#" class="coming-soon">Timeline <span style="font-size:10px;opacity:0.4;letter-spacing:0.15em"> ,  coming soon</span></a></li>
+    <div class="sidebar-section-label">Collections</div>
+    <ul class="sidebar-links" id="sidebarCollections">
+      <!-- populated from topics.json -->
     </ul>
   </nav>
 
@@ -1693,78 +1691,61 @@
   overlay.addEventListener('click', closeSidebar);
   closeBtn.addEventListener('click', closeSidebar);
 
-  // Close on nav link click
-  sidebar.querySelectorAll('.sidebar-links a:not(.coming-soon)').forEach(a => {
+  sidebar.querySelectorAll('.sidebar-links a').forEach(a => {
     a.addEventListener('click', () => setTimeout(closeSidebar, 120));
   });
 
-  // Close on Escape
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeSidebar();
   });
 
-  // ─── SIDEBAR ACTIVE STATE ───
-  const sectionIds = ['themes', 'about'];
-  const sidebarLinks = sidebar.querySelectorAll('.sidebar-links a[data-section]');
-
-  function updateActive() {
-    let current = 'top';
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 120) current = id;
-    });
-    sidebarLinks.forEach(a => {
-      a.classList.toggle('active',
-        a.dataset.section === current ||
-        (current === 'top' && a.dataset.section === 'top')
-      );
-    });
-  }
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
-
-  // ─── SIDEBAR SEARCH ───
-  const searchInput   = document.getElementById('sidebarSearch');
-  const searchResults = document.getElementById('searchResults');
-
-  // Build index from topics and characters JSON once loaded
-  let searchIndex = [];
-  Promise.all([
-    fetch('data/topics.json').then(r => r.json()).catch(() => []),
-    fetch('data/characters.json').then(r => r.json()).catch(() => [])
-  ]).then(([topics, chars]) => {
-    searchIndex = [
-      ...topics.map(t => ({ label: t.title, sub: t.category || 'Topic', anchor: '#themes' })),
-      ...chars.map(c  => ({ label: c.name,  sub: c.topic  || c.role,   anchor: '#about'  }))
-    ];
-  });
-
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    searchResults.innerHTML = '';
-    if (!q) return;
-    const hits = searchIndex.filter(item =>
-      item.label.toLowerCase().includes(q) ||
-      (item.sub && item.sub.toLowerCase().includes(q))
-    ).slice(0, 8);
-    if (!hits.length) {
-      searchResults.innerHTML = '<div class="search-result-item" style="opacity:0.4;cursor:default">No results</div>';
-      return;
-    }
-    hits.forEach(hit => {
-      const div = document.createElement('div');
-      div.className = 'search-result-item';
-      div.innerHTML = hit.label + '<span class="search-result-tag">' + hit.sub + '</span>';
-      div.addEventListener('click', () => {
-        const target = document.querySelector(hit.anchor);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        closeSidebar();
-        searchInput.value = '';
-        searchResults.innerHTML = '';
+  // ─── POPULATE COLLECTIONS FROM topics.json ───
+  fetch('data/topics.json')
+    .then(r => r.json())
+    .then(topics => {
+      const list = document.getElementById('sidebarCollections');
+      if (!list) return;
+      // Show all collections except 'everything'
+      const show = topics.filter(t => t.id !== 'everything' && t.pieces > 0);
+      list.innerHTML = show.map(t => `
+        <li><a href="topic.html?id=${t.id}">${t.title}
+          <span style="font-size:10px;opacity:0.35;margin-left:8px;letter-spacing:0.1em">${t.pieces}</span>
+        </a></li>
+      `).join('');
+      // Attach close handlers to new links
+      list.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => setTimeout(closeSidebar, 120));
       });
-      searchResults.appendChild(div);
+
+      // ─── SIDEBAR SEARCH ───
+      const searchInput   = document.getElementById('sidebarSearch');
+      const searchResults = document.getElementById('searchResults');
+      const searchIndex   = topics
+        .filter(t => t.id !== 'everything')
+        .map(t => ({ label: t.title, sub: `${t.pieces} pieces`, href: `topic.html?id=${t.id}` }));
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        searchResults.innerHTML = '';
+        if (!q) return;
+        const hits = searchIndex.filter(item =>
+          item.label.toLowerCase().includes(q)
+        ).slice(0, 8);
+        if (!hits.length) {
+          searchResults.innerHTML = '<div class="search-result-item" style="opacity:0.4;cursor:default">No results</div>';
+          return;
+        }
+        hits.forEach(hit => {
+          const div = document.createElement('div');
+          div.className = 'search-result-item';
+          div.innerHTML = hit.label + '<span class="search-result-tag">' + hit.sub + '</span>';
+          div.addEventListener('click', () => {
+            window.location.href = hit.href;
+          });
+          searchResults.appendChild(div);
+        });
+      });
     });
-  });
 </script>
 
 </body>
