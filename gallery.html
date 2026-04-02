@@ -242,21 +242,7 @@
 
 <script>
 // ── DATA ──
-const GALLERY_DEFS = [
-  { id:'dmv',              title:'DMV',                        cat:'original',  desc:'America Jones and the not-too-distant dystopian cyberpunk future of parking enforcement.' },
-  { id:'dukke-fox',        title:'Daniel Dukke &amp; Ferdinand Fox', cat:'original', desc:'His first original creation. The comic strip he drew for The Diamondback at UMD, and kept developing for years.' },
-  { id:'streamers',        title:'The Streamers',              cat:'original',  desc:'Five women representing branches of the U.S. armed forces. Navy Girl, Air Force Girl, Army Girl, Marine Girl, Coast Guard Girl.' },
-  { id:'neboox',           title:'N.E. Boox',                  cat:'original',  desc:'The most dangerous bookstore. Cassandra, Molly Mouse, Connie, and an UZI.' },
-  { id:'high-school-romance', title:'The High School Romance', cat:'original',  desc:'Lori, Ott0, Skippy Von Richthofen, Erin Scissorhands. Action-figure absurdism set in a demonic high school.' },
-  { id:'evil-diva',        title:'Evil Diva',                  cat:'original',  desc:'Diva Beelze and her disapproving mother. Guest art for Angry Viking Press.' },
-  { id:'space-girls',      title:'Space Girls / GELFs',        cat:'original',  desc:'Genetically Engineered Life Forms built to pilot combat space robots.' },
-  { id:'star-trek',        title:'Star Trek',                  cat:'fanart',    desc:'31 Star Trek ships in 31 consecutive October days, 2016. Annotated with the accumulated expertise of decades.' },
-  { id:'anime',            title:'Anime Fan Art',              cat:'fanart',    desc:'Bubblegum Crisis, Dirty Pair, El Hazard, Evangelion, Silent Mobius, Robotech, Princess Nine, and more.' },
-  { id:'gold-digger',      title:'Gold Digger',                cat:'fanart',    desc:'Fred Perry\'s Gold Digger ,  the Diggers sisters, Brianna, Swim War, and commissions for Phil Moyer.' },
-  { id:'chibi-heroines',   title:'Chibi Heroines',             cat:'fanart',    desc:'The Chiroines series. Chibified DC and Marvel heroines, done with the dedication of a completionist.' },
-  { id:'princeless',       title:'Princeless',                 cat:'published', desc:'Variant cover for Jeremy Whitley\'s Princeless: The Pirate Princess #1, Big Planet Comics exclusive.' },
-  { id:'published',        title:'Published Work',             cat:'published', desc:'Empowered Special #4: Animal Style. Hammer of the Gods. Hench Bunnies. The work that made it to print.' },
-];
+let GALLERY_DEFS = [];  // populated from topics.json
 
 const WIP_SIGNALS = ['wip','pencil','sketch','progress','inks','line art','variant','alternate','rough','b&w','black n white','black and white'];
 
@@ -272,6 +258,15 @@ async function init() {
   ]);
   pieces = await pRes.json();
   const topicsArr = await tRes.json();
+  // Build GALLERY_DEFS from topics.json -- skip the catch-all 'everything' entry
+  GALLERY_DEFS = topicsArr
+    .filter(t => t.id !== 'everything')
+    .map(t => ({
+      id: t.id,
+      title: t.title,
+      cat: t.category ? t.category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z-]/g, '') : 'other',
+      desc: t.description ? t.description.split('\n')[0].slice(0, 160) : ''
+    }));
   topicsArr.forEach(t => topics[t.id] = t);
 
   // Check for ?gallery= param to auto-scroll
