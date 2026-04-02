@@ -227,39 +227,72 @@
     color: rgba(240,232,218,0.2);
   }
 
-  /* Piece grid */
+  /* ── SORT BAR ── */
+  .sort-bar {
+    padding: 20px 64px 0;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .sort-label {
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-right: 4px;
+  }
+  .sort-btn {
+    font-family: 'Lora', serif;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(240,232,218,0.35); background: none;
+    border: 1px solid rgba(240,232,218,0.1); padding: 5px 12px;
+    cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .sort-btn:hover { color: rgba(240,232,218,0.7); border-color: rgba(240,232,218,0.25); }
+  .sort-btn.active { color: var(--cream); border-color: rgba(240,232,218,0.4); background: rgba(240,232,218,0.06); }
+  .wip-toggle {
+    font-family: 'Lora', serif;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); background: none; border: none;
+    cursor: pointer; padding: 5px 0; margin-left: 8px;
+    transition: color 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .wip-toggle:hover { color: rgba(240,232,218,0.5); }
+  .wip-toggle.active { color: rgba(240,232,218,0.6); }
+  .wip-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(240,232,218,0.2);
+    transition: background 0.2s;
+  }
+  .wip-toggle.active .wip-dot { background: rgba(240,232,218,0.6); }
+
+  /* Piece grid -- masonry via CSS columns */
   .piece-grid {
-    padding: 0 64px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 3px;
-    padding-top: 3px;
+    padding: 16px 64px 0;
+    columns: 4;
+    column-gap: 3px;
   }
 
   .piece-card {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 1;
+    break-inside: avoid;
+    margin-bottom: 3px;
     background: rgba(240,232,218,0.04);
     cursor: pointer;
-    /* scroll reveal start state */
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    transform: translateY(16px);
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1);
   }
   .piece-card.revealed {
     opacity: 1;
     transform: translateY(0);
   }
   .piece-card img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: auto; display: block;
     filter: saturate(0.82);
-    transition: transform 0.5s ease, filter 0.3s ease;
+    transition: filter 0.3s ease, transform 0.4s ease;
   }
-  .piece-card:hover img { transform: scale(1.05); filter: saturate(1); }
+  .piece-card:hover img { filter: saturate(1); transform: scale(1.02); }
   .piece-card-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(6,1,2,0.88) 0%, transparent 55%);
+    background: linear-gradient(to top, rgba(6,1,2,0.88) 0%, transparent 50%);
     opacity: 0; transition: opacity 0.25s;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 14px;
@@ -282,7 +315,9 @@
 
   /* Skeleton loading state */
   .piece-skeleton {
-    aspect-ratio: 1;
+    height: 260px;
+    break-inside: avoid;
+    margin-bottom: 3px;
     background: rgba(240,232,218,0.04);
     position: relative; overflow: hidden;
   }
@@ -333,10 +368,14 @@
     }
     .hero-right { padding: 44px 28px 48px; border-left: none; border-top: 1px solid rgba(240,232,218,0.07); }
     .topic-title { font-size: clamp(36px, 9vw, 60px); }
-    .piece-grid { padding: 0 20px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-    .pieces-header { padding: 40px 20px 28px; }
+    .piece-grid { padding: 0 16px; columns: 2; }
+    .sort-bar { padding: 16px 16px 0; }
+    .pieces-header { padding: 40px 16px 20px; }
     nav { padding: 16px 24px; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .piece-grid { columns: 3; }
   }
 </style>
 </head>
@@ -391,8 +430,18 @@
     <div class="pieces-header-title">Collection</div>
     <div class="pieces-header-count" id="piecesCount"></div>
   </div>
+  <div class="sort-bar" id="sortBar" style="display:none">
+    <span class="sort-label">Sort</span>
+    <button class="sort-btn active" data-sort="default">Archive order</button>
+    <button class="sort-btn" data-sort="date-new">Newest first</button>
+    <button class="sort-btn" data-sort="date-old">Oldest first</button>
+    <button class="sort-btn" data-sort="title">A to Z</button>
+    <button class="sort-btn" data-sort="discussed">Most discussed</button>
+    <button class="wip-toggle" id="wipToggle" title="Toggle WIP visibility">
+      <span class="wip-dot"></span>Hide WIPs
+    </button>
+  </div>
   <div class="piece-grid" id="pieceGrid">
-    <!-- Skeleton while loading -->
     <div class="piece-skeleton"></div>
     <div class="piece-skeleton"></div>
     <div class="piece-skeleton"></div>
@@ -585,7 +634,6 @@ async function init() {
   grid.innerHTML = '';
 
   if (!pieces.length) {
-    // Show a tasteful "coming soon" state rather than a broken grid
     grid.parentElement.querySelector('.pieces-header').style.display = 'none';
     grid.innerHTML = `
       <div class="pieces-empty" style="grid-column:1/-1">
@@ -604,32 +652,78 @@ async function init() {
   const years = pieces.map(p => p.date ? parseInt(p.date.slice(-4)) : null).filter(Boolean);
   if (years.length) {
     const minY = Math.min(...years), maxY = Math.max(...years);
-    document.getElementById('metaYears').textContent = minY === maxY ? minY : `${minY}–${maxY}`;
+    document.getElementById('metaYears').textContent = minY === maxY ? minY : `${minY} to ${maxY}`;
     document.getElementById('metaYearsWrap').style.display = '';
   }
 
-  const observer = setupRevealObserver();
+  // Show sort bar
+  document.getElementById('sortBar').style.display = '';
 
-  pieces.forEach((p, i) => {
-    const wip = isWip(p);
-    const year = p.date ? p.date.slice(-4) : '';
-    const card = document.createElement('div');
-    card.className = 'piece-card';
-    card.dataset.index = i;
-    card.innerHTML = `
-      <img src="${esc(p.image || p.imageUrl || '')}" alt="${esc(p.title)}" loading="lazy">
-      <div class="piece-card-overlay">
-        <div class="piece-card-title">${esc(p.title)}</div>
-        ${year ? `<div class="piece-card-date">${year}</div>` : ''}
-      </div>
-      ${wip ? '<div class="piece-card-wip">WIP</div>' : ''}
-    `;
-    card.addEventListener('click', () => {
-      location.href = `piece.html?id=${p.id}`;
+  // Sort state
+  let currentSort = 'default';
+  let hideWips = false;
+
+  function parseYear(p) {
+    if (!p.date) return 0;
+    const m = p.date.match(/\d{4}/);
+    return m ? parseInt(m[0]) : 0;
+  }
+
+  function sortedPieces() {
+    let list = hideWips ? pieces.filter(p => !isWip(p)) : [...pieces];
+    switch (currentSort) {
+      case 'date-new': list.sort((a,b) => parseYear(b) - parseYear(a)); break;
+      case 'date-old': list.sort((a,b) => parseYear(a) - parseYear(b)); break;
+      case 'title':    list.sort((a,b) => (a.title||'').localeCompare(b.title||'')); break;
+      case 'discussed': list.sort((a,b) => (b.comments||[]).length - (a.comments||[]).length); break;
+      default: break; // archive order as loaded
+    }
+    return list;
+  }
+
+  function renderGrid() {
+    grid.innerHTML = '';
+    const observer = setupRevealObserver();
+    sortedPieces().forEach((p, i) => {
+      const wip = isWip(p);
+      const year = p.date ? p.date.match(/\d{4}/) && p.date.match(/\d{4}/)[0] : '';
+      const card = document.createElement('div');
+      card.className = 'piece-card';
+      card.dataset.index = i;
+      card.innerHTML = `
+        <img src="${esc(p.image || p.imageUrl || '')}" alt="${esc(p.title)}" loading="lazy">
+        <div class="piece-card-overlay">
+          <div class="piece-card-title">${esc(p.title)}</div>
+          ${year ? `<div class="piece-card-date">${year}</div>` : ''}
+        </div>
+        ${wip ? '<div class="piece-card-wip">WIP</div>' : ''}
+      `;
+      card.addEventListener('click', () => { location.href = `piece.html?id=${p.id}`; });
+      grid.appendChild(card);
+      observer.observe(card);
     });
-    grid.appendChild(card);
-    observer.observe(card);
+  }
+
+  // Sort buttons
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentSort = btn.dataset.sort;
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid();
+    });
   });
+
+  // WIP toggle
+  const wipToggle = document.getElementById('wipToggle');
+  wipToggle.addEventListener('click', () => {
+    hideWips = !hideWips;
+    wipToggle.classList.toggle('active', hideWips);
+    wipToggle.lastChild.textContent = hideWips ? 'Show WIPs' : 'Hide WIPs';
+    renderGrid();
+  });
+
+  renderGrid();
 }
 
 init();
