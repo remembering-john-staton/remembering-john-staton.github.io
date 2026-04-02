@@ -283,15 +283,6 @@ const GOOGLE_FORM_URL = 'https://forms.gle/x6ySSeC6CmtFkQDa9';
 const GOOGLE_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQDLfh1CvKgeuf-rNlGjYfM8ETv2J4dLysJ7-PgCXB59ujHYEfnvMxY5uvJGeQlD6Ww2lwUngufhg1B/pub?gid=901542019&single=true&output=csv';
 // ════════════════════════════════════════════
 
-const signBtn = document.getElementById('signBtn');
-if (GOOGLE_FORM_URL) {
-  signBtn.href = GOOGLE_FORM_URL;
-} else {
-  signBtn.style.opacity = '0.4';
-  signBtn.style.pointerEvents = 'none';
-  signBtn.title = 'Coming soon';
-}
-
 function parseCSV(text) {
   const rows = [];
   let row = [], field = '', inQ = false;
