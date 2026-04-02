@@ -49,6 +49,17 @@
   }
 
   /* SIGN BUTTON */
+  .gb-form-wrap{
+    margin-bottom:56px;
+    background:rgba(240,232,218,0.04);
+    border:1px solid rgba(240,232,218,0.06);
+    padding:32px;
+    border-radius:2px;
+  }
+  .gb-form-wrap iframe{
+    display:block;
+    margin:0 auto;
+  }
   .gb-sign-btn{
     display:inline-flex;align-items:center;gap:10px;
     font-family:'Lora',serif;
@@ -160,11 +171,13 @@
   <h1>Guestbook</h1>
   <p class="gb-intro">Leave a note. A memory of John, a favorite piece, how you found this place, or just your name.</p>
 
-  <div class="gb-sign-wrap">
-    <a class="gb-sign-btn" id="signBtn" href="#" target="_blank" rel="noopener">
-      <span class="material-symbols-rounded">edit_note</span>
-      Sign the Guestbook
-    </a>
+  <div class="gb-form-wrap">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLScIucIDN9NQZhNuImxrw-858yFtyuNSQFusAJdnYqeFHwxdCQ/viewform?embedded=true"
+      width="100%" height="620" frameborder="0" marginheight="0" marginwidth="0"
+      style="border:none;background:transparent;max-width:640px;">
+      Loading the form...
+    </iframe>
   </div>
 
   <div class="gb-rule"></div>
