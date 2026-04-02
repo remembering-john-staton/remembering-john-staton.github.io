@@ -7,7 +7,9 @@
     "category": "Full Archive",
     "pieces": 0,
     "description": "The complete archive. Every piece John posted, from the earliest DMV sketches to the final Inktober runs. 216 images, two decades of work, no filter.",
-    "cta": "Browse the Full Archive"
+    "cta": "Browse the Full Archive",
+    "featured": false,
+    "order": 0
   },
   {
     "id": "dmv",
@@ -17,7 +19,9 @@
     "category": "Original IP",
     "pieces": 28,
     "description": "John's flagship original IP. AJ (America Jones) is a combat-trained meter maid in the not-too-distant dystopian cyberpunk future, where a 6x3 metre rectangle of road surface is the most contested real estate imaginable. Recurring cast includes Drew, the Repobot, and a parking ticket dispenser as the deadliest sidearm in the city.",
-    "cta": "Enter the DMV Universe"
+    "cta": "Enter the DMV Universe",
+    "featured": true,
+    "order": 1
   },
   {
     "id": "dukke-fox",
@@ -27,7 +31,9 @@
     "image": "img/pieces/the-original-dukke-of-death-JohnStaton.jpg",
     "pieces": 21,
     "description": "John's first comic strip, drawn for The Diamondback at the University of Maryland in the early 90s. Daniel Dukke, the Dukke of Death, is an independently wealthy jet-setter in a double-breasted Armani suit who travels the world extinguishing evil in the simultaneously coolest and grisliest ways possible. John never quite settled on whether he was a detective, a secret agent, or just an overdressed vigilante. In all honesty, he didn't care so long as the criminal body count was high enough.\n\nHis partner Ferdinand Fox, the Teenage Killing Machine, learned martial arts by watching the films of L. Bruce Preslei set on fast forward. Preslei was a recurring character in the strip: a rock star who acted in mediocre kung-fu musicals before disappearing mysteriously in 1975. Ferdinand is deadly in a fight and completely useless the moment a woman bats her eyes at him, which is most of the time.\n\nTheir chief antagonists are the Hench Bunnies: a halter-topped, miniskirted pair of miscreants skilled enough to survive every encounter with both men. Other characters include Scooter Turtle, a personal stand-in, and Jennifur, his girlfriend. At one point there was a Game Show strip where Scooter had to name the color of the bunny's eyes. It's a black and white comic.\n\nIt's crude by John's later standards. Edgy, irreverent, product of its decade. The strip makes throwaway references to Kmart, Montgomery Ward, JC Penney. You can already see where his eye for character design was heading. He just hadn't caught up with it yet. People who went to UMD at the time remember it.",
-    "cta": "Read the Original Stories"
+    "cta": "Read the Original Stories",
+    "featured": true,
+    "order": 2
   },
   {
     "id": "streamers",
@@ -35,9 +41,11 @@
     "color": "#1a3a5c",
     "image": "img/pieces/navy-girl-aerial-demonstration-variant-JohnStaton.png",
     "category": "Original IP",
-    "pieces": 12,
+    "pieces": 13,
     "description": "Military-branch magical girls, each representing a branch of the U.S. armed forces. Navy Girl (Mayflower Shipman), Air Force Girl (Ariel McFly), Army Girl, Coast Guard Girl, Marine Corps Girl. Their enemies include T.H.R.E.A.T. and the CIRCE weapon. Includes the full Inktober 2018 run.",
-    "cta": "Explore the Streamers Gallery"
+    "cta": "Explore the Streamers Gallery",
+    "featured": true,
+    "order": 3
   },
   {
     "id": "neboox",
@@ -47,17 +55,9 @@
     "category": "Original IP",
     "pieces": 9,
     "description": "The Most Dangerous Bookstore. Molly Mouse runs the place. Cassandra is the cat-girl. The store is defended by Bookwyrms and robotic dalmatians. An original IP that never got enough time but always had a great name.",
-    "cta": "Visit the Most Dangerous Bookstore"
-  },
-  {
-    "id": "space-girls",
-    "title": "Space Girls / GELFs",
-    "color": "#1a2a4a",
-    "image": "img/pieces/space-girls-JohnStaton.jpg",
-    "category": "Original IP",
-    "pieces": 3,
-    "description": "Sabrina and the Genetically Engineered Life Forms, piloting Giant Space Robots. Early concept work that shows where John's head was when he was building worlds from scratch.",
-    "cta": "Meet the GELFs"
+    "cta": "Visit the Most Dangerous Bookstore",
+    "featured": true,
+    "order": 4
   },
   {
     "id": "high-school-romance",
@@ -67,7 +67,21 @@
     "category": "Original IP",
     "pieces": 12,
     "description": "Lori the evil prom queen. OttØ the robot bad boy. The wrench girl. Erin Scissorhands. A giant robot football player. A high school drama that operates at its own altitude, part rom-com, part mecha, entirely John.",
-    "cta": "Glimpse the Project That Never Was"
+    "cta": "Glimpse the Project That Never Was",
+    "featured": true,
+    "order": 5
+  },
+  {
+    "id": "sketchbook-worlds",
+    "title": "Sketchbook Worlds",
+    "category": "Original IP",
+    "color": "#1a1a2e",
+    "image": "img/pieces/space-girls-JohnStaton.jpg",
+    "pieces": 4,
+    "description": "Concepts that lived in the sketchbook and never got further. Space Girls and the GELFs, a French maid with a sniper rifle and a flying car, a catgirl and her robot. They don't belong to any of the named IPs. They belong here.",
+    "cta": "Browse Sketchbook Worlds",
+    "featured": false,
+    "order": 6
   },
   {
     "id": "evil-diva",
@@ -77,7 +91,9 @@
     "category": "Fan Art ,  Comics",
     "pieces": 12,
     "description": "Fan art for Angry Viking Press's indie comic about a demon girl who wants to be an angel. Diva Beelze, Mom Beelze, guidance counsellor Loki, principal Virgil. A demonic high school where the supernatural is purely administrative.",
-    "cta": "Browse the Evil Diva Fan Art"
+    "cta": "Browse the Evil Diva Fan Art",
+    "featured": true,
+    "order": 7
   },
   {
     "id": "chibis",
@@ -87,7 +103,9 @@
     "image": "img/pieces/chiroines-01-JohnStaton.jpg",
     "pieces": 41,
     "description": "Super-deformed and chibi art across every franchise John touched. The Chiroines series of chibified heroines, the full 31-ship Star Trek Inktober 2016 run drawn in chibi style, and a handful of one-offs. The format was his own; the subjects are borrowed with obvious love.",
-    "cta": "Browse the Chibis Collection"
+    "cta": "Browse the Chibis Collection",
+    "featured": false,
+    "order": 8
   },
   {
     "id": "anime",
@@ -95,9 +113,11 @@
     "color": "#4a3820",
     "image": "img/pieces/bubblegum-girls-JohnStaton.jpg",
     "category": "Fan Art ,  Anime",
-    "pieces": 88,
+    "pieces": 83,
     "description": "Bubblegum Crisis, Robotech, El Hazard, Cowboy Bebop, Gundam Girls, Neon Genesis Evangelion, Silent Möbius, and others. Classic catalogue with deep affection. One bucket that earns its place.",
-    "cta": "Browse the Anime Archive"
+    "cta": "Browse the Anime Archive",
+    "featured": false,
+    "order": 9
   },
   {
     "id": "star-trek",
@@ -105,9 +125,11 @@
     "color": "#1c2a4a",
     "image": "img/pieces/inktober-stardate-1610-02-JohnStaton.png",
     "category": "Fan Art ,  Sci-Fi",
-    "pieces": 25,
+    "pieces": 26,
     "description": "The full Inktober 2016 run, 31 chibi and super-deformed Trek ships across every faction: Klingon, Romulan, Dominion, Federation. Deep fandom with strong opinions about canon. His thoughts on Enterprise remain correct.",
-    "cta": "Explore 31 Days of Trek"
+    "cta": "Explore 31 Days of Trek",
+    "featured": true,
+    "order": 10
   },
   {
     "id": "western-fanart",
@@ -115,9 +137,11 @@
     "category": "Fan Art -- Comics",
     "color": "#3a2010",
     "image": "img/pieces/diggers-sisters-JohnStaton.jpg",
-    "pieces": 55,
+    "pieces": 57,
     "description": "Fan art of Western comics, animation, and film. Gold Digger, Battlestar Galactica, Star Trek, DC and Marvel heroes via the Chiroines series, Kill Bill, Buck Rogers. John drew across the full spectrum of pop culture. The dividing line here is Japanese anime on one side, everything else on the other.",
-    "cta": "Browse the Western Fan Art Collection"
+    "cta": "Browse the Western Fan Art Collection",
+    "featured": false,
+    "order": 11
   },
   {
     "id": "published",
@@ -127,7 +151,9 @@
     "category": "Professional Credits",
     "pieces": 20,
     "description": "Guest artist on Empowered Special #4: Animal Style (Adam Warren). Contributor to Hammer of the Gods (Mike Avon Oeming). Variant cover work and convention commissions. The professional side of the archive.",
-    "cta": "See the Published Credits"
+    "cta": "See the Published Credits",
+    "featured": true,
+    "order": 12
   },
   {
     "id": "autobiographical",
@@ -137,6 +163,8 @@
     "image": "img/pieces/aerial-view-JohnStaton.jpg",
     "pieces": 3,
     "description": "Work that was about John himself, commissions for personal projects, and pieces drawn for friends. The Terrapins coloring book. An architectural sketch of New York. The tiny bat character he made at age eight. These are the pieces that don't fit anywhere else because they were never meant to.",
-    "cta": "Browse Personal Work"
+    "cta": "Browse Personal Work",
+    "featured": false,
+    "order": 13
   }
 ]
