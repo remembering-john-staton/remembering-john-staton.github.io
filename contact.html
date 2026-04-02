@@ -76,40 +76,49 @@
     animation: fadeUp 0.6s ease 0.3s both;
   }
 
-  /* Google Form embed */
-  .form-embed-wrap {
+  /* Contact button */
+  .contact-action {
     animation: fadeUp 0.6s ease 0.4s both;
   }
-
-  .form-placeholder {
-    background: rgba(240,232,218,0.04);
-    border: 1px solid rgba(240,232,218,0.1);
-    padding: 48px 40px;
-    text-align: center;
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    background: var(--crimson);
+    padding: 22px 40px;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1), background 0.2s, box-shadow 0.3s;
   }
-
-  .form-placeholder-icon {
-    font-size: 32px; margin-bottom: 16px; opacity: 0.4;
+  .contact-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .contact-btn:hover {
+    background: #9a2830;
+    box-shadow: 0 12px 40px rgba(124,31,38,0.4);
+  }
+  .contact-btn-icon {
+    font-size: 24px;
     font-family: sans-serif;
   }
-
-  .form-placeholder-text {
-    font-size: 15px; color: rgba(240,232,218,0.45);
-    line-height: 1.7; margin-bottom: 24px;
+  .contact-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(240,232,218,0.3);
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
-
-  .form-placeholder-note {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(240,232,218,0.2);
-  }
-
-  /* Actual iframe  -  shown when FORM_URL is set */
-  .form-iframe {
-    width: 100%;
-    border: none;
-    min-height: 520px;
-    background: transparent;
-    display: none;
+  .contact-note.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   footer {
@@ -186,10 +195,8 @@
 <nav>
   <div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
   <div class="nav-links">
-    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Gallery</a>
-    <a href="about.html"><span class="material-symbols-rounded">info</span>About This Site</a>
-    <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
-    <a href="guestbook.html"><span class="material-symbols-rounded">menu_book</span>Guestbook</a>
+    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="index.html#about"><span class="material-symbols-rounded">person</span>About John</a>
   </div>
 </nav>
 
@@ -202,46 +209,24 @@
       Have a memory of John, a correction, a piece of his work we might have missed, or just something you want to say ,  this is the place.
     </p>
 
-    <div class="form-embed-wrap" id="formWrap">
-
-      <!-- ─────────────────────────────────────────────────────── -->
-      <!-- TO ACTIVATE: replace PASTE_YOUR_GOOGLE_FORM_URL_HERE   -->
-      <!-- with your Google Form embed URL, e.g.:                 -->
-      <!-- https://docs.google.com/forms/d/e/YOUR_ID/viewform     -->
-      <!-- Then delete the placeholder div below.                 -->
-      <!-- ─────────────────────────────────────────────────────── -->
-
-      <div class="form-placeholder" id="formPlaceholder">
-        <div class="form-placeholder-icon">✉</div>
-        <p class="form-placeholder-text">
-          The contact form is being set up.<br>Check back shortly.
-        </p>
-        <div class="form-placeholder-note">Form coming soon</div>
-      </div>
-
-      <iframe
-        class="form-iframe"
-        id="contactFrame"
-        src=""
-        title="Contact form"
-        allowfullscreen>
-      </iframe>
-
+    <div class="contact-action">
+      <a class="contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScoAoRapF7NI4sN6Chkb75h6NTFfoLZWgXgCXZDqSyzu8md1g/viewform" target="_blank" rel="noopener">
+        <span class="contact-btn-icon">✉</span>
+        <span class="contact-btn-text">Open Contact Form</span>
+      </a>
+      <p class="contact-note">Opens in a new tab. Your message goes directly to the archive maintainer.</p>
     </div>
   </div>
 </main>
 
 
 <script>
-  // Drop your Google Form embed URL here once you have it.
-  // Format: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true
-  const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScoAoRapF7NI4sN6Chkb75h6NTFfoLZWgXgCXZDqSyzu8md1g/viewform?embedded=true';
-
-  if (FORM_URL) {
-    document.getElementById('formPlaceholder').style.display = 'none';
-    const iframe = document.getElementById('contactFrame');
-    iframe.src = FORM_URL;
-    iframe.style.display = 'block';
+  // Fade-in animation on load
+  const btn = document.querySelector('.contact-btn');
+  const note = document.querySelector('.contact-note');
+  if (btn) {
+    setTimeout(() => btn.classList.add('visible'), 400);
+    setTimeout(() => note.classList.add('visible'), 700);
   }
 </script>
 
@@ -257,7 +242,7 @@
       <div class="footer-col-title">Navigate</div>
       <ul class="footer-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Collections</a></li>
+        <li><a href="gallery.html">Full Gallery</a></li>
         <li><a href="about.html">About This Site</a></li>
         <li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
         <li><a href="contact.html">Contact</a></li>
