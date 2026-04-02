@@ -619,6 +619,12 @@
     text-align: right;
   }
 
+  .themes-track {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0 48px;
+  }
+
   @media (max-width: 1100px) {
     .themes-track { grid-template-columns: repeat(4, 1fr); padding: 0 32px; }
     .theme-card:nth-child(6n) { border-right: 1px solid rgba(240,232,218,0.1); }
