@@ -11,6 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://remembering-john-staton.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   /* ── CROSS-DOCUMENT VIEW TRANSITIONS ── */
@@ -72,26 +73,38 @@
   nav {
     position: sticky; top: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 40px;
+    padding: 14px 40px;
     background: rgba(10,3,4,0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(240,232,218,0.06);
   }
   .nav-title {
-    font-family: 'Lora', serif;
-    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(240,232,218,0.7);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(240,232,218,0.85);
   }
   .nav-links {
-    display: flex; gap: 32px;
+    display: flex; gap: 28px; align-items: center;
   }
   .nav-links a {
     font-family: 'Lora', serif;
-    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(240,232,218,0.5); text-decoration: none;
+    font-size: 14px; letter-spacing: 0.08em;
+    color: rgba(240,232,218,0.55); text-decoration: none;
     transition: color 0.2s;
+    display: flex; align-items: center; gap: 6px;
   }
-  .nav-links a:hover { color: rgba(240,232,218,0.9); }
+  .nav-links a:hover { color: rgba(240,232,218,0.95); }
+  .nav-links .material-symbols-rounded {
+    font-size: 20px;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  }
+  @media(max-width:720px){
+    nav { padding: 12px 20px; }
+    .nav-title { font-size: 13px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 0; gap: 0; }
+    .nav-links .material-symbols-rounded { font-size: 22px; }
+  }
 
   /* ─── HERO SECTION ─── */
   .hero {
@@ -650,9 +663,10 @@
 <nav>
   <div class="nav-title">The John Staton Museum</div>
   <div class="nav-links">
-    <a href="gallery.html">Collections</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="about.html"><span class="material-symbols-rounded">info</span>About This Site</a>
+    <a href="gallery.html"><span class="material-symbols-rounded">photo_library</span>Full Gallery</a>
+    <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
   </div>
 </nav>
 
