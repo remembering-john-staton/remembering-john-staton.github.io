@@ -590,6 +590,305 @@ async function init() {
     descEl.appendChild(wordsBlock);
   }
 
+  // Streamers special case: inject full lore summary below description
+  if (topicId === 'streamers') {
+    const descEl = document.getElementById('topicDesc');
+    const loreBlock = document.createElement('div');
+    loreBlock.className = 'streamers-lore';
+
+    // Add scoped styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .streamers-lore { margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(240,232,218,0.1); }
+      .streamers-lore .lore-section-title {
+        font-size: 22px; font-weight: 600; color: rgba(240,232,218,0.85);
+        margin: 56px 0 28px; padding-bottom: 12px;
+        border-bottom: 1px solid rgba(240,232,218,0.1);
+        font-family: 'Lora', serif;
+        letter-spacing: 0.01em;
+      }
+      .streamers-lore .lore-section-title:first-child { margin-top: 0; }
+      .streamers-lore .lore-h2 {
+        font-size: 17px; font-weight: 600; color: rgba(240,232,218,0.7);
+        margin: 36px 0 14px;
+      }
+      .streamers-lore .lore-h3 {
+        font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+        color: rgba(240,232,218,0.35); margin: 32px 0 14px;
+      }
+      .streamers-lore p {
+        font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.65);
+        margin-bottom: 16px;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .streamers-lore blockquote {
+        border-left: 2px solid rgba(196,154,108,0.35);
+        background: rgba(240,232,218,0.025);
+        padding: 20px 24px; margin: 18px 0 22px;
+        font-style: italic; font-size: 17px; line-height: 1.85;
+        color: rgba(240,232,218,0.78);
+        border-radius: 0 4px 4px 0;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .streamers-lore blockquote b { font-weight: 600; font-style: normal; color: rgba(240,232,218,0.9); }
+      .streamers-lore blockquote i { font-style: italic; }
+      .streamers-lore .fn { font-size: 12px; color: rgba(196,154,108,0.6); vertical-align: super; text-decoration: none; font-family: system-ui; }
+      .streamers-lore .fn:hover { color: rgba(196,154,108,0.9); }
+      .streamers-lore .sources {
+        margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(240,232,218,0.07);
+      }
+      .streamers-lore .sources h4 {
+        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+        color: rgba(240,232,218,0.25); margin-bottom: 16px;
+      }
+      .streamers-lore .sources li {
+        font-size: 13px; color: rgba(240,232,218,0.35); margin-bottom: 6px; line-height: 1.5;
+        font-family: system-ui, sans-serif;
+      }
+      .streamers-lore .sources a { color: rgba(196,154,108,0.6); text-decoration: none; }
+      .streamers-lore .sources a:hover { color: rgba(196,154,108,0.9); text-decoration: underline; }
+    `;
+    document.head.appendChild(style);
+
+    loreBlock.innerHTML = `
+
+<div class="lore-h2">The Pitch</div>
+
+<p>John watched a lot of anime.</p>
+
+<p>As an appreciator for Big Mechanical Things (IE giant robots, huge spaceships, aircraft carriers) he found himself annoyed by the way that they'd often be treated in anime. He saw one too many show in which a big gigantic <a href="https://en.wikipedia.org/wiki/Nimitz-class_aircraft_carrier" style="color:rgba(196,154,108,0.7)">Nimitz-class</a> aircraft carrier would be sunk. To quote:</p>
+
+<blockquote>After watching <i>way</i> to many anime in which a <b>Nimitz Class carrier</b> is sent to Davey Jones' Locker by a teeny bopper in a sailor fuku, I decided to concoct a story in which super-powered sailor girls become the chief expression of strategic military power.<br><br><b>American</b> strategic military power.<a class="fn" href="#s-fn1">1</a></blockquote>
+
+<p>These new STREAMERS are girls, armed services members, with a price tag of about $1.5 billion each. Together they are called the <b style="color:rgba(240,232,218,0.85)">American Streamers</b>, named for the decorative ribbons flowing from their costumes.<a class="fn" href="#s-fn2">2</a> Why so many? Well, inter-service politics being what they are, each branch of the military wanted their own.</p>
+
+<div class="lore-h2">The American Magical Girls</div>
+
+<p>Most super-soldier stories are about one guy punching his way through a war while the actual military stands around looking useless. John hated that. He wanted the military to be <i>competent</i>, and the Streamers to be <i>weapons systems</i>, deployed with real doctrine.</p>
+
+<blockquote>One of the things I wanted was to have them used with military tactics.<br><br>Instead of having <b>Captain America</b> do his <b>Clark Kent</b> impression by wandering through the war in the guise of <b>Private Steve Rogers,</b> until he stumbles upon the <b>Red Skull's</b> latest weapon, <b>Streamers</b> would be deployed in <i>conjunction</i> with other military operations.<br><br>Troops would be able to call air support from <b>Airforce Girl,</b> or <b>Marine Girl</b> could go behind enemy lines and snipe out entire anti-aircaft emplacements in advance of a bombing attack.<br><br>A school of thought or combat doctrine would evolve around the deployment of tactical maidens, like dogifighting for military aviation, or blitzkreg tactics for mobile armor.<br><br>Rather than telling a superhero story masquerading as a war story, I wanted to tell a science fiction story about how a new technology changes the face of combat.<a class="fn" href="#s-fn3">3</a></blockquote>
+
+<p>I think he summarized it very very nicely.</p>
+
+<blockquote>So I guess you could say it's like <b>Captain America</b> if they took the idea as far as it could go, and had more than one super soldier. And they were all cute girls.</blockquote>
+
+<p>John had such a heart, though. He hated how super-soldier stories were always the same. He wanted his to be different.</p>
+
+<blockquote>In stories like this, it's usually: The government is a bunch of mell-intended buffoons who only deploy super-soldiers when the incompetant and/or superfluous bulk of their forces are swept aside by the villain of the week; or the government is a creepy iluminati who seeks to use super-powered beings toward some unknowable, sinister end, making it necessary for the requisite super-powered "teens-with-attitude" to take it on the lam. Even <b>War Heroes,</b> which I thought at first would be like <b>Streamers,</b> is just about a bunch of traitorous thugs who sell their powers to terrorists.<br><br>...so there's room for the Streamers. Perhaps there's a place for this idea after all.<a class="fn" href="#s-fn4">4</a></blockquote>
+
+<div class="lore-h2">Where Did They Come From?</div>
+
+<p>Japan. Sort of. John built a whole alternate history for this.</p>
+
+<blockquote>In the back story, the ability to endow young women with extraordinary abilities is pioneered by the Japanese toward the end of the second world war.<br><br>Due to the shortages of manpower brought about by the conflict, Japanese scientists desperately work to develop a process that would allow it's remaining female population to defend the home island from the anticipated American invasion.<br><br>In order to halt the American advance, a means has to be developed to allow a single woman to wipe out an armed division of battle hardened troops.<br><br>In many ways, this would be Japan's own Manhattan project.<br><br>As it would turn out, the process proves far too expensive and resource intensive for the Japanese to fully execute, and only a blueprint for it is completed by war's end. Along with the coveted secrets of German rocketry and jet technology, The so-called <b>Tokyo Project</b> comes to number among the United State's many scientific spoils of war.<br><br>After decades of additional research, a process is successfully developed to, for the price of a mere <b>1.5 billion dollars <i>each</i></b>, give a young woman<b>1</b>, the ability to fly, hurl tanks, breath in space, punch through steel, and walk on the ocean floor.<br><br><i>Basic "Superman" stuff.</i><br><br><b>1.)</b> Why women? Because they're more fun to draw.<a class="fn" href="#s-fn5">5</a></blockquote>
+
+<div class="lore-section-title">The Streamers</div>
+
+<div class="lore-h3">Air Force Girl</div>
+<p><b style="color:rgba(240,232,218,0.85)">Captain Ariel McFly.</b><a class="fn" href="#s-fn6">6</a> She's the fastest of the bunch, the highest-flying, and she's got gigawatt-class hand lasers coming out of her hands. Flight ceiling: 95,000 feet. Top speed: Mach 10. But she's also the physically weakest of all of them.</p>
+
+<blockquote>I guess that leaves <b>Air Force Girl</b> as the brainy one. I need to redesign her with some <i>"Royal Smart Person"</i> glasses.<a class="fn" href="#s-fn7">7</a></blockquote>
+
+<p>She carries the <b style="color:rgba(240,232,218,0.85)">Orbital Rig</b> for anti-satellite warfare:</p>
+
+<blockquote>The big rockety thing she's strapped into is an <b>Orbital Rig</b>, allowing her to do anti-satellite warfare. It was inspired more that a little by some of <b>Ace McCloud's</b> gear from the cartoon <b>Centurians.</b> (Man the 1980's truly were the golden age of cartoons where stuff blowed up.)<a class="fn" href="#s-fn8">8</a></blockquote>
+
+<p>She also has a habit of using her teammates as improvised weapons. This is maybe the best anecdote in the whole archive:</p>
+
+<blockquote><b>Air Force Girl</b> once destroyed a hardened, underground <b>T.H.R.E.A.T.</b> installation, by carrying <b>Army Girl</b> into near earth orbit, before descending into an improvised dive bombing run, which would see the ground attack specialist used as an invulnerable bunker buster.<br><br><b>Army Girl</b>, who thought she was being being carried on a reconnaissance mission, was not amused by this situation.<a class="fn" href="#s-fn9">9</a></blockquote>
+
+<div class="lore-h3">Navy Girl</div>
+<p><b style="color:rgba(240,232,218,0.85)">Mayflower Shipman.</b><a class="fn" href="#s-fn10">10</a> The most versatile Streamer. She flies, she dives, she does both at absurd speeds. Flight ceiling: 75,000 feet. Top speed: Mach 6. Maximum dive depth: 30,000 feet. Megawatt-class hand lasers. Limited strength.</p>
+
+<blockquote><b>Navy Girl</b> will be the snotty, rich one.<a class="fn" href="#s-fn7">7</a></blockquote>
+
+<p>And she's got a drone. John loved his acronyms, and this one he was particularly proud of (and also frustrated by):</p>
+
+<blockquote>She is accompanied by her Specialized Kinetic Yield, High Altitude Weapon Carrier, or <b>SKYHAWC</b>. <i>(If anyone can find out how to swap a second "K" in there, I'm open to suggestion.)</i><a class="fn" href="#s-fn10">10</a></blockquote>
+
+<div class="lore-h3">Marine Girl</div>
+<p>The fan favorite. Across the entire comment history, she's the one people kept coming back to. She lacks hand lasers entirely and compensates with a howitzer converted into an assault rifle and the willingness to headbutt attack helicopters at Mach 2.</p>
+<p>Flight ceiling: 50,000 feet. 20 kiloton-proof invulnerability. 45,000 ton deadlift strength.</p>
+
+<blockquote><b>Marine Girl</b> seems to be people's favorite. I actually did another marker drawing of just her for an actual Marine.<a class="fn" href="#s-fn11">11</a></blockquote>
+
+<p>John loved the Mil Mi-24 Hind:</p>
+
+<blockquote>I really like the old <b>Mil Mi-24</b> attack helicopter.<br><br>Few machines serve better as a visual cue, announcing <i>"Here come the bad guys!"</i> than this <i>ass-ugly</i>, flying crocodile. (<i>I'm actually surprised and disappointed that <b>Hasbro&trade;</b> never co-opted the design for use in their <b>G.I.Joe&trade;</b> toy line--It would make a perfect <b>Cobra&trade;</b> vehicle!</i>)<a class="fn" href="#s-fn12">12</a></blockquote>
+
+<p>So naturally he drew a two-page comic sequence of Marine Girl destroying one. The Hind lost.</p>
+
+<blockquote>Well here it is. <b>Marine Girl</b> headbutting a <b>Hind.</b><a class="fn" href="#s-fn13">13</a></blockquote>
+
+<p>When pressed about her loadout years later, he was blunt:</p>
+
+<blockquote>She doesn't have a drone, though. Just a 100mm Howitzer, modified to be carried as a rifle.<br><br>Her mission isn't rescue.<a class="fn" href="#s-fn14">14</a></blockquote>
+
+<div class="lore-h3">Army Girl</div>
+<p>Army Girl is the strongest Streamer by a wide margin, and also the only one who can't fly. John described her as a human main battle tank, and he meant it literally.</p>
+
+<blockquote>While the only <b>Streamer</b> incapable of sustained flight, <b>Army Girl</b> can deadlift 50,000 tons, run at mach 0.75, and survive a 15 kiloton detonation, making her an ideal ground operations specialist. With her speed and toughness, she can negate most <b>T.H.R.E.A.T.</b> mobile armor, effectively putting her in the role of a human, <i>main battle tank.</i><a class="fn" href="#s-fn15">15</a></blockquote>
+
+<p>Her grenades are shaped like ten-inch action figures wearing ball gowns. This is not a joke. Well, it is a joke, but it's also canon:</p>
+
+<blockquote>Her chief weapons are high explosive <b>P.O.R.T.I.A.</b>* grenades. <i>(Each one can disable a tank. Their ball gowns fragment into shrapnel.)</i> Although she is capable of carrying a great diversity of heavy ordinance, up to, and beyond a <b>130mm Anti-Infrastructure Rifle.</b><br><br>*<b>P</b>oseable <b>O</b>rdinance <b>R</b>esin <b>T</b>en <b>I</b>nch <b>A</b>ction figures. Pictured above.<a class="fn" href="#s-fn15">15</a></blockquote>
+
+<p>What she can do with just her fists:</p>
+
+<blockquote>Well she can punch an opposing tank with sufficient force to detonate its magazine, and pop off its turret like a cork. Actually, she could punch off the turret <i>without</i> having to detonating anything.<br><br>She can probably cripple any moving vehicle, if striking the right place, like cracking a submarine, or sinking a battleship. There probably isn't much she couldn't wreck.<a class="fn" href="#s-fn16">16</a></blockquote>
+
+<p>She's afraid of heights.<a class="fn" href="#s-fn7">7</a> Since she can't fly, she needs a jet called the <b style="color:rgba(240,232,218,0.85)">Battle Queen</b> to get to the fight. And she never got a drone because, as of May 2019, John was still stuck on this:</p>
+
+<blockquote>Still need to think up a drone for her. Don't know what animal to use. Needs to be something that could go well with tank treads.<a class="fn" href="#s-fn17">17</a></blockquote>
+
+<div class="lore-h3">Coast Guard Girl</div>
+<p>The fifth Streamer. She was originally not in the lineup at all. From the original 2009 description, flat out:</p>
+
+<blockquote>And no, there isn't a <b>Coast Guard Girl.</b><a class="fn" href="#s-fn5">5</a></blockquote>
+
+<p>Fans kept asking. For years. John eventually caved, and in the process figured out something really smart about her role in the story:</p>
+
+<blockquote>In all the shoujo mecha shows, <i>(Which my concept predates by more than a decade, ironically enough.)</i> there is a gateway character, who serves as the lens through which the audience is introduced to the world.<br><br>She is universally short haired, and lacking in any outstanding talents. She's not as busty as the mandatory bombshell, she's nicer than the mean girl, though not as nice as the gentle shy girl. In general, she's more or less a blank template, there to bring the special traits of the actually interesting characters into higher relief, by means of contrast.<br><br>This could be an ideal role for <b>Coast Guard Girl</b>.<br><br>Crap, I may actually have to start doing something with this idea.<a class="fn" href="#s-fn18">18</a></blockquote>
+
+<p>She's the weakest. She gets hazed by the others. Because she's Coast Guard.</p>
+
+<blockquote>Despite her powers, she's still only <b>Coast Guard</b>. The others will probably give her a hard time.<a class="fn" href="#s-fn19">19</a></blockquote>
+
+<p>She's got a robotic dolphin drone, though, and John went full acronym on this one. He gave it his own footnotes and everything:</p>
+
+<blockquote><b>Coast Guard Girl</b> is assisted in the task of rescuing downed <b>Streamers</b>, and civilians, endangered by the evil forces of <b>T.H.R.E.A.T.</b> by an artificially intelligent <b>D</b>eep <b>O</b>cean/<b>L</b>ittoral <b>P</b>atrol <b>H</b>igh-speed <b>IN</b>terceptor drone.<br><br><b>D.O/L.P.H.IN.</b> can deploy flotation devices, and even serve as a life support pod for deep sea rescue. The drone can also carry a prodigious weapons loadout of torpedoes and depth charges for undersea combat.<br><br>With its advanced AI, <b>D.O/L.P.H.IN.</b> can also offer tactical advice<b>2</b> to its operator, which <b>Coast Guard Girl</b> uniformly ignores.<br><br><b>2.)</b> Said advice is offered in a cute, high pitched voice.<a class="fn" href="#s-fn20">20</a></blockquote>
+
+<p>When someone asked if it's a space dolphin: <i>"No, just a robot. It's still aquatic."</i></p>
+
+<div class="lore-h3">The Team Dynamic</div>
+<p>John had the interpersonal stuff figured out. The Army/Marines rivalry was pulled directly from living with actual service members:</p>
+
+<blockquote><b>Marine Girl</b> and <b>Army Girl</b> will be total <i>Tsundere Friends.</i> They will constantly bicker, leveraging the ongoing Army/USMC rivalry that my service friends and house mates have borne out over the years.<br><br>They'll always be in one another's face until one of them is in a jam.<br><br><b>Navy Girl</b> will be the snotty, rich one. I guess that leaves <b>Air Force Girl</b> as the brainy one. I need to redesign her with some <i>"Royal Smart Person"</i> glasses.<a class="fn" href="#s-fn7">7</a></blockquote>
+
+<div class="lore-section-title">The Series</div>
+
+<div class="lore-h3">T.H.R.E.A.T.</div>
+<p>The main villains. John formatted the acronym himself:</p>
+
+<blockquote><b>1.) T</b>ransformative <b>H</b>egemony to <b>R</b>ule the <b>E</b>arth for <b>A</b>ll <b>T</b>ime.<a class="fn" href="#s-fn21">21</a></blockquote>
+
+<p>Their signature weapon is <b style="color:rgba(240,232,218,0.85)">C.I.R.C.E.</b> (<b>C</b>hromasomal and <b>I</b>ntramolecular <b>R</b>e-<b>C</b>ombination <b>E</b>mitter<a class="fn" href="#s-fn22">22</a>), and it turns people into mutant animal soldiers. The victims keep their skills, but their minds belong to T.H.R.E.A.T.:</p>
+
+<blockquote>Like the mutated <b>Ka-50 Shark</b> pilot pictured, the altered soldiers retain their skills and training, but their minds are under the thrall of <b>T.H.R.E.A.T.</b><a class="fn" href="#s-fn23">23</a></blockquote>
+
+<p>The mutation has a clock on it:</p>
+
+<blockquote>However some are permanent, and some can be cured. I haven't determined the time period, but after a while the <b>C.I.R.C.E.</b> effect is irreversible.<a class="fn" href="#s-fn24">24</a></blockquote>
+
+<p>T.H.R.E.A.T.'s ground forces include the <b style="color:rgba(240,232,218,0.85)">Werewolf Brigade</b><a class="fn" href="#s-fn25">25</a>, their shark-mutant pilots fly Ka-50 Black Shark helicopters (because of course they do), and they field enough heavy armor to justify sending in Army Girl as a one-woman tank division.</p>
+
+<div class="lore-h3">Doctor Widdle (Season One Villain)</div>
+
+<p>In January 2017, John went on a massive brainstorming run in the comments of the original American Streamers post. He came up with the villain for Season One.</p>
+
+<p>She's a rogue scientist with a Deformation Generator. It turns everything within range into the most adorable version of itself, from houses to warships. (Anyone who has heard the term "super deformed" gets the joke.)</p>
+
+<blockquote>Their enemy will be something that conventional forces are powerless against.<br><br>An evil scientist is trying to force her version of peace upon the world by activating a series of devices, which turn everything within their range of influence into the most adorable, chibified version of itself; Houses smiling with winking window eyes, anthropomorphic cars that bounce along on inner tube tires, dancing to songs sung by cherry trees with cherub cheeks.<br><br>Never ending, sugar coated horror.<br><br>All armies entering the <b>Quarantine Transformation Zones</b>, or <b>QTZ's</b>, are subject to these horrific, disfigurements, and only add to the strength of forces bent on building new devices and spreading the scourge of super-deformation globally.<br><br>Only the <b>Streamers</b> can enter the <b>QTZ</b>, destroy the field generators, and free those trapped within. So once again, the world holds its breath, and waits for America to come save its ass.<a class="fn" href="#s-fn26">26</a></blockquote>
+
+<p>If you're still reading this, you'll notice that part of the fun for John was imagining his work as another type of media; a sketch as a show, or a game, as if his art was a tiny glimpse into another reality where it was a much larger project. I do that too. I get a lot of things from him.</p>
+
+<p>He even scripted out the opening scene:</p>
+
+<blockquote>A carrier group will be standing off shore in support of a special forces operation, launched to capture a rogue evil scientist. The troops dispatch the expected crowd of faceless hench dudes, and proceed to arrest the mad doctor, who is disquietingly okay with the whole affair.<br><br><b>Soldier:</b> "Come along quietly, doctor. We've taken care of your private little army. It's over!"<br><br><b>Doctor:</b> <i>"Quiet the contrary, soldier. My army's <b>just arrived."</b></i><br><br>No sooner do the soldiers grab the doctor than her first <b>Deformation Generator</b> activates, turning everything, and everyone, on or around the island <i>(Except for the doc herself, who as made herself immune to its effects with a special process that turned her skin a delightful shade of lavender.)</i> into the most adorable, super deformed versions of themselves.<br><br>Now with the might of history's most huggable carrier battle group, the maniacal doctor moves her plan of global conquest forward.<a class="fn" href="#s-fn27">27</a></blockquote>
+
+<blockquote>The evil doctor may well have been a high ranking scientist for the program, until her experiments with rejuvenation curse her with a skull too small for her mighty brain. In fact, it could even be possible that our widdle doctor, <i>(Hmmm, <b>Doctor Widdle</b>?)</i> once cured of her rejuvenation, could revert back to her old self and work towards redemption by helping the <b>Streamers</b> against <b>Shoujo Zero</b>.<a class="fn" href="#s-fn27">27</a></blockquote>
+
+<p>Doctor Widdle, we can surmise, would have either been actually childlike (I'm thinking Chibi Moon from Sailor Moon) or an adorable adult woman with a vaguely childlike appearance (another anime trope) and I'm sure she would have been great.</p>
+
+<div class="lore-h3">Shoujo-Zero (Season Two Villain)</div>
+
+<p>Season Two would have been a tonal shift. John and a fan collaborator named HoshikoSoyokaze were riffing back and forth in the comments, and they built out a whole second arc together.</p>
+
+<p>Japan told the US they never finished a working Tactical Girl before handing over the Tokyo Project research. That was a lie.</p>
+
+<blockquote>Of course, as far as anyone in the <b>Streamers</b> program knows, Japan produced no working <b>Tactical Girls</b> before turning their research over to the US.<br><br>I'm sure the revelation of the existence of <b>Shoujo-Zero</b> would be quite an embarrassment for the <b>JSDF</b>. They may even call upon the American unit too late to save a major city or landmark from destruction; opting to attempt to contain her with <b>Anti-Tactical Maid Weapons</b>, developed in secret, as a countermeasure against the <b>Streamers</b>.<br><br>The <b>Streamers</b> would be livid at the <b>JSDF</b>, right up until the moment they realize that the <b>ATMW's</b> actually came from the US.<br><br>Starting as an adversary, the <b>Streamers</b> eventually realize that each of them could have been <b>Shoujo-Zero</b> under different circumstances. Of course this revelation will not change the fact that <b>SZ</b> will have to be put down, for the greater good.<br><br><i>Season Two</i> would definitely be darker, featuring more intrigue, and higher character stakes than the <b>QT War</b> story arc.<a class="fn" href="#s-fn28">28</a></blockquote>
+
+<p>HoshikoSoyokaze proposed that Japan's prototype was sealed in the Mariana Trench, in an iron casket filled with liquid nitrogen. John loved it. Called her <i>"Japan's answer to <b style="color:rgba(240,232,218,0.85)">Captain America</b>."</i></p>
+
+<p>What makes all of this cohere: the Deformation Generator, the Streamer enhancement process, and the C.I.R.C.E. bioweapon share the same origin. John confirmed it: <i>"The super deformation effect and the <b style="color:rgba(240,232,218,0.85)">Streamer</b> process, do share a similar technical origin."</i><a class="fn" href="#s-fn29">29</a> The Tokyo Project research forked into at least three separate weapons programs, and the Streamers are only one of them.</p>
+
+<div class="lore-h3">Special Forces Girl</div>
+<p>She was never drawn. She floated through the January 2017 brainstorm as a masked operative, a survivor of the first Deformation event, hiding behind full tactical gear because of what the generator did to her.</p>
+
+<blockquote>It hadn't occurred to me to have <b>Special Forces Girl</b> be covered up in any way, but that would give her that air of mystery like <b>Snake Eyes</b> from <b>G.I. Joe</b> or <b>The Stig</b> from <b>Top Gear</b>, or <b>Raim Kawasaki</b> from <b>Bakuon,</b> and I'm sure there are a multitude of examples I am not aware of.<br><br>Having a long standing mystery regarding her appearance, before it is finally revealed that she is a survivor of the first deformation, sounds very satisfying, along with the big reveal that she hides herself because of the surreal beauty that is now her eternal curse.<a class="fn" href="#s-fn30">30</a></blockquote>
+
+<div class="lore-h3">The Attack-Maids</div>
+<p>A separate but connected group. Four military pin-up characters, one per service branch. John teased a crossover with the Streamers:</p>
+
+<blockquote>You see there are only four <b>Attack-Maids</b>, one for each branch of the service. <i>(Make sure to read the stats.)</i><br><br>And yes, it <i>has</i> occurred to me, they would be useful in helping <i>certain other maids</i> out of a bind.<a class="fn" href="#s-fn31">31</a></blockquote>
+
+<div class="lore-h3">The Shared Universe</div>
+<p>In May 2018, John connected C.I.R.C.E. to his other properties. Permanently mutated victims, living as intelligent animal/human hybrids after the war, could explain characters from his other work:</p>
+
+<blockquote>Holy cow. It just occurred to me that there could be <i>good</i> <b>C.I.R.C.E.</b> victims. In fact, since vast segments of the population who are transformed, may end up being permanently altered, even after being liberated of <b>T.H.R.E.A.T.</b> mind control, they may be forced to live out their lives, post war, as intelligent animal/human hybrids.<br><br>I think I may have stumbled upon a backdoor origin to my other concepts.<a class="fn" href="#s-fn32">32</a></blockquote>
+
+<p>He didn't develop this further. <a href="topic.html?id=neboox" style="color:rgba(196,154,108,0.7)">See the N.E. Boox collection &rarr;</a></p>
+
+<div class="lore-h2">Why It Never Happened (And Why It Almost Did)</div>
+
+<p>John sat on the Streamers for over a decade before posting them. The original marker drawings are years older than the DeviantArt uploads. He worried that Image Comics' <b style="color:rgba(240,232,218,0.85)">War Heroes</b> had killed the concept's commercial viability:</p>
+
+<blockquote>I really liked this idea, but I suppose, the publication fo Image's <b>War heroes</b> has rendered all this pretty much moot. But then, my idea is ten years older and a whole lot less cynical, so perhaps there's a place for it afterall.<a class="fn" href="#s-fn1">1</a></blockquote>
+
+<p>But every few years, he'd circle back to the Streamers.</p>
+
+<blockquote>Whenever I look at this picture, I want to do more stuff with the <b>Streamers</b>, and one day, I definitely will. For now I want to focus on <b>America Jones</b>.<br><br>Coming up with ideas has never been a problem for me. I suppose I should consider myself lucky in that respect. My challenge has always been focusing on one thing.<a class="fn" href="#s-fn33">33</a></blockquote>
+
+<p>By May 2018, he was aiming for a full comic at Otakon.</p>
+
+<blockquote>I'll be at Otakon again this year. Hopefully with a full comic.<a class="fn" href="#s-fn34">34</a></blockquote>
+
+<p>John Staton passed away in January 2026. The Streamers never got their comic. But the worldbuilding is here, scattered across 14 DeviantArt posts spanning 12 years of comments. It was the work of a man who could not stop thinking about what would happen if you took the magical girl military concept completely seriously, and had an absolute blast doing it.</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+<li id="s-fn1"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a>, Jan 8, 2009.</li>
+<li id="s-fn2"><a href="https://www.deviantart.com/johnstaton/art/More-American-Streamers-109517918">More American Streamers</a> comments, Jan 15, 2009.</li>
+<li id="s-fn3"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 9, 2009.</li>
+<li id="s-fn4"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Apr 4, 2009.</li>
+<li id="s-fn5"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a>, Jan 8, 2009. Description.</li>
+<li id="s-fn6">Named in <a href="https://www.deviantart.com/johnstaton/art/Inktober-Stardate-1810-01-766449878">Inktober: Stardate 1810.01</a>, Oct 1, 2018.</li>
+<li id="s-fn7"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 5, 2017.</li>
+<li id="s-fn8"><a href="https://www.deviantart.com/johnstaton/art/More-American-Streamers-109517918">More American Streamers</a>, Jan 14, 2009.</li>
+<li id="s-fn9"><a href="https://www.deviantart.com/johnstaton/art/45-35-Kg-MBT-752477355">45.35 Kg MBT</a> comments, Jul 1, 2018.</li>
+<li id="s-fn10"><a href="https://www.deviantart.com/johnstaton/art/Navy-Girl-Aerial-Demonstration-Variant-830491240">Navy Girl Aerial Demonstration Variant</a>, Feb 14, 2020.</li>
+<li id="s-fn11"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 9, 2009.</li>
+<li id="s-fn12"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-Pencils-01-109281786">American Streamers Pencils 01</a>, Jan 12, 2009.</li>
+<li id="s-fn13"><a href="https://www.deviantart.com/johnstaton/art/HIND-Butt-115232136">HIND-Butt</a>, Mar 8, 2009.</li>
+<li id="s-fn14"><a href="https://www.deviantart.com/johnstaton/art/A-Girl-and-Her-Drone-742357770">A Girl and Her Drone</a> comments, Apr 27, 2018.</li>
+<li id="s-fn15"><a href="https://www.deviantart.com/johnstaton/art/45-35-Kg-MBT-752477355">45.35 Kg MBT</a>, Jul 1, 2018.</li>
+<li id="s-fn16"><a href="https://www.deviantart.com/johnstaton/art/45-35-Kg-MBT-752477355">45.35 Kg MBT</a> comments, Jul 1, 2018.</li>
+<li id="s-fn17"><a href="https://www.deviantart.com/johnstaton/art/45-35-Kg-MBT-752477355">45.35 Kg MBT</a> comments, May 27, 2019.</li>
+<li id="s-fn18"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 5, 2017.</li>
+<li id="s-fn19"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jun 21, 2012.</li>
+<li id="s-fn20"><a href="https://www.deviantart.com/johnstaton/art/A-Girl-and-Her-Drone-742357770">A Girl and Her Drone</a>, Apr 27, 2018.</li>
+<li id="s-fn21"><a href="https://www.deviantart.com/johnstaton/art/Anti-Tank-Girl-755886775">Anti Tank Girl</a>, Jul 23, 2018. There was briefly a second R. John cut it.</li>
+<li id="s-fn22"><a href="https://www.deviantart.com/johnstaton/art/Hench-Ride-744249299">Hench Ride</a>, May 7, 2018.</li>
+<li id="s-fn23"><a href="https://www.deviantart.com/johnstaton/art/Hench-Shark-743637684">Hench Shark</a>, May 6, 2018.</li>
+<li id="s-fn24"><a href="https://www.deviantart.com/johnstaton/art/Hench-Ride-744249299">Hench Ride</a> comments, May 7, 2018.</li>
+<li id="s-fn25"><a href="https://www.deviantart.com/johnstaton/art/Anti-Tank-Girl-755886775">Anti Tank Girl</a>, Jul 23, 2018. The Battle of Thar.</li>
+<li id="s-fn26"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 5, 2017.</li>
+<li id="s-fn27"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 8, 2017.</li>
+<li id="s-fn28"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 6, 2017.</li>
+<li id="s-fn29"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 8, 2017.</li>
+<li id="s-fn30"><a href="https://www.deviantart.com/johnstaton/art/American-Streamers-108853948">American Streamers</a> comments, Jan 8, 2017.</li>
+<li id="s-fn31"><a href="https://www.deviantart.com/johnstaton/art/Marine-Color-Marker-Pic-109279729">Marine Color Marker Pic</a> comments, Sept 2010.</li>
+<li id="s-fn32"><a href="https://www.deviantart.com/johnstaton/art/Hench-Ride-744249299">Hench Ride</a> comments, May 24, 2018.</li>
+<li id="s-fn33"><a href="https://www.deviantart.com/johnstaton/art/More-American-Streamers-109517918">More American Streamers</a> comments, Jul 12, 2011.</li>
+<li id="s-fn34"><a href="https://www.deviantart.com/johnstaton/art/Hench-Ride-744249299">Hench Ride</a> comments, May 11, 2018.</li>
+</ol>
+</div>
+
+    `;
+    descEl.appendChild(loreBlock);
+  }
+
   // Piece count from topic data initially
   if (topic.pieces) {
     document.getElementById('metaPieces').textContent = topic.pieces;
