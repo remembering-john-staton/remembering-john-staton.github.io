@@ -997,7 +997,7 @@ async function init() {
           <div class="piece-card-title">${esc(p.title)}</div>
           ${year ? `<div class="piece-card-date">${year}</div>` : ''}
         </div>
-        ${wip ? '<div class="piece-card-wip">WIP</div>' : ''}
+        
       `;
       card.addEventListener('click', () => { location.href = `piece.html?id=${p.id}`; });
       grid.appendChild(card);
