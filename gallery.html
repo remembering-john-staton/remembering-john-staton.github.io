@@ -114,6 +114,13 @@
     transition:color 0.2s,border-color 0.2s;
   }
 
+  /* ── COLLECTION JUMPS ── */
+  .collection-jumps{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 64px 28px;display:flex;flex-wrap:wrap;gap:8px}
+  .jump-btn{font-family:'Lora',serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+    color:rgba(240,232,218,0.5);border:1px solid rgba(240,232,218,0.12);
+    background:transparent;padding:5px 12px;cursor:pointer;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+  .jump-btn:hover{color:rgba(240,232,218,0.9);border-color:rgba(240,232,218,0.35)}
+  @media(max-width:768px){.collection-jumps{padding:0 24px 20px}}
   /* ── WIP TOGGLE ── */
   .wip-toggle-wrap{
     position:relative;z-index:1;
@@ -215,6 +222,8 @@
   </button>
 </div>
 
+<div class="collection-jumps" id="collectionJumps"><!-- populated by JS --></div>
+
 <!-- GALLERY SECTIONS -->
 <div class="galleries-wrap" id="galleriesWrap">
   <!-- populated by JS -->
@@ -226,7 +235,7 @@
       <div class="footer-divider-accent"></div>
       <div class="footer-brand-name">John Staton</div>
       <p class="footer-brand-desc">An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.</p>
-      <div class="footer-brand-tag">Fan Archive · Est. 2025</div>
+      <div class="footer-brand-tag">Fan Archive · Est. 2026</div>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Navigate</div>
@@ -293,6 +302,22 @@ async function init() {
   const galleryParam = params.get('gallery') || params.get('topic');
 
   renderAll();
+
+  // Collection jump buttons
+  const jumpsEl = document.getElementById('collectionJumps');
+  if (jumpsEl) {
+    GALLERY_DEFS.forEach(def => {
+      const btn = document.createElement('button');
+      btn.className = 'jump-btn';
+      btn.textContent = def.title;
+      btn.onclick = () => {
+        const el = document.getElementById('gallery-' + def.id);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      };
+      jumpsEl.appendChild(btn);
+    });
+  }
+
 
   if (galleryParam) {
     const el = document.getElementById('gallery-' + galleryParam);
