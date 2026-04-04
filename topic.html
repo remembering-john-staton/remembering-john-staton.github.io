@@ -7,6 +7,7 @@
 <meta name="description" content="Gallery page">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50" rel="stylesheet">
 <style>
   /* ── CROSS-DOCUMENT VIEW TRANSITIONS ── */
   @view-transition { navigation: auto; }
@@ -37,6 +38,20 @@
   }
 
   /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 40px;background:rgba(10,3,4,0.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(240,232,218,0.06)}
+  .nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--cream);text-decoration:none}
+  .nav-title a{color:inherit;text-decoration:none}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:'Lora',serif;font-size:14px;letter-spacing:0.08em;
+    color:rgba(240,232,218,0.6);text-decoration:none;display:flex;align-items:center;gap:6px;
+    transition:color 0.2s}
+  .nav-links a:hover{color:rgba(240,232,218,0.95)}
+  .nav-links .material-symbols-rounded{font-size:20px;
+    font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 20}
+  @media(max-width:768px){nav{padding:12px 20px}.nav-title{font-size:13px}.nav-links{gap:16px}.nav-links a{font-size:0;gap:0}.nav-links .material-symbols-rounded{font-size:22px}}
 
   .back-link {
     display: inline-flex; align-items: center; gap: 8px;
@@ -365,6 +380,15 @@
 </head>
 <body>
 
+<nav>
+  <div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
+  <div class="nav-links">
+    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+    <a href="index.html#about"><span class="material-symbols-rounded">person</span>About John</a>
+    <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
+    <a href="guestbook.html"><span class="material-symbols-rounded">menu_book</span>Guestbook</a>
+  </div>
+</nav>
 
 <!-- HERO SPLIT -->
 <div class="hero" id="topicHero">
