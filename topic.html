@@ -919,6 +919,204 @@ async function init() {
     descEl.appendChild(loreBlock);
   }
 
+  if (topicId === 'hsr') {
+    const descEl = document.getElementById('topicDesc');
+    const loreBlock = document.createElement('div');
+    loreBlock.className = 'streamers-lore';
+
+    const style = document.createElement('style');
+    style.textContent = `
+      .streamers-lore { margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(240,232,218,0.1); }
+      .streamers-lore .lore-section-title {
+        font-size: 22px; font-weight: 600; color: rgba(240,232,218,0.85);
+        margin: 56px 0 28px; padding-bottom: 12px;
+        border-bottom: 1px solid rgba(240,232,218,0.1);
+        font-family: 'Lora', serif;
+        letter-spacing: 0.01em;
+      }
+      .streamers-lore .lore-section-title:first-child { margin-top: 0; }
+      .streamers-lore .lore-h2 {
+        font-size: 17px; font-weight: 600; color: rgba(240,232,218,0.7);
+        margin: 36px 0 14px;
+      }
+      .streamers-lore .lore-h3 {
+        font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+        color: rgba(240,232,218,0.35); margin: 32px 0 14px;
+      }
+      .streamers-lore p {
+        font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.65);
+        margin-bottom: 16px;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .streamers-lore blockquote {
+        border-left: 2px solid rgba(196,154,108,0.35);
+        background: rgba(240,232,218,0.025);
+        padding: 20px 24px; margin: 18px 0 22px;
+        font-style: italic; font-size: 17px; line-height: 1.85;
+        color: rgba(240,232,218,0.78);
+        border-radius: 0 4px 4px 0;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .streamers-lore blockquote b { font-weight: 600; font-style: normal; color: rgba(240,232,218,0.9); }
+      .streamers-lore blockquote i { font-style: italic; }
+      .streamers-lore .fn { font-size: 12px; color: rgba(196,154,108,0.6); vertical-align: super; text-decoration: none; font-family: system-ui; }
+      .streamers-lore .fn:hover { color: rgba(196,154,108,0.9); }
+      .streamers-lore .sources {
+        margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(240,232,218,0.07);
+      }
+      .streamers-lore .sources h4 {
+        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+        color: rgba(240,232,218,0.25); margin-bottom: 16px;
+      }
+      .streamers-lore .sources li {
+        font-size: 13px; color: rgba(240,232,218,0.35); margin-bottom: 6px; line-height: 1.5;
+        font-family: system-ui, sans-serif;
+      }
+      .streamers-lore .sources a { color: rgba(196,154,108,0.6); text-decoration: none; }
+      .streamers-lore .sources a:hover { color: rgba(196,154,108,0.9); text-decoration: underline; }
+    `;
+    document.head.appendChild(style);
+
+    loreBlock.innerHTML = `
+
+<div class="lore-h2">The Project That Flew Apart</div>
+
+<p>This one started as a collaboration. John and a studio mate were working on a graphic novel proposal together. He was deep into <i>Tengo Tenge</i> at the time and wanted something set in a cutthroat, fist-fight-filled bastardization of high school life. His collaborator wanted to write a romantic comedy. These are not compatible ambitions.</p>
+
+<blockquote>The project eventually flew apart under the shearing force of two such utterly incompatible ideas.<a class="fn" href="#h-fn1">1</a></blockquote>
+
+<p>He kept the villain he'd designed. That character, Patrick, was a boy-band-pretty quarterback in a school where football was played in giant robots and the ball was a ramjet engine. The villain of a romantic comedy set in a robot high school. John held onto that image and built outward from it.</p>
+
+<p>He started posting the characters to DeviantArt in late November 2008, describing them as "the doomed high school romance concept"<a class="fn" href="#h-fn2">2</a> and "the ill-fated high school romance project."<a class="fn" href="#h-fn3">3</a> By 2012, he'd given the concept a name: <b style="color:rgba(240,232,218,0.85)">Raised by Robots</b>.</p>
+
+<div class="lore-h2">The World</div>
+
+<p>A futuristic private high school where human teenagers and robots go to class together. The premise isn't played for obvious comedy. John had a specific reason why robots would need to attend school at all:</p>
+
+<blockquote>In the future, artificial intelligence is so advanced that it is deemed too hard to program complex human social interaction into robots on a mass production scale. Robots coming out of factories are either hopelessly naive, like Data from Star Trek, or dangerously crazy like Skynet. The only solution to get machines accustomed to interacting with humans is to send them to school. Of course, in addition to their other lessons, some of them fall in love.<a class="fn" href="#h-fn4">4</a></blockquote>
+
+<p>A few other details he dropped across the comment threads: cancer was wiped out a generation before the story starts, so smoking and recreational tanning are rampant. Optical surgery is mandatory, meaning contact lenses now exist only for communications. You get your messages through your eyes. Voyeurs no longer sell candid photos of girls; they privately broadcast video in exchange for electronic fund transfers, "very convenient for one with the future equivalent of wi-fi in his head."<a class="fn" href="#h-fn5">5</a></p>
+
+<p>Outside the classroom window: a giant robot football player, visible from Trina's desk.<a class="fn" href="#h-fn6">6</a> That image is the first thing John posted from the project.</p>
+
+<div class="lore-section-title">The Cast</div>
+
+<div class="lore-h3">Trina</div>
+
+<p>The protagonist, and the character John found hardest to write. Her backstory:</p>
+
+<blockquote>Trina's parents died in an accident when she was an infant. Unfortunately, no one knew of this, so the robot maintenance staff of her automatic home continued their programmed directives and cared for her for ten years, before she was eventually discovered. She attends a robot/human school now, but is enrolled in the robot curriculum, since she has much to learn about humanity.<a class="fn" href="#h-fn4">4</a></blockquote>
+
+<p>She's mechanically capable in a way that reads as supernatural. John noted she's "freakishly strong from hanging around machines all day," though he didn't give her the corresponding musculature because, in his words, "that's just not cute lookin'."<a class="fn" href="#h-fn7">7</a> She carries a comically large wrench.</p>
+
+<p>Her character design went through at least two full iterations. The first, <i>Flower Power</i>, was deemed too quirky; the second, <i>School Girl</i>, was the conventional revision. John described her in the third design pass as "the homewrecker destined to cause so much strife between Lori and Ott0."<a class="fn" href="#h-fn8">8</a></p>
+
+<p>He also admitted: "My own experience with high school love triangles is a tad on the non-existent side."<a class="fn" href="#h-fn9">9</a></p>
+
+<div class="lore-h3">OttØ</div>
+
+<p>The bad boy robot. Motorcycle-riding, gold-plated, inexplicably enrolled at a private high school.<a class="fn" href="#h-fn10">10</a> He has gyroscopic equilibrium so he can strut in perfectly simulated slow motion while blasting music on his internal sound system. His sensors are tactical grade: he can track 200 targets simultaneously.</p>
+
+<p>His backstory was never resolved. John floated four options:</p>
+
+<blockquote>Is he a high-end military prototype, expertly programmed to piss off the fathers of rich young women and steal the lunch money from weak young men? Is he a teenage boy, disfigured in a horrible accident? Is he a teenage boy who had his brain swapped into a killer robot chassis because he thought it would be a "bitchin' thing to do"? Or is he simply a mass produced personal computer/cell phone, like out of <i>Chobits</i>? No one possibility has stuck out to me as the most fun.<a class="fn" href="#h-fn10">10</a></blockquote>
+
+<p>In 2012 a commenter named MayhemAce proposed that OttØ the teenager snuck into his mad scientist uncle's lab with his girlfriend to make out, and through the usual convoluted anime-style circumstances wound up merged with a killer robot chassis. John's response: "I just wanted to say, that is a GREAT idea. I've got to think on this."<a class="fn" href="#h-fn11">11</a></p>
+
+<p>Whatever his origin, his operation is straightforward. He figured out that superior strength and speed would let him procure lunch credits from smaller, frailer humans. He's a school bully. He rides a 1.2 megawatt electricycle. He and Lori are together in the way that Destro and the Baroness are together: "only, you know, in high school."<a class="fn" href="#h-fn10">10</a></p>
+
+<div class="lore-h3">Lori Richmond</div>
+
+<p>The evil prom queen. John's description is a complete character in two sentences:</p>
+
+<blockquote>A young dainty flower whose remarkable physical beauty forever rescues her from the burdens of empathy or compassion. Lori glides through her average school day, effortlessly utilizing the collective fear and admiration of her classmates like the tools of a master inquisitor. The social standing of the student body (as well as the faculty) exists at her whim.<a class="fn" href="#h-fn12">12</a></blockquote>
+
+<p>She got her scholarship because census calculations deemed her a perfect educational template for self-actualized social integration. Robots are encouraged to observe and imitate her. In reality she is a conniving social climber, making her the worst possible model for the machines studying her behavior. She dates OttØ for status and intimidation, and she's jealous of his interest in Trina.</p>
+
+<p>She has a 365-day tan. John confirmed she's a "kogal" by the definition he worked out on the spot: "a spoiled girl who sports a punctiliously maintained 365 day tan, in its own way every bit as vain and artificial as Ott0's auric veneer."<a class="fn" href="#h-fn5">5</a></p>
+
+<p>She called OttØ "C3P0" after he had his chassis electroplated gold. He thought the bling was cool. He changed his mind after she started saying it.<a class="fn" href="#h-fn10">10</a> Why did she pick him over Patrick? Per John: "The motorcycle."<a class="fn" href="#h-fn13">13</a></p>
+
+<div class="lore-h3">Patrick</div>
+
+<p>The true villain, though he looks like the romantic lead. The quarterback. Boy-band-pretty. He drives a cherry red Pegasus hover car. Football in this world is played in giant robots; the ball is a ramjet engine. John described his inclusion as a full commitment to type:</p>
+
+<blockquote>In the world of comics, the quarterback of the high school football team is pretty much responsible for all the evils in the adolescent world, so I decided to wholeheartedly embrace the cliché, and make the antagonist the school's resident field general.<a class="fn" href="#h-fn1">1</a></blockquote>
+
+<p>OttØ only <i>looks</i> like the villain. Patrick only <i>looks</i> like the romantic lead. The switcheroo is foundational to the whole project.</p>
+
+<div class="lore-h3">Erin Scissorhands</div>
+
+<p>A robotic hairdresser, posted in January 2009. John conceived her first as an older-sister confidant for Trina, then revised:</p>
+
+<blockquote>Upon later review, I think she would serve nicely as a robotic homewrecker who could get between Ott0 and Lori. Trouble in paradise?<a class="fn" href="#h-fn14">14</a></blockquote>
+
+<p>She was never developed further. She's the only character whose role John explicitly reconsidered mid-description.</p>
+
+<div class="lore-section-title">Notable Details</div>
+
+<div class="lore-h3">HuM-Ed</div>
+
+<p>A required class for robots. "Humanity Education." The premise:</p>
+
+<blockquote>If robots are integrated into society to the point that they're dating prom queens, an effort would be made to formally educate them in the particulars of human customs. The robots in my story however would have long ago adapted to human interaction, so HuM-Ed class would be a redundant exercise in which human teachers condescendingly tell the robots in attendance information they already know.<a class="fn" href="#h-fn15">15</a></blockquote>
+
+<p>He scripted the scene:</p>
+
+<blockquote>Teacher: "Today class, we are discussing the concept of the 'Joke.' A 'joke' is a story or anecdote whose purpose is to elicit laughter. Can anyone here give me an example of a 'joke'?" OttØ: "Yea, this class."<a class="fn" href="#h-fn15">15</a></blockquote>
+
+<p>Human students also attend. Mostly the school nerds, hoping social interaction tips will help them. It doesn't.</p>
+
+<div class="lore-h3">Why Lori</div>
+
+<p>John watched <i>Peach Girl</i> and concluded that soap operas are war stories with different combatants. He cited Khan Noonien Singh:</p>
+
+<blockquote>"It has been said that social occasions are only warfare concealed." That's what sort of got me on the idea of doing something like a romance.<a class="fn" href="#h-fn16">16</a></blockquote>
+
+<p>Working through the cast, he found that Lori was more interesting to write than Trina. He said so plainly:</p>
+
+<blockquote>Nice characters are mostly defined by what they wouldn't do, and the depths to which they wouldn't sink. They are satisfied with their lives and maintain a positive outlook. It doesn't seem like they have ambition or drive. The bad characters are capable of anything, and are usually motivated by some desire or goal that arbitrary rules or imposed values will not keep them from. I'd rather know or meet Trina here in real life, but I'd pay to watch the antics of someone like Lori. She's much more driven and far more entertaining.<a class="fn" href="#h-fn17">17</a></blockquote>
+
+<p>He made the same point more directly, about both Lori and OttØ: "The people folks were supposed to like — bored the hell outta me."<a class="fn" href="#h-fn18">18</a></p>
+
+<div class="lore-h2">What Happened to It</div>
+
+<p>John pitched it to Tokyopop. Tokyopop went out of business. He noted a green light was probably unlikely regardless: the company felt his character designs were too sexy for the teen girls market they were targeting.<a class="fn" href="#h-fn4">4</a></p>
+
+<p>He posted the characters in November and December 2008 and kept the project in mind for years. In July 2012, after a wave of reader comments on the <i>Flower Power</i> post, he wrote: "I'm talking to other publishers now about other projects. I may have to revisit this eventually."<a class="fn" href="#h-fn19">19</a></p>
+
+<p>He called the concept "defunct" and "ill-fated" and "doomed" and kept coming back to it anyway. The comment threads on these posts ran for years. People found the characters and wanted more.</p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+<li id="h-fn1"><a href="https://www.deviantart.com/johnstaton/art/Gridiron-Man-104223107">Gridiron Man</a>, Nov 21, 2008. Description.</li>
+<li id="h-fn2"><a href="https://www.deviantart.com/johnstaton/art/Bad-Boy-bot-104387013">Bad Boy bot</a>, Nov 23, 2008. Description.</li>
+<li id="h-fn3"><a href="https://www.deviantart.com/johnstaton/art/Flower-Power-105032702">Flower Power</a>, Nov 30, 2008. Description.</li>
+<li id="h-fn4"><a href="https://www.deviantart.com/johnstaton/art/Flower-Power-105032702">Flower Power</a> comments, Jul 5, 2012.</li>
+<li id="h-fn5"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a> comments, Dec 8, 2008.</li>
+<li id="h-fn6"><a href="https://www.deviantart.com/johnstaton/art/School-Girl-Color-105033545">School Girl Color</a>, Nov 30, 2008.</li>
+<li id="h-fn7"><a href="https://www.deviantart.com/johnstaton/art/Wrench-Wench-105408619">Wrench Wench</a> comments, Mar 13, 2009.</li>
+<li id="h-fn8"><a href="https://www.deviantart.com/johnstaton/art/School-Girl-105033209">School Girl</a> comments, Dec 7, 2008.</li>
+<li id="h-fn9"><a href="https://www.deviantart.com/johnstaton/art/School-Girl-105033209">School Girl</a> comments, Dec 7, 2008.</li>
+<li id="h-fn10"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a>, Dec 7, 2008. Description.</li>
+<li id="h-fn11"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a> comments, Nov 21, 2012.</li>
+<li id="h-fn12"><a href="https://www.deviantart.com/johnstaton/art/Evil-Prom-Queen-105504760">Evil Prom Queen</a>, Dec 5, 2008. Description.</li>
+<li id="h-fn13"><a href="https://www.deviantart.com/johnstaton/art/Evil-Prom-Queen-105504760">Evil Prom Queen</a> comments, Dec 5, 2008.</li>
+<li id="h-fn14"><a href="https://www.deviantart.com/johnstaton/art/Erin-Scissorhands-108200557">Erin Scissorhands?</a>, Jan 2, 2009. Description.</li>
+<li id="h-fn15"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a> comments, Sep 20, 2010.</li>
+<li id="h-fn16"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a> comments, Oct 14, 2010.</li>
+<li id="h-fn17"><a href="https://www.deviantart.com/johnstaton/art/Flower-Power-105032702">Flower Power</a> comments, Jul 16, 2012.</li>
+<li id="h-fn18"><a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212">Golden Boyfriend</a> comments, Dec 8, 2008.</li>
+<li id="h-fn19"><a href="https://www.deviantart.com/johnstaton/art/Flower-Power-105032702">Flower Power</a> comments, Jul 5, 2012.</li>
+</ol>
+</div>
+
+    `;
+    descEl.appendChild(loreBlock);
+  }
+
+
   // N.E. Boox special case: inject full lore summary below description
   if (topicId === 'neboox') {
     const descEl = document.getElementById('topicDesc');
