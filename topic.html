@@ -1104,15 +1104,6 @@ async function init() {
       ].forEach(function(f){ var p=new Image(); p.src='img/pieces/'+f; });
 
       var triggers = loreBlock.querySelectorAll('[data-img]');
-      new IntersectionObserver(function(entries) {
-        entries.forEach(function(e){ if (e.isIntersecting) swapTo(e.target.dataset.img); });
-      }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 }).observe.apply(
-        new IntersectionObserver(function(entries) {
-          entries.forEach(function(e){ if (e.isIntersecting) swapTo(e.target.dataset.img); });
-        }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 }),
-        []
-      );
-
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e){ if (e.isIntersecting) swapTo(e.target.dataset.img); });
       }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
