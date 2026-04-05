@@ -618,6 +618,132 @@ async function init() {
       </div>
     `;
     descEl.appendChild(wordsBlock);
+
+    // DDFF lore bible
+    const ddffLoreBlock = document.createElement('div');
+    ddffLoreBlock.className = 'ddff-lore';
+
+    const ddffStyle = document.createElement('style');
+    ddffStyle.textContent = `
+      .ddff-lore { margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(240,232,218,0.1); }
+      .ddff-lore .lore-h2 {
+        font-size: 17px; font-weight: 600; color: rgba(240,232,218,0.7);
+        margin: 36px 0 14px;
+      }
+      .ddff-lore p {
+        font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.65);
+        margin-bottom: 16px;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .ddff-lore blockquote {
+        border-left: 2px solid rgba(196,154,108,0.35);
+        background: rgba(240,232,218,0.025);
+        padding: 20px 24px; margin: 18px 0 22px;
+        font-style: italic; font-size: 17px; line-height: 1.85;
+        color: rgba(240,232,218,0.78);
+        border-radius: 0 4px 4px 0;
+        font-family: 'system-ui', -apple-system, sans-serif;
+      }
+      .ddff-lore blockquote b { font-weight: 600; font-style: normal; color: rgba(240,232,218,0.9); }
+      .ddff-lore blockquote i { font-style: italic; }
+      .ddff-lore .fn { font-size: 12px; color: rgba(196,154,108,0.6); vertical-align: super; text-decoration: none; font-family: system-ui; }
+      .ddff-lore .fn:hover { color: rgba(196,154,108,0.9); }
+      .ddff-lore .sources {
+        margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(240,232,218,0.07);
+      }
+      .ddff-lore .sources h4 {
+        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+        color: rgba(240,232,218,0.25); margin-bottom: 16px;
+      }
+      .ddff-lore .sources li {
+        font-size: 13px; color: rgba(240,232,218,0.35); margin-bottom: 6px; line-height: 1.5;
+        font-family: system-ui, sans-serif;
+      }
+      .ddff-lore .sources a { color: rgba(196,154,108,0.6); text-decoration: none; }
+      .ddff-lore .sources a:hover { color: rgba(196,154,108,0.9); text-decoration: underline; }
+`;
+    document.head.appendChild(ddffStyle);
+
+    ddffLoreBlock.innerHTML = `
+<div class="lore-h2">The Origin Story</div>
+
+<p>John made up Daniel Dukke and Ferdinand Fox when he was eight years old.</p>
+
+<p>That fact lands differently once you've read the description: an independently wealthy jet-setter in a double-breasted Armani suit, holding a Desert Eagle, posed in front of a red Lamborghini Countach. Eight-year-old John had taste. By the time he was drawing the strip for <i>The Diamondback</i> at the University of Maryland, the influence had gotten more specific:</p>
+
+<blockquote>As I look at this picture now, the profound impact of the television program <b>Miami Vice</b>&trade; upon my impressionable young psyche, becomes readily apparent. As I recall, I even owned one of those ridiculous <b>Don Johnson</b> &ldquo;Pastel Ice Cream Man&rdquo; suits back when the show aired.<a class="fn" href="#df-fn1">1</a></blockquote>
+
+<p>He used the Dukke name as his screen handle for years after. <i>dukkeofdeath.</i> It&rsquo;s still sitting on DeviantArt, and looks like a cry for help to anyone who&rsquo;s never heard of the strip.</p>
+
+<div class="lore-h2">Daniel Dukke, The Dukke of Death</div>
+
+<p>The name is pronounced &ldquo;duck.&rdquo;</p>
+
+<p>Dukke is rich, sophisticated, globally mobile, and carrying a body count high enough to make the question of what he actually <i>is</i> beside the point:</p>
+
+<blockquote>I never decided whether or not he was a plain-clothes policeman, an undercover detective, a private investigator, a secret agent, or simply an overdressed vigilante, although at one point or another during his existence, he&rsquo;s exhibited signs of being all of the above. In all honesty, I really didn&rsquo;t care about such particulars so long as the criminal body count was sufficiently high.<a class="fn" href="#df-fn1">1</a></blockquote>
+
+<p>Beyond the Armani and the Lamborghini, Dukke is a veteran of the New Zealand conflict and a qualified fighter ace. When he needs to get across the globe quickly, he pilots his own Lockheed YF-12 interceptor himself &mdash; &ldquo;Imagine an SR-71 with weapons&rdquo; &mdash; and generally does his own driving too.<a class="fn" href="#df-fn3">3</a> He is occasionally a mentor to Ferdinand. When he thinks of it.</p>
+
+<div class="lore-h2">Ferdinand Fox, The Teenage Killing Machine</div>
+
+<p>Ferdinand Fox came to martial arts the way most teenagers of his era came to anything: through the screen.</p>
+
+<blockquote>Ferdinand Fox, an aspiring crime-fighter who learned martial arts by watching the films of <b>L. Bruce Preslei</b> set on fast forward! Acquiring preternatural fighting skills in this manner, the newly minted <b>Teenage Killing Machine</b> sought out the world&rsquo;s foremost slayer of evil-doers, Mr. Dukke, to learn from him how to become a great adventurer.<a class="fn" href="#df-fn1">1</a></blockquote>
+
+<p>L. Bruce Preslei was a recurring character in the strip: a rock star who made mediocre kung-fu musicals before disappearing mysteriously in 1975.<a class="fn" href="#df-fn1">1</a> Daniel&rsquo;s actual instruction is irregular. For the most part, he just points his gifted prot&eacute;g&eacute; at the next incoming cloud of enemies and lets him go.</p>
+
+<p>Ferdinand has one critical vulnerability:</p>
+
+<blockquote>One bat of an eye, and the slayer of 1,000 ninjas is out of the fight. It&rsquo;s tragic really.<a class="fn" href="#df-fn2">2</a></blockquote>
+
+<p>He wore parachute pants in the original strip. John periodically considered a revival that would update the costumes &mdash; giving Daniel a red Ford GT and losing the parachute pants &mdash; but at least one commenter was categorically opposed.<a class="fn" href="#df-fn4">4</a></p>
+
+<div class="lore-h2">The Hench Bunnies</div>
+
+<p>They have no given names in the archive. They&rsquo;re the Hench Bunnies: halter-topped, miniskirted, armed with whatever&rsquo;s available, working for pay or for the enjoyment of it.</p>
+
+<blockquote>This halter-topped and miniskirted pair of miscreants expertly employ all matter of weapons to create mayhem and destruction, sometimes for pay, and sometimes for kicks. Skilled enough to survive multiple encounters with both the <b>Dukke of Death</b> and the <b>Teenage Killing Machine</b>, The Hench Bunnies present a unique threat due to the usually deadly Ferdinand&rsquo;s critical awkwardness around members of the fairer sex.<a class="fn" href="#df-fn2">2</a></blockquote>
+
+<p>Their first DeviantArt appearance, December 2008, predates the full character introduction post by over a year. A professor at UMD asked John for a sketch of one at the end of a term.<a class="fn" href="#df-fn5">5</a> The original outfit was &ldquo;a latex halter top and micro mini skirt combo, complete with stiletto pumps. Much more conservative than what you see here&rdquo; &mdash; the &ldquo;here&rdquo; being a Playboy bunny costume someone had requested.<a class="fn" href="#df-fn6">6</a></p>
+
+<div class="lore-h2">Supporting Characters</div>
+
+<p><b>Scooter Turtle</b> is John&rsquo;s self-insert, a recurring character in the original strip. His most remembered appearance is a game show strip: Scooter is put on the spot and asked to name the color of the Hench Bunny&rsquo;s eyes. His answer is &ldquo;black.&rdquo; The problem is that <i>Daniel Dukke and Ferdinand Fox</i> is a black and white comic. Ferdinand hosted the episode. A reader who still had the original collection described it years later as &ldquo;the one hosted by Metrosexual Ferdinand.&rdquo; John confirmed: &ldquo;Hah, good times.&rdquo;<a class="fn" href="#df-fn7">7</a></p>
+
+<p>Scooter&rsquo;s girlfriend <b>Jennifur</b> is part of the original run. She doesn&rsquo;t appear in the DeviantArt posts, which cover the characters&rsquo; return after years away rather than the original strip itself.</p>
+
+<div class="lore-h2">The Collection</div>
+
+<p>John made a self-published graphic novel out of the strip during his college years. Copies survived into his attic. He offered to mail one to at least two commenters in 2009:</p>
+
+<blockquote>I should send you the old graphic novel I made with them, although I should warn you, while some of the humor still holds up, I was learning how to draw as I produced it.<a class="fn" href="#df-fn8">8</a></blockquote>
+
+<p>He thought the humor held up. He acknowledged he was not the most objective source on this.</p>
+
+<div class="lore-h2">The Universe Question</div>
+
+<p>At the end of the Original Dukke of Death post, John floated an idea he never developed:</p>
+
+<blockquote>Every now and again, I consider having DD &amp; FF take place in the same &ldquo;nobody looks twice at a five-foot-two-inch mousegirl&rdquo; universe as <b>Most Dangerous Bookstore</b>, and having Daniel be a former associate/ex-boyfriend of <b>Cassandra Cat</b>. In this manner I could explain the bookstore cat&rsquo;s uncanny acumen with dispatching ninja-pirate-zombies.<a class="fn" href="#df-fn1">1</a></blockquote>
+
+<p>It stayed a passing thought. The two strips remained separate. <a href="topic.html?id=neboox" style="color:rgba(196,154,108,0.7)">See the N.E. Boox collection &rarr;</a></p>
+
+<div class="sources">
+<h4>Sources</h4>
+<ol>
+<li id="df-fn1"><a href="https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882">The Original Dukke of Death</a>, Dec 10, 2009. Description.</li>
+<li id="df-fn2"><a href="https://www.deviantart.com/johnstaton/art/Bunnies-for-Hire-148244865">Bunnies for Hire</a>, Dec 27, 2009. Description.</li>
+<li id="df-fn3"><a href="https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882">The Original Dukke of Death</a>, artist comment Dec 15, 2009.</li>
+<li id="df-fn4"><a href="https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882">The Original Dukke of Death</a>, artist comment Dec 10, 2009; commenter bandeau, Dec 10, 2009.</li>
+<li id="df-fn5"><a href="https://www.deviantart.com/johnstaton/art/Hench-Bunny-106139416">Hench Bunny</a>, Dec 12, 2008. Description.</li>
+<li id="df-fn6"><a href="https://www.deviantart.com/johnstaton/art/Hench-Bunny-106139416">Hench Bunny</a>, artist comment Dec 13, 2008.</li>
+<li id="df-fn7"><a href="https://www.deviantart.com/johnstaton/art/Bunnies-for-Hire-148244865">Bunnies for Hire</a>, commenter Mauser712 and artist comment Jan 2, 2010.</li>
+<li id="df-fn8"><a href="https://www.deviantart.com/johnstaton/art/The-Original-Dukke-of-Death-146335882">The Original Dukke of Death</a>, artist comment Dec 19, 2009.</li>
+</ol>
+</div>
+`;
+    descEl.appendChild(ddffLoreBlock);
   }
 
   // Streamers special case: inject full lore summary below description
@@ -919,7 +1045,7 @@ async function init() {
     descEl.appendChild(loreBlock);
   }
 
-  if (topicId === 'high-school-romance') {
+  if (topicId === 'hsr') {
     const descEl = document.getElementById('topicDesc');
     const loreBlock = document.createElement('div');
     loreBlock.className = 'streamers-lore';
@@ -979,9 +1105,9 @@ async function init() {
 
     loreBlock.innerHTML = `
 
-<div class="lore-h2">The Doomed High School Romance</div>
+<div class="lore-h2">The Project That Flew Apart</div>
 
-<p>This one started as a collaboration. John and a studio mate were working on a graphic novel proposal together. He was deep into <a href="https://en.wikipedia.org/wiki/Tenjho_Tenge" style="color:rgba(196,154,108,0.7)"><i>Tengo Tenge</i></a> at the time and wanted something set in a cutthroat, fist-fight-filled bastardization of high school life. His collaborator wanted to write a romantic comedy. These are not compatible ambitions.</p>
+<p>This one started as a collaboration. John and a studio mate were working on a graphic novel proposal together. He was deep into <i>Tengo Tenge</i> at the time and wanted something set in a cutthroat, fist-fight-filled bastardization of high school life. His collaborator wanted to write a romantic comedy. These are not compatible ambitions.</p>
 
 <blockquote>The project eventually flew apart under the shearing force of two such utterly incompatible ideas.<a class="fn" href="#h-fn1">1</a></blockquote>
 
@@ -993,7 +1119,7 @@ async function init() {
 
 <p>A futuristic private high school where human teenagers and robots go to class together. The premise isn't played for obvious comedy. John had a specific reason why robots would need to attend school at all:</p>
 
-<blockquote>In the future, artificial intelligence is so advanced that it is deemed too hard to program complex human social interaction into robots on a mass production scale. Robots coming out of factories are either hopelessly naive, like <b><a href="https://en.wikipedia.org/wiki/Data_(Star_Trek)" style="color:rgba(196,154,108,0.7)">Data</a></b> from Star Trek, or dangerously crazy like <b><a href="https://en.wikipedia.org/wiki/Skynet_(Terminator)" style="color:rgba(196,154,108,0.7)">Skynet</a></b>. The only solution to get machines accustomed to interacting with humans is to send them to school. Of course, in addition to their other lessons, some of them fall in love.<a class="fn" href="#h-fn4">4</a></blockquote>
+<blockquote>In the future, artificial intelligence is so advanced that it is deemed too hard to program complex human social interaction into robots on a mass production scale. Robots coming out of factories are either hopelessly naive, like Data from Star Trek, or dangerously crazy like Skynet. The only solution to get machines accustomed to interacting with humans is to send them to school. Of course, in addition to their other lessons, some of them fall in love.<a class="fn" href="#h-fn4">4</a></blockquote>
 
 <p>A few other details he dropped across the comment threads: cancer was wiped out a generation before the story starts, so smoking and recreational tanning are rampant. Optical surgery is mandatory, meaning contact lenses now exist only for communications. You get your messages through your eyes. Voyeurs no longer sell candid photos of girls; they privately broadcast video in exchange for electronic fund transfers, "very convenient for one with the future equivalent of wi-fi in his head."<a class="fn" href="#h-fn5">5</a></p>
 
@@ -1017,13 +1143,13 @@ async function init() {
 
 <p>The bad boy robot. Motorcycle-riding, gold-plated, inexplicably enrolled at a private high school.<a class="fn" href="#h-fn10">10</a> He has gyroscopic equilibrium so he can strut in perfectly simulated slow motion while blasting music on his internal sound system. His sensors are tactical grade: he can track 200 targets simultaneously.</p>
 
-<p>John floated four possible origin stories for him:</p>
+<p>His backstory was never resolved. John floated four options:</p>
 
-<blockquote>Is he a high-end military prototype, expertly programmed to piss off the fathers of rich young women and steal the lunch money from weak young men? Is he a teenage boy, disfigured in a horrible accident? Is he a teenage boy who had his brain swapped into a killer robot chassis because he thought it would be a "bitchin' thing to do"? Or is he simply a mass produced personal computer/cell phone, like out of <i><a href="https://en.wikipedia.org/wiki/Chobits" style="color:rgba(196,154,108,0.7)">Chobits</a></i>? No one possibility has stuck out to me as the most fun.<a class="fn" href="#h-fn10">10</a></blockquote>
+<blockquote>Is he a high-end military prototype, expertly programmed to piss off the fathers of rich young women and steal the lunch money from weak young men? Is he a teenage boy, disfigured in a horrible accident? Is he a teenage boy who had his brain swapped into a killer robot chassis because he thought it would be a "bitchin' thing to do"? Or is he simply a mass produced personal computer/cell phone, like out of <i>Chobits</i>? No one possibility has stuck out to me as the most fun.<a class="fn" href="#h-fn10">10</a></blockquote>
 
 <p>In 2012 a commenter named MayhemAce proposed that OttØ the teenager snuck into his mad scientist uncle's lab with his girlfriend to make out, and through the usual convoluted anime-style circumstances wound up merged with a killer robot chassis. John's response: "I just wanted to say, that is a GREAT idea. I've got to think on this."<a class="fn" href="#h-fn11">11</a></p>
 
-<p>He's a school bully riding a 1.2 megawatt electricycle. He and Lori are together in the way that <a href="https://en.wikipedia.org/wiki/Destro_(G.I._Joe)" style="color:rgba(196,154,108,0.7)">Destro</a> and <a href="https://en.wikipedia.org/wiki/Baroness_(G.I._Joe)" style="color:rgba(196,154,108,0.7)">the Baroness</a> are together: "only, you know, in high school."<a class="fn" href="#h-fn10">10</a></p>
+<p>Whatever his origin, his operation is straightforward. He figured out that superior strength and speed would let him procure lunch credits from smaller, frailer humans. He's a school bully. He rides a 1.2 megawatt electricycle. He and Lori are together in the way that Destro and the Baroness are together: "only, you know, in high school."<a class="fn" href="#h-fn10">10</a></p>
 
 <div class="lore-h3">Lori Richmond</div>
 
@@ -1069,7 +1195,7 @@ async function init() {
 
 <div class="lore-h3">Why Lori</div>
 
-<p>John watched <a href="https://en.wikipedia.org/wiki/Peach_Girl" style="color:rgba(196,154,108,0.7)"><i>Peach Girl</i></a> and concluded that soap operas are war stories with different combatants. He cited <a href="https://en.wikipedia.org/wiki/Khan_Noonien_Singh" style="color:rgba(196,154,108,0.7)">Khan Noonien Singh</a>:</p>
+<p>John watched <i>Peach Girl</i> and concluded that soap operas are war stories with different combatants. He cited Khan Noonien Singh:</p>
 
 <blockquote>"It has been said that social occasions are only warfare concealed." That's what sort of got me on the idea of doing something like a romance.<a class="fn" href="#h-fn16">16</a></blockquote>
 
@@ -1079,11 +1205,9 @@ async function init() {
 
 <p>He made the same point more directly, about both Lori and OttØ: "The people folks were supposed to like — bored the hell outta me."<a class="fn" href="#h-fn18">18</a></p>
 
-<p><i>If I were writing this now, I'd say that John should have just made the story about Ms. Richmond. It would have been more fun, and I bet he'd have done a better job. :)</i></p>
-
 <div class="lore-h2">What Happened to It</div>
 
-<p>John pitched it to <a href="https://en.wikipedia.org/wiki/Tokyopop" style="color:rgba(196,154,108,0.7)">Tokyopop</a>. Tokyopop went out of business. He noted a green light was probably unlikely regardless: the company felt his character designs were too sexy for the teen girls market they were targeting.<a class="fn" href="#h-fn4">4</a></p>
+<p>John pitched it to Tokyopop. Tokyopop went out of business. He noted a green light was probably unlikely regardless: the company felt his character designs were too sexy for the teen girls market they were targeting.<a class="fn" href="#h-fn4">4</a></p>
 
 <p>He posted the characters in November and December 2008 and kept the project in mind for years. In July 2012, after a wave of reader comments on the <i>Flower Power</i> post, he wrote: "I'm talking to other publishers now about other projects. I may have to revisit this eventually."<a class="fn" href="#h-fn19">19</a></p>
 
