@@ -8,126 +8,109 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{--crimson:#7c1f26;--crimson-dark:#5a161b;--cream:#f0e8da;--gold:#e8c87a}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--crimson-dark);color:var(--cream);font-family:'Lora',serif;min-height:100vh}
-  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.03;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size:200px 200px}
-  main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:80px 48px 120px}
-  h1{font-family:'Playfair Display',serif;font-size:clamp(42px,6vw,68px);font-weight:900;line-height:1;text-transform:uppercase;letter-spacing:-0.02em;color:var(--cream);margin-bottom:8px}
-  .page-subtitle{font-size:14px;line-height:1.7;color:rgba(240,232,218,0.35);margin-bottom:48px;font-style:italic;max-width:520px}
-
-  .toc{margin-bottom:56px;padding:28px 32px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid rgba(240,232,218,0.06)}
-  .toc-label{font-family:'Playfair Display',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.3);margin-bottom:16px}
-  .toc-item{display:block;font-size:15px;color:rgba(240,232,218,0.7);padding:5px 0;border:none;transition:color 0.15s}
-  .toc-item:hover{color:var(--gold);border:none}
-
-  .accordion-section{margin-bottom:6px;border:1px solid rgba(240,232,218,0.05);border-radius:6px;overflow:hidden}
-  .accordion-section[open]{margin-bottom:28px;border-color:rgba(240,232,218,0.08)}
-  .accordion-section[open] .section-chevron{transform:rotate(180deg)}
-  .section-header{display:flex;align-items:center;gap:16px;padding:20px 28px;cursor:pointer;background:rgba(0,0,0,0.3);list-style:none;user-select:none;transition:background 0.15s}
-  .section-header:hover{background:rgba(0,0,0,0.4)}
-  .section-header::-webkit-details-marker{display:none}
-  .section-header::marker{display:none;content:''}
-  .section-number{font-family:'Playfair Display',serif;font-size:14px;font-weight:400;color:rgba(240,232,218,0.25);letter-spacing:0.05em;min-width:28px}
-  .section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:#f0e8da;flex:1}
-  .section-chevron{font-size:24px;color:rgba(240,232,218,0.3);transition:transform 0.25s ease;font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
-  .section-body{padding:0 28px 40px}
-
-  .section-hero{margin:0 -28px 32px;overflow:hidden}
-  .section-hero img{width:100%;display:block;filter:sepia(8%) saturate(0.95);transition:filter 0.4s}
-  .section-hero:hover img{filter:sepia(0%) saturate(1)}
-  .section-img{margin:28px 0;overflow:hidden;border-radius:4px}
-  .section-img img{width:100%;display:block}
-
-  h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#f0e8da;margin-top:44px;margin-bottom:16px}
-  h3:first-child{margin-top:8px}
-  p{font-size:16px;line-height:1.85;color:rgba(240,232,218,0.68);margin-bottom:16px}
-  p:last-child{margin-bottom:0}
-  p em{font-style:italic}
-  p strong{color:rgba(240,232,218,0.88);font-weight:600}
-  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(232,200,122,0.25);transition:color 0.2s,border-color 0.2s}
-  a:hover{color:#f5dfa0;border-bottom-color:rgba(245,223,160,0.6)}
-
-  blockquote{margin:16px 0 20px;padding:18px 24px;border-left:3px solid rgba(240,232,218,0.12);background:rgba(0,0,0,0.12);border-radius:0 5px 5px 0}
-  blockquote p{font-size:15px;line-height:1.8;color:rgba(240,232,218,0.58);margin-bottom:10px}
-  blockquote p:last-child{margin-bottom:0}
-  blockquote p strong{color:rgba(240,232,218,0.78)}
-  blockquote p em{color:rgba(240,232,218,0.5)}
-
-  /* --- FOOTNOTES --- */
-  sup.fn{font-size:11px;line-height:0;vertical-align:super}
-  sup.fn a{color:var(--gold);border:none;font-weight:600;padding:0 2px}
-  sup.fn a:hover{color:#f5dfa0}
-  .footnotes{margin-top:48px;padding-top:24px;border-top:1px solid rgba(240,232,218,0.08)}
-  .footnotes ol{list-style:none;counter-reset:fn;padding:0}
-  .footnotes li{counter-increment:fn;font-size:13px;line-height:1.7;color:rgba(240,232,218,0.4);margin-bottom:6px;padding-left:28px;position:relative}
-  .footnotes li::before{content:counter(fn);position:absolute;left:0;color:rgba(240,232,218,0.25);font-size:11px;font-weight:600;top:2px}
-  .footnotes .fn-back{color:rgba(240,232,218,0.3);border:none;font-size:11px;margin-right:6px}
-  .footnotes .fn-back:hover{color:var(--gold)}
-
-  /* --- VEHICLE REGISTRY --- */
-  .vehicle-registry{margin-top:48px;padding-top:32px;border-top:1px solid rgba(240,232,218,0.08)}
-  .vehicle-registry h3{margin-top:0;margin-bottom:20px;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,232,218,0.5)}
-  .vr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .vr-card{background:rgba(0,0,0,0.2);border:1px solid rgba(240,232,218,0.05);border-radius:5px;padding:16px 18px}
-  .vr-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:2px}
-  .vr-class{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);opacity:0.6;margin-bottom:8px}
-  .vr-desc{font-size:13px;line-height:1.6;color:rgba(240,232,218,0.45)}
-
-  /* --- NAV --- */
-  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,3,4,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(240,232,218,0.06)}
-  .nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,232,218,0.85)}
-  .nav-title a{color:inherit;text-decoration:none;border:none}
-  .nav-title a:hover{color:var(--cream)}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{font-family:'Lora',serif;font-size:14px;letter-spacing:0.08em;color:rgba(240,232,218,0.55);text-decoration:none;border:none;transition:color 0.2s;display:flex;align-items:center;gap:6px}
-  .nav-links a:hover{color:rgba(240,232,218,0.95)}
-  .nav-links .material-symbols-rounded{font-size:20px;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20}
-  @media(max-width:720px){nav{padding:12px 20px}.nav-title{font-size:13px}.nav-links{gap:16px}.nav-links a{font-size:0;gap:0}.nav-links .material-symbols-rounded{font-size:22px}}
-
-  /* --- FOOTER --- */
-  .site-footer{background:#0e0608;color:rgba(240,232,218,0.6);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07);text-align:left}
-  .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
-  .footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
-  .footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.5);max-width:320px}
-  .footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.32);border:1px solid rgba(240,232,218,0.15);padding:5px 12px}
-  .footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.38);margin-bottom:20px}
-  .footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
-  .footer-links li a{font-size:15px;color:rgba(240,232,218,0.6);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;border:none}
-  .footer-links li a:hover{color:#f0e8da}
-  .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
-  .footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.32)}
-  .footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
-  @media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:32px}.site-footer{padding:48px 24px 32px}.vr-grid{grid-template-columns:1fr}}
-  @media(max-width:600px){main{padding-left:20px;padding-right:20px}blockquote{padding:14px 16px}.section-header{padding:16px 20px}.section-body{padding:0 20px 32px}.section-hero{margin:0 -20px 24px}.toc{padding:20px 22px}}
+:root{--crimson:#7c1f26;--crimson-dark:#5a161b;--cream:#f0e8da;--gold:#e8c87a}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--crimson-dark);color:var(--cream);font-family:'Lora',serif;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
+main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:80px 48px 120px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(42px,6vw,68px);font-weight:900;line-height:1;text-transform:uppercase;letter-spacing:-0.02em;color:var(--cream);margin-bottom:8px}
+.page-subtitle{font-size:14px;line-height:1.7;color:rgba(240,232,218,0.35);margin-bottom:48px;font-style:italic;max-width:520px}
+.toc{margin-bottom:56px;padding:28px 32px;background:rgba(0,0,0,0.2);border-radius:8px;border:1px solid rgba(240,232,218,0.06)}
+.toc-label{font-family:'Playfair Display',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,232,218,0.3);margin-bottom:16px}
+.toc-item{display:block;font-size:15px;color:rgba(240,232,218,0.7);padding:5px 0;border:none;transition:color 0.15s}
+.toc-item:hover{color:var(--gold);border:none}
+.accordion-section{margin-bottom:6px;border:1px solid rgba(240,232,218,0.05);border-radius:6px;overflow:hidden}
+.accordion-section[open]{margin-bottom:28px;border-color:rgba(240,232,218,0.08)}
+.accordion-section[open] .section-chevron{transform:rotate(180deg)}
+.section-header{display:flex;align-items:center;gap:16px;padding:20px 28px;cursor:pointer;background:rgba(0,0,0,0.3);list-style:none;user-select:none;transition:background 0.15s}
+.section-header:hover{background:rgba(0,0,0,0.4)}
+.section-header::-webkit-details-marker{display:none}
+.section-header::marker{display:none;content:''}
+.section-number{font-family:'Playfair Display',serif;font-size:14px;font-weight:400;color:rgba(240,232,218,0.25);letter-spacing:0.05em;min-width:28px}
+.section-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:#f0e8da;flex:1}
+.section-chevron{font-size:24px;color:rgba(240,232,218,0.3);transition:transform 0.25s ease;font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
+.section-body{padding:0 28px 40px}
+.section-hero{margin:0 -28px 32px;overflow:hidden}
+.section-hero img{width:100%;display:block;filter:sepia(8%) saturate(0.95);transition:filter 0.4s}
+.section-hero:hover img{filter:sepia(0%) saturate(1)}
+h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#f0e8da;margin-top:44px;margin-bottom:16px}
+h3:first-child{margin-top:8px}
+p{font-size:16px;line-height:1.85;color:rgba(240,232,218,0.68);margin-bottom:16px}
+p:last-child{margin-bottom:0}
+p em{font-style:italic}
+p strong{color:rgba(240,232,218,0.88);font-weight:600}
+a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(232,200,122,0.25);transition:color 0.2s,border-color 0.2s}
+a:hover{color:#f5dfa0;border-bottom-color:rgba(245,223,160,0.6)}
+blockquote{margin:16px 0 20px;padding:18px 24px;border-left:3px solid rgba(240,232,218,0.12);background:rgba(0,0,0,0.12);border-radius:0 5px 5px 0}
+blockquote p{font-size:15px;line-height:1.8;color:rgba(240,232,218,0.58);margin-bottom:10px}
+blockquote p:last-child{margin-bottom:0}
+blockquote p strong{color:rgba(240,232,218,0.78)}
+blockquote p em{color:rgba(240,232,218,0.5)}
+sup.fn{font-size:11px;line-height:0;vertical-align:super}
+sup.fn a{color:var(--gold);border:none;font-weight:600;padding:0 2px}
+sup.fn a:hover{color:#f5dfa0}
+.footnotes{margin-top:48px;padding-top:24px;border-top:1px solid rgba(240,232,218,0.08)}
+.footnotes ol{list-style:none;counter-reset:fn;padding:0}
+.footnotes li{counter-increment:fn;font-size:13px;line-height:1.7;color:rgba(240,232,218,0.4);margin-bottom:6px;padding-left:28px;position:relative}
+.footnotes li::before{content:counter(fn);position:absolute;left:0;color:rgba(240,232,218,0.25);font-size:11px;font-weight:600;top:2px}
+.footnotes .fn-back{color:rgba(240,232,218,0.3);border:none;font-size:11px;margin-right:6px}
+.footnotes .fn-back:hover{color:var(--gold)}
+.vehicle-registry{margin-top:48px;padding-top:32px;border-top:1px solid rgba(240,232,218,0.08)}
+.vehicle-registry h3{margin-top:0;margin-bottom:20px;font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,232,218,0.5)}
+.vr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vr-card{background:rgba(0,0,0,0.2);border:1px solid rgba(240,232,218,0.05);border-radius:5px;padding:16px 18px}
+.vr-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:2px}
+.vr-class{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);opacity:0.6;margin-bottom:8px}
+.vr-desc{font-size:13px;line-height:1.6;color:rgba(240,232,218,0.45)}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,3,4,0.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(240,232,218,0.06)}
+.nav-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(240,232,218,0.85)}
+.nav-title a{color:inherit;text-decoration:none;border:none}.nav-title a:hover{color:var(--cream)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:'Lora',serif;font-size:14px;letter-spacing:0.08em;color:rgba(240,232,218,0.55);text-decoration:none;border:none;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.nav-links a:hover{color:rgba(240,232,218,0.95)}
+.nav-links .material-symbols-rounded{font-size:20px;font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 20}
+@media(max-width:720px){nav{padding:12px 20px}.nav-title{font-size:13px}.nav-links{gap:16px}.nav-links a{font-size:0;gap:0}.nav-links .material-symbols-rounded{font-size:22px}}
+.site-footer{background:#0e0608;color:rgba(240,232,218,0.6);font-family:'Lora',serif;padding:80px 48px 48px;border-top:1px solid rgba(240,232,218,0.07);text-align:left}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(240,232,218,0.07)}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#f0e8da;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px}
+.footer-brand-desc{font-size:14px;line-height:1.75;color:rgba(240,232,218,0.5);max-width:320px}
+.footer-brand-tag{display:inline-block;margin-top:22px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.32);border:1px solid rgba(240,232,218,0.15);padding:5px 12px}
+.footer-col-title{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(240,232,218,0.38);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer-links li a{font-size:15px;color:rgba(240,232,218,0.6);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;border:none}
+.footer-links li a:hover{color:#f0e8da}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:32px;gap:20px;flex-wrap:wrap}
+.footer-copy{font-size:12px;letter-spacing:0.08em;color:rgba(240,232,218,0.32)}
+.footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:32px}.site-footer{padding:48px 24px 32px}.vr-grid{grid-template-columns:1fr}}
+@media(max-width:600px){main{padding-left:20px;padding-right:20px}blockquote{padding:14px 16px}.section-header{padding:16px 20px}.section-body{padding:0 20px 32px}.section-hero{margin:0 -20px 24px}.toc{padding:20px 22px}}
 </style>
 </head>
 <body>
 <nav>
-  <div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
-  <div class="nav-links">
-    <a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
-    <a href="index.html#about"><span class="material-symbols-rounded">person</span>About John</a>
-    <a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
-    <a href="guestbook.html"><span class="material-symbols-rounded">menu_book</span>Guestbook</a>
-  </div>
+<div class="nav-title"><a href="index.html">The John Staton Museum</a></div>
+<div class="nav-links">
+<a href="index.html#themes"><span class="material-symbols-rounded">collections</span>Collections</a>
+<a href="index.html#about"><span class="material-symbols-rounded">person</span>About John</a>
+<a href="collaborators.html"><span class="material-symbols-rounded">group</span>Collaborators</a>
+<a href="guestbook.html"><span class="material-symbols-rounded">menu_book</span>Guestbook</a>
+</div>
 </nav>
 <main>
-  <h1>DMV Universe</h1>
-  <p class="page-subtitle">John Staton's words about America Jones and the Not-Too-Distant-Dystopian-Cyberpunk-Future. From his DeviantArt posts and comment threads, 2008 through 2016.</p>
-  <div class="toc">
-    <div class="toc-label">Contents</div>
+<h1>DMV Universe</h1>
+<p class="page-subtitle">John Staton's words about America Jones and the Not-Too-Distant-Dystopian-Cyberpunk-Future. From his DeviantArt posts and comment threads, 2008 through 2016.</p>
+<div class="toc">
+<div class="toc-label">Contents</div>
 <a href="#s0" class="toc-item" onclick="openSection('s0')">The Pitch</a>
 <a href="#s1" class="toc-item" onclick="openSection('s1')">The World</a>
 <a href="#s2" class="toc-item" onclick="openSection('s2')">America Jones</a>
 <a href="#s3" class="toc-item" onclick="openSection('s3')">Her Arsenal</a>
-<a href="#s4" class="toc-item" onclick="openSection('s4')">The Megarage</a>
-<a href="#s5" class="toc-item" onclick="openSection('s5')">Everyone Else</a>
-<a href="#s6" class="toc-item" onclick="openSection('s6')">Where It All Came From</a>
-<a href="#s7" class="toc-item" onclick="openSection('s7')">What Could Have Been</a>
-  </div>
+<a href="#s4" class="toc-item" onclick="openSection('s4')">The Tech</a>
+<a href="#s5" class="toc-item" onclick="openSection('s5')">The Megarage</a>
+<a href="#s6" class="toc-item" onclick="openSection('s6')">Everyone Else</a>
+<a href="#s7" class="toc-item" onclick="openSection('s7')">Where It All Came From</a>
+<a href="#s8" class="toc-item" onclick="openSection('s8')">What Could Have Been</a>
+</div>
 <details class="accordion-section" id="s0" open>
 <summary class="section-header"><span class="section-number">01</span><span class="section-title">The Pitch</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
@@ -136,24 +119,23 @@
 <p>The woman on the futuristic scooter if <strong>AJ</strong>, the not-too-distant-dystopian-future's toughest, most badass meter maid. The red headed dude is her partner, <strong>Drew</strong>, the not-too-distant-dystopian-future's <em>least</em> badass meter maid.</p>
 <p>They patrol the <strong><em>Megarage</em></strong>, the pinnacle of multi-level parking structures, and almost a city unto itself; and they fight ( At least AJ does.) corporate sponsored youth gangs; highly armed criminally, desperate car pools; and coin operated robots who dispense the not-too-distant-dystopian-future's most pernicious illicit substance--<em>coffee.</em></p>
 <p>Anyone whose ever known me has suffered under the extremely long held belief that I will eventual produce a comic, or cartoon, or series of cocktail napkin sketches containing this bizarre concept. To date I mostly have a lot of promisory notes in the form of drawings like this one.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s0-1" id="fnref-s0-1">1</a></sup>
 </blockquote>
 <p><strong>2076.</strong> From <a href="https://www.deviantart.com/johnstaton/art/Future-of-Parking-Enforcement-102945345" target="_blank" rel="noopener">Future of Parking Enforcement</a> (Nov 7, 2008):</p>
 <blockquote>
 <p>The thought behind this picture was a possible slogan for the story:</p>
 <p><strong><em>"It's 2076, do you know where your car is?"</em></strong></p>
 </blockquote>
-<p>A fan noticed the tricentennial connection in 2011. John:</p>
 <blockquote>
 <p>Finally someone notices the <em>tricentennial</em> connection.</p>
+<sup class="fn"><a href="#fn-s0-2" id="fnref-s0-2">2</a></sup>
 </blockquote>
 <p>(1776 + 300 = 2076. A woman named <strong>America</strong> on the nation's tricentennial.)</p>
+<p>John never settled on a name for the setting. He tried abbreviating it at least four ways: <strong>NTDDCF</strong>, <strong>NTDCDF</strong>, <strong>NTCCDF</strong>, and just <strong>"NTDCD future"</strong>. From Rifle Maid comments:</p>
 <blockquote>
 <p>Hmmm that might work better than "Not-too-distant-dystopian-cyberpunk-future", which doesn't even lend itself to am acronym. (NTDDCF? See what I mean?)</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
 </blockquote>
-<p>A fan suggested "Noted, Chief" and John called it <em>"actually cute. Certainly more than I was able to come up with."</em></p>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-a-la-FLCL-102943065" target="_blank" rel="noopener">DMV a' la FLCL</a> (Nov 7, 2008):</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> John never settled on a name for the setting. He tried abbreviating it at least four ways: <strong>NTDDCF</strong>, <strong>NTDCDF</strong>, <strong>NTCCDF</strong>, and just <strong>"NTDCD future"</strong>. From Rifle Maid comments:</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s0-1"><a href="#fnref-s0-1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-a-la-FLCL-102943065" target="_blank" rel="noopener">DMV a' la FLCL</a> (Nov 7, 2008):</li><li id="fn-s0-2"><a href="#fnref-s0-2" class="fn-back">&uarr;</a> A fan noticed the tricentennial connection in 2011. John:</li></ol></div>
 
 </div>
 </details>
@@ -163,58 +145,55 @@
 <div class="section-hero"><img src="img/pieces/dmv-all-gangs-here-JohnStaton.jpg" alt="The World" loading="lazy"></div>
 <blockquote>
 <p>The most valuable thing in the <strong>DMV</strong> <em>not-too-distant-cyberpunk-dystopian-future</em> is a 6 x 3 meter rectangle of road surface watched over by a cycloptic parking meter and delineated by two inch wide lines of paint. These simple slivers of territory are easily worth a man's life --especially during rush hour! When the spaces become scarce, ritualized combat begins.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s1-1" id="fnref-s1-1">1</a></sup>
 </blockquote>
 <blockquote>
 <p>The thing is, you can earn your share or food water and natural resources--you just have to show up on time for work. Thus the demand for parking space.</p>
 <p>And believe me, the combat is going to get <em>a lot</em> uglier.</p>
 <p>I'll tell you about old ladies later.</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<sup class="fn"><a href="#fn-s1-2" id="fnref-s1-2">2</a></sup>
 </blockquote>
 <blockquote>
 <p>In the future patrolled by the likes of <strong>Dice</strong>, as well as her comrades and rivals, parking garages are a vastly more dangerous place than they are today. <a href="http://fav.me/d1sf3ac" target="_blank" rel="noopener">Carpools</a> have evolved into armed gangs, fighting with a vast array of weapons to acquire parking space. Even drivers unaffiliated with carpools settle disputes with <a href="http://fav.me/d1ragoq" target="_blank" rel="noopener">violent means</a>.</p>
 <p>As a result of this escalation of parking related assaults, <strong>Meter Maids</strong> have to be armed. However, since future police are banned from the use lethal weapons, their arsenal usually consists of incapacitation weapons, such as the aforementioned <strong>Thug Zapper</strong>, and of course the standard issue <a href="http://fav.me/d32akyj" target="_blank" rel="noopener">Parking Ticket Dispenser</a>.</p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s1-3" id="fnref-s1-3">3</a></sup>
 </blockquote>
 <blockquote>
 <p>Perps are by no means <em>"occasional"</em> here. In fact, there will be need for bigger weapons in the future. The "not-to-distant-dystopic-cyberpunk-future" future.</p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s1-4" id="fnref-s1-4">4</a></sup>
 </blockquote>
 <h3>The Megarage</h3>
-<p>From the FLCL pitch: <em>"the pinnacle of multi-level parking structures, and almost a city unto itself"</em></p>
-<p>From Killer Camaero: <em>"she wandered into the mighty <strong>Megarage</strong>"</em></p>
 <blockquote>
 <p>Yes it would, and it would negate the need for <strong>50 story parking garages</strong>. Not to mention it's <em>far</em> beyond the technology in the story. ;P</p>
-<sup class="fn"><a href="#fn5" id="fnref5">5</a></sup>
+<sup class="fn"><a href="#fn-s1-5" id="fnref-s1-5">5</a></sup>
 </blockquote>
 <h3>Coffee Is Illegal</h3>
 <blockquote>
 <p>They also serve as emergency thug muscle whenever the <strong>DMV</strong> or the <strong>GHP</strong> raid your coffee house. In the NTDCD future you see--<em>coffee is illegal.</em></p>
-<sup class="fn"><a href="#fn6" id="fnref6">6</a></sup>
+<sup class="fn"><a href="#fn-s1-6" id="fnref-s1-6">6</a></sup>
 </blockquote>
-<p>Also in the FLCL pitch: <em>"coin operated robots who dispense the not-too-distant-dystopian-future's most pernicious illicit substance--coffee."</em></p>
 <h3>The Law</h3>
 <p><strong>Future police are banned from using lethal weapons.</strong> Their arsenal consists entirely of incapacitation gear: Thug Zappers, Roboots, and of course the standard-issue PTD.</p>
 <blockquote>
 <p>Since future police are banned from the use lethal weapons, their arsenal usually consists of incapacitation weapons, such as the aforementioned <strong>Thug Zapper</strong>, and of course the standard issue <a href="http://fav.me/d32akyj" target="_blank" rel="noopener">Parking Ticket Dispenser</a>.</p>
-<sup class="fn"><a href="#fn7" id="fnref7">7</a></sup>
+<sup class="fn"><a href="#fn-s1-7" id="fnref-s1-7">7</a></sup>
 </blockquote>
 <p><strong>No animals in law enforcement.</strong> From Rifle Maid comments (June 2010):</p>
 <blockquote>
 <p>All the duties once performed by dogs are done by spunky l'il <em>robots</em> in the <strong>NTDDCF</strong>. The exposure of animals to harmful situations like explosives detection is considered <em>barbaric</em> by the more evolved denizens of the future.</p>
-<p>The <strong>"K-9's"</strong> employed are more like <strong>Doctor Who's</strong> old robotic sidekick--only, you know, called something else, since I don't have any rights to that name. </p>
+<p>The <strong>"K-9's"</strong> employed are more like <strong>Doctor Who's</strong> old robotic sidekick--only, you know, called something else, since I don't have any rights to that name. ^^;</p>
 </blockquote>
 <h3>The Tone</h3>
 <blockquote>
 <p>Even though firearms will be used with dizzying frequency, almost no one will ever get hurt or die.</p>
 <p>You, know, like in the old <strong>G.I. Joe</strong> cartoon. :D</p>
-<sup class="fn"><a href="#fn8" id="fnref8">8</a></sup>
+<sup class="fn"><a href="#fn-s1-8" id="fnref-s1-8">8</a></sup>
 </blockquote>
 <h3>The Vibe</h3>
 <blockquote>
 <p>Yea, to me Anime=Cyberpunk. I loved Akira, Dominion, Ghost in the Shelll, BGC. Where the future isn't full of magic technology, and there's still problems ordinary bums have to rise up and solve, in the absence of glittering perfect idealists.</p>
 <p>Despite the fact they're full of cyborgs and sentient machines, those futures always felt more authentic.</p>
-<sup class="fn"><a href="#fn9" id="fnref9">9</a></sup>
+<sup class="fn"><a href="#fn-s1-9" id="fnref-s1-9">9</a></sup>
 </blockquote>
 <p>John's one-line summary (Rifle Maid comments):</p>
 <blockquote>
@@ -227,57 +206,16 @@
 </blockquote>
 <blockquote>
 <p><strong>"Traffic Warden?"</strong> :O</p>
-<p>That actually sounds <em>cooler</em> than <em>"Meter Maid"</em>. Perhaps I should have set the story in <strong>England.</strong> <em>(Then I could name the heroine, <strong>"Rita".</strong> )</em></p>
-<sup class="fn"><a href="#fn10" id="fnref10">10</a></sup>
+<p>That actually sounds <em>cooler</em> than <em>"Meter Maid"</em>. Perhaps I should have set the story in <strong>England.</strong> <em>(Then I could name the heroine, <strong>"Rita".</strong> :XD:)</em></p>
+<sup class="fn"><a href="#fn-s1-10" id="fnref-s1-10">10</a></sup>
 </blockquote>
 <h3>The Cover Blurb</h3>
 <blockquote>
 <p>It's funny that you should use the term <em>"bureaucratic."</em> I have a good friend who is particularly anti-authoritarian. One time when talking about <em>cops and robbers</em> style action movies, he expressed his disdain for the genre by referring to them as <strong><em>"The glorification of armed bureaucrats."</em></strong></p>
 <p>I plan on using that quote as a <em>cover blurb.</em> :D</p>
-<sup class="fn"><a href="#fn11" id="fnref11">11</a></sup>
+<sup class="fn"><a href="#fn-s1-11" id="fnref-s1-11">11</a></sup>
 </blockquote>
-<h3>The $10 Coin</h3>
-<blockquote>
-<p>For the price of a single <strong>$10.00 coin</strong> (The not-too-distant-cyberpunk-dystopian-future's answer to the quarter.:()</p>
-<sup class="fn"><a href="#fn12" id="fnref12">12</a></sup>
-</blockquote>
-<h3>Daily Life</h3>
-<p>Daily life tech in the NTDCDF. From <a href="https://www.deviantart.com/johnstaton/art/Automatic-Clothing-Chute-110467057" target="_blank" rel="noopener">Automatic Clothing Chute</a> (Jan 23, 2009):</p>
-<blockquote>
-<p>I figured that folks in the <strong>NTDCDF</strong>* would enjoy the convenience of an automated dressing chute.</p>
-<p>I'm sure everyone would love having articulated robot arms whip around their freefalling bodies, first thing in the morning.</p>
-<p>Hmmm, I cant shake this feeling I've missed a prime cheesecake opprotunity with this sequence. Oh well.</p>
-<p>*NTDCDF: Not Too Distant Cyberpunk Dystopian Future. Com'on now folks! Get with the program</p>
-</blockquote>
-<h3>Antigravity</h3>
-<blockquote>
-<p>The only thing more astounding than the discovery of the miracle fossil fuel, <strong>BOA®</strong>[1] beneath the surface of <strong>Mars</strong>[2] was the subsequent discovery that polymers made from it, repelled gravity when exposed to electrical current.</p>
-<p>Though practical antigravity, or <strong>Antiweight®</strong> will have been in use for three decades by the time of <strong>America Jones'</strong> "NTDDCF" [3], it is only now ever so slowly making its way into the hands of an awaiting public.</p>
-<p>1.) <strong>Blood Of Ares.</strong> Legal wranglings with the Wells estate, prevented the use of the name "Cavarite".</p>
-<p>2.) As every schoolchild knows today, the discovery of <strong>BOA®</strong> was made in <strong>1976</strong> by the <strong>Viking lander</strong>, and withheld from public knowledge, until regular travel was established in <strong>2045</strong></p>
-<p>3.) "Not-to-Distant-Dystopian-Cyberpunk-Future." Gotta come up with a more convenient anagram of acronym for that.</p>
-<sup class="fn"><a href="#fn13" id="fnref13">13</a></sup>
-</blockquote>
-<h3>The Vehicle Classes</h3>
-<p>All three defined in <a href="https://www.deviantart.com/johnstaton/art/Winged-Pony-Car-184735874" target="_blank" rel="noopener">Winged Pony Car</a> (Nov 1, 2010):</p>
-<blockquote>
-<p>To date, <strong>FT's</strong>, or <strong>Floating Transports</strong> have only been used by heavily trained and licensed services. Such as <strong>Heavy FT's</strong>, or <strong>"HeFT's"</strong> for construction and freight hauling; and <strong>Light FT's</strong> or the <strong>"LiFT's"</strong> that have become infamous through their use by the <strong>DMV.</strong></p>
-<p>The <strong>Medium FT's</strong>, or <strong>"MeFT's"</strong> are potentially the most diverse breed of these vehicles, as they could represent the realizations of science fiction's long welshed-upon promise of "flying automobiles", but they are the last to be fully developed due to the vast multitude of safety concerns they raise.</p>
-<p>Even so, for years automotive manufacturers have fought legal battles to enable them to build more than the occasional tow truck, or playthings for the astoundingly wealthy.</p>
-</blockquote>
-<h3>The Pegasus</h3>
-<blockquote>
-<p>After decades of war with various levels of legislature, as well as the insurance industry, it looks like the first practical, affordable <strong>MeFT</strong> will finally find its way into the open arms of the common driver.</p>
-<p>That vehicle is the <strong>Pegasus.</strong></p>
-<p>One more headache for the <strong>Meter Maids.</strong></p>
-<sup class="fn"><a href="#fn14" id="fnref14">14</a></sup>
-</blockquote>
-<blockquote>
-<p>I always figured, that ever since the jet age first kicked off, automobile manufacturers had made tail lights to mock jet exhaust, why not return the favor with a flying car's exhaust? But it was really one of those things I did for my own self edification;I totally did not expect anyone to notice it.</p>
-<sup class="fn"><a href="#fn15" id="fnref15">15</a></sup>
-</blockquote>
-<p>When phantomdotexe asked to see the <strong>Quad Coupe</strong>, John replied (Nov 6, 2010): <em>"You will."</em> It was never posted.</p>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Dueling-Swords-106140806" target="_blank" rel="noopener">DMV: Dueling Swords</a> (Dec 12, 2008):</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> And from the comments:</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> From Car and Driver comments (Aug 2016), John on how it escalated (Car and Driver, Aug 2016):</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> From Rifle Maid comments (May 2010), on the scale of it:</li><li id="fn5"><a href="#fnref5" class="fn-back">&uarr;</a> From Future of Parking Enforcement comments:</li><li id="fn6"><a href="#fnref6" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-All-Gangs-Here-108199524" target="_blank" rel="noopener">DMV: All Gangs Here</a> (Jan 2, 2009):</li><li id="fn7"><a href="#fnref7" class="fn-back">&uarr;</a> From Car and Driver comments (Aug 2016):</li><li id="fn8"><a href="#fnref8" class="fn-back">&uarr;</a> From Repeat comments (Oct 2010):</li><li id="fn9"><a href="#fnref9" class="fn-back">&uarr;</a> From Future of Parking Enforcement comments (Dec 3, 2008):</li><li id="fn10"><a href="#fnref10" class="fn-back">&uarr;</a> A British fan called AJ a <strong>"Traffic Warden."</strong> John (Rifle Maid comments, June 2010):</li><li id="fn11"><a href="#fnref11" class="fn-back">&uarr;</a> From PTD Color comments (Nov 2010), a friend's quote John planned to use:</li><li id="fn12"><a href="#fnref12" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn13"><a href="#fnref13" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Winged-Pony-Car-184735874" target="_blank" rel="noopener">Winged Pony Car</a> (Nov 1, 2010):</li><li id="fn14"><a href="#fnref14" class="fn-back">&uarr;</a> From the same post:</li><li id="fn15"><a href="#fnref15" class="fn-back">&uarr;</a> From Winged Pony Car comments (Nov 1, 2010):</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s1-1"><a href="#fnref-s1-1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Dueling-Swords-106140806" target="_blank" rel="noopener">DMV: Dueling Swords</a> (Dec 12, 2008):</li><li id="fn-s1-2"><a href="#fnref-s1-2" class="fn-back">&uarr;</a> And from the comments:</li><li id="fn-s1-3"><a href="#fnref-s1-3" class="fn-back">&uarr;</a> From Car and Driver comments (Aug 2016), John on how it escalated (Car and Driver, Aug 2016):</li><li id="fn-s1-4"><a href="#fnref-s1-4" class="fn-back">&uarr;</a> From Rifle Maid comments (May 2010), on the scale of it:</li><li id="fn-s1-5"><a href="#fnref-s1-5" class="fn-back">&uarr;</a> From Future of Parking Enforcement comments:</li><li id="fn-s1-6"><a href="#fnref-s1-6" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-All-Gangs-Here-108199524" target="_blank" rel="noopener">DMV: All Gangs Here</a> (Jan 2, 2009):</li><li id="fn-s1-7"><a href="#fnref-s1-7" class="fn-back">&uarr;</a> From Car and Driver comments (Aug 2016):</li><li id="fn-s1-8"><a href="#fnref-s1-8" class="fn-back">&uarr;</a> From Repeat comments (Oct 2010):</li><li id="fn-s1-9"><a href="#fnref-s1-9" class="fn-back">&uarr;</a> From Future of Parking Enforcement comments (Dec 3, 2008):</li><li id="fn-s1-10"><a href="#fnref-s1-10" class="fn-back">&uarr;</a> A British fan called AJ a <strong>"Traffic Warden."</strong> John (Rifle Maid comments, June 2010):</li><li id="fn-s1-11"><a href="#fnref-s1-11" class="fn-back">&uarr;</a> From PTD Color comments (Nov 2010), a friend's quote John planned to use:</li></ol></div>
 
 </div>
 </details>
@@ -290,17 +228,17 @@
 <p>(Side note: She gets <strong>really pissed</strong> when you call her <strong>"Miss America"</strong>. ;p)</p>
 </blockquote>
 <blockquote>
-<p>It's <strong>America</strong>. </p>
+<p>It's <strong>America</strong>. :roll:</p>
 <p>That's why she gets pissed when she's called <em>"Miss America."</em></p>
 </blockquote>
-<p>When phantomdotexe suggested the name "Columbia," John shut it down (Future of Parking Enforcement comments): <em>"Anyway, with 'Columbia', it would be CJ."</em></p>
 <p><strong>Physical template:</strong> Nichelle Nichols.</p>
 <blockquote>
-<p>It's funny. Unlike with the <strong>Hench Bunnies</strong>, I didn't create <strong>America Jones</strong> with the intent to create a sex symbol. I just wanted to create an ass kicking meter-maid. I suppose it's ultimately my fault for using <strong>Nichelle Nichols</strong> as the physical template for the character. </p>
+<p>It's funny. Unlike with the <strong>Hench Bunnies</strong>, I didn't create <strong>America Jones</strong> with the intent to create a sex symbol. I just wanted to create an ass kicking meter-maid. I suppose it's ultimately my fault for using <strong>Nichelle Nichols</strong> as the physical template for the character. :shrug:</p>
+<sup class="fn"><a href="#fn-s2-1" id="fnref-s2-1">1</a></sup>
 </blockquote>
 <p><strong>Appearance:</strong> Dark skin, purple hair.</p>
 <blockquote>
-<p><strong>AJ</strong> has dark skin, and purple hair. (You can't tell that from here, of course. )</p>
+<p><strong>AJ</strong> has dark skin, and purple hair. (You can't tell that from here, of course. ^^;)</p>
 </blockquote>
 <p><strong>Demeanor:</strong> "One shot per customer."</p>
 <blockquote>
@@ -312,14 +250,14 @@
 <p><strong>Her guns keep changing.</strong> From <a href="https://www.deviantart.com/johnstaton/art/Meter-and-Maid-104389182" target="_blank" rel="noopener">Meter and Maid</a> (Nov 23, 2008):</p>
 <blockquote>
 <p>Yes, her gun is different here than the revolver style piece she's carrying in the previous picture.</p>
-<p>I think I designed a different pistol each time I drew the character.</p>
+<p>I think I designed a different pistol each time I drew the character.^^;</p>
 <p>I might use that to my advantage in the story at some point.</p>
 <p><strong>Some other character whose sole purpose is to provide a straight line:</strong> "Weren't you carrying a <strong>Revolver</strong> yesterday?"</p>
 <p><strong>AJ:</strong> "Yes, but today is <strong>Thursday</strong>." ;P</p>
 </blockquote>
 <blockquote>
 <p>You'll note her ticket dispenser is slightly different here. I'm going to have to sit down and actually commit to a design one of these days. <em>(Hmmm, maybe I'll just say she owns 50 slightly different ones.)</em></p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s2-2" id="fnref-s2-2">2</a></sup>
 </blockquote>
 <p><strong>How she shoots.</strong> From PTD: Parking Ticket Dispenser comments (Oct 2010):</p>
 <blockquote>
@@ -329,17 +267,17 @@
 <blockquote>
 <p>It's funny. I didn't design <strong>AJ</strong> with a mind toward drawing <em>"the sexy girl"</em>, but folks react to her as a sex symbol nonetheless.</p>
 <p>Guess I'm just too used to drawing <em>"that kind of girl."</em></p>
-<p>Of course, I may have <em>overcorrected</em> with <strong>Repeat</strong>. </p>
+<p>Of course, I may have <em>overcorrected</em> with <strong>Repeat</strong>. ^^;</p>
 </blockquote>
 <blockquote>
 <p>The bad news is, this future might be closer than you think.</p>
 <p>The worse news is, cute meter maids occur only in this gallery, and the occasional movie. <em>(I loved that scene with Elizabeth Hurley in "Bedazzled". Come to think of it, I loved every scene with Elizabeth Hurley in "Bedazzled".)</em></p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<sup class="fn"><a href="#fn-s2-3" id="fnref-s2-3">3</a></sup>
 </blockquote>
 <blockquote>
 <p>I'm always impressed by your ability to connect an article of clothing with a certain era. I've think we've discussed before that I can do that with cars, but I'm lost with women's fashion.</p>
 <p>Between you, me, the keyboard, and probably a lurker or two, the primary focus of my attention were women's fashion is concerned is what part of the body is shown off.</p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s2-4" id="fnref-s2-4">4</a></sup>
 </blockquote>
 <p><strong>Scouter eyepiece.</strong> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Enter-the-Heroine-106141964" target="_blank" rel="noopener">DMV: Enter the Heroine</a> (Dec 12, 2008):</p>
 <blockquote>
@@ -349,13 +287,13 @@
 <blockquote>
 <p><strong>America Jones</strong> once again, this time with a slightly altered uniform.</p>
 <p>Seeing how actual meter maids were day-glo vests at present, I thought I'd try one out on our heroine. The low belt, bike pants were suggested by  so I thought I'd try them for a spin. It's been a while since I designed <strong>AJ's</strong> uniform, so I thought I might try to freshen up the look.</p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s2-5" id="fnref-s2-5">5</a></sup>
 </blockquote>
 <blockquote>
 <p>I <em>am</em> giving some thought to changing her uniform. I've noticed that meter maids nowadays wear day-glo vests--sort of like what deer hunters wear, only yellow as opposed to orange.</p>
 <p>I was considering giving <strong>AJ</strong>, and her less tough comrades, a bullet-proof version of such a garment. I suppose, since this is the <em>"not-too-distant-dystopian-cyberpunk-future"</em>, the vests could be self illuminating as well as proof against small arms fire.</p>
-<p>Don't know what to do about the shorts though. </p>
-<sup class="fn"><a href="#fn5" id="fnref5">5</a></sup>
+<p>Don't know what to do about the shorts though. :shrug:</p>
+<sup class="fn"><a href="#fn-s2-6" id="fnref-s2-6">6</a></sup>
 </blockquote>
 <p><strong>The holster maglev.</strong> From Maid and Machine:</p>
 <blockquote>
@@ -365,14 +303,14 @@
 <h3>Strip 1: <a href="https://www.deviantart.com/johnstaton/art/DMV-Killer-Camaero-106139744" target="_blank" rel="noopener">DMV: Killer Camaero</a></h3>
 <blockquote>
 <p>Last week a curious poster asked if I could show him some actual <em>narrative art</em> to some of these high concepts I've been so liberally hurling about. Thanks to my celebrated bachelor's inability to throw away <em>anything,</em> I am able to oblige.</p>
-<p>While I do have pages in the traditional <em>comic book</em> format, I thought it would be fun to start out with this origin story for the character <strong>AJ.</strong> Be advised, this is back when I was crazy enough to try this out as a comic <em>strip</em> </p>
+<p>While I do have pages in the traditional <em>comic book</em> format, I thought it would be fun to start out with this origin story for the character <strong>AJ.</strong> Be advised, this is back when I was crazy enough to try this out as a comic <em>strip</em> ^^;</p>
 <p>This first strip shows a seminal moment in <strong>AJ's</strong> childhood, when she wandered into the mighty <strong>Megarage</strong> and was menaced by an antique <strong>Camaro IROCZ.</strong> ( Keen eyes will notice the mass of unpaid tickets accumulated on the car's windshield.;P)</p>
 <p>Those decrying child endangerment please calm down. As you can see, <strong>AJ's</strong> deliverance is at hand.</p>
 </blockquote>
 <blockquote>
 <p>Yup, of course I've since decided to change the car from the <strong>Camaro</strong> to the fictional <strong>Red ICE</strong>, (Still working on the name, but I want the letters <strong>ICE</strong> in it to signify <strong>I</strong>nternal <strong>C</strong>ombustion <strong>E</strong>ngine. ;p)</p>
-<p>That way, I avoid any potential licensing issues with <strong>General Motors</strong>, and I get to have fun making up another car. </p>
-<sup class="fn"><a href="#fn6" id="fnref6">6</a></sup>
+<p>That way, I avoid any potential licensing issues with <strong>General Motors</strong>, and I get to have fun making up another car. :excited:</p>
+<sup class="fn"><a href="#fn-s2-7" id="fnref-s2-7">7</a></sup>
 </blockquote>
 <h3>Strip 2: <a href="https://www.deviantart.com/johnstaton/art/DMV-The-Rescue-106140165" target="_blank" rel="noopener">DMV: The Rescue</a></h3>
 <blockquote>
@@ -387,7 +325,7 @@
 <blockquote>
 <p>Every one loves Camaros. You don't own a <strong>Camaro</strong>, a <strong>Camaro</strong> owns you.</p>
 <p>A mistic bond exists between a <strong>Camaro</strong> and it's owner quite unlike the rapport between any other car and driver. It's appropriate that Spike in the Transfomers movie befriends a Camaro.</p>
-<sup class="fn"><a href="#fn7" id="fnref7">7</a></sup>
+<sup class="fn"><a href="#fn-s2-8" id="fnref-s2-8">8</a></sup>
 </blockquote>
 <p>(He later swapped the car to the fictional <strong>Red ICE</strong> for licensing reasons.)</p>
 <h3>Strip 4: <a href="https://www.deviantart.com/johnstaton/art/DMV-Dueling-Swords-106140806" target="_blank" rel="noopener">DMV: Dueling Swords</a></h3>
@@ -411,7 +349,7 @@
 <p>This was supposed to be the penultimate introduction strip, capturing that, <strong><em>"The Navy Calls it 'Fighter Weapons School'. The fliers call it..."</em></strong> sort of moment.</p>
 <p>I guess this would be for the Sunday paper. ;P</p>
 </blockquote>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-AJ-Pencils-102943679" target="_blank" rel="noopener">DMV: AJ Pencils</a> description:</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> From Rifle Maid comments (June 2010):</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> On designing women. From Maid and Machine comments (July 2010), to bandeau:</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> Fan SuichiTanaka suggested the scouter could measure parking debt. John: <em>"Ha! That's an awesome idea!"</em></li><li id="fn5"><a href="#fnref5" class="fn-back">&uarr;</a> John had been thinking about the vest earlier. From Rifle Maid comments (May 2010):</li><li id="fn6"><a href="#fnref6" class="fn-back">&uarr;</a> John later changed the car (Nov 2010):</li><li id="fn7"><a href="#fnref7" class="fn-back">&uarr;</a> On why John chose a Camaro in the first place. From Whale Tale comments (Dec 12, 2008):</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s2-1"><a href="#fnref-s2-1" class="fn-back">&uarr;</a> When phantomdotexe suggested the name "Columbia," John shut it down (Future of Parking Enforcement comments): <em>"Anyway, with 'Columbia', it would be CJ."</em></li><li id="fn-s2-2"><a href="#fnref-s2-2" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-AJ-Pencils-102943679" target="_blank" rel="noopener">DMV: AJ Pencils</a> description:</li><li id="fn-s2-3"><a href="#fnref-s2-3" class="fn-back">&uarr;</a> From Rifle Maid comments (June 2010):</li><li id="fn-s2-4"><a href="#fnref-s2-4" class="fn-back">&uarr;</a> On designing women. From Maid and Machine comments (July 2010), to bandeau:</li><li id="fn-s2-5"><a href="#fnref-s2-5" class="fn-back">&uarr;</a> Fan SuichiTanaka suggested the scouter could measure parking debt. John: <em>"Ha! That's an awesome idea!"</em></li><li id="fn-s2-6"><a href="#fnref-s2-6" class="fn-back">&uarr;</a> John had been thinking about the vest earlier. From Rifle Maid comments (May 2010):</li><li id="fn-s2-7"><a href="#fnref-s2-7" class="fn-back">&uarr;</a> John later changed the car (Nov 2010):</li><li id="fn-s2-8"><a href="#fnref-s2-8" class="fn-back">&uarr;</a> On why John chose a Camaro in the first place. From Whale Tale comments (Dec 12, 2008):</li></ol></div>
 
 </div>
 </details>
@@ -427,11 +365,11 @@
 <blockquote>
 <p>I was always considering a clip full of tightly folded tickets that are printed upon as the exit the muzzle, but your suggestion of an ink cartridge is downright inspiring.</p>
 </blockquote>
-<p>Fan SuichiTanaka described the retail tagging gun model:</p>
 <blockquote>
 <p>Well, I figured it was loosely based on the tagging guns that are used so commonly in retail stores. The 'ammo' is a roll of adhesive price tags and you dial in number on the gun for the price. One motion takes care of both the printing and the fixture of the tag.</p>
 <p>In this case, her scouter eyepiece could scan a license plate number or facial registry ID and lookup previous infractions and the transmit updated data to the gun, which then takes care of the printing and the delivery of said ticket.</p>
 <p>But I'm still curious how those things get out of the barrel without jamming it. o.O</p>
+<sup class="fn"><a href="#fn-s3-1" id="fnref-s3-1">1</a></sup>
 </blockquote>
 <p><strong>Blade Runner connection.</strong> From Rifle Maid:</p>
 <blockquote>
@@ -452,56 +390,155 @@
 </blockquote>
 <p><strong>Recoil and handling.</strong> From PTD comments (Oct 2010):</p>
 <blockquote>
-<p>I <em>could</em> say that a <strong>PTD's</strong> <em>linear accelerators</em> has significantly <em>less</em> recoil than that of a traditional gas-operated weapon, <em>allowing</em> single handed accuracy, but, truth be told, while I put a lot of time and research trying to give the <em>guns themselves</em> a sense of <em>verisimilitude</em>; the way they'll be used won't have much to do with recognizable <em>gun etiqette</em>. </p>
-<p>I guess I've watched too many of <a href="http://www.youtube.com/watch?v=JXL_JNH3ggY" target="_blank" rel="noopener"><em>this</em></a> type of film. </p>
+<p>I <em>could</em> say that a <strong>PTD's</strong> <em>linear accelerators</em> has significantly <em>less</em> recoil than that of a traditional gas-operated weapon, <em>allowing</em> single handed accuracy, but, truth be told, while I put a lot of time and research trying to give the <em>guns themselves</em> a sense of <em>verisimilitude</em>; the way they'll be used won't have much to do with recognizable <em>gun etiqette</em>. :shrug:</p>
+<p>I guess I've watched too many of <a href="http://www.youtube.com/watch?v=JXL_JNH3ggY" target="_blank" rel="noopener"><em>this</em></a> type of film. ^^;</p>
 </blockquote>
 <h3>The Palomino 61M Assault PTD</h3>
 <blockquote>
 <p>The weapon she has slung over her shoulder is a <strong>Palomino 61M Assault PTD</strong>-- the inevitable <em>rifle</em> version of her trusty sidearm, the <strong>PTD</strong> <em>(<strong>P</strong>arking <strong>T</strong>icket <strong>D</strong>ispenser.</em>)*</p>
 <p>The <strong>Assault PTD</strong> dispenses the same <strong>5.5'' x 8.5"</strong> parking ticket as the pistol type, but at a <em>significantly</em> higher rate of fire. The larger barrel beneath the primary muzzle fires larger <strong>6' x 9'</strong> tickets, which can paper an average man to a wall from as much as 250 yards.</p>
 <p><strong>APTD's</strong> are largely used for crowd control situations. ;p</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s3-2" id="fnref-s3-2">2</a></sup>
 </blockquote>
 <h3>Ticket Rifles</h3>
 <blockquote>
 <p>After watching <em>WAY</em> too much <em>Trigun</em> I designed badass duster jackets and ticket <em>rifles</em> for my heroic meter maids.</p>
 <p>I don't know if it works to have them look so cool though. There's a little more humor in having them fight road raging hordes in short shorts.</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<sup class="fn"><a href="#fn-s3-3" id="fnref-s3-3">3</a></sup>
 </blockquote>
 <h3>The Thug Zapper</h3>
 <blockquote>
 <p>It's a shotgun-like weapon that fires the artificial equivalent of <strong>Texas Ball Lightning</strong> at a target. Sure I could also have called it a <em>"Wireless Taser,"</em> but that just wasn't as catchy.;p</p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s3-4" id="fnref-s3-4">4</a></sup>
 </blockquote>
 <h3>The H.O.G.</h3>
 <blockquote>
 <p><strong>H</strong>eavy <strong>O</strong>ptic <strong>G</strong>un. Compact megawatt yield laser, roughly the size of a contemporary squad automatic weapon, serving a similar function, only possessing far greater endurance and anti-material capabilty than it's slug-throwing predecessor.</p>
 <p>I chose to give it a 100mm emiter lens so I could humorously call it a <em>"Decimater."</em> but since I live in a country that couldn't give a rat's ass about the metric system, nobody ever got the joke.</p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s3-5" id="fnref-s3-5">5</a></sup>
 </blockquote>
 <h3>The Badge</h3>
 <blockquote>
 <p>Thanx, it took me a while before I was happy with the badge design. I always loved how <em>elmblematic</em> the badges were on the old <em>Galaxy Rangers</em> animated series, so I wanted to design something similarly symbollic, but comedic at the same time.</p>
-<sup class="fn"><a href="#fn5" id="fnref5">5</a></sup>
+<sup class="fn"><a href="#fn-s3-6" id="fnref-s3-6">6</a></sup>
 </blockquote>
 <h3>The Scouter Eyepiece</h3>
 <blockquote>
 <p>They're called 'Scouters' to be exact. A funny play off the ol DBZ could be had here. They could measure a person's <strong>parking debt</strong> based off a central database lookup, in which case you can rebirth the oft played '...it's over nine-thousand!' or simply have the eyepiece self destruct.</p>
-<sup class="fn"><a href="#fn6" id="fnref6">6</a></sup>
+<sup class="fn"><a href="#fn-s3-7" id="fnref-s3-7">7</a></sup>
 </blockquote>
 <p>John: <em>"Ha! That's an awesome idea!"</em></p>
 <h3>The Davey Crockett Problem</h3>
 <blockquote>
 <p>Hmmm, sounds like fun. I've been fascinated with the hilarious absurdity of battlefield nukes ever since I heard of the <a href="http://en.wikipedia.org/wiki/Davy_Crockett_%28nuclear_device%29" target="_blank" rel="noopener"><strong>Davey Crockett</strong></a>. ;p</p>
 <p><em>"One shot, one overkill."</em></p>
-<sup class="fn"><a href="#fn7" id="fnref7">7</a></sup>
+<sup class="fn"><a href="#fn-s3-8" id="fnref-s3-8">8</a></sup>
 </blockquote>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Rifle-Maid-165963439" target="_blank" rel="noopener">Rifle Maid</a> (May 31, 2010):</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Cold-Weather-Gear-106142203" target="_blank" rel="noopener">Cold Weather Gear</a> (Dec 12, 2008):</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> From DMV a' la FLCL Black n White comments (Mar 2009):</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Ka-Bume-109678071" target="_blank" rel="noopener">DMV: Ka Bume</a> (Jan 16, 2009):</li><li id="fn5"><a href="#fnref5" class="fn-back">&uarr;</a> From A New Breed comments (Dec 15, 2008):</li><li id="fn6"><a href="#fnref6" class="fn-back">&uarr;</a> From Enter the Heroine: a <em>"Dragonball Z" eyepiece</em>. Fan SuichiTanaka:</li><li id="fn7"><a href="#fnref7" class="fn-back">&uarr;</a> From PTD Color comments (Oct 2010), John on the absurdity of scaling up:</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s3-1"><a href="#fnref-s3-1" class="fn-back">&uarr;</a> Fan SuichiTanaka described the retail tagging gun model:</li><li id="fn-s3-2"><a href="#fnref-s3-2" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Rifle-Maid-165963439" target="_blank" rel="noopener">Rifle Maid</a> (May 31, 2010):</li><li id="fn-s3-3"><a href="#fnref-s3-3" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Cold-Weather-Gear-106142203" target="_blank" rel="noopener">Cold Weather Gear</a> (Dec 12, 2008):</li><li id="fn-s3-4"><a href="#fnref-s3-4" class="fn-back">&uarr;</a> From DMV a' la FLCL Black n White comments (Mar 2009):</li><li id="fn-s3-5"><a href="#fnref-s3-5" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Ka-Bume-109678071" target="_blank" rel="noopener">DMV: Ka Bume</a> (Jan 16, 2009):</li><li id="fn-s3-6"><a href="#fnref-s3-6" class="fn-back">&uarr;</a> From A New Breed comments (Dec 15, 2008):</li><li id="fn-s3-7"><a href="#fnref-s3-7" class="fn-back">&uarr;</a> From Enter the Heroine: a <em>"Dragonball Z" eyepiece</em>. Fan SuichiTanaka:</li><li id="fn-s3-8"><a href="#fnref-s3-8" class="fn-back">&uarr;</a> From PTD Color comments (Oct 2010), John on the absurdity of scaling up:</li></ol></div>
 
 </div>
 </details>
 <details class="accordion-section" id="s4">
-<summary class="section-header"><span class="section-number">05</span><span class="section-title">The Megarage</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
+<summary class="section-header"><span class="section-number">05</span><span class="section-title">The Tech</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
+<div class="section-body">
+<div class="section-hero"><img src="img/pieces/future-of-parking-enforcement-JohnStaton.jpg" alt="The Tech" loading="lazy"></div>
+<blockquote>
+<p>The only thing more astounding than the discovery of the miracle fossil fuel, <strong>BOA®</strong>[1] beneath the surface of <strong>Mars</strong>[2] was the subsequent discovery that polymers made from it, repelled gravity when exposed to electrical current.</p>
+<p>Though practical antigravity, or <strong>Antiweight®</strong> will have been in use for three decades by the time of <strong>America Jones'</strong> "NTDDCF" [3], it is only now ever so slowly making its way into the hands of an awaiting public.</p>
+<p>1.) <strong>Blood Of Ares.</strong> Legal wranglings with the Wells estate, prevented the use of the name "Cavarite".</p>
+<p>2.) As every schoolchild knows today, the discovery of <strong>BOA®</strong> was made in <strong>1976</strong> by the <strong>Viking lander</strong>, and withheld from public knowledge, until regular travel was established in <strong>2045</strong></p>
+<p>3.) "Not-to-Distant-Dystopian-Cyberpunk-Future." Gotta come up with a more convenient anagram of acronym for that.</p>
+<sup class="fn"><a href="#fn-s4-1" id="fnref-s4-1">1</a></sup>
+</blockquote>
+<h3>The Vehicle Classes</h3>
+<p>All three defined in <a href="https://www.deviantart.com/johnstaton/art/Winged-Pony-Car-184735874" target="_blank" rel="noopener">Winged Pony Car</a> (Nov 1, 2010):</p>
+<blockquote>
+<p>To date, <strong>FT's</strong>, or <strong>Floating Transports</strong> have only been used by heavily trained and licensed services. Such as <strong>Heavy FT's</strong>, or <strong>"HeFT's"</strong> for construction and freight hauling; and <strong>Light FT's</strong> or the <strong>"LiFT's"</strong> that have become infamous through their use by the <strong>DMV.</strong></p>
+<p>The <strong>Medium FT's</strong>, or <strong>"MeFT's"</strong> are potentially the most diverse breed of these vehicles, as they could represent the realizations of science fiction's long welshed-upon promise of "flying automobiles", but they are the last to be fully developed due to the vast multitude of safety concerns they raise.</p>
+<p>Even so, for years automotive manufacturers have fought legal battles to enable them to build more than the occasional tow truck, or playthings for the astoundingly wealthy.</p>
+</blockquote>
+<h3>The Pegasus</h3>
+<blockquote>
+<p>After decades of war with various levels of legislature, as well as the insurance industry, it looks like the first practical, affordable <strong>MeFT</strong> will finally find its way into the open arms of the common driver.</p>
+<p>That vehicle is the <strong>Pegasus.</strong></p>
+<p>One more headache for the <strong>Meter Maids.</strong></p>
+<sup class="fn"><a href="#fn-s4-2" id="fnref-s4-2">2</a></sup>
+</blockquote>
+<blockquote>
+<p>I always figured, that ever since the jet age first kicked off, automobile manufacturers had made tail lights to mock jet exhaust, why not return the favor with a flying car's exhaust? But it was really one of those things I did for my own self edification;I totally did not expect anyone to notice it.</p>
+<sup class="fn"><a href="#fn-s4-3" id="fnref-s4-3">3</a></sup>
+</blockquote>
+<h3>The LiFT</h3>
+<p>AJ's personal vehicle. Named in <a href="https://www.deviantart.com/johnstaton/art/Maid-and-Machine-173389077" target="_blank" rel="noopener">Maid and Machine</a> (July 30, 2010):</p>
+<blockquote>
+<p>This little critter is one of two, carried in integrated housing in <strong>AJ's Light Floating Transport</strong> or <strong>LiFT</strong>.</p>
+<sup class="fn"><a href="#fn-s4-4" id="fnref-s4-4">4</a></sup>
+</blockquote>
+<p>The older meter maid in AJ's origin has <strong>actual wheels</strong> on her scooter (a deliberate period marker):</p>
+<blockquote>
+<p>(<em>Technical Note: To help ground this in a previous era, I decided to give the older meter maid, actual wheels on her scooter.</em>)</p>
+</blockquote>
+<h3>The Aerial Tow Truck</h3>
+<blockquote>
+<p>Another picture from my <strong>DMV concept.</strong> The vehicle in the air above our heroine is a <em>tow truck</em> believe it or not.</p>
+<sup class="fn"><a href="#fn-s4-5" id="fnref-s4-5">5</a></sup>
+</blockquote>
+<p>Has <strong>"hover hoops"</strong> resembling Dyson bladeless fans. John (Sept 2010):</p>
+<blockquote>
+<p><strong>Dyson</strong> is totally my hero :worship:, but this drawing was done <em>years</em> before he invented his critically bad ass fans.</p>
+<p><em>Still</em> it would work as a explanation behind the bladeless <em>"hover hoops."</em> ;p</p>
+</blockquote>
+<h3>The Roboot</h3>
+<blockquote>
+<p>The robot in front of <strong>AJ</strong> is a <strong>Roboot</strong>, and semi-autonomous device that attaches itself to the tires of cars with delinquent parking tickets. This little critter is one of two, carried in integrated housing in <strong>AJ's Light Floating Transport</strong> or <strong>LiFT</strong>.</p>
+<p>Though suited to fill the role of spunky sci-fi robot, <strong>Roboots</strong> are regarded with unqualified dread by the average commuter.</p>
+<sup class="fn"><a href="#fn-s4-6" id="fnref-s4-6">6</a></sup>
+</blockquote>
+<p>Fan Mauser712 joked about them saying "I looove you." John:</p>
+<blockquote>
+<p>Actually they sing <strong>"I'm Never Gonna Let You Go."</strong> by <strong>Sergio Mendes</strong>. ;p</p>
+</blockquote>
+<blockquote>
+<p>I <em>was</em> going to have the <strong>Roboot</strong> scuttle around on all fours like a crab <em>(Or a really fast turtle. :XD:)</em>, and it still can--but for the purposes of this pin-up, it would've ended up just looking like a footstool.^^;</p>
+<p>Rearing the thing up on its hind legs allowed me to give it some degree of personality.</p>
+<sup class="fn"><a href="#fn-s4-7" id="fnref-s4-7">7</a></sup>
+</blockquote>
+<blockquote>
+<p>FYI, I designed smaller, cuter boots since I drew this.</p>
+<sup class="fn"><a href="#fn-s4-8" id="fnref-s4-8">8</a></sup>
+</blockquote>
+<h3>The Repobot</h3>
+<blockquote>
+<p>The big red guy behind our meter reading heroine is a <strong>Repobot</strong>.(My clumsy attempt to come up with a pun for <em>"Reprobate"</em>)</p>
+<p>Essentially, it's a glorified car thief that snatches vehicles by simply picking them up, tucking them under its arms like a football, and running off.</p>
+<p>Quite a problem for a cop whose <em>gun shoots parking tickets!</em> ;P</p>
+<sup class="fn"><a href="#fn-s4-9" id="fnref-s4-9">9</a></sup>
+</blockquote>
+<h3>K-9 Robots</h3>
+<blockquote>
+<p>All the duties once performed by dogs are done by spunky l'il <em>robots</em> in the <strong>NTDDCF</strong>. The exposure of animals to harmful situations like explosives detection is considered <em>barbaric</em> by the more evolved denizens of the future.</p>
+<p>The <strong>"K-9's"</strong> employed are more like <strong>Doctor Who's</strong> old robotic sidekick--only, you know, called something else, since I don't have any rights to that name. ^^;</p>
+<sup class="fn"><a href="#fn-s4-10" id="fnref-s4-10">10</a></sup>
+</blockquote>
+<h3>The $10 Coin</h3>
+<blockquote>
+<p>For the price of a single <strong>$10.00 coin</strong> (The not-too-distant-cyberpunk-dystopian-future's answer to the quarter.:()</p>
+<sup class="fn"><a href="#fn-s4-11" id="fnref-s4-11">11</a></sup>
+</blockquote>
+<h3>The Automatic Clothing Chute</h3>
+<p>Daily life tech in the NTDCDF. From <a href="https://www.deviantart.com/johnstaton/art/Automatic-Clothing-Chute-110467057" target="_blank" rel="noopener">Automatic Clothing Chute</a> (Jan 23, 2009):</p>
+<blockquote>
+<p>I figured that folks in the <strong>NTDCDF</strong>* would enjoy the convenience of an automated dressing chute.</p>
+<p>I'm sure everyone would love having articulated robot arms whip around their freefalling bodies, first thing in the morning.</p>
+<p>Hmmm, I cant shake this feeling I've missed a prime cheesecake opprotunity with this sequence. Oh well.</p>
+<p>*NTDCDF: Not Too Distant Cyberpunk Dystopian Future. Com'on now folks! Get with the program</p>
+</blockquote>
+<div class="footnotes"><ol><li id="fn-s4-1"><a href="#fnref-s4-1" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Winged-Pony-Car-184735874" target="_blank" rel="noopener">Winged Pony Car</a> (Nov 1, 2010):</li><li id="fn-s4-2"><a href="#fnref-s4-2" class="fn-back">&uarr;</a> From the same post:</li><li id="fn-s4-3"><a href="#fnref-s4-3" class="fn-back">&uarr;</a> From Winged Pony Car comments (Nov 1, 2010):</li><li id="fn-s4-4"><a href="#fnref-s4-4" class="fn-back">&uarr;</a> When phantomdotexe asked to see the <strong>Quad Coupe</strong>, John replied (Nov 6, 2010): <em>"You will."</em> It was never posted.</li><li id="fn-s4-5"><a href="#fnref-s4-5" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Future-of-Parking-Enforcement-102945345" target="_blank" rel="noopener">Future of Parking Enforcement</a> (Nov 7, 2008):</li><li id="fn-s4-6"><a href="#fnref-s4-6" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Maid-and-Machine-173389077" target="_blank" rel="noopener">Maid and Machine</a> (July 30, 2010):</li><li id="fn-s4-7"><a href="#fnref-s4-7" class="fn-back">&uarr;</a> John on the Roboot's locomotion (Maid and Machine comments):</li><li id="fn-s4-8"><a href="#fnref-s4-8" class="fn-back">&uarr;</a> John noted the Roboots had evolved since the earliest drawings. From Future of Parking Enforcement comments (Sept 2010):</li><li id="fn-s4-9"><a href="#fnref-s4-9" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Repobot-104385787" target="_blank" rel="noopener">Repobot</a> (Nov 23, 2008):</li><li id="fn-s4-10"><a href="#fnref-s4-10" class="fn-back">&uarr;</a> From Rifle Maid comments (June 2010):</li><li id="fn-s4-11"><a href="#fnref-s4-11" class="fn-back">&uarr;</a> From All Gangs Here:</li></ol></div>
+
+</div>
+</details>
+<details class="accordion-section" id="s5">
+<summary class="section-header"><span class="section-number">06</span><span class="section-title">The Megarage</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
 <div class="section-hero"><img src="img/pieces/dmv-dueling-swords-JohnStaton.jpg" alt="The Megarage" loading="lazy"></div>
 <p>Armed officers who patrol the Megarage. Weapons are nonlethal (ticket-based). They have an academy with a strict bowl-cut policy (from Repeat, Oct 2010). Lethal weapons are banned; the arsenal is all incapacitation gear.</p>
@@ -517,54 +554,54 @@
 <h3>Pool Parties</h3>
 <blockquote>
 <p>On the right side of the composition, we witness the unfolding tradgedy of <strong>Pool Parties</strong>. Fierce battles by armed and armored car pools for territorial gain in the vast <strong>Megarage</strong> complex.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s5-1" id="fnref-s5-1">1</a></sup>
 </blockquote>
 <blockquote>
 <p>*Pool Party: A violent armed dispute between rival car pools, usually over heavily contested parking lot territory.</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<sup class="fn"><a href="#fn-s5-2" id="fnref-s5-2">2</a></sup>
 </blockquote>
 <h3>The Hiocc's</h3>
 <blockquote>
 <p>In the silver minvan, we have the <strong>Hiocc's,</strong> (For <strong>Hi</strong>gh <strong>Occ</strong>upancy vehicle.) who take advantage of the large carrying capacity of their vehicles, and use them as makeshift <em>troop transports</em> allowing them to overwhelm carpools driving smaller vehicles.</p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s5-3" id="fnref-s5-3">3</a></sup>
 </blockquote>
 <blockquote>
 <p>Toward that end, I model all their SUV's after attack helicoptors. For instance, the silver minivan here is based on a <strong>Hughes 500 Littlebird.</strong>;p</p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s5-4" id="fnref-s5-4">4</a></sup>
 </blockquote>
 <blockquote>
 <p>I actually based it on an <strong>MH-6 Little Bird</strong> helicopter. (I base all the commuter minivans in <strong>America Jone's</strong> world on attack helicpoters. Wait 'til you see the one I based on the <strong>Mil Mi-24</strong>. ;))</p>
-<sup class="fn"><a href="#fn5" id="fnref5">5</a></sup>
+<sup class="fn"><a href="#fn-s5-5" id="fnref-s5-5">5</a></sup>
 </blockquote>
 <h3>Motor Horde</h3>
 <blockquote>
-<p>The green chopper carries two members of <strong>Motor Horde,</strong> one of the dying breed of biker gangs, who exist chiefly because, even at the time of this drawing I knew I would one day figure out how to do <strong>Akira</strong> style tail light trails in photoshop. </p>
-<sup class="fn"><a href="#fn6" id="fnref6">6</a></sup>
+<p>The green chopper carries two members of <strong>Motor Horde,</strong> one of the dying breed of biker gangs, who exist chiefly because, even at the time of this drawing I knew I would one day figure out how to do <strong>Akira</strong> style tail light trails in photoshop. :evillaugh:</p>
+<sup class="fn"><a href="#fn-s5-6" id="fnref-s5-6">6</a></sup>
 </blockquote>
 <p>Named members: <strong>Lucille</strong> and <strong>Bo</strong>.</p>
 <blockquote>
-<p>The motorcycle is based on the old <strong>Green Machine</strong> toy. (<em>If you don't know what that is, then your childhood sucked, and your parents didn't really love you.</em>)</p>
-<sup class="fn"><a href="#fn7" id="fnref7">7</a></sup>
+<p>The motorcycle is based on the old <strong>Green Machine</strong> toy. (<em>If you don't know what that is, then your childhood sucked, and your parents didn't really love you.</em>:sarcasm:)</p>
+<sup class="fn"><a href="#fn-s5-7" id="fnref-s5-7">7</a></sup>
 </blockquote>
 <blockquote>
-<p>This was back when I wanted a <strong>Recumbent Electricycle</strong> to look like a <em>"grown-up"</em> version of a <strong>Green Machine</strong>. (THE collest, baddest ass, most child-endangering evolution of the tricycle ever conceived. )</p>
+<p>This was back when I wanted a <strong>Recumbent Electricycle</strong> to look like a <em>"grown-up"</em> version of a <strong>Green Machine</strong>. (THE collest, baddest ass, most child-endangering evolution of the tricycle ever conceived. :headbang:)</p>
 <p>Unfortunately the <strong>"Green Machine"</strong> design has no place for the chrome plated <em>"faux-engine"</em> noise maker.</p>
-<sup class="fn"><a href="#fn8" id="fnref8">8</a></sup>
+<sup class="fn"><a href="#fn-s5-8" id="fnref-s5-8">8</a></sup>
 </blockquote>
 <blockquote>
 <p>Yea, I'm thinking about using it in my <strong>DMV</strong> story. The lights would be aftermarket holograms. The cyberpunk future's answer to spinning rims. :P</p>
-<sup class="fn"><a href="#fn9" id="fnref9">9</a></sup>
+<sup class="fn"><a href="#fn-s5-9" id="fnref-s5-9">9</a></sup>
 </blockquote>
 <h3>Bot-Niks</h3>
 <blockquote>
 <p>Finally, going back to the top, the robot with the beret is a <strong>Bot-Nik.</strong></p>
 <p><strong>Bot-Nik's</strong> are fixtures at futuristic coffee houses. For the price of a single $10.00 coin (The not-too-distant-cyberpunk-dystopian-future's answer to the quarter.:() they spontaneously generate <em>free-verse poetry.</em></p>
 <p>They also serve as emergency thug muscle whenever the <strong>DMV</strong> or the <strong>GHP</strong> raid your coffee house. In the NTDCD future you see--<em>coffee is illegal.</em></p>
-<sup class="fn"><a href="#fn10" id="fnref10">10</a></sup>
+<sup class="fn"><a href="#fn-s5-10" id="fnref-s5-10">10</a></sup>
 </blockquote>
 <h3>Corporate Sponsored Youth Gangs</h3>
 <p>Mentioned in the FLCL pitch but never detailed in 2008.</p>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> From Ka Bume:</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn5"><a href="#fnref5" class="fn-back">&uarr;</a> From All Gangs Here comments (Feb 2011):</li><li id="fn6"><a href="#fnref6" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn7"><a href="#fnref7" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn8"><a href="#fnref8" class="fn-back">&uarr;</a> From All Gangs Here comments (Jan 2011):</li><li id="fn9"><a href="#fnref9" class="fn-back">&uarr;</a> From Anime City comments (Nov 30, 2008):</li><li id="fn10"><a href="#fnref10" class="fn-back">&uarr;</a> From All Gangs Here:</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s5-1"><a href="#fnref-s5-1" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn-s5-2"><a href="#fnref-s5-2" class="fn-back">&uarr;</a> From Ka Bume:</li><li id="fn-s5-3"><a href="#fnref-s5-3" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn-s5-4"><a href="#fnref-s5-4" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn-s5-5"><a href="#fnref-s5-5" class="fn-back">&uarr;</a> From All Gangs Here comments (Feb 2011):</li><li id="fn-s5-6"><a href="#fnref-s5-6" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn-s5-7"><a href="#fnref-s5-7" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn-s5-8"><a href="#fnref-s5-8" class="fn-back">&uarr;</a> From All Gangs Here comments (Jan 2011):</li><li id="fn-s5-9"><a href="#fnref-s5-9" class="fn-back">&uarr;</a> From Anime City comments (Nov 30, 2008):</li><li id="fn-s5-10"><a href="#fnref-s5-10" class="fn-back">&uarr;</a> From All Gangs Here:</li></ol></div>
 <div class="vehicle-registry">
 <h3>Vehicle Registry</h3>
 <div class="vr-grid">
@@ -580,8 +617,8 @@
 </div></div>
 </div>
 </details>
-<details class="accordion-section" id="s5">
-<summary class="section-header"><span class="section-number">06</span><span class="section-title">Everyone Else</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
+<details class="accordion-section" id="s6">
+<summary class="section-header"><span class="section-number">07</span><span class="section-title">Everyone Else</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
 <div class="section-hero"><img src="img/pieces/repeat-JohnStaton.jpg" alt="Everyone Else" loading="lazy"></div>
 <h3>Drew</h3>
@@ -597,18 +634,18 @@
 <p>Believe it or not, I orignally designed <strong>Drew</strong> with a fu man chu 'stache.</p>
 <p>I was going for a whimsical <em>Erol Flynn</em> look, until I realized that Flynn was actually <em>cool</em>, something that <strong>AJ's</strong> hapless sidekick only achieves on extremely rare instances. So as time wore on (And I learned to properly compose panels.) I decided to have him be clean shaven.</p>
 </blockquote>
+<p><strong>John considered replacing him with a woman.</strong> From Ka Bume comments:</p>
 <blockquote>
 <p>Actually, for a while, I've also been weighing the option of replacing him with a <em>female</em>, since as he stands, I fear <strong>Drew</strong> might be a little too reminiscent of another bumbling male sidekick.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
 </blockquote>
 <blockquote>
-<p>Curious thing, I was flirting with the idea of making <strong>AJ's</strong> partner <em>female.</em> (Since I'm not yet published, I can change the cannon at will. I know it doesn't necessarily mean <em>I should,</em> but <em>I can.</em> )</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<p>Curious thing, I was flirting with the idea of making <strong>AJ's</strong> partner <em>female.</em> (Since I'm not yet published, I can change the cannon at will. I know it doesn't necessarily mean <em>I should,</em> but <em>I can.</em> ^^;)</p>
+<sup class="fn"><a href="#fn-s6-1" id="fnref-s6-1">1</a></sup>
 </blockquote>
-<p>Fan SuichiTanaka argued against the change (Jan 2009):</p>
 <blockquote>
 <p>Well, having him be male gives you more opportunities to play out the usual love interest angle with his partner which can make the story more interesting. If Drew was female instead, that would be a lot more fun in the fanservice dept, but you'd lose any possible gender based misunderstandings or character flaws.</p>
 <p>I think without any real inkling of a personal plot for AJ, it's hard to tell which would be better. You have a good concept and a setting, but no visible story so far. Just a world with lot of potential to make stories within.</p>
+<sup class="fn"><a href="#fn-s6-2" id="fnref-s6-2">2</a></sup>
 </blockquote>
 <p>John: <em>"Hmmm, These are excellent comments. I have much to consider here."</em></p>
 <p><strong>Drew in action.</strong> From <a href="https://www.deviantart.com/johnstaton/art/DMV-Ka-Bume-109678071" target="_blank" rel="noopener">DMV: Ka Bume</a> (Jan 16, 2009):</p>
@@ -623,11 +660,11 @@
 <blockquote>
 <p>Quick sketch of another character from the <em>"not-too-distant-dystopian-cyberpunk-future</em>. As you can tell from the uniform--<em>another <strong>Meter Maid</strong>.</em></p>
 <p><strong>Miriam Bradley</strong> is an inexperienced <strong>Parking Enforcement Officer</strong>, still growing out her hair from her strict academy bowl-cut. She idolizes <a href="http://fav.me/d1pah4x" target="_blank" rel="noopener"><strong>America Jones</strong></a> almost like one would a popular upperclassman, following the seasoned veteran around like a lost puppy, and obsessing over her arrest record like the stats of a popular athlete.</p>
-<p>The younger officer aspires to one day to have an comparable citation record, instill as much respect and fear among the various <strong>Commuter Tribes</strong>, and have a similarly curvy figure as her more experienced counterpart. <em>(At her present rate of development, only two of her three goals are most likely possible. )</em></p>
+<p>The younger officer aspires to one day to have an comparable citation record, instill as much respect and fear among the various <strong>Commuter Tribes</strong>, and have a similarly curvy figure as her more experienced counterpart. <em>(At her present rate of development, only two of her three goals are most likely possible. ^^;)</em></p>
 <p><strong>Miriam</strong> has acquired the nickname <strong>"Repeat"</strong> due to her preference of carrying <em>two</em> <a href="http://fav.me/d31aav7" target="_blank" rel="noopener"><strong>PTD's</strong></a>-- <em>one on each hip.</em></p>
-<p><strong>Repeat</strong> tends to be over eager, and often <em>barrages</em> offenders, frequently even <em>coating</em> them with tickets. <em>(I am actually considering ginving her two <a href="http://fav.me/d1q5f7i" target="_blank" rel="noopener">semi-automatic <strong>PTD's</strong></a>, whose larger magazines hold <strong>1,000</strong> tickets each. )</em></p>
+<p><strong>Repeat</strong> tends to be over eager, and often <em>barrages</em> offenders, frequently even <em>coating</em> them with tickets. <em>(I am actually considering ginving her two <a href="http://fav.me/d1q5f7i" target="_blank" rel="noopener">semi-automatic <strong>PTD's</strong></a>, whose larger magazines hold <strong>1,000</strong> tickets each. :fear:)</em></p>
 <p>At present she is a far cry from <strong>AJs</strong> cool, <a href="http://fav.me/d1qtdi8" target="_blank" rel="noopener"><em>"one shot per customer"</em></a> demeanor, but due her habit of <em>wallpapering her opponents,</em> she is well on her way to being feared by the <strong>Tribes.</strong></p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s6-3" id="fnref-s6-3">3</a></sup>
 </blockquote>
 <p><strong>Design intent.</strong> When a fan said she was adorable regardless of curves, John confirmed (Repeat comments, Oct 2010): <em>"Cool. I was going for adorable."</em></p>
 <p><strong>Design aesthetic.</strong> John was going for a <strong>Lina Inverse</strong> body type. From Repeat comments (Nov 2010):</p>
@@ -641,7 +678,7 @@
 <p><strong>Body image as motivation.</strong> John was self-aware about it. From Repeat comments (Oct 2010):</p>
 <blockquote>
 <p>I'm glad people seem to be reacting well to the character, and her design. When I wrote that she envied <strong>AJ's</strong> figure, I was a little afraid some would object to the idea of using <em>"body image"</em> as a character motivation, particularly in the context of a female character desiring a body more in line with the <em>"male fantasy ideal."</em></p>
-<p>I suppose I'm just thinking about this too much. </p>
+<p>I suppose I'm just thinking about this too much. :shrug:</p>
 </blockquote>
 <p><strong>The sound effect.</strong> From Repeat comments:</p>
 <blockquote>
@@ -651,7 +688,7 @@
 <blockquote>
 <p><strong>Diane "Dice" Curbicheque</strong> <em>(Pronounced "Curb-Check.")</em> is a former <strong>Ghighway</strong> patrol driver, whose celebrated insubordination lands her in parking enforcement.</p>
 <p>Her car, an artificially intelligent armed <strong>Guncoupe</strong> interceptor, which she affectionately nicknames <strong>"Coop"</strong>, joins <strong>Dice</strong> on her plunging career path due a deep, unrequited affection for the irreverent officer. <em>(That's right. The car is in the friend zone. ;) )</em></p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s6-4" id="fnref-s6-4">4</a></sup>
 </blockquote>
 <p>Dice is from the same department as AJ. Fan phantomdotexe asked if she was from a different department. John: <em>"From the same department, actually. ;)"</em></p>
 <p>The piece was drawn for <strong>Angry Viking Press</strong>, who had acquired permission from <strong>Dodge Motors</strong> to use the likeness of a Dodge automobile. John chose the <strong>Challenger</strong> over the <strong>Charger</strong> since the Charger was already associated with law enforcement.</p>
@@ -665,12 +702,12 @@
 </blockquote>
 <blockquote>
 <p>Well, actually it's a <strong>Thug Zapper</strong>, a sort of wireless taser, that fires focused pulses of <strong>ball lightning</strong>. Still, your question is a valid one.</p>
-<sup class="fn"><a href="#fn5" id="fnref5">5</a></sup>
+<sup class="fn"><a href="#fn-s6-5" id="fnref-s6-5">5</a></sup>
 </blockquote>
 <h3>Roulette</h3>
 <blockquote>
 <p>The white haired woman at the top left top is <strong>Roulette</strong>, hotshot officer of the <strong>GHP.</strong> (<strong>G</strong>lobal <strong>H</strong>ighway <strong>P</strong>atrol.) A long time rival of <strong>AJ's,</strong> she's fond of pointing out that she has <em>worldwide juridiction</em> as well as a <em>self-ware, nigh-indestructable squad car</em> with a <em>high-yield capacitor gun</em>. Secretly, she's annoyed that <strong>AJ</strong> catches more crooks with just a gun that shoots parking tickets.</p>
-<sup class="fn"><a href="#fn6" id="fnref6">6</a></sup>
+<sup class="fn"><a href="#fn-s6-6" id="fnref-s6-6">6</a></sup>
 </blockquote>
 <h3>WiNiE</h3>
 <p>A meter maid from AJ's past. Mirrored sunglasses. From Rifle Maid comments (June 2010):</p>
@@ -681,8 +718,8 @@
 <h3>The Balding Blade</h3>
 <blockquote>
 <p>I'm sorry to have to post this strip so heinously out of sequence. I thought it was lost to the mists of time. Turns out it was just under the dust of the basement. ;p</p>
-<p>Happily, I found it while looking for something else. This was supposed to be the big moment where <strong>Blading Blade</strong> announces his famous cliche before claiming the "prize"--<em>er</em>--parking space.</p>
-<sup class="fn"><a href="#fn7" id="fnref7">7</a></sup>
+<p>Happily, I found it while looking for something else. This was supposed to be the big moment where <strong>Blading Blade</strong> announces his famous cliche before claiming the "prize"--<em>er</em>--parking space.^^;</p>
+<sup class="fn"><a href="#fn-s6-7" id="fnref-s6-7">7</a></sup>
 </blockquote>
 <p>Wields a <strong>Dragon's Head Katana</strong>. Fights <strong>Shades Wearing Business Suit Guy</strong> over a space. AJ stops him by plucking his katana with an adhesive parking ticket.</p>
 <h3>SCWAD</h3>
@@ -695,65 +732,15 @@
 <h3>The GHP</h3>
 <blockquote>
 <p><strong>GHP.</strong> (<strong>G</strong>lobal <strong>H</strong>ighway <strong>P</strong>atrol.)</p>
-<sup class="fn"><a href="#fn8" id="fnref8">8</a></sup>
+<sup class="fn"><a href="#fn-s6-8" id="fnref-s6-8">8</a></sup>
 </blockquote>
 <p><strong>Roulette</strong> is their hotshot officer. Worldwide jurisdiction, self-aware squad cars, high-yield capacitor guns. Both the DMV and the GHP raid illegal coffee houses.</p>
-<h3>The Machines</h3>
-<blockquote>
-<p>The robot in front of <strong>AJ</strong> is a <strong>Roboot</strong>, and semi-autonomous device that attaches itself to the tires of cars with delinquent parking tickets. This little critter is one of two, carried in integrated housing in <strong>AJ's Light Floating Transport</strong> or <strong>LiFT</strong>.</p>
-<p>Though suited to fill the role of spunky sci-fi robot, <strong>Roboots</strong> are regarded with unqualified dread by the average commuter.</p>
-<sup class="fn"><a href="#fn9" id="fnref9">9</a></sup>
-</blockquote>
-<p>Fan Mauser712 joked about them saying "I looove you." John:</p>
-<blockquote>
-<p>Actually they sing <strong>"I'm Never Gonna Let You Go."</strong> by <strong>Sergio Mendes</strong>. ;p</p>
-</blockquote>
-<blockquote>
-<p>I <em>was</em> going to have the <strong>Roboot</strong> scuttle around on all fours like a crab <em>(Or a really fast turtle. )</em>, and it still can--but for the purposes of this pin-up, it would've ended up just looking like a footstool.</p>
-<p>Rearing the thing up on its hind legs allowed me to give it some degree of personality.</p>
-<sup class="fn"><a href="#fn10" id="fnref10">10</a></sup>
-</blockquote>
-<blockquote>
-<p>FYI, I designed smaller, cuter boots since I drew this.</p>
-<sup class="fn"><a href="#fn11" id="fnref11">11</a></sup>
-</blockquote>
-<p>When mugen-nawashi assumed meter maids would still carry chalk sticks, John corrected (Winged Pony Car comments, Nov 2010): <em>"Chalk sticks? Not quite."</em></p>
-<blockquote>
-<p>The big red guy behind our meter reading heroine is a <strong>Repobot</strong>.(My clumsy attempt to come up with a pun for <em>"Reprobate"</em>)</p>
-<p>Essentially, it's a glorified car thief that snatches vehicles by simply picking them up, tucking them under its arms like a football, and running off.</p>
-<p>Quite a problem for a cop whose <em>gun shoots parking tickets!</em> ;P</p>
-<sup class="fn"><a href="#fn12" id="fnref12">12</a></sup>
-</blockquote>
-<blockquote>
-<p>All the duties once performed by dogs are done by spunky l'il <em>robots</em> in the <strong>NTDDCF</strong>. The exposure of animals to harmful situations like explosives detection is considered <em>barbaric</em> by the more evolved denizens of the future.</p>
-<p>The <strong>"K-9's"</strong> employed are more like <strong>Doctor Who's</strong> old robotic sidekick--only, you know, called something else, since I don't have any rights to that name. </p>
-<sup class="fn"><a href="#fn13" id="fnref13">13</a></sup>
-</blockquote>
-<h3>The LiFT</h3>
-<p>AJ's personal vehicle. Named in <a href="https://www.deviantart.com/johnstaton/art/Maid-and-Machine-173389077" target="_blank" rel="noopener">Maid and Machine</a> (July 30, 2010):</p>
-<blockquote>
-<p>This little critter is one of two, carried in integrated housing in <strong>AJ's Light Floating Transport</strong> or <strong>LiFT</strong>.</p>
-</blockquote>
-<p>The older meter maid in AJ's origin has <strong>actual wheels</strong> on her scooter (a deliberate period marker):</p>
-<blockquote>
-<p>(<em>Technical Note: To help ground this in a previous era, I decided to give the older meter maid, actual wheels on her scooter.</em>)</p>
-</blockquote>
-<h3>The Aerial Tow Truck</h3>
-<blockquote>
-<p>Another picture from my <strong>DMV concept.</strong> The vehicle in the air above our heroine is a <em>tow truck</em> believe it or not.</p>
-<sup class="fn"><a href="#fn14" id="fnref14">14</a></sup>
-</blockquote>
-<p>Has <strong>"hover hoops"</strong> resembling Dyson bladeless fans. John (Sept 2010):</p>
-<blockquote>
-<p><strong>Dyson</strong> is totally my hero , but this drawing was done <em>years</em> before he invented his critically bad ass fans.</p>
-<p><em>Still</em> it would work as a explanation behind the bladeless <em>"hover hoops."</em> ;p</p>
-</blockquote>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> <strong>John considered replacing him with a woman.</strong> From Ka Bume comments:</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> From Cold Weather Gear comments (Dec 12, 2008):</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Repeat-183708223" target="_blank" rel="noopener">Repeat</a> (Oct 23, 2010):</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Car-and-Driver-550753092" target="_blank" rel="noopener">Car and Driver</a> (Aug 19, 2016):</li><li id="fn5"><a href="#fnref5" class="fn-back">&uarr;</a> When tarmaque asked why a parking officer needs a riot shotgun (Aug 21, 2016), John clarified:</li><li id="fn6"><a href="#fnref6" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-All-Gangs-Here-108199524" target="_blank" rel="noopener">DMV: All Gangs Here</a> (Jan 2, 2009):</li><li id="fn7"><a href="#fnref7" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-The-Balding-Blade-106303994" target="_blank" rel="noopener">DMV: The Balding Blade</a> (Dec 14, 2008):</li><li id="fn8"><a href="#fnref8" class="fn-back">&uarr;</a> From All Gangs Here:</li><li id="fn9"><a href="#fnref9" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Maid-and-Machine-173389077" target="_blank" rel="noopener">Maid and Machine</a> (July 30, 2010):</li><li id="fn10"><a href="#fnref10" class="fn-back">&uarr;</a> John on the Roboot's locomotion (Maid and Machine comments):</li><li id="fn11"><a href="#fnref11" class="fn-back">&uarr;</a> John noted the Roboots had evolved since the earliest drawings. From Future of Parking Enforcement comments (Sept 2010):</li><li id="fn12"><a href="#fnref12" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Repobot-104385787" target="_blank" rel="noopener">Repobot</a> (Nov 23, 2008):</li><li id="fn13"><a href="#fnref13" class="fn-back">&uarr;</a> From Rifle Maid comments (June 2010):</li><li id="fn14"><a href="#fnref14" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Future-of-Parking-Enforcement-102945345" target="_blank" rel="noopener">Future of Parking Enforcement</a> (Nov 7, 2008):</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s6-1"><a href="#fnref-s6-1" class="fn-back">&uarr;</a> From Cold Weather Gear comments (Dec 12, 2008):</li><li id="fn-s6-2"><a href="#fnref-s6-2" class="fn-back">&uarr;</a> Fan SuichiTanaka argued against the change (Jan 2009):</li><li id="fn-s6-3"><a href="#fnref-s6-3" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Repeat-183708223" target="_blank" rel="noopener">Repeat</a> (Oct 23, 2010):</li><li id="fn-s6-4"><a href="#fnref-s6-4" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/Car-and-Driver-550753092" target="_blank" rel="noopener">Car and Driver</a> (Aug 19, 2016):</li><li id="fn-s6-5"><a href="#fnref-s6-5" class="fn-back">&uarr;</a> When tarmaque asked why a parking officer needs a riot shotgun (Aug 21, 2016), John clarified:</li><li id="fn-s6-6"><a href="#fnref-s6-6" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-All-Gangs-Here-108199524" target="_blank" rel="noopener">DMV: All Gangs Here</a> (Jan 2, 2009):</li><li id="fn-s6-7"><a href="#fnref-s6-7" class="fn-back">&uarr;</a> From <a href="https://www.deviantart.com/johnstaton/art/DMV-The-Balding-Blade-106303994" target="_blank" rel="noopener">DMV: The Balding Blade</a> (Dec 14, 2008):</li><li id="fn-s6-8"><a href="#fnref-s6-8" class="fn-back">&uarr;</a> From All Gangs Here:</li></ol></div>
 
 </div>
 </details>
-<details class="accordion-section" id="s6">
-<summary class="section-header"><span class="section-number">07</span><span class="section-title">Where It All Came From</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
+<details class="accordion-section" id="s7">
+<summary class="section-header"><span class="section-number">08</span><span class="section-title">Where It All Came From</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
 <div class="section-hero"><img src="img/pieces/dmv-a-la-flcl-black-n-white-JohnStaton.jpg" alt="Where It All Came From" loading="lazy"></div>
 <p><strong>Bubblegum Crisis / Kenichi Sonoda:</strong> <em>"I worship at the altar of Kenichi Sonoda and Bubblegum Crisis."</em> Also: <em>"I know that makes me all Old Sküle now, but I like what I like."</em> On anime name translations (Rifle Maid comments, May 2010): <em>"It's amusing watching how the 'L's' and 'R's' get transposed in anime translation. For instance, I heard that if you'd ask Sonoda he'd tell you it was supposed to be Larry Vincent."</em></p>
@@ -762,7 +749,7 @@
 <p><strong>FLCL / Sadamoto:</strong> <em>"A shameless Sadamoto FLCL composition swipe."</em></p>
 <p><strong>Trigun:</strong> Cold weather gear. Drew compared to Vash; John: <em>"I was thinking more Vash. But Egon works too."</em> This sparked a broader observation on genre (Cold Weather Gear comments, Dec 2008): <em>"Have you noticed all the good westerns are coming from anywhere but the US? Cartoon Westerns are done by the Japanese (Case in point, the aforementioned Trigun), Western comic books are done by the Europeans. Even Modern Western movies like 3:10 to Yuma star English and Australian actors."</em> He called Firefly <em>"that excellent sci-fi western"</em> and noted <em>"they were in all kinds of a hurry to cancel that."</em></p>
 <p><strong>Dragonball Z:</strong> Scouter eyepiece.</p>
-<p><strong>Battlestar Galactica (original):</strong> Holster slit. <em>"I made a slit running down the side of the holster, similar to the ones the <strong>Colonial Warriors</strong> used in the </em>original<em> <strong>Battlestar Galactica.</strong>"</em></p>
+<p><strong>Battlestar Galactica (original):</strong> Holster slit. *"I made a slit running down the side of the holster, similar to the ones the <strong>Colonial Warriors</strong> used in the <em>original</em> <strong>Battlestar Galactica.</strong>"*</p>
 <p><strong>Cool Hand Luke:</strong> WiNiE name. <em>"Paul Newman plays a man who is sentenced to a chain gang for vandalizing parking meters."</em></p>
 <p><strong>The Highlander:</strong> Balding Blade sequence. <em>"The movie opened in a parking garage!"</em></p>
 <p><strong>Top Gun:</strong> A New Breed captures the <em>"The Navy Calls it Fighter Weapons School, the fliers call it..."</em> moment.</p>
@@ -807,7 +794,7 @@
 <p>On taking criticism. From Rifle Maid comments (June 2010):</p>
 <blockquote>
 <p>You know what? <em>Scrutinize away,</em> my friend.</p>
-<p>I just did a side-by-side comparison between the modified and unmodified jpegs, and found myself aghast that I allowed myself to <em>post</em> the first version.  If I can't take criticism, <em>especially when it's accurate</em>, then what the hell good am I?</p>
+<p>I just did a side-by-side comparison between the modified and unmodified jpegs, and found myself aghast that I allowed myself to <em>post</em> the first version. :fear: If I can't take criticism, <em>especially when it's accurate</em>, then what the hell good am I?</p>
 </blockquote>
 <p>On fashion vs. cars:</p>
 <blockquote>
@@ -824,7 +811,7 @@
 </blockquote>
 <blockquote>
 <p>I'm just curious to see a comment on my work in another venue. You should know by now what a feedback whore I am.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s7-1" id="fnref-s7-1">1</a></sup>
 </blockquote>
 <p>On the automobile era of American design. From Rifle Maid comments (bandeau exchange, May 2010):</p>
 <blockquote>
@@ -839,21 +826,21 @@
 <p><strong>Please don't say captions.</strong> This is a storyboarding exercise. The visuals should convey the message.</p>
 <p>Besides, it's good practice.</p>
 </blockquote>
+<p>When the fan suggested directional arrows, John cited <strong>Will Eisner</strong>:</p>
 <blockquote>
 <p>Storyboards can use arrows because they are more less blueprints for a director or cinematographer who needs directions regarding movement and placement of his camera. A comic page is supposed to lead the eye of the reader solely with its arrangement of images with as little aid from captions and symbols as possible. The cartoonist is supposed to be invisble when the reader is reading, and arrow call attention to his presence. <em>(At least that what Will Eisner</em> says. )*</p>
 <p>*Author of The Spirit and the cartoonist who coined the phrase <strong>Sequential Art.</strong></p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
 </blockquote>
 <blockquote>
 <p>A slant going downwards from left to right would feel more natural to the English reading eye.</p>
 <p>This is a very insightful observation. Thanks.</p>
-<sup class="fn"><a href="#fn3" id="fnref3">3</a></sup>
+<sup class="fn"><a href="#fn-s7-2" id="fnref-s7-2">2</a></sup>
 </blockquote>
 <blockquote>
 <p><strong>"Kirby Dots"</strong></p>
 <p>Awesome.</p>
 <p>Awesome because of the suggestion, and awesome because you said "Kirby Dots."</p>
-<sup class="fn"><a href="#fn4" id="fnref4">4</a></sup>
+<sup class="fn"><a href="#fn-s7-3" id="fnref-s7-3">3</a></sup>
 </blockquote>
 <p>On the Sonoda influence. From Rifle Maid comments (May 2010):</p>
 <blockquote>
@@ -880,13 +867,13 @@
 <p>"Retro-Future" is a term used by modern designers to describe designs that are inspired by the aforementioned concept vehicles. Cars of the 1950's, many of with were inspired by jet aircraft, were described at the time as simply being "futuristic."</p>
 <p>Retro-futurism harks back to past generations' visions of the future.</p>
 </blockquote>
-<p>He namechecked the <strong>Lincoln Futura</strong>: <em>"And if you can't tell me why that particular car is famous, you have to turn in your fan girl membership card."</em></p>
 <p>On the death of action strips. From Killer Camaero comments (Dec 2008):</p>
 <blockquote>
 <p>Yea the only action strips are holdovers from the golden age of comics like <strong>Dick Tracy</strong>, and <strong>Brenda Starr</strong>: Reporter. But even those are watered far down from their former glory.</p>
 <p>Have you ever read early <strong>Dick Tracy?</strong> In the first week, crooks kidnap his fiance', shoot her father in the chest, steal his life savings, and sucker punch Dick with a billy club when he tries to intercede. <em>(This all happens on the page, no chickenshit cutting away or hinting at violence!)</em></p>
 <p>When Dick comes to, he surveys the wreckage of his life and swears a bitter oath on his fiance's father's corps that he will become the scourge of crime. <em>(Yea, I know, it sounds all Batmanny. Hey, it was the 1930's. A lot of people were swearing vengeful oaths against crime back then. Every other alley was full of kneeling dudes, cradling a recently deceased loved one in one hand and raising their free hand toward the heavens begging the almighty for the power to lay their enemies low. You couldn't sleep with all the oaths being belted out.)</em></p>
 <p>Anyway, if someone approached a modern comic syndicate with <strong>Dick Tracy's</strong> exact premise and events, he'd be shown the door. Newspaper comics are in a sad state, in my opinion.</p>
+<sup class="fn"><a href="#fn-s7-4" id="fnref-s7-4">4</a></sup>
 </blockquote>
 <p>On robots and the future. From Automatic Clothing Chute comments (Jan 2009):</p>
 <blockquote>
@@ -900,12 +887,12 @@
 <p>It reminds me of an episode of "Mail Call" I saw in which I spotted a <strong>Cobra symbol</strong> spray painted discreetly on the turret of self propelled artillery piece.</p>
 <p>We geeks are everywhere!</p>
 </blockquote>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> And from PTD Color comments (Nov 2010):</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> When the fan suggested directional arrows, John cited <strong>Will Eisner</strong>:</li><li id="fn3"><a href="#fnref3" class="fn-back">&uarr;</a> SuichiTanaka noticed that the angled frames on Ka Bume made the page read right-to-left, like manga. John agreed (Jan 2009):</li><li id="fn4"><a href="#fnref4" class="fn-back">&uarr;</a> On the same post, InsolentWhelp suggested <strong>Kirby Dots</strong> for the energy blast effects. John was delighted:</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s7-1"><a href="#fnref-s7-1" class="fn-back">&uarr;</a> And from PTD Color comments (Nov 2010):</li><li id="fn-s7-2"><a href="#fnref-s7-2" class="fn-back">&uarr;</a> SuichiTanaka noticed that the angled frames on Ka Bume made the page read right-to-left, like manga. John agreed (Jan 2009):</li><li id="fn-s7-3"><a href="#fnref-s7-3" class="fn-back">&uarr;</a> On the same post, InsolentWhelp suggested <strong>Kirby Dots</strong> for the energy blast effects. John was delighted:</li><li id="fn-s7-4"><a href="#fnref-s7-4" class="fn-back">&uarr;</a> He namechecked the <strong>Lincoln Futura</strong>: <em>"And if you can't tell me why that particular car is famous, you have to turn in your fan girl membership card."</em></li></ol></div>
 
 </div>
 </details>
-<details class="accordion-section" id="s7">
-<summary class="section-header"><span class="section-number">08</span><span class="section-title">What Could Have Been</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
+<details class="accordion-section" id="s8">
+<summary class="section-header"><span class="section-number">09</span><span class="section-title">What Could Have Been</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
 <div class="section-hero"><img src="img/pieces/dmv-a-new-breed-JohnStaton.jpg" alt="What Could Have Been" loading="lazy"></div>
 <p><strong>Female Drew.</strong> Repeatedly considered, never decided. The most specific trigger came from bandeau's <strong>Vash</strong> cosplay on Cold Weather Gear (Dec 2008). After seeing her photos, John wrote: <em>"Curious thing, I was flirting with the idea of making AJ's partner female. (Since I'm not yet published, I can change the cannon at will. I know it doesn't necessarily mean I should, but I can.) Anyway, these pictures are a strong argument in favor of a female Drew."</em></p>
@@ -929,17 +916,16 @@
 <p>You see there are only four <a href="http://fav.me/d1st48s" target="_blank" rel="noopener"><strong>Attack-Maids</strong></a>, one for each branch of the service. <em>(Make sure to read the stats. :D)</em></p>
 <p>And yes, it <em>has</em> occurred to me, they would be useful in helping <em>certain other maids</em> out of a bind.</p>
 </blockquote>
-<p>(The link points to the Gridiron Man deviation, which features military-themed pin-up maids.)</p>
 <h3>Shared Universe</h3>
 <blockquote>
 <p>I don't rule out the idea of revisiting <strong>Deeds</strong> and <strong>Ferdy</strong>. As a matter of fact my story of <strong>The World's Most Dangerous Bookstore</strong> takes place ostensibly in the same universe.</p>
-<sup class="fn"><a href="#fn1" id="fnref1">1</a></sup>
+<sup class="fn"><a href="#fn-s8-1" id="fnref-s8-1">1</a></sup>
 </blockquote>
 <p>(<strong>Daniel Dukke and Ferdinand Fox</strong> and <strong>The Most Dangerous Bookstore</strong> share a universe with each other. Not with DMV.)</p>
 <blockquote>
 <p>Whenever I look at this picture, I want to do more stuff with the <strong>Streamers</strong>, and one day, I definitely will. For now I want to focus on <strong>America Jones.</strong></p>
 <p>Coming up with ideas has never been a problem for me. I suppose I should consider myself lucky in that respect. My challenge has always been focusing on one thing.</p>
-<sup class="fn"><a href="#fn2" id="fnref2">2</a></sup>
+<sup class="fn"><a href="#fn-s8-2" id="fnref-s8-2">2</a></sup>
 </blockquote>
 <p>The <a href="https://www.deviantart.com/johnstaton/art/More-American-Streamers-109517918" target="_blank" rel="noopener">More American Streamers</a> description (Jan 14, 2009) description (Jan 14, 2009):</p>
 <blockquote>
@@ -957,49 +943,49 @@
 <p>I wish it would become a show some day. Then I could fulfill my lifelong ambition of spending my dotage awash in decadence and loose women.</p>
 </blockquote>
 <p><a href="https://www.deviantart.com/johnstaton/art/Car-and-Driver-550753092" target="_blank" rel="noopener">Car and Driver</a> (August 19, 2016) was the last DMV post. Nothing about DMV appears anywhere in the archive after that.</p>
-<div class="footnotes"><ol><li id="fn1"><a href="#fnref1" class="fn-back">&uarr;</a> From Meter and Maid comments (June 2011), when asked about revisiting Daniel Dukke and Ferdinand Fox:</li><li id="fn2"><a href="#fnref2" class="fn-back">&uarr;</a> From More American Streamers comments (July 2011), on where his creative focus was:</li></ol></div>
+<div class="footnotes"><ol><li id="fn-s8-1"><a href="#fnref-s8-1" class="fn-back">&uarr;</a> From Meter and Maid comments (June 2011), when asked about revisiting Daniel Dukke and Ferdinand Fox:</li><li id="fn-s8-2"><a href="#fnref-s8-2" class="fn-back">&uarr;</a> From More American Streamers comments (July 2011), on where his creative focus was:</li></ol></div>
 
 </div>
 </details>
 
 </main>
 <footer class="site-footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-divider-accent"></div>
-      <div class="footer-brand-name">John Staton</div>
-      <p class="footer-brand-desc">An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.</p>
-      <div class="footer-brand-tag">Fan Archive &middot; Est. 2026</div>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Navigate</div>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Full Gallery</a></li>
-        <li><a href="about.html">About This Site</a></li>
-        <li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="guestbook.html">Guestbook</a></li>
-        <li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Archive</div>
-      <ul class="footer-links">
-        <li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Remembering John</div>
-      <ul class="footer-links">
-        <li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
-        <li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
-  </div>
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-divider-accent"></div>
+<div class="footer-brand-name">John Staton</div>
+<p class="footer-brand-desc">An archive dedicated to the art, characters, and worlds of John Staton. Independent and unofficial.</p>
+<div class="footer-brand-tag">Fan Archive &middot; Est. 2026</div>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Navigate</div>
+<ul class="footer-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="gallery.html">Full Gallery</a></li>
+<li><a href="about.html">About This Site</a></li>
+<li><a href="collaborators.html">Friends &amp; Collaborators</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="guestbook.html">Guestbook</a></li>
+<li><a href="https://github.com/remembering-john-staton/remembering-john-staton.github.io" target="_blank">GitHub</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Archive</div>
+<ul class="footer-links">
+<li><a href="https://www.deviantart.com/johnstaton" target="_blank">DeviantArt</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Remembering John</div>
+<ul class="footer-links">
+<li><a href="https://rememberingjohn.info/" target="_blank" rel="noopener">Celebration of Life</a></li>
+<li><a href="https://www.spotfund.com/story/06485038-d752-4ca8-bd28-b1c5b1574542?SFID=RememberingJohnStaton" target="_blank" rel="noopener">Donate</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders. Unofficial.</div>
+</div>
 </footer>
 <script>
 function openSection(id){const el=document.getElementById(id);if(el&&!el.open)el.open=true;setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),50)}
