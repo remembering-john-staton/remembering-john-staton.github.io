@@ -84,6 +84,17 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .footer-divider-accent{width:28px;height:1px;background:#7c1f26;margin-bottom:4px}
 @media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:32px}.site-footer{padding:48px 24px 32px}.vr-grid{grid-template-columns:1fr}}
 @media(max-width:600px){main{padding-left:20px;padding-right:20px}blockquote{padding:14px 16px}.section-header{padding:16px 20px}.section-body{padding:0 20px 32px}.section-hero{margin:0 -20px 24px}.toc{padding:20px 22px}}
+
+  .gear-summary{margin-bottom:36px;padding:24px;background:rgba(0,0,0,0.18);border:1px solid rgba(240,232,218,0.06);border-radius:6px}
+  .gear-summary h3{margin-top:0;margin-bottom:16px;font-size:16px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(240,232,218,0.45)}
+  .gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gear-item{padding:12px 14px;background:rgba(0,0,0,0.15);border-radius:4px}
+  .gear-name{display:block;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold);margin-bottom:4px}
+  .gear-desc{font-size:12px;line-height:1.55;color:rgba(240,232,218,0.45)}
+  @media(max-width:600px){.gear-grid{grid-template-columns:1fr}}
+
+  .section-hero-sm{max-width:480px;margin-left:auto;margin-right:auto}
+  .section-hero-sm img{border-radius:6px}
 </style>
 </head>
 <body>
@@ -350,7 +361,17 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 <details class="accordion-section" id="s3">
 <summary class="section-header"><span class="section-number">04</span><span class="section-title">Her Arsenal</span><span class="section-chevron material-symbols-rounded">expand_more</span></summary>
 <div class="section-body">
-<div class="section-hero"><img src="img/pieces/ptd-parking-ticket-dispenser-JohnStaton.jpg" alt="Her Arsenal" loading="lazy"></div>
+<div class="section-hero section-hero-sm"><img src="img/pieces/ptd-parking-ticket-dispenser-JohnStaton.jpg" alt="Her Arsenal" loading="lazy"></div>
+<div class="gear-summary">
+<h3>AJ's Kit</h3>
+<div class="gear-grid">
+<div class="gear-item"><span class="gear-name">PTD</span><span class="gear-desc">Parking Ticket Dispenser. 250 carbon nanotube tickets at 300 m/s. Life and debt in her hands.</span></div>
+<div class="gear-item"><span class="gear-name">Palomino 61M</span><span class="gear-desc">Assault PTD. Rifle variant. Papers a man to a wall from 250 yards.</span></div>
+<div class="gear-item"><span class="gear-name">Thug Zapper</span><span class="gear-desc">Wireless taser. Focused pulses of ball lightning. The future's answer to Texas Ball Lightning.</span></div>
+<div class="gear-item"><span class="gear-name">Scouter</span><span class="gear-desc">Dragonball Z eyepiece. Fan-suggested: measures parking debt via central database lookup.</span></div>
+<div class="gear-item"><span class="gear-name">The Badge</span><span class="gear-desc">Parking meter design. Inspired by Galaxy Rangers.</span></div>
+<div class="gear-item"><span class="gear-name">Maglev Holster</span><span class="gear-desc">PTD floats to her hand. Galaxy Rangers strap mechanism meets BSG holster slit.</span></div>
+</div></div>
 <p><strong>The name.</strong> From There Can Be Only Wha? comments:</p>
 <blockquote>
 <p>The pistol is called a <strong>Dispenser.</strong> I wanted an ironic, innocuous sounding name. (Although, oddly you're by no means the first person to suggest <em>"Violator."</em>)</p>
