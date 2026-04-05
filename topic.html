@@ -1246,6 +1246,98 @@ async function init() {
 </div>
 
     `;
+
+    // ── HSR: scroll-driven image swap ────────────────────────────
+    const heroImg = document.getElementById('heroImg');
+    const heroWrap = heroImg ? heroImg.closest('.hero-image-wrap') : null;
+    const heroEl   = heroImg ? heroImg.closest('.hero') : null;
+
+    if (heroWrap && heroImg) {
+      // Inject scoped override styles
+      const hsrStyle = document.createElement('style');
+      hsrStyle.textContent = `
+        .hero-image-wrap.hsr-mode::after { opacity: 0 !important; }
+        .hero-image-wrap.hsr-mode img {
+          object-fit: contain !important;
+          object-position: center center !important;
+          filter: none !important;
+        }
+        .hero-image-wrap.hsr-mode .hsr-img-b {
+          position: absolute; inset: 0;
+          width: 100%; height: 100%;
+          object-fit: contain;
+          object-position: center;
+          opacity: 0;
+          transition: opacity 0.55s ease;
+        }
+        .hero-image-wrap.hsr-mode img:not(.hsr-img-b) {
+          position: absolute; inset: 0;
+          transition: opacity 0.55s ease;
+        }
+      `;
+      document.head.appendChild(hsrStyle);
+
+      heroWrap.classList.add('hsr-mode');
+      heroWrap.style.background = 'var(--ink)';
+
+      // Second image layer for crossfade
+      const imgB = document.createElement('img');
+      imgB.className = 'hsr-img-b';
+      imgB.alt = '';
+      heroWrap.appendChild(imgB);
+
+      let activeImg = heroImg;
+      let waitingImg = imgB;
+      let lastSrc = heroImg.src;
+
+      function swapTo(src) {
+        if (!src || src === lastSrc) return;
+        lastSrc = src;
+        waitingImg.src = src;
+        waitingImg.style.opacity = '1';
+        activeImg.style.opacity = '0';
+        const a = activeImg, w = waitingImg;
+        activeImg = w;
+        waitingImg = a;
+      }
+
+      const imageMap = {
+        'Trina':            'img/pieces/school-girl-color-JohnStaton.jpg',
+        'OttØ':             'img/pieces/bad-boy-bot-JohnStaton.jpg',
+        'Lori Richmond':    'img/pieces/evil-prom-queen-JohnStaton.jpg',
+        'Patrick':          'img/pieces/gridiron-man-JohnStaton.jpg',
+        'Erin Scissorhands':'img/pieces/erin-scissorhands-JohnStaton.jpg',
+      };
+      const defaultSrc = 'img/pieces/golden-boyfriend-JohnStaton.jpg';
+
+      // Preload all images
+      Object.values(imageMap).concat([defaultSrc]).forEach(src => {
+        const p = new Image(); p.src = src;
+      });
+
+      // Watch character headers
+      const charEls = loreBlock.querySelectorAll('.lore-char');
+      const charObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const src = imageMap[e.target.textContent.trim()];
+            if (src) swapTo(src);
+          }
+        });
+      }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
+      charEls.forEach(el => charObserver.observe(el));
+
+      // Reset to default when intro section comes back into view
+      const introH2 = loreBlock.querySelector('.lore-h2');
+      if (introH2) {
+        const introObserver = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) swapTo(defaultSrc); });
+        }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+        introObserver.observe(introH2);
+      }
+    }
+    // ─────────────────────────────────────────────────────────────
+
     descEl.appendChild(loreBlock);
   }
 
