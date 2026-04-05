@@ -1053,7 +1053,7 @@ async function init() {
     descEl.appendChild(loreBlock);
   }
 
-  if (topicId === 'hsr') {
+  if (topicId === 'high-school-romance') {
     const descEl = document.getElementById('topicDesc');
     const loreBlock = document.createElement('div');
     loreBlock.className = 'streamers-lore';
@@ -1065,57 +1065,42 @@ async function init() {
         font-size: 22px; font-weight: 600; color: rgba(240,232,218,0.85);
         margin: 56px 0 28px; padding-bottom: 12px;
         border-bottom: 1px solid rgba(240,232,218,0.1);
-        font-family: 'Lora', serif;
-        letter-spacing: 0.01em;
+        font-family: 'Lora', serif; letter-spacing: 0.01em;
       }
       .streamers-lore .lore-section-title:first-child { margin-top: 0; }
-      .streamers-lore .lore-h2 {
-        font-size: 17px; font-weight: 600; color: rgba(240,232,218,0.7);
-        margin: 36px 0 14px;
-      }
-      .streamers-lore .lore-h3 {
-        font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-        color: rgba(240,232,218,0.35); margin: 32px 0 14px;
-      }
-      .streamers-lore p {
-        font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.65);
-        margin-bottom: 16px;
-        font-family: 'system-ui', -apple-system, sans-serif;
-      }
-      .streamers-lore blockquote {
-        border-left: 2px solid rgba(196,154,108,0.35);
-        background: rgba(240,232,218,0.025);
-        padding: 20px 24px; margin: 18px 0 22px;
-        font-style: italic; font-size: 17px; line-height: 1.85;
-        color: rgba(240,232,218,0.78);
-        border-radius: 0 4px 4px 0;
-        font-family: 'system-ui', -apple-system, sans-serif;
-      }
+      .streamers-lore .lore-h2 { font-size: 17px; font-weight: 600; color: rgba(240,232,218,0.7); margin: 36px 0 14px; }
+      .streamers-lore .lore-h3 { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(240,232,218,0.35); margin: 32px 0 14px; }
+      .streamers-lore p { font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.65); margin-bottom: 16px; font-family: 'system-ui', -apple-system, sans-serif; }
+      .streamers-lore blockquote { border-left: 2px solid rgba(196,154,108,0.35); background: rgba(240,232,218,0.025); padding: 20px 24px; margin: 18px 0 22px; font-style: italic; font-size: 17px; line-height: 1.85; color: rgba(240,232,218,0.78); border-radius: 0 4px 4px 0; font-family: 'system-ui', -apple-system, sans-serif; }
       .streamers-lore blockquote b { font-weight: 600; font-style: normal; color: rgba(240,232,218,0.9); }
       .streamers-lore blockquote i { font-style: italic; }
       .streamers-lore .fn { font-size: 12px; color: rgba(196,154,108,0.6); vertical-align: super; text-decoration: none; font-family: system-ui; }
       .streamers-lore .fn:hover { color: rgba(196,154,108,0.9); }
-      .streamers-lore .sources {
-        margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(240,232,218,0.07);
-      }
-      .streamers-lore .sources h4 {
-        font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-        color: rgba(240,232,218,0.25); margin-bottom: 16px;
-      }
-      .streamers-lore .sources li {
-        font-size: 13px; color: rgba(240,232,218,0.35); margin-bottom: 6px; line-height: 1.5;
-        font-family: system-ui, sans-serif;
-      }
+      .streamers-lore .sources { margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(240,232,218,0.07); }
+      .streamers-lore .sources h4 { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(240,232,218,0.25); margin-bottom: 16px; }
+      .streamers-lore .sources li { font-size: 13px; color: rgba(240,232,218,0.35); margin-bottom: 6px; line-height: 1.5; font-family: system-ui, sans-serif; }
       .streamers-lore .sources a { color: rgba(196,154,108,0.6); text-decoration: none; }
       .streamers-lore .sources a:hover { color: rgba(196,154,108,0.9); text-decoration: underline; }
+      .streamers-lore details.scene-accordion { margin: 28px 0 32px; border: 1px solid rgba(196,154,108,0.2); border-radius: 3px; background: rgba(240,232,218,0.02); }
+      .streamers-lore details.scene-accordion summary { padding: 16px 22px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(196,154,108,0.65); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; font-family: system-ui, sans-serif; transition: color 0.2s; user-select: none; }
+      .streamers-lore details.scene-accordion summary::-webkit-details-marker { display: none; }
+      .streamers-lore details.scene-accordion summary::before { content: '+'; font-size: 16px; font-weight: 300; color: rgba(196,154,108,0.45); transition: transform 0.25s; flex-shrink: 0; }
+      .streamers-lore details.scene-accordion[open] summary::before { content: '\2212'; }
+      .streamers-lore details.scene-accordion summary:hover { color: rgba(196,154,108,0.9); }
+      .streamers-lore .scene-body { padding: 0 24px 28px; border-top: 1px solid rgba(240,232,218,0.06); }
+      .streamers-lore .scene-body p { font-size: 16px; color: rgba(240,232,218,0.6); margin-bottom: 14px; }
+      .streamers-lore .scene-body .scene-action { font-style: italic; color: rgba(240,232,218,0.42); }
+      .streamers-lore .scene-body .scene-speaker { font-weight: 600; font-style: normal; color: rgba(240,232,218,0.75); }
+      .streamers-lore .scene-body .scene-divider { width: 28px; height: 1px; background: rgba(240,232,218,0.1); margin: 22px 0; }
+      .streamers-lore .scene-body .scene-note { font-size: 13px; color: rgba(240,232,218,0.28); font-style: italic; margin-top: 20px; font-family: system-ui, sans-serif; }
     `;
     document.head.appendChild(style);
 
     loreBlock.innerHTML = `
 
-<div class="lore-h2">The Project That Flew Apart</div>
+<div class="lore-h2">The Doomed High School Romance</div>
 
-<p>This one started as a collaboration. John and a studio mate were working on a graphic novel proposal together. He was deep into <i>Tengo Tenge</i> at the time and wanted something set in a cutthroat, fist-fight-filled bastardization of high school life. His collaborator wanted to write a romantic comedy. These are not compatible ambitions.</p>
+<p>This one started as a collaboration. John and a studio mate were working on a graphic novel proposal together. He was deep into <a href="https://en.wikipedia.org/wiki/Tenjho_Tenge" style="color:rgba(196,154,108,0.7)"><i>Tengo Tenge</i></a> at the time and wanted something set in a cutthroat, fist-fight-filled bastardization of high school life. His collaborator wanted to write a romantic comedy. These are not compatible ambitions.</p>
 
 <blockquote>The project eventually flew apart under the shearing force of two such utterly incompatible ideas.<a class="fn" href="#h-fn1">1</a></blockquote>
 
@@ -1125,9 +1110,9 @@ async function init() {
 
 <div class="lore-h2">The World</div>
 
-<p>A futuristic private high school where human teenagers and robots go to class together. The premise isn't played for obvious comedy. John had a specific reason why robots would need to attend school at all:</p>
+<p>A futuristic private high school where human teenagers and robots go to class together. The premise is not played for obvious comedy. John had a specific reason why robots would need to attend school at all:</p>
 
-<blockquote>In the future, artificial intelligence is so advanced that it is deemed too hard to program complex human social interaction into robots on a mass production scale. Robots coming out of factories are either hopelessly naive, like Data from Star Trek, or dangerously crazy like Skynet. The only solution to get machines accustomed to interacting with humans is to send them to school. Of course, in addition to their other lessons, some of them fall in love.<a class="fn" href="#h-fn4">4</a></blockquote>
+<blockquote>In the future, artificial intelligence is so advanced that it is deemed too hard to program complex human social interaction into robots on a mass production scale. Robots coming out of factories are either hopelessly naive, like <b><a href="https://en.wikipedia.org/wiki/Data_(Star_Trek)" style="color:rgba(196,154,108,0.7)">Data</a></b> from Star Trek, or dangerously crazy like <b><a href="https://en.wikipedia.org/wiki/Skynet_(Terminator)" style="color:rgba(196,154,108,0.7)">Skynet</a></b>. The only solution to get machines accustomed to interacting with humans is to send them to school. Of course, in addition to their other lessons, some of them fall in love.<a class="fn" href="#h-fn4">4</a></blockquote>
 
 <p>A few other details he dropped across the comment threads: cancer was wiped out a generation before the story starts, so smoking and recreational tanning are rampant. Optical surgery is mandatory, meaning contact lenses now exist only for communications. You get your messages through your eyes. Voyeurs no longer sell candid photos of girls; they privately broadcast video in exchange for electronic fund transfers, "very convenient for one with the future equivalent of wi-fi in his head."<a class="fn" href="#h-fn5">5</a></p>
 
@@ -1143,7 +1128,7 @@ async function init() {
 
 <p>She's mechanically capable in a way that reads as supernatural. John noted she's "freakishly strong from hanging around machines all day," though he didn't give her the corresponding musculature because, in his words, "that's just not cute lookin'."<a class="fn" href="#h-fn7">7</a> She carries a comically large wrench.</p>
 
-<p>Her character design went through at least two full iterations. The first, <i>Flower Power</i>, was deemed too quirky; the second, <i>School Girl</i>, was the conventional revision. John described her in the third design pass as "the homewrecker destined to cause so much strife between Lori and Ott0."<a class="fn" href="#h-fn8">8</a></p>
+<p>Her design went through at least two full iterations. The first, <i>Flower Power</i>, was deemed too quirky; the second, <i>School Girl</i>, was the conventional revision. John described her in the third pass as "the homewrecker destined to cause so much strife between Lori and Ott0."<a class="fn" href="#h-fn8">8</a></p>
 
 <p>He also admitted: "My own experience with high school love triangles is a tad on the non-existent side."<a class="fn" href="#h-fn9">9</a></p>
 
@@ -1151,13 +1136,13 @@ async function init() {
 
 <p>The bad boy robot. Motorcycle-riding, gold-plated, inexplicably enrolled at a private high school.<a class="fn" href="#h-fn10">10</a> He has gyroscopic equilibrium so he can strut in perfectly simulated slow motion while blasting music on his internal sound system. His sensors are tactical grade: he can track 200 targets simultaneously.</p>
 
-<p>His backstory was never resolved. John floated four options:</p>
+<p>John floated four possible origin stories:</p>
 
-<blockquote>Is he a high-end military prototype, expertly programmed to piss off the fathers of rich young women and steal the lunch money from weak young men? Is he a teenage boy, disfigured in a horrible accident? Is he a teenage boy who had his brain swapped into a killer robot chassis because he thought it would be a "bitchin' thing to do"? Or is he simply a mass produced personal computer/cell phone, like out of <i>Chobits</i>? No one possibility has stuck out to me as the most fun.<a class="fn" href="#h-fn10">10</a></blockquote>
+<blockquote>Is he a high-end military prototype, expertly programmed to piss off the fathers of rich young women and steal the lunch money from weak young men? Is he a teenage boy, disfigured in a horrible accident? Is he a teenage boy who had his brain swapped into a killer robot chassis because he thought it would be a "bitchin' thing to do"? Or is he simply a mass produced personal computer/cell phone, like out of <i><a href="https://en.wikipedia.org/wiki/Chobits" style="color:rgba(196,154,108,0.7)">Chobits</a></i>? No one possibility has stuck out to me as the most fun.<a class="fn" href="#h-fn10">10</a></blockquote>
 
 <p>In 2012 a commenter named MayhemAce proposed that OttØ the teenager snuck into his mad scientist uncle's lab with his girlfriend to make out, and through the usual convoluted anime-style circumstances wound up merged with a killer robot chassis. John's response: "I just wanted to say, that is a GREAT idea. I've got to think on this."<a class="fn" href="#h-fn11">11</a></p>
 
-<p>Whatever his origin, his operation is straightforward. He figured out that superior strength and speed would let him procure lunch credits from smaller, frailer humans. He's a school bully. He rides a 1.2 megawatt electricycle. He and Lori are together in the way that Destro and the Baroness are together: "only, you know, in high school."<a class="fn" href="#h-fn10">10</a></p>
+<p>He's a school bully riding a 1.2 megawatt electricycle. He and Lori are together in the way that <a href="https://en.wikipedia.org/wiki/Destro_(G.I._Joe)" style="color:rgba(196,154,108,0.7)">Destro</a> and <a href="https://en.wikipedia.org/wiki/Baroness_(G.I._Joe)" style="color:rgba(196,154,108,0.7)">the Baroness</a> are together: "only, you know, in high school."<a class="fn" href="#h-fn10">10</a></p>
 
 <div class="lore-h3">Lori Richmond</div>
 
@@ -1203,7 +1188,7 @@ async function init() {
 
 <div class="lore-h3">Why Lori</div>
 
-<p>John watched <i>Peach Girl</i> and concluded that soap operas are war stories with different combatants. He cited Khan Noonien Singh:</p>
+<p>John watched <a href="https://en.wikipedia.org/wiki/Peach_Girl" style="color:rgba(196,154,108,0.7)"><i>Peach Girl</i></a> and concluded that soap operas are war stories with different combatants. He cited <a href="https://en.wikipedia.org/wiki/Khan_Noonien_Singh" style="color:rgba(196,154,108,0.7)">Khan Noonien Singh</a>:</p>
 
 <blockquote>"It has been said that social occasions are only warfare concealed." That's what sort of got me on the idea of doing something like a romance.<a class="fn" href="#h-fn16">16</a></blockquote>
 
@@ -1213,13 +1198,70 @@ async function init() {
 
 <p>He made the same point more directly, about both Lori and OttØ: "The people folks were supposed to like — bored the hell outta me."<a class="fn" href="#h-fn18">18</a></p>
 
+<p><i>If I were writing this now, I'd say that John should have just made the story about Ms. Richmond. It would have been more fun, and I bet he'd have done a better job. :)</i></p>
+
+<div class="lore-h3">The Improvised Scenes</div>
+
+<p>In February 2012 a commenter on the <i>Golden Boyfriend</i> post said OttØ was hot. John just started writing the story in the replies, in character, off the top of his head. It ran for about fifteen exchanges over a week. The commenter played herself as a new girl at the school; John played everyone else.</p>
+
+<details class="scene-accordion">
+<summary>Read some improvised scenes</summary>
+<div class="scene-body">
+
+<p><span class="scene-action">*You receive a Site-to-Sight text message on your contact lenses. (Contact lenses are only used for communications now, since optical surgery is mandatory.)*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Wink, wink, baby." <span class="scene-action">*(OttØ can fire off such messages at will from his internal comm array &mdash; even as he assures Lori that he's not checking out your a$$.)*</span></p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*Later, as you sit in the locker room getting ready for gym, you feel a cold presence behind you, accompanied by a colder voice:*</span></p>
+<p><span class="scene-speaker">Lori:</span> "You know, Ott0's sensorium is actually tactical grade. He can track an estimated 200 independent targets of a predetermined profile simultaneously, and disseminate unique telemetry to each one. And those are just his market specs.</p>
+<p>So I suppose you could say he was designed to have a roving eye.</p>
+<p>Me? I'm only human. I don't have all that, so what that means is I can only track one target at a time. But that target gets all my attention."</p>
+<p><span class="scene-action">*Lori looks you up and down with undisguised disdain.*</span></p>
+<p><span class="scene-speaker">Lori:</span> "It uh, doesn't happen often? No surprise there. And just so you know, it will never happen here." <span class="scene-action">*The prom queen walks past you without waiting for a response.*</span></p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*As you try to shake off the afternoon's unexpected chill during the long walk home, your thoughts are drowned out by the unmistakable whine of the drive turbine of a recumbent electricycle. OttØ is at the wheel, and Lori is conspicuously absent from her usual perch on the passenger seat.*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Goin' my way?"</p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*You sit behind OttØ on his fancy steed and wrap your arms around his literally chiseled frame. You are surprised to feel that his metallic carapace is actually warm beneath his school uniform. A second later the wind is slapping your face and your thighs are vibrating with the banshee scream of the electricycle's ravenous motor.*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Where to, babe?"</p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*Suddenly OttØ veers hard to the right. In the next instant, a cherry red Pegasus zooms into view, big as life &mdash; passing through the space occupied by OttØ's cycle scant seconds ago. Everyone in school knows that car. Everyone knows who drives it. From your vantage point behind OttØ, you notice a stream of lilting blonde hair from the occupant of the passenger seat.*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Oh, this shit definitely does..not..compute!"</p>
+<p><span class="scene-action">*The 1.2 Megawatt battery obediently surrenders raw voltage into the electricycle's roiling turbine and the vehicle rockets in pursuit.*</span></p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*After a few more nerve-racking miles, the coupe flashes its "up" blinker and climbs effortlessly into the sky where the electricycle can't follow. OttØ brings his vehicle to a stop. Showcasing the functional subtleties of a high-end synthetic sentience, he talks to himself:*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Lori hates that jerk almost as much as I do. She's totally just trying to make me jealous."</p>
+
+<div class="scene-divider"></div>
+
+<p><span class="scene-action">*OttØ steps off his bike and walks over to you.*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "So it's not all about you, is it? I don't see that attitude much in humans &mdash; or machines for that matter."</p>
+<p><span class="scene-action">*He leans over and gives you a peck on the forehead.*</span></p>
+<p><span class="scene-speaker">OttØ:</span> "Why couldn't I have fallen for someone like you?"</p>
+<p><span class="scene-action">*The gold robot in the boy's school uniform gets back on his electricycle and peels out. A litany of air foils and exhaust vectors deploy, changing the profile of the small vehicle to something even meaner. Relieved of a human occupant, OttØ really opens up his steed. He bolts off with a speed that makes your previous harrowing ride look like slow motion.*</span></p>
+<p><span class="scene-action">*But why is he heading back in the direction of the school?*</span></p>
+
+<p class="scene-note">From the <a href="https://www.deviantart.com/johnstaton/art/Golden-Boyfriend-105668212" style="color:rgba(196,154,108,0.5)">Golden Boyfriend</a> comment thread, Feb&ndash;Mar 2012. Written by John Staton in reply to a commenter, off the top of his head, over the course of a week. The thread ends here.</p>
+
+</div>
+</details>
+
 <div class="lore-h2">What Happened to It</div>
 
-<p>John pitched it to Tokyopop. Tokyopop went out of business. He noted a green light was probably unlikely regardless: the company felt his character designs were too sexy for the teen girls market they were targeting.<a class="fn" href="#h-fn4">4</a></p>
+<p>John pitched it to <a href="https://en.wikipedia.org/wiki/Tokyopop" style="color:rgba(196,154,108,0.7)">Tokyopop</a>. Tokyopop went out of business. He noted a green light was probably unlikely regardless: the company felt his character designs were too sexy for the teen girls market they were targeting.<a class="fn" href="#h-fn4">4</a></p>
 
 <p>He posted the characters in November and December 2008 and kept the project in mind for years. In July 2012, after a wave of reader comments on the <i>Flower Power</i> post, he wrote: "I'm talking to other publishers now about other projects. I may have to revisit this eventually."<a class="fn" href="#h-fn19">19</a></p>
 
-<p>He called the concept "defunct" and "ill-fated" and "doomed" and kept coming back to it anyway. The comment threads on these posts ran for years. People found the characters and wanted more.</p>
+<p>He called the concept "defunct" and "ill-fated" and "doomed" and kept coming back to it anyway. Maybe in a different time or world, he could have or would have put these out. The comment threads on these posts ran for years. People found the characters and wanted more. He was just that good at making characters.</p>
 
 <div class="sources">
 <h4>Sources</h4>
