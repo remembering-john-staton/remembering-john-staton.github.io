@@ -568,6 +568,7 @@ async function init() {
   // DDFF special case: replace scroll cue with a proper "Read the comic" button
   // and inject "In his own words" block into the description area
   if (topicId === 'dukke-fox') {
+    document.getElementById('metaYearsWrap').style.display = 'none';
     const cue = document.getElementById('scrollCue');
     cue.innerHTML = `
       <a href="ddff-reader.html" style="
