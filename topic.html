@@ -415,10 +415,7 @@
     <h1 class="topic-title" id="topicTitle">Loading&hellip;</h1>
     <div class="topic-divider"></div>
     <div class="topic-meta">
-      <div class="topic-meta-item">
-        <div class="topic-meta-label">Pieces</div>
-        <div class="topic-meta-value" id="metaPieces">-</div>
-      </div>
+
       <div class="topic-meta-item" id="metaYearsWrap" style="display:none">
         <div class="topic-meta-label">Years</div>
         <div class="topic-meta-value" id="metaYears">-</div>
@@ -436,7 +433,7 @@
 <section class="pieces-section" id="piecesSection">
   <div class="pieces-header">
     <div class="pieces-header-title">Collection</div>
-    <div class="pieces-header-count" id="piecesCount"></div>
+
   </div>
   <div class="sort-bar" id="sortBar" style="display:none">
     <span class="sort-label">Sort</span>
@@ -1445,7 +1442,7 @@ async function init() {
 
   // Piece count from topic data initially
   if (topic.pieces) {
-    document.getElementById('metaPieces').textContent = topic.pieces;
+    // piece count removed
   }
 
   // Load pieces
@@ -1477,8 +1474,8 @@ async function init() {
   }
 
   // Update counts and year range
-  document.getElementById('metaPieces').textContent = pieces.length;
-  document.getElementById('piecesCount').textContent = `${pieces.length} piece${pieces.length !== 1 ? 's' : ''}`;
+  // piece count removed
+  // piece count removed
 
   const years = pieces.map(p => { const m = p.date && p.date.match(/\b\d{4}\b/); return m ? parseInt(m[0]) : null; }).filter(Boolean);
   if (years.length) {
