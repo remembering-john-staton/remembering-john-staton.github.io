@@ -753,7 +753,31 @@ async function init() {
     descEl.appendChild(ddffLoreBlock);
   }
 
-  // Streamers special case: inject full lore summary below description
+  // DMV special case: add "Read the DMV Bible" button
+  if (topicId === 'dmv') {
+    const cue = document.getElementById('scrollCue');
+    cue.innerHTML = `
+      <a href="dmv-bible.html" style="
+        display:inline-flex; align-items:center; gap:16px;
+        font-family:'Lora',serif; font-size:14px; letter-spacing:0.18em; text-transform:uppercase;
+        color:#f0e8da; text-decoration:none;
+        border:1px solid rgba(240,232,218,0.55); padding:18px 36px;
+        background: rgba(240,232,218,0.07);
+        transition:background 0.2s, border-color 0.2s;
+      "
+      onmouseover="this.style.background='rgba(240,232,218,0.14)';this.style.borderColor='rgba(240,232,218,0.85)'"
+      onmouseout="this.style.background='rgba(240,232,218,0.07)';this.style.borderColor='rgba(240,232,218,0.55)'"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+        Read the DMV Universe Bible
+      </a>
+      <div style="margin-top:16px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(240,232,218,0.25)">
+        Or scroll down for individual pieces
+      </div>
+    `;
+  }
+
+    // Streamers special case: inject full lore summary below description
   if (topicId === 'streamers') {
     const descEl = document.getElementById('topicDesc');
     const loreBlock = document.createElement('div');
