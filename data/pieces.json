@@ -16202,5 +16202,41 @@
     "description": "A colored hangar scene from the Bubblegum Crisis: The Iron Age project. A red-haired pilot in a flight suit stands before a Terrapin Corps VTOL aircraft, helmet in hand.",
     "da_url": "",
     "featured": false
+  },
+  {
+    "slug": "way-of-the-warrior-cover",
+    "title": "Way of the Warrior — Rogue Squadron #1 Cover",
+    "year": 2001,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/way-of-the-warrior-cover-JohnStaton.png",
+    "medium": "Digital",
+    "colorist": "Philip J. Moyer",
+    "description": "Cover for Way of the Warrior, a Battlestar Galactica/Eyrie Productions fan comic published under the Bacon Comics Group banner. Art by Staton, colored by Philip Moyer. Credits read Larson · Staton · Moyer.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "daughters-of-ember",
+    "title": "Daughters of Ember",
+    "year": 2001,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/daughters-of-ember-JohnStaton.png",
+    "medium": "Ink",
+    "colorist": "Philip J. Moyer",
+    "description": "Two fighters face off on a desert plateau, one wielding a rainbow-edged blade and one a blade wreathed in fire. Characters from Philip Moyer’s Amber DRPG campaign. Colored by Philip J. Moyer, 2001.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "a-day-at-the-office",
+    "title": "A Day At The Office",
+    "year": 2004,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/a-day-at-the-office-JohnStaton.png",
+    "medium": "Ink",
+    "colorist": "Philip J. Moyer",
+    "description": "Corrine, Queen of Ember, and Carl Kusanagi, the Red Knight of the Fire Pattern, occupy the foreground while Catherine of Pariseau files paperwork in the background. Characters from Philip Moyer and John Biles’s Amber DRPG campaign, 2002–2004. Colored by Philip J. Moyer.",
+    "da_url": "",
+    "featured": false
   }
 ]
