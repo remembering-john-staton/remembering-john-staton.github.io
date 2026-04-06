@@ -16158,5 +16158,49 @@
     "wip": false,
     "description": "",
     "comments": []
+  },
+  {
+    "slug": "aerianne-leaps-into-action",
+    "title": "Aerianne Connor Leaps Into Action!",
+    "year": 1994,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/aerianne-leaps-into-action-JohnStaton.png",
+    "medium": "Pencil",
+    "description": "A commission drawn for a fan at the Closet of Comics in College Park. Aerianne Connor is an original character belonging to a longtime friend of John’s, first drawn here in 1994 from a sketchbook prompt.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "bgc-iron-age-stark-industries",
+    "title": "Stark Industries: Iron Man Mark II — BGC: The Iron Age",
+    "year": 2008,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/bgc-iron-age-stark-industries-JohnStaton.jpg",
+    "medium": "Digital",
+    "description": "A promotional poster for Bubblegum Crisis: The Iron Age, a fan crossover project. The piece mimics a Stark Industries product launch ad, listing Iron Man Mark II system specs against a circuit-board background.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "bgc-iron-age-ks-ok-cover",
+    "title": "Knight Sabers OK! Cover — BGC: The Iron Age Issue #3",
+    "year": 2008,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/bgc-iron-age-ks-ok-cover-JohnStaton.jpg",
+    "medium": "Digital",
+    "description": "Front page of the in-universe fan site Knight Sabers OK! for Issue #3 of Bubblegum Crisis: The Iron Age. Iron Man grapples with a Boomer in Mega Tokyo. Photo credit in-universe goes to “Lisa Vanette.”",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "bgc-iron-age-terrapin-corps",
+    "title": "Terrapin Corps Hangar — BGC: The Iron Age",
+    "year": 2008,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/bgc-iron-age-terrapin-corps-JohnStaton.png",
+    "medium": "Digital",
+    "description": "A colored hangar scene from the Bubblegum Crisis: The Iron Age project. A red-haired pilot in a flight suit stands before a Terrapin Corps VTOL aircraft, helmet in hand.",
+    "da_url": "",
+    "featured": false
   }
 ]
