@@ -202,6 +202,11 @@
     main{padding:60px 24px 80px}
   }
 </style>
+<link rel="icon" href="/img/pieces/pin-emp-2-0-JohnStaton.jpg">
+<link rel="apple-touch-icon" href="/img/pieces/pin-emp-2-0-JohnStaton.jpg">
+<meta property="og:image" content="https://remembering-john-staton.github.io/img/pieces/pin-emp-2-0-JohnStaton.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://remembering-john-staton.github.io/img/pieces/pin-emp-2-0-JohnStaton.jpg">
 </head>
 <body>
 
@@ -331,7 +336,7 @@ function render(entries) {
     return '<div class="gb-entry">' +
       '<div class="gb-entry-name">' + esc(e.name) + '</div>' +
       '<div class="gb-entry-message">' + esc(e.message) + '</div>' +
-      (e.found ? '<div class="gb-entry-found">' + esc(e.found) + '</div>' : '') +
+      (e.social ? '<div class="gb-entry-found">' + esc(e.social) + '</div>' : '') +
       (e.date ? '<div class="gb-entry-date">' + fmtDate(e.date) + '</div>' : '') +
       '</div>';
   }).join('');
@@ -347,7 +352,7 @@ async function load() {
     if (!r.ok) throw new Error(r.status);
     var rows = parseCSV(await r.text());
     var entries = rows.slice(1).map(function(row) {
-      return { date: row[0] || '', name: row[1] || 'Anonymous', message: row[2] || '', found: row[3] || '' };
+      return { date: row[0] || '', name: row[2] || 'Anonymous', message: row[1] || '', social: row[3] || '' };
     }).filter(function(e) { return e.message; });
     render(entries);
   } catch (err) {
