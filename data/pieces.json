@@ -16290,5 +16290,80 @@
     "da_url": "",
     "featured": false,
     "comic_reader": "king-and-i-reader.html"
+  },
+  {
+    "slug": "chibi-kaede-plushie-concept",
+    "title": "Chibi Kaede Plushie Concept",
+    "year": null,
+    "topic": "chibis",
+    "image": "img/pieces/chibi-kaede-JohnStaton.png",
+    "medium": "Pencil",
+    "description": "Front and rear turnaround for a Chibi Kaede plushie design. Kaede in a floral-print kimono with an obi bow, drawn to plushie-production spec. Acquired from an eBay lot.",
+    "curator_note": "Chibi Kaede I bought off of ebay in a lot. It's very cute.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "marilith-goodbye",
+    "title": "Marilith — Goodbye Post",
+    "year": 2026,
+    "topic": [
+      "published-work",
+      "sketchbook-worlds"
+    ],
+    "image": "img/pieces/marilith-goodbye-JohnStaton.jpg",
+    "medium": "Digital",
+    "description": "A Marilith piece John drew, posted by the comic's owner alongside a tribute note: \"He was the first artist I truly collaborated with. Marilith was my stepping stone into graphic novels. If it were not for John, there would be no Spinnerette, no White Heron. His talent, his kindness, and his spirit will be missed.\"",
+    "curator_note": "A Marilith piece he did with a goodbye from the owner. I'm honestly trying to find the original author, I haven't gotten around to it. He sure could draw Marilith. I gotta get a copy of that comic.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "type-717-battlemover",
+    "title": "Type 717 Chinese Battlemover",
+    "year": null,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/type-717-battlemover-JohnStaton.jpg",
+    "medium": "Ink",
+    "description": "Technical analysis sheet for the Type 717 Chinese Battlemover, Diagram 1. Front and side views with detail callouts: optics, manipulator arm, deployed road wheels and knee jet. Rendered in blueprint style on grid paper. Team Lead listed as P. Moyer. Part of the Bubblegum Crisis: The Iron Age project.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "bgc-iron-age-03-poster",
+    "title": "Bubblegum Crisis: The Iron Age #3 — In-Universe Poster",
+    "year": 2008,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/bgc-iron-age-03-poster-JohnStaton.jpg",
+    "medium": "Digital",
+    "description": "Stark Industries promotional poster for the Iron Man Mark II battle armor, designed as an in-universe ad for Bubblegum Crisis: The Iron Age Issue #3: This Year's Model. System checklist includes Arc Reactor energy generator, neurocoupled control system, holographic user interface, Unibeam laser array, and RepulsorTech units. Launch date listed as 2008-10-21.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "bgc-iron-age-03-cover",
+    "title": "Bubblegum Crisis: The Iron Age #3 — Cover",
+    "year": 2008,
+    "topic": "sketchbook-worlds",
+    "image": "img/pieces/bgc-iron-age-03-p02-JohnStaton.jpg",
+    "medium": "Digital",
+    "description": "Cover for Bubblegum Crisis: The Iron Age Issue #3: This Year's Model. Framed as a front page from the in-universe tabloid Knight Sabers OK!, dated Thursday 24 June 2032. Headline: \"Who Is Iron Man??\" Iron Man in red and gold engages a boomer in the streets of Mega Tokyo.",
+    "da_url": "",
+    "featured": false
+  },
+  {
+    "slug": "marilith-rear",
+    "title": "Marilith",
+    "year": 2007,
+    "topic": [
+      "published-work",
+      "sketchbook-worlds"
+    ],
+    "image": "img/pieces/marilith-rear-JohnStaton.jpg",
+    "medium": "Ink",
+    "description": "Marilith in full tactical kit, seen from behind, holding an assault rifle at parade rest. Signed John Harris Staton '07. Early work; the line control is already confident, the attitude fully there.",
+    "curator_note": "John's art was great even when he was young. These are memorable and honest. They're weird and have a certain... era to them. I love it.",
+    "da_url": "",
+    "featured": false
   }
 ]
