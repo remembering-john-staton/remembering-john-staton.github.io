@@ -16238,5 +16238,57 @@
     "description": "Corrine, Queen of Ember, and Carl Kusanagi, the Red Knight of the Fire Pattern, occupy the foreground while Catherine of Pariseau files paperwork in the background. Characters from Philip Moyer and John Biles’s Amber DRPG campaign, 2002–2004. Colored by Philip J. Moyer.",
     "da_url": "",
     "featured": false
+  },
+  {
+    "slug": "king-and-i-page-01",
+    "title": "The King and I — Page 1",
+    "year": 2013,
+    "topic": "sketchbook-worlds",
+    "subsection": "the-king-and-i",
+    "image": "img/pieces/king-and-i-page-01.jpg",
+    "medium": "Ink, digital color",
+    "description": "Title page. \"The King and I: Or, Why I'm More of a Cat Person.\" John narrates the opening of his autobiographical short comic about King, a German Shepherd who ruled his fenced suburban yard with the territorial ferocity of his medieval namesakes.",
+    "da_url": "",
+    "featured": false,
+    "comic_reader": "king-and-i-reader.html"
+  },
+  {
+    "slug": "king-and-i-page-02",
+    "title": "The King and I — Page 2",
+    "year": 2013,
+    "topic": "sketchbook-worlds",
+    "subsection": "the-king-and-i",
+    "image": "img/pieces/king-and-i-page-02.jpg",
+    "medium": "Ink, digital color",
+    "description": "Young John, cast as a turtle, sprints for his life while King's jaws close behind him. He narrates that a better plan would have been sending the neighborhood soccer kids into the yard while he waited safely at the fence.",
+    "da_url": "",
+    "featured": false,
+    "comic_reader": "king-and-i-reader.html"
+  },
+  {
+    "slug": "king-and-i-page-03",
+    "title": "The King and I — Page 3",
+    "year": 2013,
+    "topic": "sketchbook-worlds",
+    "subsection": "the-king-and-i",
+    "image": "img/pieces/king-and-i-page-03.jpg",
+    "medium": "Ink, digital color",
+    "description": "A tug-of-war with the boomerang. John wrestles it from King's grip in a sequence of tightening close-ups, ending with King's snarl filling the panel as the sound effect RRRRRRR thunders across the page.",
+    "da_url": "",
+    "featured": false,
+    "comic_reader": "king-and-i-reader.html"
+  },
+  {
+    "slug": "king-and-i-page-04",
+    "title": "The King and I — Page 4",
+    "year": 2013,
+    "topic": "sketchbook-worlds",
+    "subsection": "the-king-and-i",
+    "image": "img/pieces/king-and-i-page-04.jpg",
+    "medium": "Ink, digital color",
+    "description": "The escape. John hauls himself and his rabbit friend over the fence just ahead of King's bite, boomerang in hand. Final panel: everyone lands in a pile. Caption reads \"It was MY boomerang.\"",
+    "da_url": "",
+    "featured": false,
+    "comic_reader": "king-and-i-reader.html"
   }
 ]
