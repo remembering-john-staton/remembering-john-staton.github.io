@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The King and I — The John Staton Museum</title>
+<meta name="description" content="Read The King and I: Or, Why I'm More of a Cat Person — an autobiographical comic by John Staton about retrieving a plastic boomerang from the local mean dog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 0.25s ease both fade-out; }
+  ::view-transition-new(root) { animation: 0.3s ease both fade-in; }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes fade-in  { from { opacity: 0; } }
+
+  :root { --ink: #0e0608; --crimson: #7c1f26; --cream: #f0e8da; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #111; color: var(--cream); font-family: 'Lora', serif; min-height: 100vh; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(14,6,8,0.94); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,232,218,0.07);
+  }
+  .nav-back {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(240,232,218,0.4); text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+  }
+  .nav-back svg { width: 13px; height: 13px; transition: transform 0.2s; }
+  .nav-back:hover { color: var(--cream); }
+  .nav-back:hover svg { transform: translateX(-3px); }
+  .nav-center {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(240,232,218,0.45);
+  }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-mode-btn {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(240,232,218,0.35); cursor: pointer;
+    border: 1px solid rgba(240,232,218,0.12); padding: 5px 14px;
+    background: none; font-family: 'Lora', serif;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-mode-btn:hover { color: var(--cream); border-color: rgba(240,232,218,0.35); }
+  .nav-mode-btn.active { color: var(--cream); border-color: rgba(240,232,218,0.4); background: rgba(240,232,218,0.06); }
+
+  /* SCROLL READER */
+  .scroll-reader { padding-top: 57px; }
+
+  .reader-intro {
+    max-width: 640px; margin: 0 auto;
+    padding: 72px 32px 56px; text-align: center;
+  }
+  .reader-eyebrow {
+    font-size: 9px; letter-spacing: 0.38em; text-transform: uppercase;
+    color: rgba(240,232,218,0.25); margin-bottom: 16px;
+  }
+  .reader-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 46px); font-weight: 900;
+    line-height: 1.05; text-transform: uppercase; letter-spacing: -0.02em;
+    color: var(--cream); margin-bottom: 10px;
+  }
+  .reader-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 2vw, 18px); font-style: italic; font-weight: 400;
+    color: rgba(240,232,218,0.5); margin-bottom: 20px;
+  }
+  .reader-rule { width: 32px; height: 1px; background: rgba(240,232,218,0.2); margin: 0 auto 20px; }
+  .reader-blurb { font-size: 15px; line-height: 1.85; color: rgba(240,232,218,0.5); }
+  .reader-note {
+    margin-top: 20px; padding: 16px 20px;
+    border-left: 2px solid rgba(240,232,218,0.12);
+    text-align: left;
+    font-size: 13px; line-height: 1.75; color: rgba(240,232,218,0.35);
+    font-style: italic;
+  }
+  .scroll-hint {
+    margin-top: 32px; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.5; } }
+
+  .pages-scroll {
+    display: flex; flex-direction: column; align-items: center;
+    padding-bottom: 80px;
+  }
+  .page-item {
+    width: 100%; max-width: 900px;
+    padding: 0 24px;
+  }
+  .page-item img {
+    width: 100%; height: auto; display: block;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+  }
+  .page-gap { height: 6px; }
+  .page-number-label {
+    text-align: center; padding: 10px 0 4px;
+    font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(240,232,218,0.15);
+  }
+
+  /* GRID READER */
+  .grid-reader {
+    display: none; padding-top: 57px; min-height: 100vh;
+  }
+  .grid-reader.active { display: block; }
+  .grid-header {
+    padding: 48px 40px 32px; text-align: center;
+  }
+  .grid-title {
+    font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--cream); margin-bottom: 8px;
+  }
+  .grid-sub { font-size: 12px; letter-spacing: 0.2em; color: rgba(240,232,218,0.3); text-transform: uppercase; }
+  .pages-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 32px 64px;
+  }
+  .grid-thumb {
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .grid-thumb:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+  .grid-thumb img { width: 100%; height: auto; display: block; }
+  .grid-thumb-label {
+    padding: 6px 0 2px; text-align: center;
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(240,232,218,0.2);
+  }
+
+  .site-footer {
+    border-top: 1px solid rgba(240,232,218,0.06);
+    padding: 32px 40px; text-align: center;
+  }
+  .footer-copy { font-size: 11px; color: rgba(240,232,218,0.2); letter-spacing: 0.08em; }
+
+  @media (max-width: 600px) {
+    nav { padding: 14px 20px; }
+    .reader-intro { padding: 56px 20px 40px; }
+    .pages-grid { padding: 0 16px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="topic.html?id=sketchbook-worlds" class="nav-back">
+    <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 2L3 6.5L8 11"/>
+    </svg>
+    Sketchbook Worlds
+  </a>
+  <div class="nav-center">The John Staton Museum</div>
+  <div class="nav-right">
+    <button class="nav-mode-btn active" id="btnScroll" onclick="setMode('scroll')">Scroll</button>
+    <button class="nav-mode-btn" id="btnGrid" onclick="setMode('grid')">Pages</button>
+  </div>
+</nav>
+
+<div class="scroll-reader" id="scrollReader">
+  <div class="reader-intro">
+    <div class="reader-eyebrow">Sketchbook Worlds &mdash; Personal</div>
+    <div class="reader-title">The King and I</div>
+    <div class="reader-subtitle">Or, Why I'm More of a Cat Person.</div>
+    <div class="reader-rule"></div>
+    <div class="reader-blurb">Story and art by John Staton. An autobiographical short comic about King, the German Shepherd next door, a plastic magenta boomerang that cost $1.32 of lawn-mowing money, and the terrible calculation that went wrong.</div>
+    <div class="reader-note">&ldquo;Sorry about my lengthy silence. I have been working on a new, far simpler comic for the dreaded anthology, and have gone on silent running mode, to keep my nose to the grindstone. Fortunately I was given two more weeks to Finnish it, but even with that, I decided it was better to work on a more basic story. Behold, an autobiographical tale of young me as a turtle, retrieving my prized, plastic boomerang from the clutches of the local mean dog. (A little context on why I&rsquo;m more of a cat person.)&rdquo;</div>
+    <div class="scroll-hint">scroll to read &darr;</div>
+  </div>
+  <div class="pages-scroll" id="pagesScroll"></div>
+  <footer class="site-footer">
+    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders.</div>
+  </footer>
+</div>
+
+<div class="grid-reader" id="gridReader">
+  <div class="grid-header">
+    <div class="grid-title">All Pages</div>
+    <div class="grid-sub">4 pages</div>
+  </div>
+  <div class="pages-grid" id="pagesGrid"></div>
+  <footer class="site-footer" style="margin-top:64px">
+    <div class="footer-copy">Fan archive. All artwork belongs to John Staton and respective rights holders.</div>
+  </footer>
+</div>
+
+<script>
+const PAGES = [
+  { id: 'kni-page-01', label: 'Page 1', src: 'img/pieces/king-and-i-page-01.jpg' },
+  { id: 'kni-page-02', label: 'Page 2', src: 'img/pieces/king-and-i-page-02.jpg' },
+  { id: 'kni-page-03', label: 'Page 3', src: 'img/pieces/king-and-i-page-03.jpg' },
+  { id: 'kni-page-04', label: 'Page 4', src: 'img/pieces/king-and-i-page-04.jpg' },
+];
+
+function buildScrollReader() {
+  const wrap = document.getElementById('pagesScroll');
+  PAGES.forEach((page, i) => {
+    if (i > 0) {
+      const gap = document.createElement('div');
+      gap.className = 'page-gap';
+      wrap.appendChild(gap);
+    }
+    const item = document.createElement('div');
+    item.className = 'page-item';
+    item.id = page.id;
+    item.innerHTML = `
+      <img src="${page.src}" alt="${page.label}" loading="${i < 2 ? 'eager' : 'lazy'}">
+      <div class="page-number-label">${page.label}</div>
+    `;
+    wrap.appendChild(item);
+  });
+}
+
+function buildGrid() {
+  const grid = document.getElementById('pagesGrid');
+  if (grid.children.length) return;
+  PAGES.forEach((page) => {
+    const div = document.createElement('div');
+    div.className = 'grid-thumb';
+    div.innerHTML = `<img src="${page.src}" alt="${page.label}" loading="lazy"><div class="grid-thumb-label">${page.label}</div>`;
+    div.addEventListener('click', () => {
+      setMode('scroll');
+      setTimeout(() => {
+        const el = document.getElementById(page.id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    });
+    grid.appendChild(div);
+  });
+}
+
+function setMode(mode) {
+  const sr = document.getElementById('scrollReader');
+  const gr = document.getElementById('gridReader');
+  const bs = document.getElementById('btnScroll');
+  const bg = document.getElementById('btnGrid');
+  if (mode === 'grid') {
+    buildGrid();
+    sr.style.display = 'none';
+    gr.classList.add('active');
+    bg.classList.add('active');
+    bs.classList.remove('active');
+  } else {
+    sr.style.display = '';
+    gr.classList.remove('active');
+    bs.classList.add('active');
+    bg.classList.remove('active');
+  }
+}
+
+buildScrollReader();
+
+const hash = location.hash.slice(1);
+if (hash) {
+  window.addEventListener('load', () => {
+    const el = document.getElementById(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+</script>
+</body>
+</html>
