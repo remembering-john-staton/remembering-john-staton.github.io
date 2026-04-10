@@ -16336,5 +16336,17 @@
     "description": "The Next Generation in Car Theft: In the 21st century, new technologies and new attitudes about life, liberty, and the pursuit of parking spaces have changed the way of life around the globe. However, the recent upswing of global commuting, and the use of the city-encircling Megarages, has caused an escalation of automotive crime. Here, we see a typical car thief, running away with his ill-gotten gains.",
     "da_url": "",
     "featured": false
+  },
+  {
+    "slug": "snowfall",
+    "title": "Snowfall",
+    "year": 2026,
+    "topic": "evil-diva",
+    "video": "video/snowfall-JohnStaton.mp4",
+    "image": "",
+    "medium": "Animation",
+    "description": "A hand-drawn tribute animation created by a friend and collaborator to celebrate John's life, art, and the worlds he built. Made with love.",
+    "da_url": "",
+    "featured": false
   }
 ]
