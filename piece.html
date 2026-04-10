@@ -558,7 +558,7 @@ async function init() {
   } catch(e) { showNotFound('Could not load data.'); return; }
 
   const piece = pieceId
-    ? pieces.find(p => p.id === pieceId)
+    ? pieces.find(p => p.id === pieceId || p.slug === pieceId)
     : pieces[Math.floor(Math.random() * pieces.length)];
 
   if (!piece) { showNotFound(`No piece found.`); return; }
