@@ -1203,21 +1203,18 @@
   }
   .quote-photo img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    height: auto;
     display: block;
     filter: sepia(10%) contrast(1.04);
     transition: filter 0.4s ease;
   }
   .quote-photo:hover img { filter: sepia(0%) contrast(1.0); }
-  .quote-photo-main img { height: 320px; }
   .quote-photo-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
+    align-items: start;
   }
-  .quote-photo-row .quote-photo img { height: 160px; }
 
   .quote-bio-tag {
     display: none;
@@ -1256,7 +1253,7 @@
             <img src="img/pieces/k4.staton-JohnStaton.jpg" alt="John Staton" />
           </div>
           <div class="quote-photo">
-            <img src="img/john-drawing.jpg" alt="John Staton" style="object-position: center;" />
+            <img src="img/john-drawing.jpg" alt="John Staton" />
           </div>
         </div>
       </div>
