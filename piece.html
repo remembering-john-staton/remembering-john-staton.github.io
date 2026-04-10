@@ -756,11 +756,13 @@ function renderPiece(piece, allPieces, allTopics, breadcrumbTopic) {
   document.getElementById('pieceContent').innerHTML = `
     <main class="piece-hero">
       <div class="piece-image-panel">
-        <img id="mainImg" src="${piece.image}" alt="${escHtml(piece.title)}" />
+        ${piece.video
+          ? `<video id="mainVideo" src="${piece.video}" controls playsinline style="width:100%;display:block;border-radius:4px;"></video>`
+          : `<img id="mainImg" src="${piece.image}" alt="${escHtml(piece.title)}" />
         <div class="piece-image-actions">
           <button class="piece-image-btn" id="zoomBtn" title="View fullscreen">&#x2922;</button>
           <a class="piece-image-btn" id="downloadBtn" title="Download" download>&#x2913;</a>
-        </div>
+        </div>`}
         ${buildVersionsStrip(piece, allPieces)}
       </div>
       <div class="piece-info-panel">
@@ -792,8 +794,10 @@ function renderPiece(piece, allPieces, allTopics, breadcrumbTopic) {
 
   // Image load
   const img = document.getElementById('mainImg');
-  if (img.complete) img.classList.add('loaded');
-  else img.addEventListener('load', () => img.classList.add('loaded'));
+  if (img) {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', () => img.classList.add('loaded'));
+  }
 
   // Scroll reveal on right panel items
   const revealObserver = new IntersectionObserver((entries) => {
