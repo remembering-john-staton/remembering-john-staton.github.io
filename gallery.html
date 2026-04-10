@@ -379,7 +379,7 @@ function renderThumbs(arr) {
   return arr.map(p => {
     const wip = isWip(p);
     const year = p.date ? p.date.slice(-4) : '';
-    return `<div class="piece-thumb" onclick="location.href='piece.html?id=${p.id}'">
+    return `<div class="piece-thumb" onclick="location.href='piece.html?id=${p.id || p.slug}'">
       <img src="${p.image}" alt="${esc(p.title)}" loading="lazy" />
       <div class="piece-thumb-overlay">
         <div class="piece-thumb-title">${esc(p.title)}</div>
