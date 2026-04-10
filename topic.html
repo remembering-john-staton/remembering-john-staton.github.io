@@ -1888,7 +1888,7 @@ async function init() {
         </div>
         
       `;
-      card.addEventListener('click', () => { location.href = `piece.html?id=${p.id}`; });
+      card.addEventListener('click', () => { location.href = `piece.html?id=${p.id || p.slug}`; });
       grid.appendChild(card);
       observer.observe(card);
     });
